@@ -1,5 +1,5 @@
 @extends('layouts.main')
 
 @section('content')	
-    <div>Content index page</div>
+    <div>Content index. Title: {{ $title }}</div>
 @endsection

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>App2</title>
+        <title>{{ $title }}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -13,8 +13,9 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet preload" as="style">
     </head>
     <body>
-        @yield('content')        
-        <div id="example"></div>
+        @yield('content')      
+
+        <!-- Scripts --> 
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
