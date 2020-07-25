@@ -65786,9 +65786,12 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _script_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./script.js */ "./resources/js/script.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -65802,7 +65805,11 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  */
 
 
-__webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");
+__webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js"); // My js-scripts
+
+
+
+Object(_script_js__WEBPACK_IMPORTED_MODULE_0__["switchToActualLang"])();
 
 /***/ }),
 
@@ -65927,6 +65934,25 @@ var Example = /*#__PURE__*/function (_Component) {
 
 if (document.getElementById('example')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Example, null), document.getElementById('example'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/script.js":
+/*!********************************!*\
+  !*** ./resources/js/script.js ***!
+  \********************************/
+/*! exports provided: switchToActualLang */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "switchToActualLang", function() { return switchToActualLang; });
+function switchToActualLang() {
+  document.querySelector('.lang-list').addEventListener('click', function () {
+    var textActual = document.querySelector('.lang-text-actual');
+    textActual.innerText = event.target.innerText;
+  });
 }
 
 /***/ }),

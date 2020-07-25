@@ -13,3 +13,10 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+
+// My js-scripts
+import {switchToActualLang} from "./script.js";
+switchToActualLang()
+
+
+

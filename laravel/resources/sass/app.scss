@@ -1,8 +1,23 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+//@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+@import '~flag-icon-css/css/flag-icon.min.css';
+
+.wrapper-main {
+    padding-top: 70px;
+}
+
+.lang-choice-desktop {
+    .lang-text-actual {
+        background-color: transparent;
+    }
+    .dropdown-toggle::after {
+        display: none
+    }
+}
