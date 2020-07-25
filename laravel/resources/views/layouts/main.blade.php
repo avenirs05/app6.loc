@@ -12,8 +12,6 @@
 
   <!-- Styles -->  
   <link href="{{ asset('css/app.css') }}" rel="stylesheet preload" as="style">
-
-
 </head>
 
 <body>     
@@ -37,48 +35,53 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{{ route('indexPage') }}">Главная</a>
+            <a class="nav-link" href="{{ route('indexPage') }}">@lang('main.menu.main')</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{{ route('villasPage') }}">Виллы</a>
+            <a class="nav-link" href="{{ route('villasPage') }}">@lang('main.menu.villas')</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{{ route('apartmentsPage') }}">Апартаменты</a>
+            <a class="nav-link" href="{{ route('apartmentsPage') }}">@lang('main.menu.apartments')</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{{ route('feedbacksPage') }}">Отзывы</a>
+            <a class="nav-link" href="{{ route('feedbacksPage') }}">@lang('main.menu.feedbacks')</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{{ route('contactPage') }}">Контакты</a>
+            <a class="nav-link" href="{{ route('contactPage') }}">@lang('main.menu.contact')</a>
           </li>
         </ul>     
 
         <!-- Language choice desktop -->
         <div class="lang-choice-desktop btn-group d-none d-md-block">
-          <button type="button" class="btn btn-secondary dropdown-toggle lang-text-actual" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&nbsp;&nbsp;RUS&nbsp;&nbsp;</button>          
+          <button type="button" 
+                  class="btn btn-secondary dropdown-toggle lang-text-actual" 
+                  data-toggle="dropdown" 
+                  aria-haspopup="true" 
+                  aria-expanded="false">
+                  &nbsp;&nbsp;
+                    {{ strtoupper(app()->getLocale()) }}
+                  &nbsp;&nbsp;
+          </button>          
           <div class="dropdown-menu dropdown-menu-right lang-list">
             <button class="dropdown-item" type="button">
-              <span class="flag-icon flag-icon-ru"></span>&nbsp;&nbsp;RUS&nbsp;&nbsp;
+              <span class="flag-icon flag-icon-ru"></span>&nbsp;&nbsp;Ru&nbsp;&nbsp;
             </button>
             <button class="dropdown-item" type="button">
-              <span class="flag-icon flag-icon-gb-eng"></span>&nbsp;&nbsp;ENG&nbsp;&nbsp;<br> 
+              <span class="flag-icon flag-icon-gb-eng"></span>&nbsp;&nbsp;En&nbsp;&nbsp;<br> 
             </button>
           </div>        
         </div>       
       </div>
-    </nav>    
+    </nav> 
 
 
-
+    
 
     @yield('content')   
-  </div>
-  
+  </div>  
 
-  
+  <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
-
-
 
 </body>
 </html>

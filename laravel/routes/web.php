@@ -11,9 +11,17 @@
 |
 */
 
+
 // Маршруты для клиентов и поисковиков
 Route::get('/', 'IndexController')->name('indexPage');
 Route::get('/villas', 'VillasController')->name('villasPage');
 Route::get('/apartments', 'ApartmentsController')->name('apartmentsPage');
 Route::get('/feedbacks', 'FeedbacksController')->name('feedbacksPage');
 Route::get('/contact', 'ContactController')->name('contactPage');
+
+
+//Определение языка и установка его в сессию 
+Route::get('locale/{locale}', function($locale) {
+	Session::put('locale', $locale);
+	return redirect()->back();
+});

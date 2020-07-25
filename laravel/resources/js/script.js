@@ -1,6 +1,8 @@
 export function switchToActualLang() {
-    document.querySelector('.lang-list').addEventListener('click', function() {
-        let textActual = document.querySelector('.lang-text-actual')
-        textActual.innerText = event.target.innerText
+    document.querySelector('.lang-list').addEventListener('click', function(e) {  
+        let actualLang = e.target.innerText
+        
+        document.querySelector('.lang-text-actual').innerText = actualLang
+        location.href = '/locale/' + actualLang.trim().toLowerCase()
     })
 }

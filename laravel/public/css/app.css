@@ -10941,3 +10941,7 @@ a.text-dark:focus {
   display: none;
 }
 
+.lang-choice-desktop .dropdown-menu {
+  min-width: 1rem;
+}
+
