@@ -14,7 +14,8 @@
 }
 
 .navbar {
-    .lang-choice-desktop {
+    .lang-choice-desktop, 
+    .lang-choice-mobile {
         .lang-text-actual {
             background-color: transparent;
         }
@@ -27,5 +28,10 @@
     }
     .navbar-nav a.nav-link:hover {
         color: $yellow;
+    }
+    .navbar-brand {
+        border: 2px solid white;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }

@@ -10933,19 +10933,28 @@ a.text-dark:focus {
   padding-top: 70px;
 }
 
-.navbar .lang-choice-desktop .lang-text-actual {
+.navbar .lang-choice-desktop .lang-text-actual,
+.navbar .lang-choice-mobile .lang-text-actual {
   background-color: transparent;
 }
 
-.navbar .lang-choice-desktop .dropdown-toggle::after {
+.navbar .lang-choice-desktop .dropdown-toggle::after,
+.navbar .lang-choice-mobile .dropdown-toggle::after {
   display: none;
 }
 
-.navbar .lang-choice-desktop .dropdown-menu {
+.navbar .lang-choice-desktop .dropdown-menu,
+.navbar .lang-choice-mobile .dropdown-menu {
   min-width: 1rem;
 }
 
 .navbar .navbar-nav a.nav-link:hover {
   color: #ffed4a;
+}
+
+.navbar .navbar-brand {
+  border: 2px solid white;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 

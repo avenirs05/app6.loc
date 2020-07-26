@@ -17,10 +17,32 @@
 <body>     
   <!-- Navbar -->
   <div class="container-fluid wrapper-main">
-
+    
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Fixed navbar</a>       
+      <a class="navbar-brand" href="#">MYBUDVA</a>       
       
+      <!-- Language choice mobile -->
+      <div class="lang-choice-mobile btn-group d-md-none">
+        <button type="button" 
+                class="btn btn-secondary dropdown-toggle lang-text-actual" 
+                data-toggle="dropdown" 
+                aria-haspopup="true" 
+                aria-expanded="false">
+                &nbsp;&nbsp;
+                  {{ strtoupper(app()->getLocale()) }}
+                &nbsp;&nbsp;
+        </button>          
+        <div class="dropdown-menu dropdown-menu-right lang-list">
+          <button class="dropdown-item" type="button">
+            <span class="flag-icon flag-icon-ru"></span>&nbsp;&nbsp;Ru&nbsp;&nbsp;
+          </button>
+          <button class="dropdown-item" type="button">
+            <span class="flag-icon flag-icon-gb-eng"></span>&nbsp;&nbsp;En&nbsp;&nbsp;<br> 
+          </button>
+        </div>        
+      </div> 
+      
+
       <!-- Navbar-toggler on mobile -->
       <button class="navbar-toggler" type="button" 
               data-toggle="collapse" 
@@ -70,7 +92,8 @@
               <span class="flag-icon flag-icon-gb-eng"></span>&nbsp;&nbsp;En&nbsp;&nbsp;<br> 
             </button>
           </div>        
-        </div>       
+        </div>  
+
       </div>
     </nav>     
 

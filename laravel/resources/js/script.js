@@ -1,10 +1,13 @@
 // SwitchToActualLang
 export function switchToActualLang() {
-    document.querySelector('.lang-list').addEventListener('click', function(e) {  
-        let actualLang = e.target.innerText    
+    function insertText() {
+        let actualLang = event.target.innerText    
         document.querySelector('.lang-text-actual').innerText = actualLang    
         location.href = '/locale/' + actualLang.trim().toLowerCase()
-    })
+    }
+
+    document.querySelector('.lang-choice-desktop .lang-list').addEventListener('click', insertText)
+    document.querySelector('.lang-choice-mobile .lang-list').addEventListener('click', insertText)
 }
 
 // We have to delete 'active' class on Menu Item 
