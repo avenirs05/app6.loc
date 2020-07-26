@@ -17,9 +17,9 @@
 <body>     
   <!-- Navbar -->
   <div class="container-fluid wrapper-main">
-    
+
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Fixed navbar</a>        
+      <a class="navbar-brand" href="#">Fixed navbar</a>       
       
       <!-- Navbar-toggler on mobile -->
       <button class="navbar-toggler" type="button" 
@@ -29,28 +29,28 @@
               aria-expanded="false" 
               aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>        
-      
+      </button>    
+
       <!-- Menu -->
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{{ route('indexPage') }}">@lang('main.menu.main')</a>
+            <a class="nav-link" href="/">@lang('main.menu.main')</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{{ route('villasPage') }}">@lang('main.menu.villas')</a>
+            <a class="nav-link" href="{{ route('villas') }}">@lang('main.menu.villas')</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{{ route('apartmentsPage') }}">@lang('main.menu.apartments')</a>
+            <a class="nav-link" href="{{ route('apartments') }}">@lang('main.menu.apartments')</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{{ route('feedbacksPage') }}">@lang('main.menu.feedbacks')</a>
+            <a class="nav-link" href="{{ route('feedbacks') }}">@lang('main.menu.feedbacks')</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{{ route('contactPage') }}">@lang('main.menu.contact')</a>
+            <a class="nav-link" href="{{ route('contact') }}">@lang('main.menu.contact')</a>
           </li>
-        </ul>     
-
+        </ul>  
+        
         <!-- Language choice desktop -->
         <div class="lang-choice-desktop btn-group d-none d-md-block">
           <button type="button" 
@@ -72,10 +72,7 @@
           </div>        
         </div>       
       </div>
-    </nav> 
-
-
-    
+    </nav>     
 
     @yield('content')   
   </div>  

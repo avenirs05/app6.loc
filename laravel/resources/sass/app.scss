@@ -1,5 +1,5 @@
 // Fonts
-//@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
@@ -13,14 +13,19 @@
     padding-top: 70px;
 }
 
-.lang-choice-desktop {
-    .lang-text-actual {
-        background-color: transparent;
+.navbar {
+    .lang-choice-desktop {
+        .lang-text-actual {
+            background-color: transparent;
+        }
+        .dropdown-toggle::after {
+            display: none
+        }
+        .dropdown-menu {
+            min-width: 1rem;
+        }
     }
-    .dropdown-toggle::after {
-        display: none
-    }
-    .dropdown-menu {
-        min-width: 1rem;
+    .navbar-nav a.nav-link:hover {
+        color: $yellow;
     }
 }
