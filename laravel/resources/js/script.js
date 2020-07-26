@@ -10,6 +10,7 @@ export function switchToActualLang() {
     document.querySelector('.lang-choice-mobile .lang-list').addEventListener('click', insertText)
 }
 
+
 // We have to delete 'active' class on Menu Item 
 export function markActualMenuPage() {
     let collection = document.querySelectorAll('#navbarCollapse .nav-link')

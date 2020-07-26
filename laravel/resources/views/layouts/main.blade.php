@@ -14,94 +14,110 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet preload" as="style">
 </head>
 
-<body>     
-  <!-- Navbar -->
-  <div class="container-fluid wrapper-main">
-    
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">MYBUDVA</a>       
-      
-      <!-- Language choice mobile -->
-      <div class="lang-choice-mobile btn-group d-md-none">
-        <button type="button" 
-                class="btn btn-secondary dropdown-toggle lang-text-actual" 
-                data-toggle="dropdown" 
-                aria-haspopup="true" 
-                aria-expanded="false">
-                &nbsp;&nbsp;
-                  {{ strtoupper(app()->getLocale()) }}
-                &nbsp;&nbsp;
-        </button>          
-        <div class="dropdown-menu dropdown-menu-right lang-list">
-          <button class="dropdown-item" type="button">
-            <span class="flag-icon flag-icon-ru"></span>&nbsp;&nbsp;Ru&nbsp;&nbsp;
-          </button>
-          <button class="dropdown-item" type="button">
-            <span class="flag-icon flag-icon-gb-eng"></span>&nbsp;&nbsp;En&nbsp;&nbsp;<br> 
-          </button>
-        </div>        
-      </div> 
-      
+<body>    
 
-      <!-- Navbar-toggler on mobile -->
-      <button class="navbar-toggler" type="button" 
-              data-toggle="collapse" 
-              data-target="#navbarCollapse" 
-              aria-controls="navbarCollapse" 
-              aria-expanded="false" 
-              aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>    
+<!-- Wrapper-main --> 
+<div class="container-fluid wrapper-main">
 
-      <!-- Menu -->
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">@lang('main.menu.main')</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{{ route('villas') }}">@lang('main.menu.villas')</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{{ route('apartments') }}">@lang('main.menu.apartments')</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{{ route('feedbacks') }}">@lang('main.menu.feedbacks')</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{{ route('contact') }}">@lang('main.menu.contact')</a>
-          </li>
-        </ul>  
-        
-        <!-- Language choice desktop -->
-        <div class="lang-choice-desktop btn-group d-none d-md-block">
-          <button type="button" 
-                  class="btn btn-secondary dropdown-toggle lang-text-actual" 
-                  data-toggle="dropdown" 
-                  aria-haspopup="true" 
-                  aria-expanded="false">
-                  &nbsp;&nbsp;
-                    {{ strtoupper(app()->getLocale()) }}
-                  &nbsp;&nbsp;
-          </button>          
-          <div class="dropdown-menu dropdown-menu-right lang-list">
-            <button class="dropdown-item" type="button">
-              <span class="flag-icon flag-icon-ru"></span>&nbsp;&nbsp;Ru&nbsp;&nbsp;
-            </button>
-            <button class="dropdown-item" type="button">
-              <span class="flag-icon flag-icon-gb-eng"></span>&nbsp;&nbsp;En&nbsp;&nbsp;<br> 
-            </button>
-          </div>        
-        </div>  
-
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  
+  <!-- Logo -->
+  <a class="navbar-brand" href="#">MYBUDVA</a>  
+  
+  <!-- Contacts -->
+  <div class="d-none d-md-block">
+    <div class="media mr-2">
+      <img width="25" src="{{ asset('images/viber.png') }}" class="align-self-center mr-2" alt="">
+      <img width="25" src="{{ asset('images/whatsapp.svg') }}" class="align-self-center mr-2" alt="">
+      <div class="media-body">
+        <span class="text-white">+382 68 089 888</span>
       </div>
-    </nav>     
+    </div>
+  </div>     
+  
+  <!-- Language choice mobile -->
+  <div class="lang-choice-mobile btn-group d-md-none">
+    <button type="button" 
+            class="btn btn-secondary dropdown-toggle lang-text-actual" 
+            data-toggle="dropdown" 
+            aria-haspopup="true" 
+            aria-expanded="false">
+            &nbsp;&nbsp;
+              {{ strtoupper(app()->getLocale()) }}
+            &nbsp;&nbsp;
+    </button>          
+    <div class="dropdown-menu dropdown-menu-right lang-list">
+      <button class="dropdown-item" type="button">
+        <span class="flag-icon flag-icon-ru"></span>&nbsp;&nbsp;Ru&nbsp;&nbsp;
+      </button>
+      <button class="dropdown-item" type="button">
+        <span class="flag-icon flag-icon-gb-eng"></span>&nbsp;&nbsp;En&nbsp;&nbsp;<br> 
+      </button>
+    </div>        
+  </div>   
 
-    @yield('content')   
-  </div>  
+  <!-- Navbar-toggler on mobile -->
+  <button class="navbar-toggler" type="button" 
+          data-toggle="collapse" 
+          data-target="#navbarCollapse" 
+          aria-controls="navbarCollapse" 
+          aria-expanded="false" 
+          aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>    
 
-  <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}"></script>
+  <!-- Menu -->
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">@lang('main.menu.main')</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ route('villas') }}">@lang('main.menu.villas')</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ route('apartments') }}">@lang('main.menu.apartments')</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ route('feedbacks') }}">@lang('main.menu.feedbacks')</a>
+      </li>
+      <li class="nav-item active mr-5">
+        <a class="nav-link" href="{{ route('contact') }}">@lang('main.menu.contact')</a>
+      </li>
+    </ul>  
+    
+    <!-- Language choice desktop -->
+    <div class="lang-choice-desktop btn-group d-none d-md-block">
+      <button type="button" 
+              class="btn btn-secondary dropdown-toggle lang-text-actual" 
+              data-toggle="dropdown" 
+              aria-haspopup="true" 
+              aria-expanded="false">
+              &nbsp;&nbsp;
+                {{ strtoupper(app()->getLocale()) }}
+              &nbsp;&nbsp;
+      </button>          
+      <div class="dropdown-menu dropdown-menu-right lang-list">
+        <button class="dropdown-item" type="button">
+          <span class="flag-icon flag-icon-ru"></span>&nbsp;&nbsp;Ru&nbsp;&nbsp;
+        </button>
+        <button class="dropdown-item" type="button">
+          <span class="flag-icon flag-icon-gb-eng"></span>&nbsp;&nbsp;En&nbsp;&nbsp;<br> 
+        </button>
+      </div>  
+    </div>       
+  </div>    
+  <!-- EndMenu -->  
+</nav>     
+
+@yield('content') 
+
+</div> 
+<!-- End Wrapper-main --> 
+
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
 
 </body>
 </html>
