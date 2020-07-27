@@ -10929,10 +10929,6 @@ a.text-dark:focus {
   }
 }
 
-.wrapper-main {
-  padding-top: 70px;
-}
-
 .navbar .lang-choice-desktop .lang-text-actual,
 .navbar .lang-choice-mobile .lang-text-actual {
   background-color: transparent;
@@ -10956,5 +10952,16 @@ a.text-dark:focus {
   border: 2px solid white;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.main-screen-desktop img {
+  height: 100vh;
+}
+
+.main-screen-desktop .card-img-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 

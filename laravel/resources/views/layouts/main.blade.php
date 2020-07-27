@@ -17,16 +17,16 @@
 <body>    
 
 <!-- Wrapper-main --> 
-<div class="container-fluid wrapper-main">
+<div class="wrapper-main">
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
   
   <!-- Logo -->
-  <a class="navbar-brand" href="#">MYBUDVA</a>  
+  <a class="navbar-brand" href="/">MYBUDVA</a>  
   
-  <!-- Contacts -->
-  <div class="d-none d-md-block">
+  <!-- Contacts desktop-->
+  <div class="d-none d-lg-block">
     <div class="media mr-2">
       <img width="25" src="{{ asset('images/viber.png') }}" class="align-self-center mr-2" alt="">
       <img width="25" src="{{ asset('images/whatsapp.svg') }}" class="align-self-center mr-2" alt="">
@@ -37,7 +37,7 @@
   </div>     
   
   <!-- Language choice mobile -->
-  <div class="lang-choice-mobile btn-group d-md-none">
+  <div class="lang-choice-mobile btn-group d-lg-none">
     <button type="button" 
             class="btn btn-secondary dropdown-toggle lang-text-actual" 
             data-toggle="dropdown" 
@@ -88,7 +88,7 @@
     </ul>  
     
     <!-- Language choice desktop -->
-    <div class="lang-choice-desktop btn-group d-none d-md-block">
+    <div class="lang-choice-desktop btn-group d-none d-lg-block">
       <button type="button" 
               class="btn btn-secondary dropdown-toggle lang-text-actual" 
               data-toggle="dropdown" 

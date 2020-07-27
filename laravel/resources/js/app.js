@@ -20,6 +20,8 @@ import {switchToActualLang, markActualMenuPage} from './script'
 switchToActualLang();
 markActualMenuPage();
 
+console.log('hhh222444')
+
 
 
 
