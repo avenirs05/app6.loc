@@ -15,10 +15,11 @@ require('./bootstrap');
 require('./components/Example');
 
 // My js-scripts
-import {switchToActualLang, markActualMenuPage} from './script'
+import {switchToActualLang, markActualMenuPage, footerToBottom} from './script'
 
-switchToActualLang();
-markActualMenuPage();
+switchToActualLang()
+markActualMenuPage()
+footerToBottom()
 
 console.log('hhh222444')
 

@@ -31,6 +31,14 @@ export function markActualMenuPage() {
     }
 }
 
+//Прижать футер к низу
+export function footerToBottom() {
+    if ($(document).height() <= $(window).height()) {
+        $(".footer").addClass("fixed-bottom");
+    }
+}
+
+
 
 
 

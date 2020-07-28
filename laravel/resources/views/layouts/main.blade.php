@@ -109,15 +109,18 @@
 <!-- EndNavbar -->
 </nav> 
 
-  @yield('content') 
+@yield('content') 
 
-  <!-- Footer -->
-  <div class="container-fluid bg-dark">    
-    <div class="text-white text-center pt-2 pb-2">&copy; MyBudva, 2015</div>
-  </div>
+
 
 </div> 
 <!-- End Wrapper-main --> 
+
+<!-- Footer -->
+<div class="bg-dark footer">    
+  <div class="text-white text-center pt-2 pb-2">&copy; MyBudva, 2015</div>
+</div>
+
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
