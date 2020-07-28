@@ -14,21 +14,19 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet preload" as="style">
 </head>
 
-<body>    
-
+<body>  
 <!-- Wrapper-main --> 
 <div class="wrapper-main">
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-  
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">  
   <!-- Logo -->
   <a class="navbar-brand" href="/">MYBUDVA</a>  
   
   <!-- Contacts desktop-->
-  <div class="d-none d-lg-block">
+  <div class="contacts-desktop d-none d-lg-block">
     <div class="media mr-2">
-      <img width="25" src="{{ asset('images/viber.png') }}" class="align-self-center mr-2" alt="">
+      <img width="25" src="{{ asset('images/viber.png') }}" class="align-self-center ml-4 mr-2" alt="">
       <img width="25" src="{{ asset('images/whatsapp.svg') }}" class="align-self-center mr-2" alt="">
       <div class="media-body">
         <span class="text-white">+382 68 089 888</span>
@@ -107,11 +105,16 @@
         </button>
       </div>  
     </div>       
-  </div>    
-  <!-- EndMenu -->  
-</nav>     
+  </div> 
+<!-- EndNavbar -->
+</nav> 
 
-@yield('content') 
+  @yield('content') 
+
+  <!-- Footer -->
+  <div class="container-fluid bg-dark">    
+    <div class="text-white text-center pt-2 pb-2">&copy; MyBudva, 2015</div>
+  </div>
 
 </div> 
 <!-- End Wrapper-main --> 
