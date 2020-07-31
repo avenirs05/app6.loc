@@ -10997,6 +10997,34 @@ a.text-dark:focus {
   font-size: 1.5rem;
 }
 
+.realty-card-desktop .card-img-overlay {
+  padding-bottom: 0.78rem;
+  padding-top: 0.8rem;
+  padding-left: 0.86rem;
+  padding-right: 0;
+}
+
+.realty-card-desktop .card-body {
+  height: 100%;
+}
+
+.realty-card-desktop del {
+  color: #e3342f;
+}
+
+.realty-card-desktop .from-price-text {
+  color: #212529;
+  font-size: 1.5rem;
+}
+
+.realty-card-desktop .price-text {
+  font-size: 1.5rem;
+}
+
+.realty-card-desktop .btn {
+  letter-spacing: 1.1px;
+}
+
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .realty-card-desktop .shorted-params-list {
     font-size: 0.9rem;

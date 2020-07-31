@@ -74,6 +74,28 @@
     a {
         font-size: 1.5rem;
     }
+    .card-img-overlay {
+        padding-bottom: 0.78rem;
+        padding-top: 0.8rem;
+        padding-left: 0.86rem;
+        padding-right: 0;        
+    }
+    .card-body {
+        height: 100%;
+    }
+    del {
+        color: $red;
+    }
+    .from-price-text {
+        color: #212529;
+        font-size: 1.5rem;
+    }
+    .price-text {
+        font-size: 1.5rem;
+    }
+    .btn {
+        letter-spacing: 1.1px;
+    }
 }
 
 @include media-breakpoint-only(lg) { 

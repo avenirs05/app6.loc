@@ -25,15 +25,17 @@
                     <li><span class="font-weight-bold">Человек:</span> 10</li>
                   </ul>
                 </div>
-                <div>
-                  <p>5</p>
-                  <p>6</p>
-                  <p>7</p>
-                  <p>7</p>
+                <div class="d-flex flex-column justify-content-between">
+                  <div class="card text-white ml-auto">
+                    <img src="{{ asset('images/booking-logo.jpg') }}" class="card-img" alt="" width="50">
+                    <div class="card-img-overlay">
+                      <span class="font-weight-bold">8.1</span>
+                    </div>
+                  </div>
+                  <span class="ml-auto"><del><span class="from-price-text">от € 70</span></del></span>
+                  <span class="price-text ml-auto">€ 50</span>
+                  <button type="button" class="btn btn-success font-weight-bold">Подробнее</button>
                 </div>
-                {{-- <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
               </div>
             </div>
           </div>
