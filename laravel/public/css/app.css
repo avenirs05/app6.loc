@@ -10993,14 +10993,14 @@ a.text-dark:focus {
   font-size: 1rem;
 }
 
-.realty-card-desktop a {
+.realty-card-desktop a.title {
   font-size: 1.5rem;
 }
 
 .realty-card-desktop .card-img-overlay {
   padding-bottom: 0.78rem;
   padding-top: 0.8rem;
-  padding-left: 0.86rem;
+  padding-left: 0.9rem;
   padding-right: 0;
 }
 

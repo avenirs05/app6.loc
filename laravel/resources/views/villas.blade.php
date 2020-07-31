@@ -16,7 +16,7 @@
             <div class="col-md-8">
               <div class="card-body d-flex justify-content-between">
                 <div>
-                  <a href="#" class="">Heart of Budva</a>
+                  <a href="#" class="title">Heart of Budva</a>
                   <h5 class="mt-2 mb-4">Апартаменты на вилле в Будве</h5>
                   <ul class="shorted-params-list">
                     <li><span class="font-weight-bold">Площадь:</span> 80 м<sup>2</sup></li>
@@ -34,7 +34,7 @@
                   </div>
                   <span class="ml-auto"><del><span class="from-price-text">от € 70</span></del></span>
                   <span class="price-text ml-auto">€ 50</span>
-                  <button type="button" class="btn btn-success font-weight-bold">Подробнее</button>
+                  <a class="btn btn-success font-weight-bold" href="#" role="button">Подробнее</a>                  
                 </div>
               </div>
             </div>
