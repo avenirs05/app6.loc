@@ -10,8 +10,9 @@
 // Flags of countries
 @import '~flag-icon-css/css/flag-icon.min.css';
 
-.wrapper-main {
-    padding-top: 1rem;
+// Cause navbar is fixed
+.wrapper-main > .container h1 {
+    padding-top: 80px;
 }
 
 .navbar {
@@ -51,9 +52,8 @@
 }
 
 .main-screen-mobile {
-    padding-top: 2.5rem;
-    .card-img-overlay {
-        margin-top: 2.25rem;        
+    padding-top: 3.5rem;
+    .card-img-overlay {       
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -64,3 +64,54 @@
     }
 }
 
+.realty-card-desktop {
+    .shorted-params-list {
+        list-style-type: none;
+        padding-inline-start: 0;
+        margin-bottom: 0;
+        font-size: 1rem;
+    }
+    a {
+        font-size: 1.5rem;
+    }
+}
+
+@include media-breakpoint-only(lg) { 
+    .realty-card-desktop {
+        .shorted-params-list {
+            font-size: 0.9rem;
+        }
+        a {
+            font-size: 0.8rem;
+        }
+        h5 {
+            font-size: 1rem;
+        }
+    }
+}
+
+@include media-breakpoint-between(xs, lg) { 
+    #navbarCollapse {
+        ul {
+            padding-top: 1rem;
+        }        
+    }
+}
+
+
+
+@include media-breakpoint-up(sm) { }
+@include media-breakpoint-up(md) { }
+@include media-breakpoint-up(lg) { }
+@include media-breakpoint-up(xl) { }
+
+@include media-breakpoint-down(xs) { }
+@include media-breakpoint-down(sm) { }
+@include media-breakpoint-down(md) { }
+@include media-breakpoint-down(lg) { }
+
+@include media-breakpoint-only(xs) { }
+@include media-breakpoint-only(sm) { }
+@include media-breakpoint-only(md) { }
+
+@include media-breakpoint-only(xl) { }

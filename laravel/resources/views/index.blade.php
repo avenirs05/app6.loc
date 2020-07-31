@@ -24,7 +24,7 @@
         </div>
       </div> 
       <!-- EndContacts desktop-->
-      <h1 class="card-title text-center">Аренда вилл и апартаментов в Черногории без посредников</h1>
+      <h1 class="card-title text-center mb-0">Аренда вилл и апартаментов в Черногории без посредников</h1>
     </div>
   </div>
 
@@ -82,5 +82,4 @@
       </div>
     </div>
   </div>
-
 @endsection

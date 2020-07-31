@@ -55,7 +55,7 @@
     </div>        
   </div>   
 
-  <!-- Navbar-toggler on mobile -->
+  <!-- Navbar-toggler button-hamburger on mobile -->
   <button class="navbar-toggler" type="button" 
           data-toggle="collapse" 
           data-target="#navbarCollapse" 
@@ -110,9 +110,6 @@
 </nav> 
 
 @yield('content') 
-
-
-
 </div> 
 <!-- End Wrapper-main --> 
 
@@ -120,7 +117,6 @@
 <div class="bg-dark footer">    
   <div class="text-white text-center pt-2 pb-2">&copy; MyBudva, 2015</div>
 </div>
-
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>

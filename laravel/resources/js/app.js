@@ -21,7 +21,7 @@ switchToActualLang()
 markActualMenuPage()
 footerToBottom()
 
-console.log('hhh222444')
+//console.log('hhh222444')
 
 
 
