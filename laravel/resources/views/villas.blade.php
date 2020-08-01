@@ -9,7 +9,9 @@
         @include('chunks.realty-min-card')
         @include('chunks.realty-min-card')
         @include('chunks.realty-min-card')
+        @include('chunks.pagination')
       </div>
     </div>
   </div> 
+  
 @endsection

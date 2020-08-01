@@ -7,6 +7,7 @@
 				<h1>Апартаменты</h1>   
         <hr class="mb-4"> 
         @include('chunks.realty-min-card')
+        @include('chunks.pagination')
       </div>
     </div>
   </div> 

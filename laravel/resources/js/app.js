@@ -21,6 +21,11 @@ switchToActualLang()
 markActualMenuPage()
 footerToBottom()
 
+// Lightgallery
+require('lightgallery.js')
+require('lg-thumbnail.js')
+lightGallery(document.getElementById('lightgallery'));
+
 //console.log('hhh222444')
 
 

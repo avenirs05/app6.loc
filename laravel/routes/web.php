@@ -17,6 +17,8 @@ Route::get('/', 'IndexController');
 Route::get('/villas', 'VillasController')->name('villas');
 Route::get('/apartments', 'ApartmentsController')->name('apartments');
 Route::get('/contact', 'ContactController')->name('contact');
+Route::get('/villa/{id}', 'VillaController')->name('villa');
+Route::get('/apartment/{id}', 'ApartmentController')->name('apartment');
 
 
 //Определение языка и установка его в сессию 

@@ -17,7 +17,7 @@ class ApartmentsController extends Controller
         $title = 'Апартаменты';
 
 		$data = [
-			'title' => $title,		
+            'title' => $title,	            	
 		];				
 	
 		return view('apartments', $data);
