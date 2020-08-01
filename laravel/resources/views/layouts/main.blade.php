@@ -77,9 +77,6 @@
       <li class="nav-item active">
         <a class="nav-link" href="{{ route('apartments') }}">@lang('main.menu.apartments')</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="{{ route('feedbacks') }}">@lang('main.menu.feedbacks')</a>
-      </li>
       <li class="nav-item active mr-5">
         <a class="nav-link" href="{{ route('contact') }}">@lang('main.menu.contact')</a>
       </li>

@@ -16,7 +16,6 @@
 Route::get('/', 'IndexController');
 Route::get('/villas', 'VillasController')->name('villas');
 Route::get('/apartments', 'ApartmentsController')->name('apartments');
-Route::get('/feedbacks', 'FeedbacksController')->name('feedbacks');
 Route::get('/contact', 'ContactController')->name('contact');
 
 
