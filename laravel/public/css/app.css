@@ -10985,7 +10985,7 @@ a.text-dark:focus {
   font-size: 1rem;
 }
 
-.realty-min-card .shorted-params-list {
+.realty-min-card .realty-params-list-shorted {
   list-style-type: none;
   -webkit-padding-start: 0;
           padding-inline-start: 0;
@@ -11025,8 +11025,18 @@ a.text-dark:focus {
   letter-spacing: 1.1px;
 }
 
+.realty-max-card-desktop .realty-params-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.params-mobile .realty-params-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  .realty-card-desktop .shorted-params-list {
+  .realty-card-desktop .realty-params-list-shorted {
     font-size: 0.9rem;
   }
 
@@ -11039,7 +11049,7 @@ a.text-dark:focus {
   }
 }
 
-@media (max-width: 1199.98px) {
+@media (max-width: 991.98px) {
   #navbarCollapse ul {
     padding-top: 1rem;
   }

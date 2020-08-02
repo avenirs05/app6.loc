@@ -15,15 +15,15 @@
 </head>
 
 <body>  
-<!-- Wrapper-main --> 
+{{-- Wrapper-main --}}
 <div class="wrapper-main">
 
-<!-- Navbar -->
+{{-- Navbar --}}
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">  
-  <!-- Logo -->
+  {{-- Logo --}}
   <a class="navbar-brand" href="/">MYBUDVA</a>  
   
-  <!-- Contacts desktop-->
+  {{-- Contacts deskto --}}
   <div class="contacts-desktop d-none d-lg-block">
     <div class="media mr-2">
       <img width="25" src="{{ asset('images/viber.png') }}" class="align-self-center ml-4 mr-2" alt="">
@@ -34,7 +34,7 @@
     </div>
   </div>     
   
-  <!-- Language choice mobile -->
+  {{-- Language choice mobile --}}
   <div class="lang-choice-mobile btn-group d-lg-none">
     <button type="button" 
             class="btn btn-secondary dropdown-toggle lang-text-actual" 
@@ -55,7 +55,7 @@
     </div>        
   </div>   
 
-  <!-- Navbar-toggler button-hamburger on mobile -->
+  {{-- Navbar-toggler button-hamburger on mobile --}}
   <button class="navbar-toggler" type="button" 
           data-toggle="collapse" 
           data-target="#navbarCollapse" 
@@ -65,8 +65,9 @@
     <span class="navbar-toggler-icon"></span>
   </button>    
 
-  <!-- Menu -->
+  {{-- Menu and Language choice desktop --}}
   <div class="collapse navbar-collapse" id="navbarCollapse">
+    {{-- Menu desktop --}}
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
         <a class="nav-link" href="/">@lang('main.menu.main')</a>
@@ -82,7 +83,7 @@
       </li>
     </ul>  
     
-    <!-- Language choice desktop -->
+    {{-- Language choice desktop --}}
     <div class="lang-choice-desktop btn-group d-none d-lg-block">
       <button type="button" 
               class="btn btn-secondary dropdown-toggle lang-text-actual" 
@@ -103,19 +104,19 @@
       </div>  
     </div>       
   </div> 
-<!-- EndNavbar -->
+{{-- EndNavbar --}}
 </nav> 
 
 @yield('content') 
 </div> 
-<!-- End Wrapper-main --> 
+{{-- End Wrapper-main --}}
 
-<!-- Footer -->
+{{-- Footer --}}
 <div class="bg-dark footer">    
   <div class="text-white text-center pt-2 pb-2">&copy; MyBudva, 2015</div>
 </div>
 
-<!-- Scripts -->
+{{-- Scripts --}}
 <script src="{{ asset('js/app.js') }}"></script>
 
 </body>

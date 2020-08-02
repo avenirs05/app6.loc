@@ -1,4 +1,4 @@
-{{-- Realty Mini Card --}}
+{{-- Realty Min Card --}}
 <div class="card mb-4 realty-min-card">
   <div class="row no-gutters">
     <div class="col-md-4">
@@ -10,7 +10,7 @@
           <a href="#" class="title">Heart of Budva</a>
           {{-- Hide title on md and lg --}}
           <h5 class="mt-2 mb-4 d-md-none d-xl-block">Апартаменты на вилле в Будве</h5>
-          <ul class="shorted-params-list">
+          <ul class="realty-params-list-shorted">
             <li><span class="font-weight-bold">Площадь:</span> 80 м<sup>2</sup></li>
             <li><span class="font-weight-bold">До моря:</span> 800 м</li>
             <li><span class="font-weight-bold">Спальни:</span> 4</li>

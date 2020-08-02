@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-  <!-- Main screen desktop -->
+  {{-- Main screen desktop --}}
   <div class="main-screen-desktop card bg-dark text-white d-none d-lg-block">
     <img src="/images/main.jpg" class="card-img" alt="">
     <div class="card-img-overlay">
@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <!-- Main screen mobile -->
+  {{-- Main screen mobile --}}
   <div class="main-screen-mobile card bg-dark text-white d-lg-none">
     <img src="/images/main.jpg" class="card-img" alt="">
     <div class="card-img-overlay">
@@ -28,7 +28,7 @@
     </div>
   </div>
 
-  <!-- Areas -->
+  {{-- Areas --}}
   <div class="container">
     <h2 class="text-center mt-5 mb-5">Отдых в Черногории в 2020 году. Часто задаваемые вопросы.</h2>
     <h3 class="text-center mt-5 mb-5">КУРОРТЫ И ГОРОДА В ЧЕРНОГОРИИ: КУДА ЛУЧШЕ ПОЕХАТЬ?</h3>
@@ -67,7 +67,7 @@
     </div>
   </div>
 
-  <!-- FAQ -->
+  {{-- FAQ --}}
   <div class="container">    
     <div class="row mb-4">
       <div class="col">

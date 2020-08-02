@@ -1,17 +1,15 @@
 @extends('layouts.main')
 
 @section('content')	
-	<div class="container">    
+  @include('chunks.title-page', ['h1' => 'Виллы'])
+  <div class="container">    
     <div class="row mb-4">
       <div class="col">
-				<h1>Виллы</h1>   
-        <hr class="mb-4"> 
         @include('chunks.realty-min-card')
         @include('chunks.realty-min-card')
         @include('chunks.realty-min-card')
         @include('chunks.pagination')
       </div>
     </div>
-  </div> 
-  
+  </div>   
 @endsection
