@@ -115,6 +115,12 @@
     }
 }
 
+.feedbacks {
+    .jumbotron {
+        padding: 2rem;
+    }
+}
+
 // Only
 @include media-breakpoint-only(xs) { }
 @include media-breakpoint-only(sm) { }

@@ -11035,6 +11035,10 @@ a.text-dark:focus {
   padding-left: 0;
 }
 
+.feedbacks .jumbotron {
+  padding: 2rem;
+}
+
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .realty-card-desktop .realty-params-list-shorted {
     font-size: 0.9rem;
