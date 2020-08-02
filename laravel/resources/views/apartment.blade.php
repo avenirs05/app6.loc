@@ -1,12 +1,11 @@
 @extends('layouts.main')
 
 @section('content')	
-	<div class="container">    
-    <div class="row mb-4">
-      <div class="col">
-				<h1>Apple Cat 22 - {{ $id }}</h1>   
-        <hr class="mb-4"> 
-      </div>
-    </div>
-  </div> 
+  @include('chunks.title-page', ['h1' => 'Heart of Budva Ap ' . $id])
+  @include('chunks.realty-max-card-desktop')
+  @include('chunks.carousel-mobile') 
+  @include('chunks.realty-params-mobile') 
+  @include('chunks.price-mobile') 
+  @include('chunks.feedbacks') 
+  @include('chunks.google-map') 
 @endsection
