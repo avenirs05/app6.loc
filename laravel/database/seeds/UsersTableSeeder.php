@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'mybudva',
                 'email' => 'mybudva@mail.ru',
-                'password' => Hash::make('barsabudva24365'),
+                'password' => Hash::make('barsabudva2436524365'),
             ]
         );
 

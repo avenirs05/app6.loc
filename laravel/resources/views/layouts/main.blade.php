@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{{ $title }}</title>
+  <title>MyBudva | {{ $title }}</title>
 
   <!-- Favicon -->
 	<link rel="shortcut icon" href="/images/fav.ico" type="image/png">
@@ -23,7 +23,7 @@
   {{-- Logo --}}
   <a class="navbar-brand" href="/">MYBUDVA</a>  
   
-  {{-- Contacts deskto --}}
+  {{-- Contacts desktop --}}
   <div class="contacts-desktop d-none d-lg-block">
     <div class="media mr-2">
       <img width="25" src="{{ asset('images/viber.png') }}" class="align-self-center ml-4 mr-2" alt="">

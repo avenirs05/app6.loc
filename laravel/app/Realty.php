@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Realty extends Model
 {
-    protected $table = 'realties';	
+  protected $table = 'realties';	
 	protected $guarded = [];	
 	
-	// public function images() 
-	// {
-	// 	return $this->hasMany('App\Image');
-	// }
+	public function images() 
+	{
+		return $this->hasMany(Image::class);
+	}
 }

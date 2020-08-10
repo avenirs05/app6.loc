@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Realty;
 
 class VillasController extends Controller
 {
@@ -14,12 +15,14 @@ class VillasController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $title = 'Виллы';
+        $title = __('main.menu.villas');
 
 		$data = [
 			'title' => $title,		
 		];				
-	
+    
+        //dd(Realty::select('name')->where('type_ru', 'вилла')->get());
+
 		return view('villas', $data);
     }
 }
