@@ -98,6 +98,7 @@
     }
     .btn {
         letter-spacing: 1.1px;
+        white-space: nowrap;
     }    
 }
 
@@ -122,7 +123,13 @@
 }
 
 // Only
-@include media-breakpoint-only(xs) { }
+@include media-breakpoint-only(xs) { 
+    .realty-min-card {
+        .from-price-text {
+            font-size: 1rem;
+        }
+    }
+}
 @include media-breakpoint-only(sm) { }
 @include media-breakpoint-only(md) { }
 @include media-breakpoint-only(lg) { 

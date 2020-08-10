@@ -11023,6 +11023,7 @@ a.text-dark:focus {
 
 .realty-min-card .btn {
   letter-spacing: 1.1px;
+  white-space: nowrap;
 }
 
 .realty-max-card-desktop .realty-params-list {
@@ -11037,6 +11038,12 @@ a.text-dark:focus {
 
 .feedbacks .jumbotron {
   padding: 2rem;
+}
+
+@media (max-width: 575.98px) {
+  .realty-min-card .from-price-text {
+    font-size: 1rem;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
