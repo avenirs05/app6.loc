@@ -11040,6 +11040,10 @@ a.text-dark:focus {
   padding: 2rem;
 }
 
+.pagination {
+  flex-wrap: wrap;
+}
+
 @media (max-width: 575.98px) {
   .realty-min-card .from-price-text {
     font-size: 1rem;

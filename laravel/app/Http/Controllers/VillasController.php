@@ -17,7 +17,7 @@ class VillasController extends Controller
     public function __invoke(Request $request)
     {
         $title = __("main.menu." . $request->path());
-        $per_page = 5;
+        $per_page = 2;
         $lang = app()->getLocale();
 
         $villas = Realty::with(['images' => function($query) {
@@ -27,13 +27,12 @@ class VillasController extends Controller
            ->where('type_ru', 'вилла')
            ->paginate($per_page, ['id', 'name', "subname_$lang", 'square', 'dist_sea',
                'bedrooms', 'capacity', 'price', 'price_line_through', 'booking_mark'
-           ])
-           ->toArray()['data'];
+           ]);
 
 		$data = [
-            'title'  => $title,	
-            'villas' => $villas,
-            'lang'   => $lang,
+            'title'    => $title,	
+            'villas'   => $villas,
+            'lang'     => $lang,
         ];		
         
     

@@ -122,6 +122,11 @@
     }
 }
 
+// Class-ghost. This class appear by Blade directive $villas->links()
+.pagination {
+    flex-wrap: wrap;
+}
+
 // Only
 @include media-breakpoint-only(xs) { 
     .realty-min-card {
