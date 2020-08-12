@@ -107,6 +107,11 @@
         list-style-type: none;
         padding-left: 0;
     }
+    #lightgallery {
+        a {
+            text-decoration: none;
+        }
+    }
 }
 
 .realty-params-mobile {

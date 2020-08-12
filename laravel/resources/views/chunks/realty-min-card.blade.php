@@ -7,7 +7,7 @@
       <div class="col-md-8">
         <div class="card-body d-flex justify-content-between">
           <div>
-            <a href="{{ route('villa', ['id' => $realty->id]) }}" class="title">{{ $realty->name }}</a>
+            <a href="{{ route($typeOfRealty, ['id' => $realty->id]) }}" class="title">{{ $realty->name }}</a>
             {{-- Hide title on md and lg --}}
             <h5 class="mt-2 mb-4 d-md-none d-xl-block">
               {{ $realty->{"subname_$lang"} }}
@@ -51,7 +51,11 @@
               </del>
             </span>
             <span class="price-text ml-auto">€ {{ $realty->price }}</span>
-            <a class="btn btn-success font-weight-bold" href="#" role="button">{{ __('main.btn_more') }}</a>                  
+            <a class="btn btn-success font-weight-bold" 
+               href="{{ route($typeOfRealty, ['id' => $realty->id]) }}" 
+               role="button">
+               {{ __('main.btn_more') }}
+            </a>                  
           </div>
         </div>
       </div>

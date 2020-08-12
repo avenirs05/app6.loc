@@ -11031,6 +11031,10 @@ a.text-dark:focus {
   padding-left: 0;
 }
 
+.realty-max-card-desktop #lightgallery a {
+  text-decoration: none;
+}
+
 .realty-params-mobile .realty-params-list {
   list-style-type: none;
   padding-left: 0;

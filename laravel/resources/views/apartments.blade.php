@@ -2,12 +2,16 @@
 
 @section('content')	
   @include('chunks.title-page', ['h1' => $title])
-	<div class="container">    
+  <div class="container">    
     <div class="row mb-4">
       <div class="col">
-        @include('chunks.realty-min-card')
-        @include('chunks.pagination')
+        @include('chunks.realty-min-card', ['realties' => $apartments])
       </div>
     </div>
-  </div> 
+    <div class="row mb-4">
+      <div class="col">
+        {{ $apartments->links() }} 
+      </div>
+    </div>
+  </div>   
 @endsection
