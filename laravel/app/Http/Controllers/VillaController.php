@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Realty;
 
 use Illuminate\Http\Request;
 
@@ -13,13 +14,16 @@ class VillaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function __invoke(Request $request, $id)
-    {
-        $title = 'Вилла';
+    {      
+        $villa = Realty::find($id);
+        $title = "Вилла $villa->name";        
 
 		$data = [
             'title' => $title,
-            'id' => $id		
-		];				
+            'villa' => $villa		
+        ];		
+        
+        dd($villa);
 	
 		return view('villa', $data);
     }

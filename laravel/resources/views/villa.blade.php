@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
 @section('content')	
-  @include('chunks.title-page', ['h1' => 'Heart of Budva ' . $id])
-  @include('chunks.realty-max-card-desktop')
+  @include('chunks.title-page', ['h1' => $villa->name])
+  @include('chunks.realty-max-card-desktop', ['villa' => $villa])
   @include('chunks.carousel-mobile') 
   @include('chunks.realty-params-mobile') 
   @include('chunks.price-mobile') 

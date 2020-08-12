@@ -17,7 +17,7 @@ class CreateRealtiesTable extends Migration
 						$table->increments('id');		
 
 						$table->string('visibility')->default('опубликовано');
-						$table->string('name')->unique()->nullable();;
+						$table->string('name')->unique()->nullable();
 						$table->integer('square')->nullable();
 						$table->tinyInteger('bedrooms')->nullable();
 						$table->tinyInteger('capacity')->nullable();
