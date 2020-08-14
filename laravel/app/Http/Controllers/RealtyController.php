@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 use App\Realty;
 use Illuminate\Support\Str;
-
-
 use Illuminate\Http\Request;
+
 
 class RealtyController extends Controller
 {
@@ -30,11 +29,20 @@ class RealtyController extends Controller
             }
         }   
 
+        // Extract thumbnail images
+        $thumbImages = [];
+        foreach ($realty->images as $thumbImage) {
+            if ($thumbImage->type === 'thumbnail') {
+                $thumbImages[] = $thumbImage->name;
+            }
+        } 
+
 		$data = [
-            'title'       => $title,
-            'realty'      => $realty,
-            'mainImage'   => $mainImage,
-            'lang'        => $lang,
+            'title'           => $title,
+            'realty'          => $realty,
+            'mainImage'       => $mainImage,
+            'thumbImages'     => $thumbImages,
+            'lang'            => $lang,            
         ];             
         
     
