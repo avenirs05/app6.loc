@@ -25,9 +25,9 @@ return [
 		'capacity'           => 'Человек',
 		'meters'             => 'м',
 		'km'	               => 'км',
-		'transfer'           => 'Трансфер',
-		'internet'           => 'Интернет',
-		'parking'            => 'Паркинг',
+		'transfer_payment'   => 'Трансфер',
+		'internet_payment'   => 'Интернет',
+		'parking_payment'    => 'Паркинг',
 		'price_per_day'		   => 'Цена в сутки',
 		'without_discounts'  => 'без учёта скидок',
 	],
@@ -46,6 +46,7 @@ return [
 	'dec'	     => 'Декабрь',
 	'oct-apr'  => 'Октябрь-Апрель',
 	
-	'btn_more' => 'Подробнее',
-	'from'	   => 'от'
+	'price_per_day'  => 'Цена за 1 сутки',
+	'btn_more'       => 'Подробнее',
+	'from'	         => 'от'
 ];

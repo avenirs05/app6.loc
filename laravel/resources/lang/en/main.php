@@ -25,9 +25,9 @@ return [
 			'capacity'           => 'Persons',
 			'meters'             => 'm',
 			'km'	               => 'km',
-			'transfer'           => 'Transfer',
-			'internet'		       => 'Internet',
-			'parking'		         => 'Parking',
+			'transfer_payment'   => 'Transfer',
+			'internet_payment'	 => 'Internet',
+			'parking_payment'		 => 'Parking',
 			'price_per_day'      => 'Price per day',
 			'without_discounts'  => 'without discounts'		
 		],
@@ -46,6 +46,7 @@ return [
 		'dec'      => 'December',
 		'oct-apr'  => 'October-April',
 		
-		'btn_more' => 'Learn More',
-		'from'	   => 'from'
+		'price_per_day'  => 'Price per 1 day',
+		'btn_more'         => 'Learn More',
+		'from'	           => 'from'
 ];

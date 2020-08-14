@@ -5,12 +5,12 @@
   <div class="container">    
     <div class="row mb-4">
       <div class="col">
-        @include('chunks.realty-min-card', ['realties' => $apartments])
+        @include('chunks.realty-min-card', ['realties' => $realties])
       </div>
     </div>
     <div class="row mb-4">
       <div class="col">
-        {{ $apartments->links() }} 
+        {{ $realties->links() }} 
       </div>
     </div>
   </div>   

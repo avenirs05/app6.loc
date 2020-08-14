@@ -2,12 +2,17 @@
   <div class="card mb-4 realty-min-card">
     <div class="row no-gutters">
       <div class="col-md-4">
-        <img src="{{ asset('images/' . $realty->images[0]['name']) }}" class="card-img" alt="">
-      </div>
+        <img src={{ asset('images/' . $realty->images[0]['name']) }} 
+             class="card-img" 
+             alt="">
+      </div>      
       <div class="col-md-8">
         <div class="card-body d-flex justify-content-between">
           <div>
-            <a href="{{ route($typeOfRealty, ['id' => $realty->id]) }}" class="title">{{ $realty->name }}</a>
+            <a href={{ route($realtyType, ['id' => $realty->id]) }} 
+               class="title">
+               {{ $realty->name }}
+            </a>
             {{-- Hide title on md and lg --}}
             <h5 class="mt-2 mb-4 d-md-none d-xl-block">
               {{ $realty->{"subname_$lang"} }}
@@ -35,7 +40,7 @@
             {{-- Hide some booking-logo on md and lg --}}
             <div class="card text-white ml-auto d-md-none d-xl-block" 
               @if ($realty->booking_mark === 0)
-                style="visibility: hidden;"
+                  style="visibility: hidden;"
               @endif
             >
               <img src="{{ asset('images/booking-logo.jpg') }}" class="card-img" alt="" width="50">
@@ -52,7 +57,7 @@
             </span>
             <span class="price-text ml-auto">€ {{ $realty->price }}</span>
             <a class="btn btn-success font-weight-bold" 
-               href="{{ route($typeOfRealty, ['id' => $realty->id]) }}" 
+               href="{{ route($realtyType, ['id' => $realty->id]) }}" 
                role="button">
                {{ __('main.btn_more') }}
             </a>                  
@@ -60,5 +65,5 @@
         </div>
       </div>
     </div>
-  </div> 
+  </div>   
 @endforeach 

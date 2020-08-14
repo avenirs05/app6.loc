@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Realty;
 
-class ApartmentsController extends Controller
+
+class RealtiesController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -18,26 +19,39 @@ class ApartmentsController extends Controller
         $title = __("main.menu." . $request->path());
         $per_page = 5;
         $lang = app()->getLocale();
-        $typeOfRealty = 'apartment';
+        $realtyType = $this->getRealtyType($request);        
 
-        $apartments = Realty::with(['images' => function($query) {
+        $realties = Realty::with(['images' => function($query) {
             $query->where('type', 'main');
         }])
             ->where('visibility', 'опубликовано')
-            ->where('type_ru', 'апартамент')
+            ->where('type_en', $realtyType)
             ->paginate($per_page, [
                 'id', 'name', "subname_$lang", 'square', 'dist_sea', 'bedrooms', 
                 'capacity', 'price', 'price_line_through', 'booking_mark'
             ]);
-
-		$data = [
-            'title'        => $title,	
-            'apartments'   => $apartments,
-            'lang'         => $lang,
-            'typeOfRealty' => $typeOfRealty
+            
+        $data = [
+            'title'      => $title,	
+            'realties'   => $realties,
+            'lang'       => $lang,
+            'realtyType' => $realtyType
         ];	
         
-
-        return view('apartments', $data);
+        
+        return view('realties', $data);
     }
+
+
+    protected static function getRealtyType(Request $request)
+	{
+		switch ($request->route()->getName()) {
+			case 'villas':
+				return 'villa';
+				break;
+			case 'apartments':
+				return 'apartment';
+				break;
+		}
+	}
 }

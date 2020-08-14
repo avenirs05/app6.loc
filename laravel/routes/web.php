@@ -12,13 +12,18 @@
 */
 
 
+// DB::listen(function($query) {
+// 	var_dump($query->sql, $query->bindings);
+// });
+
+
 // Маршруты для клиентов и поисковиков
 Route::get('/', 'IndexController');
-Route::get('/villas', 'VillasController')->name('villas');
-Route::get('/apartments', 'ApartmentsController')->name('apartments');
+Route::get('/villas', 'RealtiesController')->name('villas');
+Route::get('/apartments', 'RealtiesController')->name('apartments');
 Route::get('/contact', 'ContactController')->name('contact');
-Route::get('/villa/{id}', 'VillaController')->name('villa');
-Route::get('/apartment/{id}', 'ApartmentController')->name('apartment');
+Route::get('/villa/{id}', 'RealtyController')->name('villa');
+Route::get('/apartment/{id}', 'RealtyController')->name('apartment');
 
 
 //Определение языка и установка его в сессию 

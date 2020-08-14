@@ -2,9 +2,9 @@
     <div class="row">       
       {{-- Main image --}}
       <div class="col-5">
-        <img src="{{ asset('images/realty-card.jpeg') }}" class="img-fluid" alt="Responsive image">
+        <img src={{ asset("images/$mainImage") }} class="img-fluid" alt="Responsive image">
       </div>
-      {{-- Realty Params --}}
+      {{-- Realty Params --}}      
       <div class="col-4">
         @include('chunks.realty-params-list')
       </div>
@@ -13,13 +13,11 @@
         @include('chunks.price')      
       </div>
     </div>       
-    {{-- Thumbnails desktop --}}
-    <div class="w-100" id="lightgallery">
-      <a href="{{ asset('images/realty-card.jpeg') }}">
-        <img src="{{ asset('images/realty-card.jpeg') }}" width="65" height="43" class="mb-1">
-      </a>  
-      <a href="{{ asset('images/realty-card-2.jpeg') }}">
-        <img src="{{ asset('images/realty-card-2.jpeg') }}" width="65" height="43" class="mb-1">
-      </a> 
-    </div>    
+    <div class="w-100" id="lightgallery">     
+      @foreach ($realty->images as $image)
+        <a href={{ asset("images/$image->name") }}>
+          <img src={{ asset("images/$image->name") }} width="65" height="43" class="mb-1">
+        </a> 
+      @endforeach
+    </div>   
   </div> 
