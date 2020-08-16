@@ -19,5 +19,6 @@
           <img src={{ asset("images/$image->name") }} width="65" height="43" class="mb-1">
         </a> 
       @endforeach
-    </div>   
+    </div>  
+    <div class="w-100 mt-3">{{ $realty->{"description_$lang"} }}</div> 
   </div> 

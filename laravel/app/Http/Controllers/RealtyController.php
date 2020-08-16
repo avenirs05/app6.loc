@@ -17,7 +17,12 @@ class RealtyController extends Controller
     public function __invoke(Request $request, $id)
     {     
         $lang = app()->getLocale(); 
-        $realty = Realty::with('images', 'feedbacks')->where('id', $id)->first();      
+        $feedbacksCount = 30;
+
+        $realty = Realty::with(['images', 'feedbacks' => function($query) use ($feedbacksCount) {
+            $query->take($feedbacksCount);
+        }])->where('id', $id)->first();      
+        
         $title = Str::ucfirst($realty->{"type_$lang"}) . ' ' . $realty->name;      
         
         // Extract main image
@@ -36,6 +41,8 @@ class RealtyController extends Controller
                 $thumbImages[] = $thumbImage->name;
             }
         } 
+
+        //dd($realty->feedbacks->sortByDesc('date'));
 
 		$data = [
             'title'           => $title,
