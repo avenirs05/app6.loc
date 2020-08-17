@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -15,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RealtiesTableSeeder::class);
         $this->call(ImagesTableSeeder::class);
         $this->call(FeedbacksTableSeeder::class);
+        $this->call(ContentsTableSeeder::class);
     }
 }

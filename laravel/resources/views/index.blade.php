@@ -5,7 +5,7 @@
   <div class="main-screen-desktop card bg-dark text-white d-none d-lg-block">
     <img src="/images/main.jpg" class="card-img" alt="">
     <div class="card-img-overlay">
-      <h1 class="card-title">Аренда вилл и апартаментов в Черногории без посредников</h1>
+      <h1 class="card-title">{{ $content->header_main[$lang] }}</h1>
     </div>
   </div>
 
@@ -19,19 +19,22 @@
           <img width="25" src="{{ asset('images/viber.png') }}" class="align-self-center mr-2" alt="">
           <img width="25" src="{{ asset('images/whatsapp.svg') }}" class="align-self-center mr-2" alt="">
           <div class="media-body">
-            <span class="text-white">+382 68 089 888</span>
+            <span class="text-white">{{ $content->phone_main }}</span>
           </div>
         </div>
       </div> 
-      <!-- EndContacts desktop-->
-      <h1 class="card-title text-center mb-0">Аренда вилл и апартаментов в Черногории без посредников</h1>
+      <h1 class="card-title text-center mb-0">{{ $content->header_main[$lang] }}</h1>
     </div>
   </div>
 
   {{-- Areas --}}
   <div class="container">
-    <h2 class="text-center mt-5 mb-5">Отдых в Черногории в 2020 году. Часто задаваемые вопросы.</h2>
-    <h3 class="text-center mt-5 mb-5">КУРОРТЫ И ГОРОДА В ЧЕРНОГОРИИ: КУДА ЛУЧШЕ ПОЕХАТЬ?</h3>
+    <h2 class="text-center mt-5 mb-5">
+      {{ $content->faq['title'][$lang] }}
+    </h2>
+    <h3 class="text-center mt-5 mb-5">
+      {{ $content->faq['areas'][$lang]['title'] }}
+    </h3>
     <div class="row">
       <div class="col-sm mb-4">
         <div class="card">

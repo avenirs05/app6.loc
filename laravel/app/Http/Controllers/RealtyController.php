@@ -42,8 +42,6 @@ class RealtyController extends Controller
             }
         } 
 
-        //dd($realty->feedbacks->sortByDesc('date'));
-
 		$data = [
             'title'           => $title,
             'realty'          => $realty,
