@@ -19,7 +19,7 @@ class CreateContentsTable extends Migration
             $table->json('header_main');
             $table->json('images');
             $table->json('faq');
-            $table->json('contacts_page');
+            $table->json('contact_page');
             $table->timestamps();
         });
     }

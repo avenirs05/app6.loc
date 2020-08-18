@@ -29,7 +29,7 @@
       <img width="25" src="{{ asset('images/viber.png') }}" class="align-self-center ml-4 mr-2" alt="">
       <img width="25" src="{{ asset('images/whatsapp.svg') }}" class="align-self-center mr-2" alt="">
       <div class="media-body">
-        <span class="text-white">+382 68 089 888</span>
+        <span class="text-white">{{ $content->phone_main }}</span>
       </div>
     </div>
   </div>     
@@ -42,7 +42,7 @@
             aria-haspopup="true" 
             aria-expanded="false">
             &nbsp;&nbsp;
-              {{ strtoupper(app()->getLocale()) }}
+              {{ strtoupper($lang) }}
             &nbsp;&nbsp;
     </button>          
     <div class="dropdown-menu dropdown-menu-right lang-list">
@@ -73,13 +73,13 @@
         <a class="nav-link" href="/">@lang('main.menu.main')</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="{{ route('villas') }}">@lang('main.menu.villas')</a>
+        <a class="nav-link" href={{ route('villas') }}>@lang('main.menu.villas')</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="{{ route('apartments') }}">@lang('main.menu.apartments')</a>
+        <a class="nav-link" href={{ route('apartments') }}>@lang('main.menu.apartments')</a>
       </li>
       <li class="nav-item active mr-5">
-        <a class="nav-link" href="{{ route('contact') }}">@lang('main.menu.contact')</a>
+        <a class="nav-link" href={{ route('contact') }}>@lang('main.menu.contact')</a>
       </li>
     </ul>  
     
@@ -91,7 +91,7 @@
               aria-haspopup="true" 
               aria-expanded="false">
               &nbsp;&nbsp;
-                {{ strtoupper(app()->getLocale()) }}
+                {{ strtoupper($lang) }}
               &nbsp;&nbsp;
       </button>          
       <div class="dropdown-menu dropdown-menu-right lang-list">
@@ -117,7 +117,7 @@
 </div>
 
 {{-- Scripts --}}
-<script src="{{ asset('js/app.js') }}"></script>
+<script src={{ asset('js/app.js') }}></script>
 
 </body>
 </html>

@@ -13,6 +13,6 @@ class Content extends Model
         'header_main'   => 'array',
         'images'        => 'array',
         'faq'           => 'array',
-        'contacts_page' => 'array',
+        'contact_page'  => 'array',
    ];
 }

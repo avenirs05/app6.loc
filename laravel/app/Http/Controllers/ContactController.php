@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Content;
+
 
 class ContactController extends Controller
 {
@@ -15,10 +17,16 @@ class ContactController extends Controller
     public function __invoke(Request $request)
     {
         $title = 'Контакты';
+        $lang = app()->getLocale(); 
 
-		$data = [
-			'title' => $title,		
-		];				
+        $content = Content::select('contact_page')->get()->first();
+           
+        $data = [
+            'title'   => $title,	
+            'lang'    => $lang,
+            'content' => $content,            	
+        ];			
+        	
 	
 		return view('contact', $data);
     }

@@ -38,7 +38,7 @@ class RealtiesController extends Controller
             'realtyType' => $realtyType
         ];	
         
-        
+
         return view('realties', $data);
     }
 

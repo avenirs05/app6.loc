@@ -20,13 +20,7 @@ class IndexController extends Controller
         $lang = app()->getLocale(); 
 
         $content = Content::select('phone_main', 'header_main', 'images', 'faq')
-            ->get()->first();
-
-        //dd($content[0]['areas_ru']['bar_riviera']['title']);
-        //dd($content->areas_ru['bar_riviera']['text']);
-        //dd($content->header_main[$lang]);
-        //dd($content);
-
+            ->get()->first();        
 
 		$data = [
             'title'   => $title,
