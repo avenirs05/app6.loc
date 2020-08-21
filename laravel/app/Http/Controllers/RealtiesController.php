@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Realty;
+use App\Content;
+use App\Language;
 
 
 class RealtiesController extends Controller
@@ -19,6 +21,8 @@ class RealtiesController extends Controller
         $per_page = 5;
         $lang = app()->getLocale();
         $realtyType = $this->getRealtyType($request);        
+        $content = Content::select('phone_main', 'header_main')->get()->first();
+        $languages = Language::all(); 
 
         $realties = Realty::with(['images' => function($query) {
             $query->where('type', 'main');
@@ -34,7 +38,9 @@ class RealtiesController extends Controller
             'title'      => __("main.menu." . $request->path()),	
             'realties'   => $realties,
             'lang'       => $lang,
-            'realtyType' => $realtyType
+            'realtyType' => $realtyType,
+            'content'    => $content,
+            'languages' => $languages  
         ];	
         
 
