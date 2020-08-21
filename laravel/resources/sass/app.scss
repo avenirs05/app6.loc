@@ -30,6 +30,9 @@
         .dropdown-menu {
             min-width: 1rem;
         }
+        .btn.lang-text-actual {
+            border: none;
+        }
     }
     .navbar-nav a.nav-link:hover {
         color: $yellow;

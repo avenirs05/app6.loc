@@ -16,7 +16,6 @@ class RealtiesController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $title = __("main.menu." . $request->path());
         $per_page = 5;
         $lang = app()->getLocale();
         $realtyType = $this->getRealtyType($request);        
@@ -32,7 +31,7 @@ class RealtiesController extends Controller
             ]);
             
         $data = [
-            'title'      => $title,	
+            'title'      => __("main.menu." . $request->path()),	
             'realties'   => $realties,
             'lang'       => $lang,
             'realtyType' => $realtyType

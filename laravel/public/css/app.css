@@ -10948,6 +10948,11 @@ a.text-dark:focus {
   min-width: 1rem;
 }
 
+.navbar .lang-choice-desktop .btn.lang-text-actual,
+.navbar .lang-choice-mobile .btn.lang-text-actual {
+  border: none;
+}
+
 .navbar .navbar-nav a.nav-link:hover {
   color: #ffed4a;
 }

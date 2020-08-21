@@ -26,8 +26,8 @@
   {{-- Contacts desktop --}}
   <div class="contacts-desktop d-none d-lg-block">
     <div class="media mr-2">
-      <img width="25" src="{{ asset('images/viber.png') }}" class="align-self-center ml-4 mr-2" alt="">
-      <img width="25" src="{{ asset('images/whatsapp.svg') }}" class="align-self-center mr-2" alt="">
+      <img width="25" src={{ asset('images/viber.png') }} class="align-self-center ml-4 mr-2" alt="">
+      <img width="25" src={{ asset('images/whatsapp.svg') }} class="align-self-center mr-2" alt="">
       <div class="media-body">
         <span class="text-white">{{ $content->phone_main }}</span>
       </div>
@@ -41,17 +41,17 @@
             data-toggle="dropdown" 
             aria-haspopup="true" 
             aria-expanded="false">
-            &nbsp;&nbsp;
-              {{ strtoupper($lang) }}
+            &nbsp;&nbsp;      
+              <span class="flag-icon flag-icon-{{ $lang === 'en' ? 'gb' : strtolower($lang) }}"></span>
             &nbsp;&nbsp;
     </button>          
     <div class="dropdown-menu dropdown-menu-right lang-list">
-      <button class="dropdown-item" type="button">
-        <span class="flag-icon flag-icon-ru"></span>&nbsp;&nbsp;Ru&nbsp;&nbsp;
-      </button>
-      <button class="dropdown-item" type="button">
-        <span class="flag-icon flag-icon-gb-eng"></span>&nbsp;&nbsp;En&nbsp;&nbsp;<br> 
-      </button>
+      @foreach ($languages as $language)
+        <button class="dropdown-item" type="button">
+          <span class="flag-icon flag-icon-{{ $language->code === 'en' ? 'gb' : strtolower($language->code) }}"></span>
+          &nbsp;&nbsp;{{ strtoupper($language->code) }}&nbsp;&nbsp;
+        </button>
+      @endforeach
     </div>        
   </div>   
 
@@ -90,22 +90,23 @@
               data-toggle="dropdown" 
               aria-haspopup="true" 
               aria-expanded="false">
-              &nbsp;&nbsp;
-                {{ strtoupper($lang) }}
-              &nbsp;&nbsp;
+              &nbsp;    
+                <span class="flag-icon flag-icon-{{ $lang === 'en' ? 'gb' : strtolower($lang) }}"></span>
+              &nbsp;
       </button>          
       <div class="dropdown-menu dropdown-menu-right lang-list">
-        <button class="dropdown-item" type="button">
-          <span class="flag-icon flag-icon-ru"></span>&nbsp;&nbsp;Ru&nbsp;&nbsp;
-        </button>
-        <button class="dropdown-item" type="button">
-          <span class="flag-icon flag-icon-gb-eng"></span>&nbsp;&nbsp;En&nbsp;&nbsp;<br> 
-        </button>
+        @foreach ($languages as $language)
+          <button class="dropdown-item" type="button">
+            {{-- В библиотеке 'flag-icon-css' нет картинки флага с именем 'en' --}}            
+            <span class="flag-icon flag-icon-{{ $language->code === 'en' ? 'gb' : strtolower($language->code) }}"></span>
+            &nbsp;&nbsp;{{ strtoupper($language->code) }}&nbsp;&nbsp;
+          </button>
+        @endforeach
       </div>  
     </div>       
   </div> 
-{{-- EndNavbar --}}
 </nav> 
+{{-- EndNavbar --}}
 
 @yield('content') 
 </div> 

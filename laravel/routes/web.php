@@ -28,6 +28,6 @@ Route::get('/apartment/{id}', 'RealtyController')->name('apartment');
 
 //Определение языка и установка его в сессию 
 Route::get('locale/{locale}', function($locale) {
-		Session::put('locale', $locale);						
+		Session::put('locale', $locale);			
 		return redirect()->back();
 });
