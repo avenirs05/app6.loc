@@ -42,7 +42,7 @@
             aria-haspopup="true" 
             aria-expanded="false">
             &nbsp;&nbsp;      
-              <span class="flag-icon flag-icon-{{ $lang === 'en' ? 'gb' : strtolower($lang) }}"></span>
+              <span class="flag-icon flag-icon-{{ $locale === 'en' ? 'gb' : strtolower($locale) }}"></span>
             &nbsp;&nbsp;
     </button>          
     <div class="dropdown-menu dropdown-menu-right lang-list">
@@ -91,7 +91,7 @@
               aria-haspopup="true" 
               aria-expanded="false">
               &nbsp;    
-                <span class="flag-icon flag-icon-{{ $lang === 'en' ? 'gb' : strtolower($lang) }}"></span>
+                <span class="flag-icon flag-icon-{{ $locale === 'en' ? 'gb' : strtolower($locale) }}"></span>
               &nbsp;
       </button>          
       <div class="dropdown-menu dropdown-menu-right lang-list">

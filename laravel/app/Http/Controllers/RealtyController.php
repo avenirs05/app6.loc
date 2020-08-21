@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Support\Str;
 use App\Realty;
 use App\Content;
 use App\Language;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 
 
 class RealtyController extends Controller
@@ -13,20 +13,18 @@ class RealtyController extends Controller
     /**
      * Handle the incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request, $id)
+    public function __invoke(int $id)
     {     
-        $lang = app()->getLocale(); 
+        $locale = app()->getLocale(); 
         $feedbacksCount = 30;
-        $languages = Language::all();
 
         $realty = Realty::with(['images', 'feedbacks' => function($query) use ($feedbacksCount) {
             $query->take($feedbacksCount);
         }])->where('id', $id)->first();      
         
-        $title = Str::ucfirst($realty->{"type_$lang"}) . ' ' . $realty->name;  
+        $title = Str::ucfirst($realty->{"type_$locale"}) . ' ' . $realty->name;  
         $content = Content::select('phone_main', 'header_main')->get()->first();    
         
         // Extract main image
@@ -51,9 +49,9 @@ class RealtyController extends Controller
             'realty'      => $realty,
             'mainImage'   => $mainImage,
             'thumbImages' => $thumbImages,
-            'lang'        => $lang,      
+            'locale'      => $locale,      
             'content'     => $content,
-            'languages'   => $languages       
+            'languages'   => Language::all()       
         ];             
         
     

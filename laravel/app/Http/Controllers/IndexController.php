@@ -18,10 +18,10 @@ class IndexController extends Controller
     public function __invoke(Request $request)
     {   
 		$data = [
-            'title'   => 'Аренда вилл и апартаментов в Черногории',
-            'lang'    => app()->getLocale(),	
-            'content' => Content::select('phone_main', 'header_main', 'images', 'faq')
-                            ->get()->first(),
+            'title'     => 'Аренда вилл и апартаментов в Черногории',
+            'locale'    => app()->getLocale(),	
+            'content'   => Content::select('phone_main', 'header_main', 'images', 'faq')
+                                  ->get()->first(),
             'languages' => Language::all()
         ];	
                 

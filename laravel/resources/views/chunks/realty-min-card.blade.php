@@ -15,7 +15,7 @@
             </a>
             {{-- Hide title on md and lg --}}
             <h5 class="mt-2 mb-4 d-md-none d-xl-block">
-              {{ $realty->{"subname_$lang"} }}
+              {{ $realty->{"subname_$locale"} }}
             </h5>
             <ul class="realty-params-list-shorted">
               <li>
@@ -66,4 +66,4 @@
       </div>
     </div>
   </div>   
-@endforeach 
+@endforeach

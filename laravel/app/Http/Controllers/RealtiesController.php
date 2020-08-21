@@ -19,10 +19,8 @@ class RealtiesController extends Controller
     public function __invoke(Request $request)
     {
         $per_page = 5;
-        $lang = app()->getLocale();
+        $locale = app()->getLocale();
         $realtyType = $this->getRealtyType($request);        
-        $content = Content::select('phone_main', 'header_main')->get()->first();
-        $languages = Language::all(); 
 
         $realties = Realty::with(['images' => function($query) {
             $query->where('type', 'main');
@@ -30,17 +28,17 @@ class RealtiesController extends Controller
             ->where('visibility', 'опубликовано')
             ->where('type_en', $realtyType)
             ->paginate($per_page, [
-                'id', 'name', "subname_$lang", 'square', 'dist_sea', 'bedrooms', 
+                'id', 'name', "subname_$locale", 'square', 'dist_sea', 'bedrooms', 
                 'capacity', 'price', 'price_line_through', 'booking_mark'
             ]);
             
         $data = [
             'title'      => __("main.menu." . $request->path()),	
             'realties'   => $realties,
-            'lang'       => $lang,
+            'locale'     => $locale,
             'realtyType' => $realtyType,
-            'content'    => $content,
-            'languages' => $languages  
+            'content'    => Content::select('phone_main', 'header_main')->get()->first(),
+            'languages'  => Language::all() 
         ];	
         
 

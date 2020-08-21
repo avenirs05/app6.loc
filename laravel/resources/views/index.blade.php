@@ -5,7 +5,7 @@
   <div class="main-screen-desktop card bg-dark text-white d-none d-lg-block">
     <img src="/images/main.jpg" class="card-img" alt="">
     <div class="card-img-overlay">
-      <h1 class="card-title">{{ $content->header_main[$lang] }}</h1>
+      <h1 class="card-title">{{ $content->header_main[$locale] }}</h1>
     </div>
   </div>
 
@@ -23,33 +23,33 @@
           </div>
         </div>
       </div> 
-      <h1 class="card-title text-center mb-0">{{ $content->header_main[$lang] }}</h1>
+      <h1 class="card-title text-center mb-0">{{ $content->header_main[$locale] }}</h1>
     </div>
   </div>
 
   {{-- Areas --}}
   <div class="container">
     <h2 class="text-center mt-5 mb-5">
-      {{ $content->faq['title'][$lang] }}
+      {{ $content->faq['title'][$locale] }}
     </h2>
     <h3 class="text-center mt-5 mb-5">
-      {{ $content->faq['areas'][$lang]['title'] }}
+      {{ $content->faq['areas'][$locale]['title'] }}
     </h3>
     <div class="row">
       @include('chunks.area', [        
         'image' => $content->images['budva_riviera'],
-        'title' => $content->faq['areas'][$lang]['budva_riviera']['title'],
-        'text'  => $content->faq['areas'][$lang]['budva_riviera']['text'],
+        'title' => $content->faq['areas'][$locale]['budva_riviera']['title'],
+        'text'  => $content->faq['areas'][$locale]['budva_riviera']['text'],
       ])
       @include('chunks.area', [
         'image' => $content->images['boka_kotorska_bay'],
-        'title' => $content->faq['areas'][$lang]['boka_kotorska_bay']['title'],
-        'text'  => $content->faq['areas'][$lang]['boka_kotorska_bay']['text'],
+        'title' => $content->faq['areas'][$locale]['boka_kotorska_bay']['title'],
+        'text'  => $content->faq['areas'][$locale]['boka_kotorska_bay']['text'],
       ])
       @include('chunks.area', [
         'image' => $content->images['bar_riviera'],
-        'title' => $content->faq['areas'][$lang]['bar_riviera']['title'],
-        'text'  => $content->faq['areas'][$lang]['bar_riviera']['text'],
+        'title' => $content->faq['areas'][$locale]['bar_riviera']['title'],
+        'text'  => $content->faq['areas'][$locale]['bar_riviera']['text'],
       ])
     </div>
   </div>
@@ -58,7 +58,7 @@
   <div class="container">    
     <div class="row mb-4">
       <div class="col">
-        {!! $content->faq['quest_answ'][$lang] !!}
+        {!! $content->faq['quest_answ'][$locale] !!}
       </div>
     </div>
   </div>

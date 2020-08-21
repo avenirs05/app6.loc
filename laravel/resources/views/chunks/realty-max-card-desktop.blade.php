@@ -20,5 +20,5 @@
         </a> 
       @endforeach
     </div>  
-    <div class="w-100 mt-3">{{ $realty->{"description_$lang"} }}</div> 
+    <div class="w-100 mt-3">{{ $realty->{"description_$locale"} }}</div> 
   </div> 
