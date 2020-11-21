@@ -26,7 +26,15 @@ require('lightgallery.js')
 require('lg-thumbnail.js')
 lightGallery(document.getElementById('lightgallery'));
 
-//console.log('hhh222444')
+// console.log('hhh222444444ddd')
+// console.log('hhh222444444ddd')
+// console.log('hhh222444444ddd')
+// console.log('');
+// console.log('');
+//console.log('ghgh');
+
+
+
 
 
 

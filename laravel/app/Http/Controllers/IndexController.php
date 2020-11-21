@@ -17,15 +17,15 @@ class IndexController extends Controller
      */
     public function __invoke(Request $request)
     {   
-		$data = [
+        $data = [
             'title'     => 'Аренда вилл и апартаментов в Черногории',
             'locale'    => app()->getLocale(),	
             'content'   => Content::select('phone_main', 'header_main', 'images', 'faq')
-                                  ->get()->first(),
+                                    ->get()->first(),
             'languages' => Language::all()
         ];	
                 
-
-		return view('index', $data);
+        
+        return view('index', $data);
     }
 }
