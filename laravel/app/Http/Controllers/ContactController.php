@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Content;
-use App\Language;
 
 
 class ContactController extends Controller
@@ -21,7 +20,6 @@ class ContactController extends Controller
             'title'     => 'Контакты',	
             'locale'    => app()->getLocale(),
             'content'   => Content::select('contact_page')->get()->first(), 
-            'languages' => Language::all()           	
         ]);
     }
 }

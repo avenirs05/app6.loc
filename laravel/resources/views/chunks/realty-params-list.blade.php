@@ -5,7 +5,7 @@
   </li> 
   <li>
     <span class="font-weight-bold">{{ __('main.realty.view') }}:</span> 
-    {{ $realty->{"view_$locale"} }}
+    {{ $realty->{"view_" . app()->getLocale()} }}
   </li>
   <li>
     <span class="font-weight-bold">{{ __('main.realty.bedrooms') }}:</span> 
@@ -29,14 +29,14 @@
   </li>
   <li>
     <span class="font-weight-bold">{{ __('main.realty.transfer_payment') }}:</span> 
-    {{ $realty->{"transfer_payment_$locale"} }}
+    {{ $realty->{"transfer_payment_" . app()->getLocale()} }}
   </li>
   <li>
     <span class="font-weight-bold">{{ __('main.realty.parking_payment') }}:</span> 
-    {{ $realty->{"parking_payment_$locale"} }}
+    {{ $realty->{"parking_payment_" . app()->getLocale()} }}
   </li>
   <li>
     <span class="font-weight-bold">{{ __('main.realty.internet_payment') }}:</span> 
-    {{ $realty->{"internet_payment_$locale"} }}
+    {{ $realty->{"internet_payment_" . app()->getLocale()} }}
   </li>
 </ul>

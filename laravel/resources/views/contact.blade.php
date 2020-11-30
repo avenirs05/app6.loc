@@ -5,7 +5,7 @@
 	<div class="container">    
     <div class="row mb-4">
       <div class="col">
-				{!! $content->contact_page[$locale] !!}
+				{!! $content->contact_page[app()->getLocale()] !!}
       </div>
     </div>
   </div>  

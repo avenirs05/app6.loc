@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use App\Realty;
 use App\Content;
-use App\Language;
 
 
 class RealtyController extends Controller
@@ -17,14 +16,13 @@ class RealtyController extends Controller
      */
     public function __invoke(int $id)
     {     
-        $locale = app()->getLocale(); 
         $feedbacksCount = 30;
 
         $realty = Realty::with(['images', 'feedbacks' => function($query) use ($feedbacksCount) {
             $query->take($feedbacksCount);
         }])->where('id', $id)->first();      
         
-        $title = Str::ucfirst($realty->{"type_$locale"}) . ' ' . $realty->name;  
+        $title = Str::ucfirst($realty->{"type_" . app()->getLocale()}) . ' ' . $realty->name;  
         $content = Content::select('phone_main', 'header_main')->get()->first();    
         
         // Extract main image
@@ -48,10 +46,8 @@ class RealtyController extends Controller
             'title'       => $title,
             'realty'      => $realty,
             'mainImage'   => $mainImage,
-            'thumbImages' => $thumbImages,
-            'locale'      => $locale,      
-            'content'     => $content,
-            'languages'   => Language::all()       
+            'thumbImages' => $thumbImages,     
+            'content'     => $content,    
         ];             
         
     
