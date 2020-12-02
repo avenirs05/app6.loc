@@ -55,7 +55,7 @@
     </div>        
   </div>   
 
-  {{-- Navbar-toggler button-hamburger on mobile --}}
+  {{-- Navbar-toggler button-hamburger mobile --}}
   <button class="navbar-toggler" type="button" 
           data-toggle="collapse" 
           data-target="#navbarCollapse" 
@@ -109,6 +109,7 @@
 {{-- EndNavbar --}}
 
 @yield('content') 
+
 </div> 
 {{-- End Wrapper-main --}}
 
