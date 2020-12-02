@@ -34,7 +34,7 @@ class RealtiesController extends Controller
             'title'      => __("main.menu." . $request->path()),	
             'realties'   => $realties,
             'realtyType' => $realtyType,
-            'content'    => Content::select('phone_main', 'header_main')->get()->first(),
+            'content'    => Content::select('header_main')->first(),
         ];	
         
 

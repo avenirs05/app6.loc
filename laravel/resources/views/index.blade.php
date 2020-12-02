@@ -19,7 +19,7 @@
           <img width="25" src={{ asset('images/viber.png') }} class="align-self-center mr-2" alt="">
           <img width="25" src={{ asset('images/whatsapp.svg') }} class="align-self-center mr-2" alt="">
           <div class="media-body">
-            <span class="text-white">{{ $content->phone_main }}</span>
+            <span class="text-white">{{ $content_shared->phone_main }}</span>
           </div>
         </div>
       </div> 

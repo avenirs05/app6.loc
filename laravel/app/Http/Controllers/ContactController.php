@@ -17,9 +17,8 @@ class ContactController extends Controller
     public function __invoke(Request $request)
     {       	
 	    return view('contact', [
-            'title'     => 'Контакты',	
-            'locale'    => app()->getLocale(),
-            'content'   => Content::select('contact_page')->get()->first(), 
+            'title'   => 'Контакты',	
+            'content' => Content::select('contact_page')->first(), 
         ]);
     }
 }

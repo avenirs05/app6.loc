@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\Language;
+use App\Content;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -27,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
         view()->share('languages', Language::all());
+        view()->share('content_shared', Content::select('phone_main')->first());
     }
 }

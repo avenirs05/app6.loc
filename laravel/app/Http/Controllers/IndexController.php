@@ -16,7 +16,7 @@ class IndexController extends Controller
     {   
         $data = [
             'title'   => 'Аренда вилл и апартаментов в Черногории',
-            'content' => Content::select('phone_main', 'header_main', 'images', 'faq')->first(),
+            'content' => Content::select('header_main', 'images', 'faq')->first(),
         ];  
         
         
