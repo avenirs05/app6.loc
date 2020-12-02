@@ -20,7 +20,6 @@ class IndexController extends Controller
         ];  
         
         
-        
         return view('index', $data);
     }
 }
