@@ -8,20 +8,22 @@
   <title>MyBudva | {{ $title }}</title>
 
   <!-- Favicon -->
-	<link rel="shortcut icon" href="/images/fav.ico" type="image/png">
+	<link rel="shortcut icon" href="{{ asset('images/fav.ico') }}" type="image/png">
 
   <!-- Styles -->  
   <link href="{{ asset('css/app.css') }}" rel="stylesheet preload" as="style">
 </head>
 
 <body>  
+
 {{-- Wrapper-main --}}
 <div class="wrapper-main">
 
 {{-- Navbar --}}
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">  
+
   {{-- Logo --}}
-  <a class="navbar-brand" href="/">MYBUDVA</a>  
+  <a class="navbar-brand" href="{{ route('main') }}">MYBUDVA</a>  
   
   {{-- Contacts desktop --}}
   <div class="contacts-desktop d-none d-lg-block">
@@ -70,16 +72,16 @@
     {{-- Menu desktop --}}
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/">@lang('main.menu.main')</a>
+        <a class="nav-link" href={{ route('main') }}>{{ __('main.menu.main')  }}</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href={{ route('villas') }}>@lang('main.menu.villas')</a>
+        <a class="nav-link" href={{ route('villas') }}>{{ __('main.menu.villas') }}</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href={{ route('apartments') }}>@lang('main.menu.apartments')</a>
+        <a class="nav-link" href={{ route('apartments') }}>{{ __('main.menu.apartments') }}</a>
       </li>
       <li class="nav-item active mr-5">
-        <a class="nav-link" href={{ route('contact') }}>@lang('main.menu.contact')</a>
+        <a class="nav-link" href={{ route('contact') }}>{{ __('main.menu.contact')  }}</a>
       </li>
     </ul>  
     

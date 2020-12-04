@@ -37,7 +37,7 @@ class RealtiesController extends Controller
             'content'    => Content::select('header_main')->first(),
         ];	
         
-
+        
         return view('realties', $data);
     }
 

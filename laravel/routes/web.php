@@ -18,7 +18,7 @@
 
 
 // Для клиентов и поисковиков
-Route::get('/', 'IndexController');
+Route::get('/', 'IndexController')->name('main');
 Route::get('/villas', 'RealtiesController')->name('villas');
 Route::get('/apartments', 'RealtiesController')->name('apartments');
 Route::get('/contact', 'ContactController')->name('contact');

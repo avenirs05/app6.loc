@@ -19,7 +19,7 @@ class IndexController extends Controller
             'content' => Content::select('header_main', 'images', 'faq')->first(),
         ];  
         
-        
+
         return view('index', $data);
     }
 }
