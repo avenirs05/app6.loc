@@ -11002,6 +11002,10 @@ a.text-dark:focus {
   font-size: 1.5rem;
 }
 
+.realty-min-card .card-img {
+  cursor: pointer;
+}
+
 .realty-min-card .card-img-overlay {
   padding-bottom: 0.78rem;
   padding-top: 0.8rem;
@@ -11034,6 +11038,10 @@ a.text-dark:focus {
 .realty-max-card-desktop .realty-params-list {
   list-style-type: none;
   padding-left: 0;
+}
+
+.realty-max-card-desktop .img-main-lightgallery {
+  cursor: pointer;
 }
 
 .realty-max-card-desktop #lightgallery a {

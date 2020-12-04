@@ -2,7 +2,7 @@
     <div class="row">       
       {{-- Main image --}}
       <div class="col-5">
-        <img src={{ asset("images/$mainImage") }} class="img-fluid" alt="Responsive image">
+        <img src={{ asset("images/$mainImage") }} class="img-fluid img-main-lightgallery" alt="Responsive image">
       </div>
       {{-- Realty Params --}}      
       <div class="col-4">
@@ -16,7 +16,7 @@
     <div class="w-100" id="lightgallery">     
       @foreach ($realty->images as $image)
         <a href={{ asset("images/$image->name") }}>
-          <img src={{ asset("images/$image->name") }} width="65" height="43" class="mb-1">
+          <img src={{ asset("images/$image->name") }} width="65" height="43" class="mb-1 img-thumb-lightgallery">
         </a> 
       @endforeach
     </div>  

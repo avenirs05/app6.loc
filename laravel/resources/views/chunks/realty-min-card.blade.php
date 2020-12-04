@@ -2,9 +2,9 @@
   <div class="card mb-4 realty-min-card">
     <div class="row no-gutters">
       <div class="col-md-4">
-        <img src={{ asset('images/' . $realty->images[0]['name']) }} 
-             class="card-img" 
-             alt="">
+        <a href="{{ route($realtyType, ['id' => $realty->id]) }}">
+          <img src={{ asset('images/' . $realty->images[0]['name']) }} class="card-img" alt="">
+        </a>        
       </div>      
       <div class="col-md-8">
         <div class="card-body d-flex justify-content-between">

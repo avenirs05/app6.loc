@@ -15,7 +15,10 @@ require('./bootstrap');
 require('./components/Example');
 
 // My js-scripts
-import {switchToActualLang, markActualMenuPage, footerToBottom} from './script'
+import {switchToActualLang, 
+        markActualMenuPage, 
+        footerToBottom, 
+        openLightGalleryIfClickMainImg} from './script'
 
 switchToActualLang()
 markActualMenuPage()
@@ -24,7 +27,9 @@ footerToBottom()
 // Lightgallery
 require('lightgallery.js')
 require('lg-thumbnail.js')
-lightGallery(document.getElementById('lightgallery'));
+lightGallery(document.getElementById('lightgallery'))
+openLightGalleryIfClickMainImg()
+
 
 //console.log('ghgh');
 //alert('hhh')

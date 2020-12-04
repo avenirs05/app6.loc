@@ -31,11 +31,18 @@ export function markActualMenuPage() {
     }
 }
 
-//Прижать футер к низу
+// Прижать футер к низу
 export function footerToBottom() {
     if ($(document).height() <= $(window).height()) {
         $(".footer").addClass("fixed-bottom");
     }
+}
+
+
+export function openLightGalleryIfClickMainImg() {
+    document.querySelector('.img-main-lightgallery').addEventListener('click', function() {
+        document.querySelector('.img-thumb-lightgallery').click()
+    })
 }
 
 
