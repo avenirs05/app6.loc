@@ -23,7 +23,7 @@ class RealtyController extends Controller
         }])->where('id', $id)->first();      
         
         $title = Str::ucfirst($realty->{"type_" . app()->getLocale()}) . ' ' . $realty->name;  
-        $content = Content::select('header_main')->get()->first();    
+        $content = Content::select('header_main')->first();    
         
         // Extract main image
         $mainImage = null;

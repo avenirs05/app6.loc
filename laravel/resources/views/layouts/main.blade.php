@@ -16,6 +16,7 @@
 
 <body>  
 
+
 {{-- Wrapper-main --}}
 <div class="wrapper-main">
 
@@ -121,6 +122,7 @@
 </div>
 
 {{-- Scripts --}}
+
 <script src={{ asset('js/app.js') }}></script>
 
 </body>
