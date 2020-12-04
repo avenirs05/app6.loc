@@ -40,9 +40,13 @@ export function footerToBottom() {
 
 
 export function openLightGalleryIfClickMainImg() {
-    document.querySelector('.img-main-lightgallery').addEventListener('click', function() {
-        document.querySelector('.img-thumb-lightgallery').click()
-    })
+    let imgMain = document.querySelector('.img-main-lightgallery')
+
+    if (imgMain) {
+        imgMain.addEventListener('click', function() {
+            document.querySelector('.img-thumb-lightgallery').click()
+        })
+    }
 }
 
 

@@ -12,6 +12,9 @@
 
   <!-- Styles -->  
   <link href="{{ asset('css/app.css') }}" rel="stylesheet preload" as="style">
+
+  {{-- Scripts --}}
+  <script src={{ asset('js/app.js') }} defer></script>
 </head>
 
 <body>  
@@ -120,10 +123,6 @@
 <div class="bg-dark footer">    
   <div class="text-white text-center pt-2 pb-2">&copy; MyBudva, 2015</div>
 </div>
-
-{{-- Scripts --}}
-
-<script src={{ asset('js/app.js') }}></script>
 
 </body>
 </html>

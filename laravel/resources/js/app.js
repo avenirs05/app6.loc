@@ -28,10 +28,11 @@ footerToBottom()
 require('lightgallery.js')
 require('lg-thumbnail.js')
 lightGallery(document.getElementById('lightgallery'))
+
 openLightGalleryIfClickMainImg()
 
 
-//console.log('ghgh');
+//console.log(location.href);
 //alert('hhh')
 
 
