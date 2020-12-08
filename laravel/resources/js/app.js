@@ -1,39 +1,44 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes React and other helpers. It's a great starting point while
- * building robust, powerful web applications using React + Laravel.
- */
+if (location.pathname !== '/admin') {
+    require('./bootstrap')
 
-require('./bootstrap');
+    try {
+        window.Popper = require('popper.js').default;
+        window.$ = window.jQuery = require('jquery');
+    
+        require('bootstrap');
+    } catch (e) {}
 
-/**
- * Next, we will create a fresh React component instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+    // Lightgallery
+    require('lightgallery.js')
+    require('lg-thumbnail.js')
+    lightGallery(document.getElementById('lightgallery'))
 
-require('./components/Example');
+    // My js-scripts
+    async function loadScripts() {
+        let scripts = await import('./script');
 
-// My js-scripts
-import {switchToActualLang, 
-        markActualMenuPage, 
-        footerToBottom, 
-        openLightGalleryIfClickMainImg} from './script'
+        scripts.switchToActualLang()
+        scripts.markActualMenuPage()
+        scripts.footerToBottom()
+        scripts.openLightGalleryIfClickMainImg()
+    }
 
-switchToActualLang()
-markActualMenuPage()
-footerToBottom()
+    loadScripts()    
+}
 
-// Lightgallery
-require('lightgallery.js')
-require('lg-thumbnail.js')
-lightGallery(document.getElementById('lightgallery'))
+if (location.pathname === '/admin') {
+    require('./bootstrap')
+    require('./components/App')
 
-openLightGalleryIfClickMainImg()
+    // My js-scripts
+    async function loadScripts() {
+        console.log('will be scripts')
+    }
+
+    loadScripts()    
+}
 
 
-//console.log(location.href);
-//alert('hhh')
 
 
 
