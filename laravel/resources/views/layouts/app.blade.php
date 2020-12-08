@@ -12,13 +12,14 @@
     <!-- Scripts -->
     <script src={{ asset('js/app.js') }} defer></script>
 
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+
     <!-- Styles -->
-    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet preload" as="style"> --}}
+    <link href="{{ asset('css/admin-app.css') }}" rel="stylesheet preload" as="style">
 </head>
 <body>
-  <div id="app">
-    Content of app
-  </div>
+  <div id="app"></div>
   
   <hr>
   
@@ -27,18 +28,19 @@
     
     <div>                
       @guest
-          <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>            
+        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>            
       @else
-          <a href="{{ route('logout') }}"
-              onclick="event.preventDefault();
-                              document.getElementById('logout-form').submit();">
-              {{ __('Logout') }} 
-          </a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
+        <a href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
+            {{ __('Logout') }} 
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
       @endguest                
     </div>
-    
+
     @yield('content')        
+  
   </div>
 </body>
 </html>

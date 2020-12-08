@@ -1,41 +1,42 @@
 if (location.pathname !== '/admin') {
-    require('./bootstrap')
+  require('./bootstrap')
 
-    try {
-        window.Popper = require('popper.js').default;
-        window.$ = window.jQuery = require('jquery');
-    
-        require('bootstrap');
-    } catch (e) {}
+  try {
+    window.Popper = require('popper.js').default;
+    window.$ = window.jQuery = require('jquery');
 
-    // Lightgallery
-    require('lightgallery.js')
-    require('lg-thumbnail.js')
-    lightGallery(document.getElementById('lightgallery'))
+    require('bootstrap');
+  } catch (e) {}
 
-    // My js-scripts
-    async function loadScripts() {
-        let scripts = await import('./script');
+  // Lightgallery
+  require('lightgallery.js')
+  require('lg-thumbnail.js')
+  lightGallery(document.getElementById('lightgallery'))
 
-        scripts.switchToActualLang()
-        scripts.markActualMenuPage()
-        scripts.footerToBottom()
-        scripts.openLightGalleryIfClickMainImg()
-    }
+  // My js-scripts
+  async function loadScripts() {
+    let scripts = await import('./script');
 
-    loadScripts()    
+    scripts.switchToActualLang()
+    scripts.markActualMenuPage()
+    scripts.footerToBottom()
+    scripts.openLightGalleryIfClickMainImg()
+  }
+
+  loadScripts()    
 }
 
+
 if (location.pathname === '/admin') {
-    require('./bootstrap')
-    require('./components/App')
+  require('./bootstrap')
+  require('./components/App')
 
-    // My js-scripts
-    async function loadScripts() {
-        console.log('will be scripts')
-    }
+  // My js-scripts
+  async function loadScripts() {
+    //console.log('will be scripts')
+  }
 
-    loadScripts()    
+  loadScripts()    
 }
 
 
