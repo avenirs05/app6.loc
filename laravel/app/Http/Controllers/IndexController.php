@@ -18,8 +18,8 @@ class IndexController extends Controller
             'title'   => 'Аренда вилл и апартаментов в Черногории',
             'content' => Content::select('header_main', 'images', 'faq')->first(),
         ];  
-        
 
+        
         return view('index', $data);
     }
 }
