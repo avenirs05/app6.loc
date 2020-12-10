@@ -1,17 +1,13 @@
-const initialState = []
+const initialState = [];
 
-export default function tracks (state = initialState, action) {
-  switch (action.type) {
-    case 'ADD_TRACK':
-      return [ 
-        ...state, 
-        action.payload
-      ];
-
-    case 'DELETE_TRACK':
-      return state
-
-    default:
-      return state
+export default function tracks(state = initialState, action) {
+  if (action.type === 'ADD_TRACK') {
+    return [
+      ...state,
+      action.payload
+    ];
+  } else if (action.type === 'FETCH_TRACKS_SUCCESS') {
+    return action.payload;
   }
+  return state;
 }
