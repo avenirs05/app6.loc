@@ -29,7 +29,8 @@ if (location.pathname !== '/admin') {
 
 if (location.pathname === '/admin') {
   require('./bootstrap')
-  require('./components/App')
+  require('./index')
+  // require('./index2')
 
   // My js-scripts
   async function loadScripts() {

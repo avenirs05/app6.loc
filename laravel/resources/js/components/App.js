@@ -1,22 +1,37 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import Dashboard from './Dashboard';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-import Button from '@material-ui/core/Button';
-import Test from './Test';
+class App extends Component {
+  addTrack() {
+    console.log('addTrack', this.trackInput.value)    
+    this.props.onAddTrack(this.trackInput.value)
+    this.trackInput.value = ''
+  }
 
-export default class App extends Component {
   render() {
+    console.log(this.props.tracks);
     return (
-      <>
-        <Dashboard />
-        {/* <Button variant="contained" color="primary">Hello World</Button> */}
-        {/* <Test greet="привет" /> */}
-      </>
-    );
+      <div>
+        <input type="text" ref={(input) => { this.trackInput = input }} />
+        <button onClick={this.addTrack.bind(this)}>Add track</button>
+        <ul>
+          {this.props.tracks.map((track, index) => <li key={index}>{track}</li>)}
+        </ul>
+      </div>
+    )
   }
 }
 
-if (document.getElementById('app')) {
-  ReactDOM.render(<App />, document.getElementById('app'));
-}
+export default connect(
+  state => ({
+    tracks: state.tracks
+  }),
+  dispatch => ({
+    onAddTrack: (trackName) => {
+      dispatch({ 
+        type: 'ADD_TRACK',
+        payload: trackName  
+      })
+    }
+  })
+)(App);
