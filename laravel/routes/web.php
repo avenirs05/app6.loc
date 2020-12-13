@@ -19,7 +19,7 @@
 
 // Для клиентов и поисковиков
 Route::get('/', 'IndexController')->name('main');
-Route::any('villas', 'RealtiesController')->name('villas');
+Route::get('villas', 'RealtiesController')->name('villas');
 Route::get('apartments', 'RealtiesController')->name('apartments');
 Route::get('contact', 'ContactController')->name('contact');
 Route::get('villa/{id}', 'RealtyController')->name('villa');
@@ -35,7 +35,14 @@ Route::get('locale/{locale}', function($locale) {
 
 Auth::routes(['register' => false, 'reset' => false]);
 
-Route::get('/admin', 'AdminController@index')->name('admin');
+Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function() {
+	Route::get('/', 'IndexController@index')->name('admin.index');
+	Route::resources([
+    'realties' => 'RealtyController',
+	]);
+});
+
+//Route::get('/test', 'Admin\TestController@index')->name('test');
 
 
 

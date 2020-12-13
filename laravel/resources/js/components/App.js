@@ -56,8 +56,7 @@ class App extends Component {
               </ListGroup>
             </Col>
             <Col>
-              <div>{ console.log(this.props.realties.length === 0 ? 'Zero' : this.props.realties[0].title) }</div>
-              
+              <div>{ console.log(this.props.realties.length === 0 ? 'Zero' : this.props.realties[0].title) }</div>              
             </Col>
           </Row>
         </Container>

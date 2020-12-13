@@ -50,7 +50,7 @@ class RealtyController extends Controller
             'content'     => $content,    
         ];             
         
-    
+
         return view('realty', $data);
     }
 }
