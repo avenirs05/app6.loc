@@ -13,6 +13,10 @@ import { getRealties } from '../actions/getRealties';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    // console.log(this.props)
+  }
   render() {
     return (
       <>
@@ -51,7 +55,10 @@ class App extends Component {
                 <ListGroup.Item action>Контент</ListGroup.Item>
               </ListGroup>
             </Col>
-            <Col>3 of 3</Col>
+            <Col>
+              <div>{ console.log(this.props.realties.length === 0 ? 'Zero' : this.props.realties[0].title) }</div>
+              
+            </Col>
           </Row>
         </Container>
       </>
@@ -60,7 +67,10 @@ class App extends Component {
 }
 
 export default connect(
-  state => ({}),  
+  state => ({
+    realties: state.realties,
+    test: [ {a: 7, b: 9}, {a: 3, b: 5} ]
+  }),  
   dispatch => ({
     onGetRealties() {
       dispatch(getRealties());

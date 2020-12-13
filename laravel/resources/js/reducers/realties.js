@@ -1,6 +1,5 @@
 const initialState = [
-  'My home playlist',
-  'My work playlist'
+
 ]
 
 export default function realties(state = initialState, action) {
@@ -12,11 +11,13 @@ export default function realties(state = initialState, action) {
       ]
 
     case 'GET_REALTIES':
-      return [ 
-        ...state, 
-        action.payload
-      ]
-    
+      //console.log(action.payload[0].title)
+      return action.payload
+      // return {
+      //   ...state, 
+      //   realties: [...state.realties, action.payload]
+      // } 
+      
     default:
       return state  
   }
