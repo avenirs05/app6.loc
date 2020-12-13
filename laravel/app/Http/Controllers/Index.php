@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Content;
 
 
-class IndexController extends Controller
+class Index extends Controller
 {
     /**
      * Handle the incoming request.

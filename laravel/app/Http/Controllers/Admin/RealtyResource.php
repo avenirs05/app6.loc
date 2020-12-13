@@ -6,7 +6,7 @@ use App\Realty;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class RealtyController extends Controller
+class RealtyResource extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class RealtyController extends Controller
      */
     public function index()
     {
-        return [1, 2, 3];
+        return Realty::paginate(20)->toJson();
     }
 
     /**

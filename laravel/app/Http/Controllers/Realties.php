@@ -7,7 +7,7 @@ use App\Realty;
 use App\Content;
 
 
-class RealtiesController extends Controller
+class Realties extends Controller
 {
     /**
      * Handle the incoming request.

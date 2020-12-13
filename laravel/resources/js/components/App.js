@@ -56,7 +56,13 @@ class App extends Component {
               </ListGroup>
             </Col>
             <Col>
-              <div>{ console.log(this.props.realties.length === 0 ? 'Zero' : this.props.realties[0].title) }</div>              
+              <div>
+                { 
+                  this.props.realties.length > 0 
+                    ? this.props.realties.map((realty, index) => <p key={index}>{realty.name}</p>) 
+                    : 'Объектов нет' 
+                }
+              </div>              
             </Col>
           </Row>
         </Container>

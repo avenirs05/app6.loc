@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Content;
 
 
-class ContactController extends Controller
+class Contact extends Controller
 {
     /**
      * Handle the incoming request.
