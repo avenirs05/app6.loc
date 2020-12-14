@@ -12,7 +12,8 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import { getRealties } from '../actions/getRealties';
 import Feedback from './Feedback';
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import styles from './css/app.module.css';
 
 function About() {
   return <h2>About</h2>;
@@ -37,6 +38,7 @@ class App extends Component {
     return (
       <>
         <Router>
+          <div className={styles.div}>Hello!!!</div>
           <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -64,20 +66,20 @@ class App extends Component {
           <Container fluid>
             <Row>
               <Col xs={2}>
-                <ListGroup as="ul" style={{ borderRadius: 0 }}>
+                <ListGroup as="div" style={{ borderRadius: 0 }}>
                   <ListGroup.Item onClick={this.props.onGetRealties} action active>Объекты</ListGroup.Item>
                   <ListGroup.Item action>Отзывы</ListGroup.Item>
                   <ListGroup.Item action>Изображения</ListGroup.Item>
                   <ListGroup.Item action>Языки</ListGroup.Item>
                   <ListGroup.Item action>Контент</ListGroup.Item>
 
-                  <ListGroup.Item action>
-                    <Link to="/about">About</Link>
-                  </ListGroup.Item>
+                  <Link to="/about">
+                    <ListGroup.Item action>Контент</ListGroup.Item>
+                  </Link>
 
-                  <ListGroup.Item action>
-                    <Link to="/users">Users</Link>
-                  </ListGroup.Item>
+                  <Link to="/users">Users</Link>
+
+
                 </ListGroup>
 
               </Col>

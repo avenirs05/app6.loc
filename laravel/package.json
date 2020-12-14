@@ -30,6 +30,7 @@
         "@material-ui/core": "^4.11.2",
         "@material-ui/icons": "^4.11.2",
         "flag-icon-css": "^3.5.0",
+        "laravel-mix-react-css-modules": "^2.0.0",
         "lg-thumbnail.js": "^1.2.0",
         "lightgallery.js": "^1.2.0",
         "react-bootstrap": "^1.4.0",
