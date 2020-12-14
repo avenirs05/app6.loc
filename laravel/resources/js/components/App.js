@@ -14,9 +14,14 @@ import { getRealties } from '../actions/getRealties';
 
 class App extends Component {
   constructor(props) {
-    super(props)
-    // console.log(this.props)
+    super(props) 
   }
+
+  componentDidMount() {
+    console.log('mounted')
+    this.props.onGetRealties()
+  }
+
   render() {
     return (
       <>
