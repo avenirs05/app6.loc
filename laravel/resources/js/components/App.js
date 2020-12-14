@@ -10,67 +10,97 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import ListGroup from 'react-bootstrap/ListGroup'
 
 import { getRealties } from '../actions/getRealties';
+import Feedback from './Feedback';
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+function About() {
+  return <h2>About</h2>;
+}
+
+function Users() {
+  return <h2>Users</h2>;
+}
+
 
 
 class App extends Component {
   constructor(props) {
-    super(props) 
+    super(props)
   }
 
   componentDidMount() {
-    console.log('mounted')
     this.props.onGetRealties()
   }
 
   render() {
     return (
       <>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
-              <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-            <Nav>
-              <Nav.Link href="#deets">More deets</Nav.Link>
-              <Nav.Link eventKey={2} href="#memes">
-                Dank memes
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
+        <Router>
+          <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link href="#features">Features</Nav.Link>
+                <Nav.Link href="#pricing">Pricing</Nav.Link>
+                <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+              <Nav>
+                <Nav.Link href="#deets">More deets</Nav.Link>
+                <Nav.Link eventKey={2} href="#memes">
+                  Dank memes
+                </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
 
-        <Container fluid>
-          <Row>
-            <Col xs={2}>
-              <ListGroup as="ul" style={{ borderRadius: 0 }}>
-                <ListGroup.Item onClick={ this.props.onGetRealties } action active>Объекты</ListGroup.Item>
-                <ListGroup.Item action>Отзывы</ListGroup.Item>
-                <ListGroup.Item action>Изображения</ListGroup.Item>
-                <ListGroup.Item action>Языки</ListGroup.Item>
-                <ListGroup.Item action>Контент</ListGroup.Item>
-              </ListGroup>
-            </Col>
-            <Col>
-              <div>
-                { 
-                  this.props.realties.length > 0 
-                    ? this.props.realties.map((realty, index) => <p key={index}>{realty.name}</p>) 
-                    : 'Объектов нет' 
-                }
-              </div>              
-            </Col>
-          </Row>
-        </Container>
+          <Container fluid>
+            <Row>
+              <Col xs={2}>
+                <ListGroup as="ul" style={{ borderRadius: 0 }}>
+                  <ListGroup.Item onClick={this.props.onGetRealties} action active>Объекты</ListGroup.Item>
+                  <ListGroup.Item action>Отзывы</ListGroup.Item>
+                  <ListGroup.Item action>Изображения</ListGroup.Item>
+                  <ListGroup.Item action>Языки</ListGroup.Item>
+                  <ListGroup.Item action>Контент</ListGroup.Item>
+
+                  <ListGroup.Item action>
+                    <Link to="/about">About</Link>
+                  </ListGroup.Item>
+
+                  <ListGroup.Item action>
+                    <Link to="/users">Users</Link>
+                  </ListGroup.Item>
+                </ListGroup>
+
+              </Col>
+              <Col>
+                <Switch>
+                  <Route path="/about">
+                    <About />
+                  </Route>
+                  <Route path="/users">
+                    <Users />
+                  </Route>
+                </Switch>
+                {/* <div>
+                  { 
+                    this.props.realties.length > 0 
+                      ? this.props.realties.map((realty, index) => <p key={index}>{realty.name}</p>) 
+                      : 'Объектов нет' 
+                  }
+                </div>               */}
+              </Col>
+            </Row>
+          </Container>
+        </Router>
       </>
     );
   }
@@ -79,8 +109,8 @@ class App extends Component {
 export default connect(
   state => ({
     realties: state.realties,
-    test: [ {a: 7, b: 9}, {a: 3, b: 5} ]
-  }),  
+    test: [{ a: 7, b: 9 }, { a: 3, b: 5 }]
+  }),
   dispatch => ({
     onGetRealties() {
       dispatch(getRealties());

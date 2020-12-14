@@ -5,8 +5,7 @@ export function getRealties() {
             return dispatch({ 
               type: 'GET_REALTIES', 
               payload: response.data.data 
-          })
-          
+          })          
     })
   }
 }
