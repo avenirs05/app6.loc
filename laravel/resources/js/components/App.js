@@ -14,14 +14,17 @@ import ListGroup from 'react-bootstrap/ListGroup'
 
 // Actions
 import { getRealties } from '../actions/getRealties';
+import { getFeedbacks } from '../actions/getFeedbacks';
+import { setFirstLoadingTrueAction } from '../actions/setFirstLoadingTrue';
+import { setFirstLoadingFalseAction } from '../actions/setFirstLoadingFalse';
 
 // Constants
 import { SET_FIRST_LOADING_FALSE } from '../actions/consts';
 import { SET_FIRST_LOADING_TRUE } from '../actions/consts';
 
 // Components
-import Realty from './Realty';
-import Feedback from './Feedback';
+import Realties from './Realties';
+import Feedbacks from './Feedbacks';
 
 // Css Modules
 import NavLinkCss from './css/NavLink.module.css';
@@ -30,9 +33,6 @@ import ListGroupCss from './css/ListGroup.module.css';
 // My scripts
 import { getPath } from '../script'
 
-function Users() {
-  return <h2>Users</h2>;
-}
 
 class App extends Component {
   constructor(props) {
@@ -42,7 +42,6 @@ class App extends Component {
   componentDidMount() {
     this.props.onGetRealties()
     this.props.setFirstLoadingTrue()   
-    console.log(getPath(route('realties.index')))
   }
 
   render() {
@@ -83,10 +82,10 @@ class App extends Component {
                     onClick={this.props.onGetRealties}>
                     Объекты
                   </NavLink>
-                  <NavLink to="/admin/feedbacks"
+                  <NavLink to={getPath(route('feedbacks.index'))}
                     className={NavLinkCss.main}
                     activeClassName={NavLinkCss.active}
-                    onClick={this.props.setFirstLoadingFalse}>
+                    onClick={this.props.onGetFeedbacks }>
                     Отзывы
                   </NavLink>
                 </ListGroup>
@@ -94,15 +93,15 @@ class App extends Component {
               <Col>
                 {
                   this.props.isFirstLoading ? 
-                    <Realty realties={this.props.realties}/> : 
+                    <Realties realties={this.props.realties}/> : 
                     null 
                 } 
                 <Switch>
-                  <Route path={getPath(route('realties.index'))}>
-                    <Realty realties={this.props.realties}/>
+                  <Route exact path={getPath(route('realties.index'))}>
+                    <Realties realties={this.props.realties}/>
                   </Route>
-                  <Route path="/admin/feedbacks">
-                    <Users />
+                  <Route exact path={getPath(route('feedbacks.index'))}>
+                    <Feedbacks feedbacks={this.props.feedbacks}/>
                   </Route>
                 </Switch>
               </Col>
@@ -110,24 +109,37 @@ class App extends Component {
           </Container>
         </BrowserRouter>
       </>
-    );
+    )
   }
 }
 
-export default connect(
-  state => ({
+
+function mapStateToProps(state) {
+  return {
     realties: state.realties,
+    feedbacks: state.feedbacks,
     isFirstLoading: state.isFirstLoading,
-  }),
-  dispatch => ({
+  }
+}
+
+
+function mapDispatchToProps(dispatch) {
+  return {
     onGetRealties() {
       dispatch(getRealties())
     },
+    onGetFeedbacks() {
+      dispatch(setFirstLoadingFalseAction())
+      dispatch(getFeedbacks())  
+    },
     setFirstLoadingFalse() {
-      dispatch({ type: SET_FIRST_LOADING_FALSE, firstLoading: false })
+      dispatch(setFirstLoadingFalseAction())
     },
     setFirstLoadingTrue() {
-      dispatch({ type: SET_FIRST_LOADING_TRUE, firstLoading: true })
+      dispatch(setFirstLoadingTrueAction())
     }
-  })
-)(App);
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -9,18 +9,7 @@ export default function realties(state = initialState, action) {
       ]
 
     case 'GET_REALTIES':
-      console.log(action.realties)
-
       return action.realties 
-      //   {
-      //   realties: action.payload,
-      //   isActive: true
-      // } 
-      //action.payload
-      // return {
-      //   ...state, 
-      //   realties: [...state.realties, action.payload]
-      // } 
       
     default:
       return state  
