@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  NavLink
+} from "react-router-dom";
 
+// React Bootstrap
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -9,11 +17,20 @@ import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import ListGroup from 'react-bootstrap/ListGroup'
 
+// Actions
 import { getRealties } from '../actions/getRealties';
+
+// Constants
+import { SET_FIRST_LOADING_FALSE } from '../actions/consts';
+import { SET_FIRST_LOADING_TRUE } from '../actions/consts';
+
+// My components
 import Feedback from './Feedback';
 
-import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import styles from './css/app.module.css';
+// Css modules
+import AppCss from './css/App.module.css';
+import NavLinkCss from './css/NavLink.module.css';
+import ListGroupCss from './css/ListGroup.module.css';
 
 function About() {
   return <h2>About</h2>;
@@ -24,7 +41,6 @@ function Users() {
 }
 
 
-
 class App extends Component {
   constructor(props) {
     super(props)
@@ -32,14 +48,14 @@ class App extends Component {
 
   componentDidMount() {
     this.props.onGetRealties()
+    this.props.setFirstLoadingTrue()
   }
 
   render() {
     return (
       <>
         <Router>
-          <div className={styles.div}>Hello!!!</div>
-          <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+          <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
             <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
@@ -65,40 +81,40 @@ class App extends Component {
 
           <Container fluid>
             <Row>
-              <Col xs={2}>
-                <ListGroup as="div" style={{ borderRadius: 0 }}>
-                  <ListGroup.Item onClick={this.props.onGetRealties} action active>Объекты</ListGroup.Item>
-                  <ListGroup.Item action>Отзывы</ListGroup.Item>
-                  <ListGroup.Item action>Изображения</ListGroup.Item>
-                  <ListGroup.Item action>Языки</ListGroup.Item>
-                  <ListGroup.Item action>Контент</ListGroup.Item>
+              <Col xs={2} style={{ paddingLeft: 0 }}>
+                <ListGroup as="div" className={ListGroupCss.main}>
+                  <NavLink to="/admin/realties"
+                    className={NavLinkCss.main + ' ' + (this.props.isFirstLoading ? NavLinkCss.first : '')}
+                    activeClassName={NavLinkCss.active}
+                    onClick={this.props.onGetRealties}>
+                    Объекты
+                  </NavLink>
 
-                  <Link to="/about">
-                    <ListGroup.Item action>Контент</ListGroup.Item>
-                  </Link>
-
-                  <Link to="/users">Users</Link>
-
-
+                  <NavLink to="/admin/feedbacks"
+                    className={NavLinkCss.main}
+                    activeClassName={NavLinkCss.active}
+                    onClick={this.props.setFirstLoadingFalse}>
+                    Отзывы
+                  </NavLink>
                 </ListGroup>
 
               </Col>
               <Col>
+                {/* <div>
+                  { 
+                    this.props.realties.length > 0 ? 
+                      this.props.realties.map((realty, index) => <p key={index}>{realty.name}</p>) : 
+                      'Объектов нет' 
+                  }
+                </div>               */}
                 <Switch>
-                  <Route path="/about">
+                  <Route path="/admin/realties">
                     <About />
                   </Route>
-                  <Route path="/users">
+                  <Route path="/admin/feedbacks">
                     <Users />
                   </Route>
                 </Switch>
-                {/* <div>
-                  { 
-                    this.props.realties.length > 0 
-                      ? this.props.realties.map((realty, index) => <p key={index}>{realty.name}</p>) 
-                      : 'Объектов нет' 
-                  }
-                </div>               */}
               </Col>
             </Row>
           </Container>
@@ -111,11 +127,17 @@ class App extends Component {
 export default connect(
   state => ({
     realties: state.realties,
-    test: [{ a: 7, b: 9 }, { a: 3, b: 5 }]
+    isFirstLoading: state.isFirstLoading,
   }),
   dispatch => ({
     onGetRealties() {
-      dispatch(getRealties());
+      dispatch(getRealties())
+    },
+    setFirstLoadingFalse() {
+      dispatch({ type: SET_FIRST_LOADING_FALSE, firstLoading: false })
+    },
+    setFirstLoadingTrue() {
+      dispatch({ type: SET_FIRST_LOADING_TRUE, firstLoading: true })
     }
   })
 )(App);

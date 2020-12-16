@@ -19,21 +19,19 @@
     <link href="{{ asset('css/admin-app.css') }}" rel="stylesheet preload" as="style">
 </head>
 <body>
-  <div id="app"></div>
-  
-  <hr>
-  
-  <div id="bottom">   
+  <div id="app"></div>  
+ 
+  <div id="bottom" style="text-align: right; padding-right: 15px;">   
     <a class="navbar-brand" href="{{ url('/') }}">На сайт</a>
     
-    <div>                
+    <div style="padding-right: 15px;">                
       @guest
         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>            
       @else
         <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
-            {{ __('Logout') }} 
+            Выйти 
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
       @endguest                

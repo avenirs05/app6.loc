@@ -1,6 +1,4 @@
-const initialState = [
-
-]
+const initialState = []
 
 export default function realties(state = initialState, action) {
   switch (action.type) {
@@ -11,8 +9,14 @@ export default function realties(state = initialState, action) {
       ]
 
     case 'GET_REALTIES':
-      //console.log(action.payload[0].title)
-      return action.payload
+      console.log(action.realties)
+
+      return action.realties 
+      //   {
+      //   realties: action.payload,
+      //   isActive: true
+      // } 
+      //action.payload
       // return {
       //   ...state, 
       //   realties: [...state.realties, action.payload]

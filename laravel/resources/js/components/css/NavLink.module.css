@@ -1,0 +1,26 @@
+.main {
+  text-decoration: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  padding: 15px;
+}
+
+.first {
+  background-color: #3490dc;
+  color: white;
+  padding: 15px;
+}
+
+.main:hover {
+  background-color: #3490dc;
+  color: white;
+}
+
+.active {
+  background-color: #3490dc;
+  color: white;
+}
+
+.active:hover {
+  background-color: #3490dc;
+  color: white;
+}

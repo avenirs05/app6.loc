@@ -4,7 +4,7 @@ export function getRealties() {
          .then(response => {           
             return dispatch({ 
               type: 'GET_REALTIES', 
-              payload: response.data.data 
+              realties: response.data.data 
           })          
     })
   }
