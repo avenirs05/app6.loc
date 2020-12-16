@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'Admin | MyBudva') }}</title>
 
     <!-- Scripts -->
+    @routes
     <script src={{ asset('js/app.js') }} defer></script>
 
     <!-- Fonts -->
@@ -19,6 +20,8 @@
     <link href="{{ asset('css/admin-app.css') }}" rel="stylesheet preload" as="style">
 </head>
 <body>
+  
+  
   <div id="app"></div>  
  
   <div id="bottom" style="text-align: right; padding-right: 15px;">   

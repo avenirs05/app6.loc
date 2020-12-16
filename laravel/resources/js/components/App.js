@@ -1,12 +1,7 @@
+// React, Redux, Router 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  NavLink
-} from "react-router-dom";
+import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 
 // React Bootstrap
 import Container from 'react-bootstrap/Container';
@@ -24,22 +19,20 @@ import { getRealties } from '../actions/getRealties';
 import { SET_FIRST_LOADING_FALSE } from '../actions/consts';
 import { SET_FIRST_LOADING_TRUE } from '../actions/consts';
 
-// My components
+// Components
+import Realty from './Realty';
 import Feedback from './Feedback';
 
-// Css modules
-import AppCss from './css/App.module.css';
+// Css Modules
 import NavLinkCss from './css/NavLink.module.css';
 import ListGroupCss from './css/ListGroup.module.css';
 
-function About() {
-  return <h2>About</h2>;
-}
+// My scripts
+import { getPath } from '../script'
 
 function Users() {
   return <h2>Users</h2>;
 }
-
 
 class App extends Component {
   constructor(props) {
@@ -48,13 +41,14 @@ class App extends Component {
 
   componentDidMount() {
     this.props.onGetRealties()
-    this.props.setFirstLoadingTrue()
+    this.props.setFirstLoadingTrue()   
+    console.log(getPath(route('realties.index')))
   }
 
   render() {
     return (
       <>
-        <Router>
+        <BrowserRouter>
           <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
             <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -83,13 +77,12 @@ class App extends Component {
             <Row>
               <Col xs={2} style={{ paddingLeft: 0 }}>
                 <ListGroup as="div" className={ListGroupCss.main}>
-                  <NavLink to="/admin/realties"
+                  <NavLink to={getPath(route('realties.index'))}
                     className={NavLinkCss.main + ' ' + (this.props.isFirstLoading ? NavLinkCss.first : '')}
                     activeClassName={NavLinkCss.active}
                     onClick={this.props.onGetRealties}>
                     Объекты
                   </NavLink>
-
                   <NavLink to="/admin/feedbacks"
                     className={NavLinkCss.main}
                     activeClassName={NavLinkCss.active}
@@ -97,19 +90,16 @@ class App extends Component {
                     Отзывы
                   </NavLink>
                 </ListGroup>
-
               </Col>
               <Col>
-                {/* <div>
-                  { 
-                    this.props.realties.length > 0 ? 
-                      this.props.realties.map((realty, index) => <p key={index}>{realty.name}</p>) : 
-                      'Объектов нет' 
-                  }
-                </div>               */}
+                {
+                  this.props.isFirstLoading ? 
+                    <Realty realties={this.props.realties}/> : 
+                    null 
+                } 
                 <Switch>
-                  <Route path="/admin/realties">
-                    <About />
+                  <Route path={getPath(route('realties.index'))}>
+                    <Realty realties={this.props.realties}/>
                   </Route>
                   <Route path="/admin/feedbacks">
                     <Users />
@@ -118,7 +108,7 @@ class App extends Component {
               </Col>
             </Row>
           </Container>
-        </Router>
+        </BrowserRouter>
       </>
     );
   }

@@ -1,8 +1,8 @@
 // SwitchToActualLang
 export function switchToActualLang() {
     function insertText() {
-        let actualLang = event.target.innerText    
-        document.querySelector('.lang-text-actual').innerText = actualLang    
+        let actualLang = event.target.innerText
+        document.querySelector('.lang-text-actual').innerText = actualLang
         location.href = '/locale/' + actualLang.trim().toLowerCase()
     }
 
@@ -43,13 +43,31 @@ export function openLightGalleryIfClickMainImg() {
     let imgMain = document.querySelector('.img-main-lightgallery')
 
     if (imgMain) {
-        imgMain.addEventListener('click', function() {
+        imgMain.addEventListener('click', function () {
             document.querySelector('.img-thumb-lightgallery').click()
         })
     }
 }
 
+export function getLocation(href) {
+    var match = href.match(/^(https?\:)\/\/(([^:\/?#]*)(?:\:([0-9]+))?)([\/]{0,1}[^?#]*)(\?[^#]*|)(#.*|)$/);
+    
+    return match && {
+        href: href,
+        protocol: match[1],
+        host: match[2],
+        hostname: match[3],
+        port: match[4],
+        pathname: match[5],
+        search: match[6],
+        hash: match[7]
+    }
+}
 
+export function getPath(href) {
+    var match = href.match(/^(https?\:)\/\/(([^:\/?#]*)(?:\:([0-9]+))?)([\/]{0,1}[^?#]*)(\?[^#]*|)(#.*|)$/);
+    return match[5]    
+}
 
 
 
