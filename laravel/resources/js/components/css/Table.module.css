@@ -1,0 +1,10 @@
+.tdIcon {
+  cursor: pointer; 
+  text-align: center; 
+  width: 15px;
+}
+
+.tdIcon:hover {
+  background-color: #80d8ff;
+}
+

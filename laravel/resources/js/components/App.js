@@ -18,9 +18,7 @@ import { getFeedbacks } from '../actions/getFeedbacks';
 import { setFirstLoadingTrueAction } from '../actions/setFirstLoadingTrue';
 import { setFirstLoadingFalseAction } from '../actions/setFirstLoadingFalse';
 
-// Constants
-import { SET_FIRST_LOADING_FALSE } from '../actions/consts';
-import { SET_FIRST_LOADING_TRUE } from '../actions/consts';
+
 
 // Components
 import Realties from './Realties';
@@ -91,16 +89,14 @@ class App extends Component {
                 </ListGroup>
               </Col>
               <Col>
-                {
-                  this.props.isFirstLoading ? 
-                    <Realties realties={this.props.realties}/> : 
-                    null 
-                } 
+                {this.props.isFirstLoading ? <Realties realties={this.props.realties}/> : null} 
                 <Switch>
                   <Route exact path={getPath(route('realties.index'))}>
+                    {/* <div>Hello</div> */}
                     <Realties realties={this.props.realties}/>
                   </Route>
                   <Route exact path={getPath(route('feedbacks.index'))}>
+                    {/* <div>Hello 2</div> */}
                     <Feedbacks feedbacks={this.props.feedbacks}/>
                   </Route>
                 </Switch>

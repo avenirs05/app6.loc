@@ -1,4 +1,2 @@
 #!/bin/bash
-git add .
-git commit -m "last"
-git push
+make connect_app
