@@ -43,7 +43,6 @@ class App extends Component {
   componentDidMount() {
     this.props.onGetRealties()
     this.props.setFirstLoadingTrue()  
-    //console.log(this.props.realties)
   }
 
   render() {
@@ -94,16 +93,16 @@ class App extends Component {
             <Col>
               <Switch>
                 <Route exact path={getPath(route('admin.index'))}>                 
-                  <Realties realties={this.props.realties}/>
+                  <Realties />
                 </Route>
                 <Route exact path={getPath(route('realties.index'))}>                 
-                  <Realties realties={this.props.realties}/>
+                  <Realties />
                 </Route>
                 <Route exact path={getPath(route('feedbacks.index'))}>                 
                   <Feedbacks feedbacks={this.props.feedbacks}/>
                 </Route>
               </Switch>
-              <PaginationContainer totalPages={this.props.realties.totalPages}/> 
+              <PaginationContainer /> 
             </Col>
           </Row>
         </Container>
@@ -115,7 +114,6 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    realties: state.realties,
     feedbacks: state.feedbacks,
     isFirstLoading: state.isFirstLoading,
   }

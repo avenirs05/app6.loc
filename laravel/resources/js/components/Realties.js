@@ -1,4 +1,10 @@
+// React, Redux, Router 
 import React from 'react'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { withRouter } from "react-router"
+
+// React Bootstrap
 import Table from 'react-bootstrap/Table'
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
@@ -7,7 +13,8 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 // Css Modules
 import TableCss from './css/Table.module.css';
 
-export default function Realties(props) {
+
+function Realties({realties}) {
   return (
     <>
       <Table bordered hover>
@@ -25,7 +32,7 @@ export default function Realties(props) {
         </thead>
         <tbody>
           {            
-            props.realties.items.map((realty, index) =>               
+            realties.items.map((realty, index) =>               
               <tr key={index}>
                 <td style={{textAlign: 'center', width: '15px'}}>{++index}</td>
                 <td>{realty.name}</td>
@@ -43,6 +50,21 @@ export default function Realties(props) {
     </>
   );
 }
+
+function mapStateToProps(state) {
+  return {
+    realties: state.realties,
+  }
+}
+
+function mapDispatchToProps(dispatch) { 
+  return {
+
+  } 
+}
+
+
+export default compose(withRouter, connect(mapStateToProps, null))(Realties)
 
 
 
