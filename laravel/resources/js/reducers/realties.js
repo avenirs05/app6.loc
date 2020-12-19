@@ -1,4 +1,8 @@
-const initialState = []
+const initialState = {
+  items: [],
+  totalPages: 0,
+  totalItems: 0 
+}
 
 export default function realties(state = initialState, action) {
   switch (action.type) {
@@ -8,8 +12,12 @@ export default function realties(state = initialState, action) {
         action.payload
       ]
 
-    case 'GET_REALTIES':
-      return action.realties 
+    case 'GET_REALTIES':      
+      return {
+        items: action.items,
+        totalPages: action.totalPages,
+        totalItems: action.totalItems
+      }
       
     default:
       return state  

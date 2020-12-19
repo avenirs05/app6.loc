@@ -7,12 +7,15 @@ import thunk from 'redux-thunk';
 
 import App from './components/App';
 import reducer from './reducers';
+import { BrowserRouter } from "react-router-dom";
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('app')
 );

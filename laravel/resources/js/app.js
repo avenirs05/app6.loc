@@ -1,4 +1,4 @@
-if (location.pathname !== '/admin') {
+if (location.pathname !== '/admin' && location.pathname !== '/login') {
   require('./bootstrap')
 
   try {
@@ -37,7 +37,7 @@ if (location.pathname === '/admin') {
     //console.log('will be scripts')
   }
 
-  loadScripts()    
+  //loadScripts()    
 }
 
 

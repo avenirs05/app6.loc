@@ -7,7 +7,7 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 // Css Modules
 import TableCss from './css/Table.module.css';
 
-export default function Realties({ realties }) {
+export default function Realties(props) {
   return (
     <>
       <Table bordered hover>
@@ -24,25 +24,22 @@ export default function Realties({ realties }) {
           </tr>
         </thead>
         <tbody>
-          {
-            realties.length > 0 ?
-              realties.map((realty, index) =>               
-                <tr key={index}>
-                  <td style={{textAlign: 'center', width: '15px'}}>{index}</td>
-                  <td>{realty.name}</td>
-                  <td>{realty.type_en}</td>
-                  <td>{realty.price}</td>
-                  <td>{realty.visibility}</td>
-                  <td className={TableCss.tdIcon}><EditOutlinedIcon color="primary"></EditOutlinedIcon></td>
-                  <td className={TableCss.tdIcon}><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></td>
-                  <td className={TableCss.tdIcon}><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></td>
-                </tr>
-              ) :
-              null
+          {            
+            props.realties.items.map((realty, index) =>               
+              <tr key={index}>
+                <td style={{textAlign: 'center', width: '15px'}}>{++index}</td>
+                <td>{realty.name}</td>
+                <td>{realty.type_en}</td>
+                <td>{realty.price}</td>
+                <td>{realty.visibility}</td>
+                <td className={TableCss.tdIcon}><EditOutlinedIcon color="primary"></EditOutlinedIcon></td>
+                <td className={TableCss.tdIcon}><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></td>
+                <td className={TableCss.tdIcon}><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></td>
+              </tr>
+            ) 
           }
         </tbody>
       </Table>
-
     </>
   );
 }

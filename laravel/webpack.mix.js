@@ -13,7 +13,7 @@ require('laravel-mix-react-css-modules');
 
 mix.react('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
-   .sass('resources/sass/admin-app.scss', 'public/css')
-   .sourceMaps()
+   .sass('resources/sass/admin-app.scss', 'public/css')   
    .disableSuccessNotifications()
-   .reactCSSModules();
+   .reactCSSModules()
+   .sourceMaps()

@@ -69,6 +69,11 @@ export function getPath(href) {
     return match[5]    
 }
 
+export function getTotalPagesForPagination(totalCount, perPage) {
+    return totalCount % perPage === 0 ? 
+      totalCount / perPage : 
+      Math.ceil(totalCount / perPage)
+  }
 
 
 
