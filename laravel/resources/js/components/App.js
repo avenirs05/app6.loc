@@ -14,13 +14,14 @@ import ListGroup from 'react-bootstrap/ListGroup'
 // Actions
 import { getRealties } from '../actions/getRealties';
 import { getFeedbacks } from '../actions/getFeedbacks';
+import { getImages } from '../actions/getImages';
 import { setFirstLoadingTrueAction } from '../actions/setFirstLoadingTrue';
 import { setFirstLoadingFalseAction } from '../actions/setFirstLoadingFalse';
 
 // Components
 import Realties from './Realties';
 import Feedbacks from './Feedbacks';
-import PaginationContainer from './PaginationContainer';
+import Images from './Images';
 import NavbarContainer from './NavbarContainer';
 
 // Css Modules
@@ -60,6 +61,18 @@ class App extends Component {
                   onClick={this.props.onGetFeedbacks}>
                   Отзывы
                 </NavLink>
+                <NavLink to={getPath(route('images.index'))}
+                  className={NavLinkCss.main}
+                  activeClassName={NavLinkCss.active}
+                  onClick={this.props.onGetImages}>
+                  Изображения
+                </NavLink>
+                {/* <NavLink to="/admin/test"
+                  className={NavLinkCss.main}
+                  activeClassName={NavLinkCss.active}
+                  onClick={this.props.onGetTests}>
+                  Test
+                </NavLink> */}
               </ListGroup>
             </Col>
             <Col>
@@ -73,6 +86,12 @@ class App extends Component {
                 <Route exact path={getPath(route('feedbacks.index'))}>                 
                   <Feedbacks />
                 </Route>
+                <Route exact path={getPath(route('images.index'))}>                 
+                  <Images />
+                </Route>
+                {/* <Route exact path="/admin/test">                 
+                  <div>Test!!!</div>
+                </Route> */}
               </Switch>
             </Col>
           </Row>
@@ -98,6 +117,15 @@ function mapDispatchToProps(dispatch) {
     onGetFeedbacks() {
       dispatch(setFirstLoadingFalseAction())
       dispatch(getFeedbacks())  
+    },
+    onGetImages() {      
+      dispatch(setFirstLoadingFalseAction())
+      dispatch(getImages())  
+    },
+    onGetTests() {      
+      dispatch(setFirstLoadingFalseAction())
+      console.log('test!!!');
+       
     },
     setFirstLoadingFalse() {
       dispatch(setFirstLoadingFalseAction())

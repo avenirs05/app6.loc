@@ -11057,6 +11057,11 @@ a.text-dark:focus {
   padding: 2rem;
 }
 
+.btn:focus,
+.btn:active {
+  box-shadow: none !important;
+}
+
 .pagination {
   flex-wrap: wrap;
 }

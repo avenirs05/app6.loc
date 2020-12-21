@@ -10,7 +10,7 @@ export function getRealties(pageNumber) {
               totalPages: response.data.last_page,
               currentPage: response.data.current_page,
               totalItems: response.data.total,    
-            })          
+            })        
     })
   }
 }

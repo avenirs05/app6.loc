@@ -136,6 +136,10 @@
     }
 }
 
+.btn:focus, .btn:active {
+    box-shadow: none !important;
+}
+
 // Class-ghost. This class appear by Blade directive $villas->links()
 .pagination {
     flex-wrap: wrap;

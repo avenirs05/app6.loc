@@ -14,6 +14,7 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet preload" as="style">
 
   {{-- Scripts --}}
+  @routes
   <script src={{ asset('js/app.js') }} defer></script>
 </head>
 

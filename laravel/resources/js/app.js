@@ -1,53 +1,27 @@
-if (location.pathname !== '/admin' && location.pathname !== '/login') {
-  require('./bootstrap')
+import { getPath } from './script'
 
-  try {
-    window.Popper = require('popper.js').default;
-    window.$ = window.jQuery = require('jquery');
+require('./bootstrap')
 
-    require('bootstrap');
-  } catch (e) {}
+if (location.pathname === getPath(route('admin.index'))) {
+  require('./admin-index')  
+} else {
+    try {
+      window.Popper = require('popper.js').default;
+      window.$ = window.jQuery = require('jquery');
+      require('bootstrap');
+    } catch (e) {}
+    
+    (async function loadScripts() {
+      // Lightgallery
+      require('lightgallery.js')
+      require('lg-thumbnail.js')
+      lightGallery(document.getElementById('lightgallery'))
 
-  // Lightgallery
-  require('lightgallery.js')
-  require('lg-thumbnail.js')
-  lightGallery(document.getElementById('lightgallery'))
-
-  // My js-scripts
-  async function loadScripts() {
-    let scripts = await import('./script');
-
-    scripts.switchToActualLang()
-    scripts.markActualMenuPage()
-    scripts.footerToBottom()
-    scripts.openLightGalleryIfClickMainImg()
-  }
-
-  loadScripts()    
-}
-
-
-if (location.pathname === '/admin') {
-  require('./bootstrap')
-  require('./index')
-  // require('./index2')
-
-  // My js-scripts
-  async function loadScripts() {
-    //console.log('will be scripts')
-  }
-
-  //loadScripts()    
-}
-
-
-
-
-
-
-
-
-
-
-
-
+      // My js-scripts
+      let scripts = await import('./script')
+      scripts.switchToActualLang()
+      scripts.markActualMenuPage()
+      scripts.footerToBottom()
+      scripts.openLightGalleryIfClickMainImg()
+    })()
+} 

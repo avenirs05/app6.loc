@@ -35,12 +35,14 @@ Route::get('locale/{locale}', function($locale) {
 
 Auth::routes(['register' => false, 'reset' => false]);
 
+
 Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function() {
 	Route::get('/', 'Index@index')->name('admin.index');
-
+	
 	Route::resources([
     'realties'  => 'RealtyResource',
     'feedbacks' => 'FeedbackResource',
+    'images'    => 'ImageResource',
 	]);
 });
 
