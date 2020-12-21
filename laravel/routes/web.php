@@ -39,7 +39,7 @@ Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function()
 	Route::get('/', 'Index@index')->name('admin.index');
 
 	Route::resources([
-    'realties' => 'RealtyResource',
+    'realties'  => 'RealtyResource',
     'feedbacks' => 'FeedbackResource',
 	]);
 });

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 class App extends Component {
   render() {
-    console.log(this.props.testStore);
     return (
       <div>
         <input type="text" />

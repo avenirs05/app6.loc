@@ -2,19 +2,37 @@
 import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { withRouter } from "react-router"
 
 // React Bootstrap
 import Table from 'react-bootstrap/Table'
-import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
-import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
-import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
+import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined'
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
+import Pagination from 'react-bootstrap/Pagination'
+
+// Actions
+import { getRealties } from '../actions/getRealties'
 
 // Css Modules
-import TableCss from './css/Table.module.css';
+import TableCss from './css/Table.module.css'
 
 
-function Realties({realties}) {
+function Realties({ realties, totalPages, currentPage, onGetRealties }) {
+  function onGetResource(e, number) {
+    e.preventDefault()
+    onGetRealties(number)
+  }
+
+  let items = []
+  for (let number = 1; number <= totalPages; number++) {
+    items.push(
+      <Pagination.Item
+        onClick={(e) => { onGetResource(e, number) }} key={number} active={number === currentPage}>
+        {number}
+      </Pagination.Item>,
+    )
+  }
+
   return (
     <>
       <Table bordered hover>
@@ -31,10 +49,10 @@ function Realties({realties}) {
           </tr>
         </thead>
         <tbody>
-          {            
-            realties.items.map((realty, index) =>               
+          {
+            realties.items.map((realty, index) =>
               <tr key={index}>
-                <td style={{textAlign: 'center', width: '15px'}}>{++index}</td>
+                <td className={TableCss.td}>{++index}</td>
                 <td>{realty.name}</td>
                 <td>{realty.type_en}</td>
                 <td>{realty.price}</td>
@@ -43,10 +61,11 @@ function Realties({realties}) {
                 <td className={TableCss.tdIcon}><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></td>
                 <td className={TableCss.tdIcon}><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></td>
               </tr>
-            ) 
+            )
           }
         </tbody>
       </Table>
+      <Pagination>{items}</Pagination>
     </>
   );
 }
@@ -54,17 +73,20 @@ function Realties({realties}) {
 function mapStateToProps(state) {
   return {
     realties: state.realties,
+    totalPages: state.realties.totalPages,
+    currentPage: state.realties.currentPage,
   }
 }
 
-function mapDispatchToProps(dispatch) { 
+function mapDispatchToProps(dispatch) {
   return {
-
-  } 
+    onGetRealties(pageNumber) {
+      dispatch(getRealties(pageNumber))
+    },
+  }
 }
 
-
-export default compose(withRouter, connect(mapStateToProps, null))(Realties)
+export default compose(connect(mapStateToProps, mapDispatchToProps))(Realties)
 
 
 

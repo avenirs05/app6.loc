@@ -9,9 +9,6 @@ import { withRouter } from "react-router";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
 import ListGroup from 'react-bootstrap/ListGroup'
 
 // Actions
@@ -24,7 +21,7 @@ import { setFirstLoadingFalseAction } from '../actions/setFirstLoadingFalse';
 import Realties from './Realties';
 import Feedbacks from './Feedbacks';
 import PaginationContainer from './PaginationContainer';
-
+import NavbarContainer from './NavbarContainer';
 
 // Css Modules
 import NavLinkCss from './css/NavLink.module.css';
@@ -32,8 +29,6 @@ import ListGroupCss from './css/ListGroup.module.css';
 
 // My scripts
 import { getPath } from '../script'
-import { getTotalPagesForPagination } from '../script'
-
 
 class App extends Component {
   constructor(props) {
@@ -47,31 +42,8 @@ class App extends Component {
 
   render() {
     return (      
-      <> 
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
-              <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-            <Nav>
-              <Nav.Link href="#deets">More deets</Nav.Link>
-              <Nav.Link eventKey={2} href="#memes">
-                Dank memes
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-
+      <>         
+        <NavbarContainer />
         <Container fluid>
           <Row>
             <Col xs={2} style={{ paddingLeft: 0 }}>
@@ -93,16 +65,15 @@ class App extends Component {
             <Col>
               <Switch>
                 <Route exact path={getPath(route('admin.index'))}>                 
-                  <Realties />
+                  <Realties />                   
                 </Route>
                 <Route exact path={getPath(route('realties.index'))}>                 
                   <Realties />
                 </Route>
                 <Route exact path={getPath(route('feedbacks.index'))}>                 
-                  <Feedbacks feedbacks={this.props.feedbacks}/>
+                  <Feedbacks />
                 </Route>
               </Switch>
-              <PaginationContainer /> 
             </Col>
           </Row>
         </Container>
@@ -114,7 +85,6 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    feedbacks: state.feedbacks,
     isFirstLoading: state.isFirstLoading,
   }
 }

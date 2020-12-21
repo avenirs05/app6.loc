@@ -15,7 +15,7 @@ class FeedbackResource extends Controller
      */
     public function index()
     {
-        return Feedback::paginate(50)->toJson();
+        return Feedback::paginate(50);
     }
 
     /**

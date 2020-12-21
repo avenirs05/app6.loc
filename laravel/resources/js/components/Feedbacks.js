@@ -1,16 +1,89 @@
-import React from 'react';
+// React, Redux, Router 
+import React from 'react'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
 
-export default function Feedbacks({feedbacks}) {
+// React Bootstrap
+import Table from 'react-bootstrap/Table'
+import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
+import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined'
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
+import Pagination from 'react-bootstrap/Pagination'
+
+// Actions
+import { getFeedbacks } from '../actions/getFeedbacks'
+
+// Css Modules
+import TableCss from './css/Table.module.css'
+
+
+function Feedbacks({feedbacks, totalPages, currentPage, onGetFeedbacks}) {
+  function onGetResource(e, number) {
+    e.preventDefault()
+    onGetFeedbacks(number)
+  }
+
+  let items = []
+  for (let number = 1; number <= totalPages; number++) {
+    items.push(
+      <Pagination.Item
+        onClick={(e) => { onGetResource(e, number) }} key={number} active={number === currentPage}>
+        {number}
+      </Pagination.Item>,
+    )
+  }
+
   return (
-    <>       
-      { 
-        feedbacks.length > 0 ? 
-          feedbacks.map((feedback, index) => <p key={index}>{feedback.author}</p>) : 
-          'Отзывов нет' 
-      }        
+    <>
+      <Table bordered hover>
+        <thead>
+          <tr>
+            <th>№</th>
+            <th>Автор</th>
+            <th>Дата</th>
+            <th className="tdIcon"><EditOutlinedIcon color="primary"></EditOutlinedIcon></th>
+            <th className="tdIcon"><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></th>
+            <th className="tdIcon"><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></th>
+          </tr>
+        </thead>
+        <tbody>
+          {            
+            feedbacks.items.map((feedback, index) =>               
+              <tr key={index}>
+                <td className={TableCss.td}>{++index}</td>
+                <td>{feedback.author}</td>
+                <td>{feedback.date}</td>
+                <td className={TableCss.tdIcon}><EditOutlinedIcon color="primary"></EditOutlinedIcon></td>
+                <td className={TableCss.tdIcon}><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></td>
+                <td className={TableCss.tdIcon}><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></td>
+              </tr>
+            ) 
+          }
+        </tbody>
+      </Table>
+      <Pagination>{items}</Pagination>
     </>
   );
 }
+
+function mapStateToProps(state) {
+  return {
+    feedbacks: state.feedbacks,
+    totalPages: state.feedbacks.totalPages,
+    currentPage: state.feedbacks.currentPage,
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onGetFeedbacks(pageNumber) {
+      dispatch(getFeedbacks(pageNumber))
+    },
+  }
+}
+
+
+export default compose(connect(mapStateToProps, mapDispatchToProps))(Feedbacks)
 
 
 

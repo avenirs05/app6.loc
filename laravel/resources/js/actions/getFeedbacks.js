@@ -1,13 +1,16 @@
 import { GET_FEEDBACKS } from './consts';
 
-export function getFeedbacks() {
+export function getFeedbacks(pageNumber) {
   return function(dispatch) {  
-    axios.get(route('feedbacks.index'))  
-          .then(response => {   
+    axios.get(route('feedbacks.index') + `?page=${pageNumber}`)                   
+         .then(response => {    
             return dispatch({ 
               type: GET_FEEDBACKS, 
-              feedbacks: response.data.data 
-          })          
+              items: response.data.data,
+              totalPages: response.data.last_page,
+              currentPage: response.data.current_page,
+              totalItems: response.data.total,    
+            })          
     })
   }
 }
