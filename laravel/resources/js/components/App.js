@@ -23,6 +23,7 @@ import Realties from './Realties';
 import Feedbacks from './Feedbacks';
 import Images from './Images';
 import NavbarContainer from './NavbarContainer';
+import Test from './Test';
 
 // Css Modules
 import NavLinkCss from './css/NavLink.module.css';
@@ -67,12 +68,12 @@ class App extends Component {
                   onClick={this.props.onGetImages}>
                   Изображения
                 </NavLink>
-                {/* <NavLink to="/admin/test"
+                <NavLink to="/admin/test"
                   className={NavLinkCss.main}
                   activeClassName={NavLinkCss.active}
                   onClick={this.props.onGetTests}>
                   Test
-                </NavLink> */}
+                </NavLink>
               </ListGroup>
             </Col>
             <Col>
@@ -89,9 +90,9 @@ class App extends Component {
                 <Route exact path={getPath(route('images.index'))}>                 
                   <Images />
                 </Route>
-                {/* <Route exact path="/admin/test">                 
-                  <div>Test!!!</div>
-                </Route> */}
+                <Route exact path="/admin/test">                 
+                  <Test />
+                </Route>
               </Switch>
             </Col>
           </Row>
@@ -123,9 +124,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(getImages())  
     },
     onGetTests() {      
-      dispatch(setFirstLoadingFalseAction())
-      console.log('test!!!');
-       
+      dispatch(setFirstLoadingFalseAction())       
     },
     setFirstLoadingFalse() {
       dispatch(setFirstLoadingFalseAction())
