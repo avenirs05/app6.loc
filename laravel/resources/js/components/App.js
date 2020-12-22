@@ -35,37 +35,57 @@ import { getPath } from '../script'
 class App extends Component {
   constructor(props) {
     super(props)
+    this.imagesMenuItem = React.createRef()
+    this.feedbacksMenuItem = React.createRef()
+    this.realtiesMenuItem = React.createRef()
   }
 
   componentDidMount() {
     this.props.onGetRealties()
-    this.props.setFirstLoadingTrue()  
+    this.props.setFirstLoadingTrue() 
+    this.props.setFirstLoadingFalse() 
+    console.log('componentDidMount');
+     
+  }
+
+  makeCursorNotPointerIfActive(el) {
+    if (el.current.className.match(/active/)) {
+      el.current.style.cursor = 'text'
+    } else el.current.style.cursor = 'pointer'    
   }
 
   render() {
     return (      
-      <>         
+      <>
+        {console.log('render')}
+                 
         <NavbarContainer />
         <Container fluid>
           <Row>
             <Col xs={2} style={{ paddingLeft: 0 }}>
               <ListGroup as="div" className={ListGroupCss.main}>
                 <NavLink to={getPath(route('realties.index'))}
-                  className={NavLinkCss.main + ' ' + (this.props.isFirstLoading ? NavLinkCss.first : '')}
+                  className={NavLinkCss.main + ' ' + (this.props.isFirstLoading ? NavLinkCss.active : '')}
                   activeClassName={NavLinkCss.active}
-                  onClick={this.props.onGetRealties}>
+                  onClick={this.props.onGetRealties}
+                  ref={this.realtiesMenuItem}
+                  onMouseOver={this.makeCursorNotPointerIfActive.bind(this, this.realtiesMenuItem)}>
                   Объекты
                 </NavLink>
                 <NavLink to={getPath(route('feedbacks.index'))}
                   className={NavLinkCss.main}
                   activeClassName={NavLinkCss.active}
-                  onClick={this.props.onGetFeedbacks}>
+                  onClick={this.props.onGetFeedbacks}
+                  ref={this.feedbacksMenuItem}
+                  onMouseOver={this.makeCursorNotPointerIfActive.bind(this, this.feedbacksMenuItem)}>
                   Отзывы
                 </NavLink>
                 <NavLink to={getPath(route('images.index'))}
                   className={NavLinkCss.main}
                   activeClassName={NavLinkCss.active}
-                  onClick={this.props.onGetImages}>
+                  onClick={this.props.onGetImages}
+                  ref={this.imagesMenuItem}
+                  onMouseOver={this.makeCursorNotPointerIfActive.bind(this, this.imagesMenuItem)}>
                   Изображения
                 </NavLink>
                 <NavLink to="/admin/test"
