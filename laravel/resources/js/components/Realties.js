@@ -2,7 +2,6 @@
 import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { withRouter } from "react-router"
 
 // React Bootstrap
 import Table from 'react-bootstrap/Table'
@@ -18,22 +17,41 @@ import { getRealties } from '../actions/getRealties'
 import TableCss from './css/Table.module.css'
 
 
-function Realties({ realties, totalPages, currentPage, onGetRealties }) {
+function Realties({ realties, totalPages, currentPage, perPage, onGetRealties }) {
   function onGetResource(e, number) {
     e.preventDefault()
     onGetRealties(number)
   }
 
+  function showRealtiesItems(currentPage, perPage) {
+    return function(realty, index) {
+      let rowTableNumber = (currentPage * perPage) - perPage + 1 + index
+      return (
+        <tr key={index}>
+          <td className={TableCss.td}>{rowTableNumber}</td>
+          <td>{realty.name}</td>
+          <td>{realty.type_en}</td>
+          <td>{realty.price}</td>
+          <td>{realty.visibility}</td>
+          <td className={TableCss.tdIcon}><EditOutlinedIcon color="primary"></EditOutlinedIcon></td>
+          <td className={TableCss.tdIcon}><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></td>
+          <td className={TableCss.tdIcon}><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></td>
+        </tr>
+      )
+    }
+  } 
+
   let items = []
   for (let number = 1; number <= totalPages; number++) {
     items.push(
       <Pagination.Item
-        onClick={(e) => { onGetResource(e, number) }} key={number} active={number === currentPage}>
+        onClick={(e) => {onGetResource(e, number)}} key={number} active={number === currentPage}>
         {number}
-      </Pagination.Item>,
+      </Pagination.Item>
     )
   }
-
+  
+  
   return (
     <>
       <Table bordered hover>
@@ -50,25 +68,12 @@ function Realties({ realties, totalPages, currentPage, onGetRealties }) {
           </tr>
         </thead>
         <tbody>
-          {
-            realties.items.map((realty, index) =>
-              <tr key={index}>
-                <td className={TableCss.td}>{++index}</td>
-                <td>{realty.name}</td>
-                <td>{realty.type_en}</td>
-                <td>{realty.price}</td>
-                <td>{realty.visibility}</td>
-                <td className={TableCss.tdIcon}><EditOutlinedIcon color="primary"></EditOutlinedIcon></td>
-                <td className={TableCss.tdIcon}><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></td>
-                <td className={TableCss.tdIcon}><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></td>
-              </tr>
-            )
-          }
+          {realties.items.map(showRealtiesItems(currentPage, perPage))}
         </tbody>
       </Table>
       <Pagination>{items}</Pagination>
     </>
-  );
+  )
 }
 
 function mapStateToProps(state) {
@@ -76,6 +81,7 @@ function mapStateToProps(state) {
     realties: state.realties,
     totalPages: state.realties.totalPages,
     currentPage: state.realties.currentPage,
+    perPage: state.realties.perPage,
   }
 }
 
@@ -88,10 +94,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default compose(connect(mapStateToProps, mapDispatchToProps))(Realties)
-
-
-
-
-
-
-

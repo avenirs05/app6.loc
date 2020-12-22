@@ -43,9 +43,10 @@ class App extends Component {
   componentDidMount() {
     this.props.onGetRealties()
     this.props.setFirstLoadingTrue() 
+  }
+
+  componentWillUpdate() {
     this.props.setFirstLoadingFalse() 
-    console.log('componentDidMount');
-     
   }
 
   makeCursorNotPointerIfActive(el) {
@@ -57,8 +58,6 @@ class App extends Component {
   render() {
     return (      
       <>
-        {console.log('render')}
-                 
         <NavbarContainer />
         <Container fluid>
           <Row>
@@ -136,22 +135,20 @@ function mapDispatchToProps(dispatch) {
       dispatch(getRealties())
     },
     onGetFeedbacks() {
-      dispatch(setFirstLoadingFalseAction())
       dispatch(getFeedbacks())  
     },
     onGetImages() {      
-      dispatch(setFirstLoadingFalseAction())
       dispatch(getImages())  
-    },
-    onGetTests() {      
-      dispatch(setFirstLoadingFalseAction())       
     },
     setFirstLoadingFalse() {
       dispatch(setFirstLoadingFalseAction())
     },
     setFirstLoadingTrue() {
       dispatch(setFirstLoadingTrueAction())
-    }
+    },
+    onGetTests() {      
+      console.log('test');      
+    },
   }
 }
 

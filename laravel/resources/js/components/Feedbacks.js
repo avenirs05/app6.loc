@@ -17,17 +17,33 @@ import { getFeedbacks } from '../actions/getFeedbacks'
 import TableCss from './css/Table.module.css'
 
 
-function Feedbacks({feedbacks, totalPages, currentPage, onGetFeedbacks}) {
+function Feedbacks({feedbacks, totalPages, currentPage, perPage, onGetFeedbacks}) {
   function onGetResource(e, number) {
     e.preventDefault()
     onGetFeedbacks(number)
   }
 
+  function showFeedbacksItems(currentPage, perPage) {
+    return function(feedback, index) {
+      let rowTableNumber = (currentPage * perPage) - perPage + 1 + index
+      return (
+        <tr key={index}>
+          <td className={TableCss.td}>{rowTableNumber}</td>
+          <td>{feedback.author}</td>
+          <td>{feedback.date}</td>
+          <td className={TableCss.tdIcon}><EditOutlinedIcon color="primary"></EditOutlinedIcon></td>
+          <td className={TableCss.tdIcon}><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></td>
+          <td className={TableCss.tdIcon}><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></td>
+        </tr>
+      )
+    }
+  }  
+  
   let items = []
   for (let number = 1; number <= totalPages; number++) {
     items.push(
       <Pagination.Item
-        onClick={(e) => { onGetResource(e, number) }} key={number} active={number === currentPage}>
+        onClick={(e) => {onGetResource(e, number)}} key={number} active={number === currentPage}>
         {number}
       </Pagination.Item>,
     )
@@ -47,23 +63,12 @@ function Feedbacks({feedbacks, totalPages, currentPage, onGetFeedbacks}) {
           </tr>
         </thead>
         <tbody>
-          {            
-            feedbacks.items.map((feedback, index) =>               
-              <tr key={index}>
-                <td className={TableCss.td}>{++index}</td>
-                <td>{feedback.author}</td>
-                <td>{feedback.date}</td>
-                <td className={TableCss.tdIcon}><EditOutlinedIcon color="primary"></EditOutlinedIcon></td>
-                <td className={TableCss.tdIcon}><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></td>
-                <td className={TableCss.tdIcon}><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></td>
-              </tr>
-            ) 
-          }
+          {feedbacks.items.map(showFeedbacksItems(currentPage, perPage))}    
         </tbody>
       </Table>
-      <Pagination>{items}</Pagination>
+      <Pagination>{items}</Pagination>      
     </>
-  );
+  )
 }
 
 function mapStateToProps(state) {
@@ -71,6 +76,7 @@ function mapStateToProps(state) {
     feedbacks: state.feedbacks,
     totalPages: state.feedbacks.totalPages,
     currentPage: state.feedbacks.currentPage,
+    perPage: state.feedbacks.perPage,
   }
 }
 

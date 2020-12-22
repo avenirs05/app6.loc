@@ -17,11 +17,27 @@ import { getImages } from '../actions/getImages'
 import TableCss from './css/Table.module.css'
 
 
-function Images({images, totalPages, currentPage, onGetImages}) {
+function Images({images, totalPages, currentPage, perPage, onGetImages}) {
   function onGetResource(e, number) {
     e.preventDefault()
     onGetImages(number)
   }
+
+  function showImagesItems(currentPage, perPage) {
+    return function(image, index) {
+      let rowTableNumber = (currentPage * perPage) - perPage + 1 + index
+      return (
+        <tr key={index}>
+          <td className={TableCss.td}>{rowTableNumber}</td>
+          <td>{image.name}</td>
+          <td>{image.type}</td>
+          <td className={TableCss.tdIcon}><EditOutlinedIcon color="primary"></EditOutlinedIcon></td>
+          <td className={TableCss.tdIcon}><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></td>
+          <td className={TableCss.tdIcon}><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></td>
+        </tr>
+      )
+    }
+  }  
 
   let items = []
   for (let number = 1; number <= totalPages; number++) {
@@ -47,18 +63,7 @@ function Images({images, totalPages, currentPage, onGetImages}) {
           </tr>
         </thead>
         <tbody>
-          {            
-            images.items.map((image, index) =>               
-              <tr key={index}>
-                <td className={TableCss.td}>{++index}</td>
-                <td>{image.name}</td>
-                <td>{image.type}</td>
-                <td className={TableCss.tdIcon}><EditOutlinedIcon color="primary"></EditOutlinedIcon></td>
-                <td className={TableCss.tdIcon}><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></td>
-                <td className={TableCss.tdIcon}><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></td>
-              </tr>
-            ) 
-          }
+          {images.items.map(showImagesItems(currentPage, perPage))}  
         </tbody>        
       </Table>
       <Pagination>{items}</Pagination> 
@@ -71,6 +76,7 @@ function mapStateToProps(state) {
     images: state.images,
     totalPages: state.images.totalPages,
     currentPage: state.images.currentPage,
+    perPage: state.images.perPage,
   }
 }
 

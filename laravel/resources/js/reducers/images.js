@@ -2,7 +2,8 @@ const initialState = {
   items: [],
   totalPages: 0,
   totalItems: 0,
-  currentPage: 1 
+  currentPage: 1,
+  perPage: 100 
 }
 
 export default function images(state = initialState, action) {
@@ -13,6 +14,7 @@ export default function images(state = initialState, action) {
         totalPages: action.totalPages,
         totalItems: action.totalItems,
         currentPage: action.currentPage,
+        perPage: action.perPage,
       }
       
     default:
