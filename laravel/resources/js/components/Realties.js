@@ -2,6 +2,7 @@
 import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+import { NavLink } from "react-router-dom"
 
 // React Bootstrap
 import Table from 'react-bootstrap/Table'
@@ -15,6 +16,7 @@ import { getRealties } from '../actions/getRealties'
 
 // Css Modules
 import TableCss from './css/Table.module.css'
+import NavLinkCss from './css/NavLink.module.css'
 
 
 function Realties({ realties, totalPages, currentPage, perPage, onGetRealties }) {
@@ -33,9 +35,17 @@ function Realties({ realties, totalPages, currentPage, perPage, onGetRealties })
           <td>{realty.type_en}</td>
           <td>{realty.price}</td>
           <td>{realty.visibility}</td>
-          <td className={TableCss.tdIcon}><EditOutlinedIcon color="primary"></EditOutlinedIcon></td>
-          <td className={TableCss.tdIcon}><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></td>
-          <td className={TableCss.tdIcon}><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></td>
+          <td className={TableCss.tdIcon}>
+            <EditOutlinedIcon color="primary"></EditOutlinedIcon>
+          </td>
+          <td className={TableCss.tdIcon}>
+            <NavLink to={"/admin/realties/" + realty.id}>
+              <VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon>  
+            </NavLink>        
+          </td>
+          <td className={TableCss.tdIcon}>
+            <DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon>
+          </td>
         </tr>
       )
     }

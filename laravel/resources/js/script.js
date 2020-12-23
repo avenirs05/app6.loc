@@ -71,9 +71,9 @@ export function getPath(href) {
 
 export function getTotalPagesForPagination(totalCount, perPage) {
     return totalCount % perPage === 0 ? 
-      totalCount / perPage : 
-      Math.ceil(totalCount / perPage)
-  }
+             totalCount / perPage : 
+             Math.ceil(totalCount / perPage)
+}
 
 
 

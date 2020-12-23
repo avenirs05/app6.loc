@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Switch, Route, NavLink } from "react-router-dom";
+import { Switch, Route, NavLink, useParams } from "react-router-dom";
 import { withRouter } from "react-router";
 
 // React Bootstrap
@@ -22,6 +22,7 @@ import { setFirstLoadingFalseAction } from '../actions/setFirstLoadingFalse';
 import Realties from './Realties';
 import Feedbacks from './Feedbacks';
 import Images from './Images';
+import Realty from './Realty';
 import NavbarContainer from './NavbarContainer';
 import Test from './Test';
 
@@ -42,21 +43,23 @@ class App extends Component {
 
   componentDidMount() {
     this.props.onGetRealties()
-    this.props.setFirstLoadingTrue() 
+    this.props.setFirstLoadingTrue()
+    //console.log(route('realties.index'));
+    
   }
 
   componentWillUpdate() {
-    this.props.setFirstLoadingFalse() 
+    this.props.setFirstLoadingFalse()
   }
 
   makeCursorNotPointerIfActive(el) {
     if (el.current.className.match(/active/)) {
       el.current.style.cursor = 'text'
-    } else el.current.style.cursor = 'pointer'    
+    } else el.current.style.cursor = 'pointer'
   }
 
   render() {
-    return (      
+    return (
       <>
         <NavbarContainer />
         <Container fluid>
@@ -87,31 +90,23 @@ class App extends Component {
                   onMouseOver={this.makeCursorNotPointerIfActive.bind(this, this.imagesMenuItem)}>
                   Изображения
                 </NavLink>
-                <NavLink to="/admin/test"
+                {/* <NavLink to="/admin/realties/4"
                   className={NavLinkCss.main}
                   activeClassName={NavLinkCss.active}
-                  onClick={this.props.onGetTests}>
+                  onClick={this.props.onGetTests}
+                  >
                   Test
-                </NavLink>
+                </NavLink> */}
               </ListGroup>
             </Col>
             <Col>
               <Switch>
-                <Route exact path={getPath(route('admin.index'))}>                 
-                  <Realties />                   
-                </Route>
-                <Route exact path={getPath(route('realties.index'))}>                 
-                  <Realties />
-                </Route>
-                <Route exact path={getPath(route('feedbacks.index'))}>                 
-                  <Feedbacks />
-                </Route>
-                <Route exact path={getPath(route('images.index'))}>                 
-                  <Images />
-                </Route>
-                <Route exact path="/admin/test">                 
-                  <Test />
-                </Route>
+                <Route children={<Realties />} exact path={getPath(route('admin.index'))} />
+                <Route children={<Realties />} exact path={getPath(route('realties.index'))} />
+                <Route children={<Realty />} exact path={getPath(route('realties.index') + '/:id')} />
+                <Route children={<Feedbacks />} exact path={getPath(route('feedbacks.index'))} />
+                <Route children={<Images />} exact path={getPath(route('images.index'))} />
+                <Route children={<Test />} exact path="/admin/test" />
               </Switch>
             </Col>
           </Row>
@@ -121,6 +116,18 @@ class App extends Component {
   }
 }
 
+
+function Child() {
+  // We can use the `useParams` hook here to access
+  // the dynamic pieces of the URL.
+  let { id } = useParams();
+
+  return (
+    <div>
+      <h3>ID: {id}</h3>
+    </div>
+  );
+}
 
 function mapStateToProps(state) {
   return {
@@ -135,10 +142,10 @@ function mapDispatchToProps(dispatch) {
       dispatch(getRealties())
     },
     onGetFeedbacks() {
-      dispatch(getFeedbacks())  
+      dispatch(getFeedbacks())
     },
-    onGetImages() {      
-      dispatch(getImages())  
+    onGetImages() {
+      dispatch(getImages())
     },
     setFirstLoadingFalse() {
       dispatch(setFirstLoadingFalseAction())
@@ -146,8 +153,8 @@ function mapDispatchToProps(dispatch) {
     setFirstLoadingTrue() {
       dispatch(setFirstLoadingTrueAction())
     },
-    onGetTests() {      
-      console.log('test');      
+    onGetTests() {
+      console.log('test');
     },
   }
 }
