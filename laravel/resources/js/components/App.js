@@ -44,8 +44,6 @@ class App extends Component {
   componentDidMount() {
     this.props.onGetRealties()
     this.props.setFirstLoadingTrue()
-    //console.log(route('realties.index'));
-    
   }
 
   componentWillUpdate() {
@@ -66,7 +64,7 @@ class App extends Component {
           <Row>
             <Col xs={2} style={{ paddingLeft: 0 }}>
               <ListGroup as="div" className={ListGroupCss.main}>
-                <NavLink to={getPath(route('realties.index'))}
+                <NavLink to="/realties"
                   className={NavLinkCss.main + ' ' + (this.props.isFirstLoading ? NavLinkCss.active : '')}
                   activeClassName={NavLinkCss.active}
                   onClick={this.props.onGetRealties}
@@ -74,7 +72,7 @@ class App extends Component {
                   onMouseOver={this.makeCursorNotPointerIfActive.bind(this, this.realtiesMenuItem)}>
                   Объекты
                 </NavLink>
-                <NavLink to={getPath(route('feedbacks.index'))}
+                <NavLink to="/feedbacks"
                   className={NavLinkCss.main}
                   activeClassName={NavLinkCss.active}
                   onClick={this.props.onGetFeedbacks}
@@ -82,7 +80,7 @@ class App extends Component {
                   onMouseOver={this.makeCursorNotPointerIfActive.bind(this, this.feedbacksMenuItem)}>
                   Отзывы
                 </NavLink>
-                <NavLink to={getPath(route('images.index'))}
+                <NavLink to="/images"
                   className={NavLinkCss.main}
                   activeClassName={NavLinkCss.active}
                   onClick={this.props.onGetImages}
@@ -90,23 +88,16 @@ class App extends Component {
                   onMouseOver={this.makeCursorNotPointerIfActive.bind(this, this.imagesMenuItem)}>
                   Изображения
                 </NavLink>
-                {/* <NavLink to="/admin/realties/4"
-                  className={NavLinkCss.main}
-                  activeClassName={NavLinkCss.active}
-                  onClick={this.props.onGetTests}
-                  >
-                  Test
-                </NavLink> */}
               </ListGroup>
             </Col>
             <Col>
               <Switch>
-                <Route children={<Realties />} exact path={getPath(route('admin.index'))} />
-                <Route children={<Realties />} exact path={getPath(route('realties.index'))} />
-                <Route children={<Realty />} exact path={getPath(route('realties.index') + '/:id')} />
-                <Route children={<Feedbacks />} exact path={getPath(route('feedbacks.index'))} />
-                <Route children={<Images />} exact path={getPath(route('images.index'))} />
-                <Route children={<Test />} exact path="/admin/test" />
+                <Route children={<Realties />} exact path="/" />
+                <Route children={<Realties />} exact path="/realties" />
+                <Route children={<Realty />} exact path="/realties/:id" />
+                <Route children={<Feedbacks />} exact path="/feedbacks" />
+                <Route children={<Images />} exact path="/images" />
+                <Route children={<Test />} exact path="/test" />
               </Switch>
             </Col>
           </Row>
@@ -116,18 +107,6 @@ class App extends Component {
   }
 }
 
-
-function Child() {
-  // We can use the `useParams` hook here to access
-  // the dynamic pieces of the URL.
-  let { id } = useParams();
-
-  return (
-    <div>
-      <h3>ID: {id}</h3>
-    </div>
-  );
-}
 
 function mapStateToProps(state) {
   return {
@@ -154,7 +133,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(setFirstLoadingTrueAction())
     },
     onGetTests() {
-      console.log('test');
+      //console.log('test');
     },
   }
 }

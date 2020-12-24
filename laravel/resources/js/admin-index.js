@@ -7,15 +7,15 @@ import thunk from 'redux-thunk'
 
 import App from './components/App'
 import reducer from './reducers'
-import { BrowserRouter } from "react-router-dom"
+import { HashRouter } from "react-router-dom"
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <Provider store={store}>
       <App />
     </Provider>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('app')
 )

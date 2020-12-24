@@ -39,7 +39,7 @@ function Realties({ realties, totalPages, currentPage, perPage, onGetRealties })
             <EditOutlinedIcon color="primary"></EditOutlinedIcon>
           </td>
           <td className={TableCss.tdIcon}>
-            <NavLink to={"/admin/realties/" + realty.id}>
+            <NavLink to={"/realties/" + realty.id}>
               <VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon>  
             </NavLink>        
           </td>
