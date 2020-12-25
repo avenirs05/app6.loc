@@ -58,7 +58,7 @@ class RealtyResource extends Controller
      */
     public function edit(Realty $realty)
     {
-        //
+        return $realty;
     }
 
     /**

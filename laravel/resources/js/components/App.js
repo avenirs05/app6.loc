@@ -23,6 +23,7 @@ import Realties from './Realties';
 import Feedbacks from './Feedbacks';
 import Images from './Images';
 import RealtyShow from './RealtyShow';
+import RealtyEdit from './RealtyEdit';
 import NavbarContainer from './NavbarContainer';
 import Test from './Test';
 
@@ -93,6 +94,7 @@ class App extends Component {
                 <Route children={<Realties />} exact path="/" />
                 <Route children={<Realties />} exact path="/realties" />
                 <Route children={<RealtyShow />} exact path="/realties/:id" />
+                <Route children={<RealtyEdit />} exact path="/realties/:id/edit" />
                 <Route children={<Feedbacks />} exact path="/feedbacks" />
                 <Route children={<Images />} exact path="/images" />
                 <Route children={<Test />} exact path="/test" />

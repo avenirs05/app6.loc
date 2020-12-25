@@ -36,10 +36,12 @@ function Realties({ realties, totalPages, currentPage, perPage, onGetRealties })
           <td>{realty.price}</td>
           <td>{realty.visibility}</td>
           <td className={TableCss.tdIcon}>
-            <EditOutlinedIcon color="primary"></EditOutlinedIcon>
+            <NavLink to={`/realties/${realty.id}/edit`}>
+              <EditOutlinedIcon color="primary"></EditOutlinedIcon>  
+            </NavLink>  
           </td>
           <td className={TableCss.tdIcon}>
-            <NavLink to={"/realties/" + realty.id}>
+            <NavLink to={`/realties/${realty.id}`}>
               <VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon>  
             </NavLink>        
           </td>
@@ -59,8 +61,7 @@ function Realties({ realties, totalPages, currentPage, perPage, onGetRealties })
         {number}
       </Pagination.Item>
     )
-  }
-  
+  }  
   
   return (
     <>

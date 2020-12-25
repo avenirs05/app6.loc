@@ -24,7 +24,7 @@ class RealtyShow extends Component {
     return (      
       <>
         <NavLink to="/realties">
-          <Button variant="secondary" className="mr-2 mt-3 mb-4">Назад</Button>
+          <Button variant="secondary" className="mt-3 mb-4">Назад</Button>
         </NavLink> 
         <p><b>Название объекта:</b> {this.props.realtyShow.name}</p> 
         <p><b>Описание краткое:</b> {this.props.realtyShow.subname_ru}</p> 
@@ -73,7 +73,7 @@ class RealtyShow extends Component {
           </div>          
         </div>
         <NavLink to="/realties">
-         <Button variant="secondary" className="mr-2 mt-4">Назад</Button>
+         <Button variant="secondary" className="mt-4">Назад</Button>
        </NavLink> 
       </>
     )
