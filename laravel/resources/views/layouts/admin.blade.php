@@ -22,28 +22,30 @@
     <!-- Styles -->
     <link href="{{ asset('css/admin-app.css') }}" rel="stylesheet preload" as="style">
 </head>
-<body>
-    
-  <div id="app"></div>  
- 
+<body>    
+  <div id="app"></div>   
   <div id="bottom" style="text-align: right; padding-right: 15px;">   
-    <a class="navbar-brand" href="{{ url('/') }}">На сайт</a>
+    @if (request()->path() !== 'login')
+      <a class="navbar-brand" href="{{ url('/') }}">На сайт</a>
+    @endif   
     
     <div style="padding-right: 15px;">                
       @guest
-        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>            
+        <a class="nav-link" href="{{ route('login') }}">
+          @if (request()->path() !== 'login') 
+            {{ __('Login') }}
+          @endif
+        </a>            
       @else
         <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();">
-            Выйти 
+            document.getElementById('logout-form').submit();">           
+              Выйти 
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
       @endguest                
     </div>
-
-    @yield('content')        
-  
+    @yield('content')   
   </div>
 </body>
 </html>
