@@ -7,11 +7,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Admin | MyBudva') }}</title>
+    <title>Admin | mybudva.ru </title>
 
     <!-- Scripts -->
     @routes
     <script src={{ asset('js/app.js') }} defer></script>
+
+    <!-- Favicon -->
+	  <link rel="shortcut icon" href="{{ asset('images/fav-admin.ico') }}" type="image/png">
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
@@ -20,8 +23,7 @@
     <link href="{{ asset('css/admin-app.css') }}" rel="stylesheet preload" as="style">
 </head>
 <body>
-  
-  
+    
   <div id="app"></div>  
  
   <div id="bottom" style="text-align: right; padding-right: 15px;">   
