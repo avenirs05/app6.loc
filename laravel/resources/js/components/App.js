@@ -22,7 +22,7 @@ import { setFirstLoadingFalseAction } from '../actions/setFirstLoadingFalse';
 import Realties from './Realties';
 import Feedbacks from './Feedbacks';
 import Images from './Images';
-import Realty from './Realty';
+import RealtyShow from './RealtyShow';
 import NavbarContainer from './NavbarContainer';
 import Test from './Test';
 
@@ -30,8 +30,6 @@ import Test from './Test';
 import NavLinkCss from './css/NavLink.module.css';
 import ListGroupCss from './css/ListGroup.module.css';
 
-// My scripts
-import { getPath } from '../script'
 
 class App extends Component {
   constructor(props) {
@@ -94,7 +92,7 @@ class App extends Component {
               <Switch>
                 <Route children={<Realties />} exact path="/" />
                 <Route children={<Realties />} exact path="/realties" />
-                <Route children={<Realty />} exact path="/realties/:id" />
+                <Route children={<RealtyShow />} exact path="/realties/:id" />
                 <Route children={<Feedbacks />} exact path="/feedbacks" />
                 <Route children={<Images />} exact path="/images" />
                 <Route children={<Test />} exact path="/test" />
