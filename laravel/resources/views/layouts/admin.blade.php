@@ -26,7 +26,7 @@
   <div id="app"></div>   
   <div id="bottom" style="text-align: right; padding-right: 15px;">   
     @if (request()->path() !== 'login')
-      <a class="navbar-brand" href="{{ url('/') }}">На сайт</a>
+      {{-- <a class="navbar-brand" href="{{ url('/') }}">На сайт</a> --}}
     @endif   
     
     <div style="padding-right: 15px;">                
@@ -37,11 +37,11 @@
           @endif
         </a>            
       @else
-        <a href="{{ route('logout') }}"
+        {{-- <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">           
               Выйти 
-        </a>
+        </a> --}}
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
       @endguest                
     </div>

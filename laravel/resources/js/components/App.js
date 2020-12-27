@@ -58,7 +58,7 @@ class App extends Component {
   render() {
     return (
       <>
-        {/* <NavbarContainer /> */}
+        <NavbarContainer />
         <Container fluid>
           <Row>
             <Col xs={2} style={{ paddingLeft: 0 }}>
