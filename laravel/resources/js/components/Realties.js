@@ -6,17 +6,18 @@ import { NavLink } from "react-router-dom"
 
 // React Bootstrap
 import Table from 'react-bootstrap/Table'
+import Pagination from 'react-bootstrap/Pagination'
+
+// Material UI
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
-import Pagination from 'react-bootstrap/Pagination'
 
 // Actions
 import { getRealties } from '../actions/getRealties'
 
 // Css Modules
 import TableCss from './css/Table.module.css'
-import NavLinkCss from './css/NavLink.module.css'
 
 
 function Realties({ realties, totalPages, currentPage, perPage, onGetRealties }) {
@@ -37,16 +38,16 @@ function Realties({ realties, totalPages, currentPage, perPage, onGetRealties })
           <td>{realty.visibility}</td>
           <td className={TableCss.tdIcon}>
             <NavLink to={`/realties/${realty.id}/edit`}>
-              <EditOutlinedIcon color="primary"></EditOutlinedIcon>  
+              <EditOutlinedIcon color="primary" className={TableCss.icon}></EditOutlinedIcon>  
             </NavLink>  
           </td>
           <td className={TableCss.tdIcon}>
             <NavLink to={`/realties/${realty.id}`}>
-              <VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon>  
+              <VisibilityOutlinedIcon color="primary" className={TableCss.icon}></VisibilityOutlinedIcon>  
             </NavLink>        
           </td>
           <td className={TableCss.tdIcon}>
-            <DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon>
+            <DeleteOutlineOutlinedIcon color="primary" className={TableCss.icon}></DeleteOutlineOutlinedIcon>
           </td>
         </tr>
       )
