@@ -5,6 +5,7 @@ import realtyEdit from './realtyEdit'
 import feedbacks from './feedbacks'
 import images from './images'
 import isFirstLoading from './isFirstLoading'
+import { reducer as formReducer } from 'redux-form'
 
 export default combineReducers({
   isFirstLoading,
@@ -13,4 +14,5 @@ export default combineReducers({
   images,
   realtyShow,
   realtyEdit,
+  form: formReducer
 })
