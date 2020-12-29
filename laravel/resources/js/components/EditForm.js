@@ -3,8 +3,10 @@ import { compose } from 'redux'
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
 
+// React Bootstrap
+import Button from 'react-bootstrap/Button'
+
 // Material UI
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
@@ -24,9 +26,16 @@ const validate = values => {
     'name',
     'subname_ru'
   ]
-  requiredFields.forEach(field => { if (!values[field]) errors[field] = 'Обязательное поле' })
-  if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Недействительный email'
+  requiredFields.forEach(field => {
+    if (!values[field]) {
+      errors[field] = 'Required'
+    }
+  })
+  if (
+    values.email &&
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+  ) {
+    errors.email = 'Invalid email address'
   }
   return errors
 }
@@ -37,47 +46,41 @@ const renderTextField = ({
   meta: { touched, invalid, error },
   ...custom
 }) => (
-  <TextField
-    label={label}
-    placeholder={label}
-    error={touched && invalid}
-    helperText={touched && error}
-    fullWidth
-    {...input}
-    {...custom}
-  />
-)
+    <TextField
+      label={label}
+      placeholder={label}
+      error={touched && invalid}
+      helperText={touched && error}
+      fullWidth
+      {...input}
+      {...custom}
+    />
+  )
 
 
 let EditForm = props => {
-    const { handleSubmit, pristine, reset, submitting, classes } = props
-    
-    return (
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <Field
-            name="name"
-            component={renderTextField}
-            label="Название"
-          />
-        </div>
-        <div className="mb-4">
-          <Field
-            name="subname_ru"
-            component={renderTextField}
-            label="Описание краткое"
-          />
-        </div>
-        <div className="mb-4">
-          <Button 
-            type="submit" 
-            disabled={pristine || submitting} 
-            variant="contained" 
-            color="primary">
-              Сохранить
-          </Button>
-        </div>
-      </form>
+  const { handleSubmit, pristine, reset, submitting, classes } = props
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div className="mb-4">
+        <Field
+          name="name"
+          component={renderTextField}
+          label="Название"
+        />
+      </div>
+      <div className="mb-4">
+        <Field
+          name="subname_ru"
+          component={renderTextField}
+          label="Название"
+        />
+      </div>
+      <div className="mb-4">
+        <Button variant="primary" type="submit" disabled={pristine || submitting}>Сохранить</Button>
+      </div>
+    </form>
   )
 }
 
