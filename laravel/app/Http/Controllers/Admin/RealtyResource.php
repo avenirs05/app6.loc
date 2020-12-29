@@ -36,7 +36,16 @@ class RealtyResource extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $realty = Realty::find($request->id);
+        $requestArr = $request->toArray();
+
+        foreach($requestArr as $key => $value) {
+            if ($key !== 'type') {
+                $realty->update([$key => $value]); 
+            }             
+        }
+
+        return $realty;
     }
 
     /**
@@ -47,7 +56,7 @@ class RealtyResource extends Controller
      */
     public function show(Realty $realty)
     {
-        return $realty;
+       return $realty;
     }
 
     /**

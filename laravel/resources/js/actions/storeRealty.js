@@ -1,20 +1,16 @@
-import { STORE_REALTY } from './consts';
+import { REALTY_STORE } from './consts';
+import { realtyAllDbFields } from '../script';
 
-export function storeRealty(id) {
+
+export function storeRealty(values) {
   return function(dispatch) {  
-    axios.post(route('realties.index'), {id: id})                   
+    axios.post(route('realties.store'), { ...values }) 
          .then(response => { 
-          console.log(response)
-          //return 'hello'
-            //     dispatch({ 
-            //   type: GET_FEEDBACKS, 
-            //   items: response.data.data,
-            //   totalPages: response.data.last_page,
-            //   currentPage: response.data.current_page,
-            //   perPage: response.data.per_page,
-            //   totalItems: response.data.total,    
-            // })          
-    })
+            return dispatch({ 
+              type: REALTY_STORE, 
+              ...realtyAllDbFields(response)
+            })        
+          })
   }
 }
 

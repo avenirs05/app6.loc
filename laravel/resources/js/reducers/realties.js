@@ -1,12 +1,6 @@
-const initialState = {
-  items: [],
-  totalPages: 0,
-  totalItems: 0,
-  currentPage: 1,
-  perPage: 4 
-}
+import { realties as realtiesInit } from './initialState';
 
-export default function realties(state = initialState, action) {
+export default function realties(state = realtiesInit, action) {
   switch (action.type) {
     case 'GET_REALTIES':      
       return {

@@ -25,5 +25,6 @@ else if (location.pathname !== '/login')  {
     scripts.markActualMenuPage()
     scripts.footerToBottom()
     scripts.openLightGalleryIfClickMainImg()
+    
   })()
 } 

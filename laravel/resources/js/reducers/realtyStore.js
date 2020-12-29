@@ -1,7 +1,7 @@
-export default function realtyStore(state = null, action) {
+export default function realtyStore(state = {}, action) {
   switch (action.type) {
-    case 'STORE_REALTY': 
-      return state
+    case 'REALTY_STORE': 
+      return { ...action }
       
     default:
       return state  

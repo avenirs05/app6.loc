@@ -1,12 +1,6 @@
-const initialState = {
-  items: [],
-  totalPages: 0,
-  totalItems: 0,
-  currentPage: 1,
-  perPage: 100 
-}
+import { images as imagesInit } from './initialState';
 
-export default function images(state = initialState, action) {
+export default function images(state = imagesInit, action) {
   switch (action.type) {
     case 'GET_IMAGES':      
       return {

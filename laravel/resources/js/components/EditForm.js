@@ -28,14 +28,11 @@ const validate = values => {
   ]
   requiredFields.forEach(field => {
     if (!values[field]) {
-      errors[field] = 'Required'
+      errors[field] = 'Обязательное поле'
     }
   })
-  if (
-    values.email &&
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-  ) {
-    errors.email = 'Invalid email address'
+  if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Недействительный email'
   }
   return errors
 }
@@ -57,7 +54,6 @@ const renderTextField = ({
     />
   )
 
-
 let EditForm = props => {
   const { handleSubmit, pristine, reset, submitting, classes } = props
 
@@ -74,7 +70,7 @@ let EditForm = props => {
         <Field
           name="subname_ru"
           component={renderTextField}
-          label="Название"
+          label="Описание краткое"
         />
       </div>
       <div className="mb-4">

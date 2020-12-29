@@ -1,12 +1,6 @@
-const initialState = {
-  items: [],
-  totalPages: 0,
-  totalItems: 0,
-  currentPage: 1,
-  perPage: 50 
-}
+import { feedbacks as feedbacksInit } from './initialState';
 
-export default function feedbacks(state = initialState, action) {
+export default function feedbacks(state = feedbacksInit, action) {
   switch (action.type) {
     case 'GET_FEEDBACKS':      
       return {
