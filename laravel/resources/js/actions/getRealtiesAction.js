@@ -1,6 +1,6 @@
 import { GET_REALTIES } from './consts';
 
-export function getRealties(pageNumber) {
+export function getRealtiesAction(pageNumber) {
   return function(dispatch) {  
     axios.get(route('realties.index') + `?page=${pageNumber}`)                   
          .then(response => {    

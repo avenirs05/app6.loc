@@ -2,7 +2,7 @@ import { REALTY_STORE } from './consts';
 import { realtyAllDbFields } from '../script';
 
 
-export function storeRealty(values) {
+export function realtyStoreAction(values) {
   return function(dispatch) {  
     axios.post(route('realties.store'), { ...values }) 
          .then(response => { 

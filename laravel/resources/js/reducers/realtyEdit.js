@@ -1,6 +1,8 @@
+import { REALTY_EDIT } from '../actions/consts';
+
 export default function realtyEdit(state = {}, action) {
   switch (action.type) {
-    case 'GET_REALTY_EDIT':      
+    case REALTY_EDIT:      
       return { ...action }
       
     default:

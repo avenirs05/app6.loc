@@ -14,7 +14,7 @@ import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 
 // Actions
-import { getRealties } from '../actions/getRealties'
+import { getRealtiesAction } from '../actions/getRealtiesAction'
 
 // Css Modules
 import TableCss from './css/Table.module.css'
@@ -100,7 +100,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onGetRealties(pageNumber) {
-      dispatch(getRealties(pageNumber))
+      dispatch(getRealtiesAction(pageNumber))
     },
   }
 }

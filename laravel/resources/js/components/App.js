@@ -12,7 +12,7 @@ import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup'
 
 // Actions
-import { getRealties } from '../actions/getRealties';
+import { getRealtiesAction } from '../actions/getRealtiesAction';
 import { getFeedbacks } from '../actions/getFeedbacks';
 import { getImages } from '../actions/getImages';
 import { setFirstLoadingTrueAction } from '../actions/setFirstLoadingTrue';
@@ -118,7 +118,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onGetRealties() {
-      dispatch(getRealties())
+      dispatch(getRealtiesAction())
     },
     onGetFeedbacks() {
       dispatch(getFeedbacks())

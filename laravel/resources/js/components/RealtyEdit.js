@@ -14,8 +14,8 @@ import EditForm from './EditForm';
 import Button from 'react-bootstrap/Button'
 
 // Actions
-import { getRealtyEdit } from '../actions/getRealtyEdit'
-import { storeRealty } from '../actions/storeRealty'
+import { realtyEditAction } from '../actions/realtyEditAction'
+import { realtyStoreAction } from '../actions/realtyStoreAction'
 
 
 class RealtyEdit extends Component {
@@ -53,10 +53,10 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onGetRealtyEdit(id) {
-      dispatch(getRealtyEdit(id))
+      dispatch(realtyEditAction(id))
     },
     onStoreRealty(values) {      
-      dispatch(storeRealty(values))
+      dispatch(realtyStoreAction(values))
     },
   }
 }
