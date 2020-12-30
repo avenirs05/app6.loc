@@ -24,6 +24,7 @@ Route::get('apartments', 'Realties')->name('apartments');
 Route::get('villa/{id}', 'RealtySingle')->name('villa');
 Route::get('apartment/{id}', 'RealtySingle')->name('apartment');
 Route::get('contact', 'Contact')->name('contact');
+Route::get('test', 'Test')->name('test');
 
 
 //Определение языка и установка его в сессию 

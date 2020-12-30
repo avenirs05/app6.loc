@@ -11,7 +11,7 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 import Pagination from 'react-bootstrap/Pagination'
 
 // Actions
-import { getFeedbacks } from '../actions/getFeedbacks'
+import { getFeedbacksAction } from '../actions/getFeedbacksAction'
 
 // Css Modules
 import TableCss from './css/Table.module.css'
@@ -83,7 +83,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onGetFeedbacks(pageNumber) {
-      dispatch(getFeedbacks(pageNumber))
+      dispatch(getFeedbacksAction(pageNumber))
     },
   }
 }

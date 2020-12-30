@@ -13,10 +13,10 @@ import ListGroup from 'react-bootstrap/ListGroup'
 
 // Actions
 import { getRealtiesAction } from '../actions/getRealtiesAction';
-import { getFeedbacks } from '../actions/getFeedbacks';
-import { getImages } from '../actions/getImages';
-import { setFirstLoadingTrueAction } from '../actions/setFirstLoadingTrue';
-import { setFirstLoadingFalseAction } from '../actions/setFirstLoadingFalse';
+import { getFeedbacksAction } from '../actions/getFeedbacksAction';
+import { getImagesAction } from '../actions/getImagesAction';
+import { setFirstLoadingTrueAction } from '../actions/setFirstLoadingTrueAction';
+import { setFirstLoadingFalseAction } from '../actions/setFirstLoadingFalseAction';
 
 // Components
 import Realties from './Realties';
@@ -121,10 +121,10 @@ function mapDispatchToProps(dispatch) {
       dispatch(getRealtiesAction())
     },
     onGetFeedbacks() {
-      dispatch(getFeedbacks())
+      dispatch(getFeedbacksAction())
     },
     onGetImages() {
-      dispatch(getImages())
+      dispatch(getImagesAction())
     },
     setFirstLoadingFalse() {
       dispatch(setFirstLoadingFalseAction())

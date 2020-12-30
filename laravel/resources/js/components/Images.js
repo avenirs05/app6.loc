@@ -11,7 +11,7 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 import Pagination from 'react-bootstrap/Pagination'
 
 // Actions
-import { getImages } from '../actions/getImages'
+import { getImagesAction } from '../actions/getImagesAction'
 
 // Css Modules
 import TableCss from './css/Table.module.css'
