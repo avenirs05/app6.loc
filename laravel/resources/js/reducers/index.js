@@ -6,6 +6,7 @@ import realtyStore from './realtyStore'
 import feedbacks from './feedbacks'
 import images from './images'
 import isFirstLoading from './isFirstLoading'
+import isBtnUpdateRealtyClicked from './isBtnUpdateRealtyClicked'
 import { reducer as formReducer } from 'redux-form'
 
 export default combineReducers({
@@ -15,6 +16,7 @@ export default combineReducers({
   images,
   realtyShow,
   realtyEdit,
-  realtyStore,
-  form: formReducer
+  realtyStore,  
+  isBtnUpdateRealtyClicked,
+  form: formReducer,
 })

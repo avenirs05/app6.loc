@@ -40,9 +40,7 @@ class RealtyResource extends Controller
         $requestArr = $request->toArray();
 
         foreach($requestArr as $key => $value) {
-            if ($key !== 'type') {
-                $realty->update([$key => $value]); 
-            }             
+            $realty->update([$key => $value]);          
         }
 
         return $realty;

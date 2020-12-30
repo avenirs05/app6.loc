@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'redux'
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
+import { NavLink } from "react-router-dom"
 
 // React Bootstrap
 import Button from 'react-bootstrap/Button'

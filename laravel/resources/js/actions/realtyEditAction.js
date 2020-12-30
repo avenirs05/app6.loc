@@ -9,6 +9,6 @@ export function realtyEditAction(id) {
               type: REALTY_EDIT, 
               ...realtyAllDbFields(response)
             })        
-    })
+          })
   }
 }

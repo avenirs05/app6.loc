@@ -2,7 +2,7 @@
 import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { NavLink } from "react-router-dom"
+import { NavLink, Redirect } from "react-router-dom"
 
 // React Bootstrap
 import Table from 'react-bootstrap/Table'
@@ -15,12 +15,22 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 
 // Actions
 import { getRealtiesAction } from '../actions/getRealtiesAction'
+import { setBtnUpdateRealtyClickedFalseAction } from '../actions/setBtnUpdateRealtyClickedFalseAction'
+import { setBtnUpdateRealtyClickedTrueAction } from '../actions/setBtnUpdateRealtyClickedTrueAction'
 
 // Css Modules
 import TableCss from './css/Table.module.css'
 
 
-function Realties({ realties, totalPages, currentPage, perPage, onGetRealties }) {
+function Realties({ realties, 
+                    totalPages, 
+                    currentPage, 
+                    perPage, 
+                    onGetRealties, 
+                    setBtnUpdateRealtyClickedFalse,
+                    isBtnUpdateRealtyClicked }) 
+                  { 
+                   
   function onGetResource(e, number) {
     e.preventDefault()
     onGetRealties(number)
@@ -52,6 +62,11 @@ function Realties({ realties, totalPages, currentPage, perPage, onGetRealties })
         </tr>
       )
     }
+  } 
+
+  if (isBtnUpdateRealtyClicked) {
+    setBtnUpdateRealtyClickedFalse()
+    onGetRealties(currentPage)
   } 
 
   let items = []
@@ -94,6 +109,7 @@ function mapStateToProps(state) {
     totalPages: state.realties.totalPages,
     currentPage: state.realties.currentPage,
     perPage: state.realties.perPage,
+    isBtnUpdateRealtyClicked: state.isBtnUpdateRealtyClicked
   }
 }
 
@@ -102,6 +118,10 @@ function mapDispatchToProps(dispatch) {
     onGetRealties(pageNumber) {
       dispatch(getRealtiesAction(pageNumber))
     },
+    setBtnUpdateRealtyClickedFalse() {
+      dispatch(setBtnUpdateRealtyClickedFalseAction())
+    }
+
   }
 }
 
