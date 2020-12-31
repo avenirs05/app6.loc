@@ -16,7 +16,7 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 // Actions
 import { getRealtiesAction } from '../actions/getRealtiesAction'
 import { setBtnUpdateRealtyClickedFalseAction } from '../actions/setBtnUpdateRealtyClickedFalseAction'
-import { setBtnUpdateRealtyClickedTrueAction } from '../actions/setBtnUpdateRealtyClickedTrueAction'
+
 
 // Css Modules
 import TableCss from './css/Table.module.css'
@@ -121,8 +121,8 @@ function mapDispatchToProps(dispatch) {
     setBtnUpdateRealtyClickedFalse() {
       dispatch(setBtnUpdateRealtyClickedFalseAction())
     }
-
   }
 }
+
 
 export default compose(connect(mapStateToProps, mapDispatchToProps))(Realties)
