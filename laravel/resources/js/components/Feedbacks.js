@@ -51,6 +51,7 @@ function Feedbacks({feedbacks, totalPages, currentPage, perPage, onGetFeedbacks}
 
   return (
     <>
+      <h2 className="mb-4 mt-4">Отзывы</h2>
       <Table bordered hover>
         <thead>
           <tr>

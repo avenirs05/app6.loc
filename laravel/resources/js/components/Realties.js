@@ -1,12 +1,13 @@
 // React, Redux, Router 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { NavLink, Redirect } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 // React Bootstrap
 import Table from 'react-bootstrap/Table'
 import Pagination from 'react-bootstrap/Pagination'
+import Alert from 'react-bootstrap/Alert'
 
 // Material UI
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
@@ -30,10 +31,27 @@ function Realties({ realties,
                     setBtnUpdateRealtyClickedFalse,
                     isBtnUpdateRealtyClicked }) 
                   { 
-                   
-  function onGetResource(e, number) {
+   
+  const [alertVisibility, setAlertVisibility] = useState(false)        
+  
+  useEffect(() => { 
+    setBtnUpdateRealtyClickedFalse()
+    onGetRealties(currentPage)     
+  }, [isBtnUpdateRealtyClicked])             
+    
+
+  useEffect(() => { 
+    if (isBtnUpdateRealtyClicked) {
+      setAlertVisibility(true)
+      window.setTimeout(() => {
+        setAlertVisibility(false)
+      }, 2000)
+    }  
+  }, [alertVisibility])
+
+  function onGetResource(e, currentPageNumber) {
     e.preventDefault()
-    onGetRealties(number)
+    onGetRealties(currentPageNumber)
   }
 
   function showRealtiesItems(currentPage, perPage) {
@@ -64,11 +82,6 @@ function Realties({ realties,
     }
   } 
 
-  if (isBtnUpdateRealtyClicked) {
-    setBtnUpdateRealtyClickedFalse()
-    onGetRealties(currentPage)
-  } 
-
   let items = []
   for (let number = 1; number <= totalPages; number++) {
     items.push(
@@ -78,9 +91,12 @@ function Realties({ realties,
       </Pagination.Item>
     )
   }  
-  
+ 
   return (
-    <>
+    <>    
+      <h2 className="mb-4 mt-4">Объекты</h2>
+      <Alert variant="success" show={alertVisibility}>Объект успешно изменен!</Alert> 
+      
       <Table bordered hover>
         <thead>
           <tr>
@@ -98,7 +114,7 @@ function Realties({ realties,
           {realties.items.map(showRealtiesItems(currentPage, perPage))}
         </tbody>
       </Table>
-      <Pagination>{items}</Pagination>
+      <Pagination>{items}</Pagination>  
     </>
   )
 }
@@ -115,8 +131,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onGetRealties(pageNumber) {
-      dispatch(getRealtiesAction(pageNumber))
+    onGetRealties(currentPageNumber) {
+      dispatch(getRealtiesAction(currentPageNumber))
     },
     setBtnUpdateRealtyClickedFalse() {
       dispatch(setBtnUpdateRealtyClickedFalseAction())

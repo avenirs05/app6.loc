@@ -51,6 +51,7 @@ function Images({images, totalPages, currentPage, perPage, onGetImages}) {
 
   return (
     <>
+      <h2 className="mb-4 mt-4">Изображения</h2>
       <Table bordered hover>
         <thead>
           <tr>
