@@ -22,6 +22,7 @@ import { setAlertVisibilityFalseAction } from '../actions/setAlertVisibilityFals
 
 // Css Modules
 import TableCss from './css/Table.module.css'
+import RealtiesCss from './css/Realties.module.css'
 
 
 function Realties({ realties, 
@@ -62,7 +63,7 @@ function Realties({ realties,
         <tr key={index}>
           <td className={TableCss.td}>{rowTableNumber}</td>
           <td>{realty.name}</td>
-          <td>{realty.type_en}</td>
+          <td>{realty.type_ru}</td>
           <td>{realty.price}</td>
           <td>{realty.visibility}</td>
           <td className={TableCss.tdIcon}>
@@ -95,8 +96,10 @@ function Realties({ realties,
  
   return (
     <>    
-      <h2 className="mb-4 mt-4">Объекты</h2>
-      <Alert variant="success" show={isAlertVisible}>Объект успешно изменен!</Alert>       
+      <h2 className={`${RealtiesCss.header} mb-4 mt-4 mr-4`}>Объекты</h2>
+      <Alert variant="success" show={isAlertVisible} className={RealtiesCss.alert}>
+        Объект успешно изменен!
+      </Alert>       
       <Table bordered hover>
         <thead>
           <tr>

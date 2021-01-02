@@ -44,19 +44,53 @@ const renderTextField = ({
   ...custom
 }) => (
     <TextField
+      fullWidth
       label={label}
       placeholder={label}
       error={touched && invalid}
-      helperText={touched && error}
-      fullWidth
+      helperText={touched && error}      
       {...input}
       {...custom}
     />
   )
 
+const renderFromHelper = ({ touched, error }) => {
+  if (!(touched && error)) {
+    return
+  } else {
+    return <FormHelperText>{touched && error}</FormHelperText>
+  }
+}
+
+const renderSelectField = ({
+  input,
+  label,
+  meta: { touched, error },
+  children,
+  ...custom
+}) => (
+  <FormControl error={touched && error} fullWidth>
+    <InputLabel htmlFor="type_ru">{label}</InputLabel>
+    <Select        
+      native
+      {...input}
+      {...custom}
+      inputProps={{
+        name: input.name,
+        id: 'type_ru'
+      }}
+    >
+      {children}
+    </Select>
+    {renderFromHelper({ touched, error })}
+  </FormControl>
+)  
+
+const toggleOption = (prop, first, second) => prop === first ? second : first 
+
   
 let EditForm = props => {
-  const { handleSubmit, pristine, reset, submitting, classes } = props
+  const { handleSubmit, pristine, submitting, classes } = props
 
   return (
     <form onSubmit={handleSubmit}>
@@ -69,9 +103,22 @@ let EditForm = props => {
       </div>
       <div className="mb-4">
         <Field
+          classes={classes}
+          name="type_ru"
+          component={renderSelectField}
+          label="Тип объекта"
+        >          
+          <option value={props.realtyEdit.type_ru}>{props.realtyEdit.type_ru}</option>          
+          <option value={toggleOption(props.realtyEdit.type_ru, 'апартамент', 'вилла')}>
+            {toggleOption(props.realtyEdit.type_ru, 'апартамент', 'вилла')}
+          </option>         
+        </Field>
+      </div>
+      <div className="mb-4">
+        <Field
           name="subname_ru"
           component={renderTextField}
-          label="Описание краткое"
+          label="Мини-описание"
         />
       </div>
       <div className="mb-4">
@@ -83,7 +130,7 @@ let EditForm = props => {
 
 
 EditForm = reduxForm({
-  form: 'edit',
+  form: 'editRealty',
   validate
 })(EditForm)
 
@@ -91,7 +138,9 @@ EditForm = reduxForm({
 function mapStateToProps(state) {
   return {
     initialValues: state.realtyEdit,
-    enableReinitialize: true
+    realtyEdit: state.realtyEdit,
+    enableReinitialize: true,
+    //type_ru: state.form.editRealty.values.type_ru
   }
 }
 
