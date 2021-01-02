@@ -1,8 +1,10 @@
 import { images as imagesInit } from './initialState';
+import { GET_IMAGES } from '../actions/consts';
+
 
 export default function images(state = imagesInit, action) {
   switch (action.type) {
-    case 'GET_IMAGES':      
+    case GET_IMAGES:      
       return {
         items: action.items,
         totalPages: action.totalPages,

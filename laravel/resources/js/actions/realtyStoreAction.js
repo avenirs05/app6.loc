@@ -17,7 +17,7 @@ export function realtyStoreAction(values) {
               type: SET_BTN_UPDATE_REALTY_CLICKED_TRUE, 
               isBtnUpdateRealtyClicked: true 
             })        
-          }) 
+          })
           .catch(error => {
             console.log(error)
         })

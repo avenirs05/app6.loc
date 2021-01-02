@@ -1,8 +1,9 @@
 import { feedbacks as feedbacksInit } from './initialState';
+import { GET_FEEDBACKS } from '../actions/consts';
 
 export default function feedbacks(state = feedbacksInit, action) {
   switch (action.type) {
-    case 'GET_FEEDBACKS':      
+    case GET_FEEDBACKS:      
       return {
         items: action.items,
         totalPages: action.totalPages,

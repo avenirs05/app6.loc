@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Switch, Route, NavLink, useParams } from "react-router-dom";
+import { Switch, Route, NavLink } from "react-router-dom";
 import { withRouter } from "react-router";
 
 // React Bootstrap

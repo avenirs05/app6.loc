@@ -1,5 +1,5 @@
 // React, Redux, Router 
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { NavLink } from "react-router-dom"
@@ -17,7 +17,8 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 // Actions
 import { getRealtiesAction } from '../actions/getRealtiesAction'
 import { setBtnUpdateRealtyClickedFalseAction } from '../actions/setBtnUpdateRealtyClickedFalseAction'
-
+import { setAlertVisibilityTrueAction } from '../actions/setAlertVisibilityTrueAction'
+import { setAlertVisibilityFalseAction } from '../actions/setAlertVisibilityFalseAction'
 
 // Css Modules
 import TableCss from './css/Table.module.css'
@@ -29,11 +30,11 @@ function Realties({ realties,
                     perPage, 
                     onGetRealties, 
                     setBtnUpdateRealtyClickedFalse,
-                    isBtnUpdateRealtyClicked }) 
-                  { 
+                    isBtnUpdateRealtyClicked,
+                    setAlertVisibilityTrue,
+                    setAlertVisibilityFalse,
+                    isAlertVisible}) { 
    
-  const [alertVisibility, setAlertVisibility] = useState(false)        
-  
   useEffect(() => { 
     setBtnUpdateRealtyClickedFalse()
     onGetRealties(currentPage)     
@@ -42,12 +43,12 @@ function Realties({ realties,
 
   useEffect(() => { 
     if (isBtnUpdateRealtyClicked) {
-      setAlertVisibility(true)
+      setAlertVisibilityTrue()
       window.setTimeout(() => {
-        setAlertVisibility(false)
+        setAlertVisibilityFalse()
       }, 2000)
     }  
-  }, [alertVisibility])
+  }, [isAlertVisible])
 
   function onGetResource(e, currentPageNumber) {
     e.preventDefault()
@@ -95,8 +96,7 @@ function Realties({ realties,
   return (
     <>    
       <h2 className="mb-4 mt-4">Объекты</h2>
-      <Alert variant="success" show={alertVisibility}>Объект успешно изменен!</Alert> 
-      
+      <Alert variant="success" show={isAlertVisible}>Объект успешно изменен!</Alert>       
       <Table bordered hover>
         <thead>
           <tr>
@@ -125,7 +125,8 @@ function mapStateToProps(state) {
     totalPages: state.realties.totalPages,
     currentPage: state.realties.currentPage,
     perPage: state.realties.perPage,
-    isBtnUpdateRealtyClicked: state.isBtnUpdateRealtyClicked
+    isBtnUpdateRealtyClicked: state.isBtnUpdateRealtyClicked,
+    isAlertVisible: state.isAlertVisible
   }
 }
 
@@ -136,6 +137,12 @@ function mapDispatchToProps(dispatch) {
     },
     setBtnUpdateRealtyClickedFalse() {
       dispatch(setBtnUpdateRealtyClickedFalseAction())
+    },
+    setAlertVisibilityTrue() {
+      dispatch(setAlertVisibilityTrueAction())
+    },
+    setAlertVisibilityFalse() {
+      dispatch(setAlertVisibilityFalseAction())
     }
   }
 }
