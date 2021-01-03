@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button'
 
 // Material UI
 import TextField from '@material-ui/core/TextField'
+import Input from '@material-ui/core/Input';
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
@@ -25,14 +26,27 @@ const validate = values => {
   const errors = {}
   const requiredFields = [
     'name',
-    'subname_ru'
+    'subname_ru',
+    'subname_en',    
+    'type_ru',
+    'type_en',
+    'country_ru',
+    'country_en',
+    'area_ru',
+    'area_en',
+    'square',
   ]
+
   requiredFields.forEach(field => {
     if (!values[field]) {
       errors[field] = 'Обязательное поле'
     }
   })
-
+  
+  if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) { 
+    errors.email = 'Недействительный email'
+  }
+ 
   return errors
 }
 
@@ -48,11 +62,14 @@ const renderTextField = ({
       label={label}
       placeholder={label}
       error={touched && invalid}
-      helperText={touched && error}      
+      helperText={touched && error} 
       {...input}
       {...custom}
     />
   )
+
+
+
 
 const renderFromHelper = ({ touched, error }) => {
   if (!(touched && error)) {
@@ -70,14 +87,14 @@ const renderSelectField = ({
   ...custom
 }) => (
   <FormControl error={touched && error} fullWidth>
-    <InputLabel htmlFor="type_ru">{label}</InputLabel>
+    <InputLabel htmlFor={input.name}>{label}</InputLabel>
     <Select        
       native
       {...input}
       {...custom}
       inputProps={{
         name: input.name,
-        id: 'type_ru'
+        id: input.name
       }}
     >
       {children}
@@ -103,6 +120,20 @@ let EditForm = props => {
       </div>
       <div className="mb-4">
         <Field
+          name="subname_ru"
+          component={renderTextField}
+          label="Мини-описание"
+        />
+      </div>
+      <div className="mb-4">
+        <Field
+          name="subname_en"
+          component={renderTextField}
+          label="Мини-описание — English"
+        />
+      </div>
+      <div className="mb-4">
+        <Field
           classes={classes}
           name="type_ru"
           component={renderSelectField}
@@ -116,9 +147,56 @@ let EditForm = props => {
       </div>
       <div className="mb-4">
         <Field
-          name="subname_ru"
+          classes={classes}
+          name="type_ru"
+          component={renderSelectField}
+          label="Тип объекта — English"
+        >          
+          <option value={props.realtyEdit.type_en}>{props.realtyEdit.type_en}</option>          
+          <option value={toggleOption(props.realtyEdit.type_en, 'apartment', 'villa')}>
+            {toggleOption(props.realtyEdit.type_en, 'apartment', 'villa')}
+          </option>         
+        </Field>
+      </div>
+      <div className="mb-4">
+        <Field
+          name="square"
           component={renderTextField}
-          label="Мини-описание"
+          label="Площадь"
+          type="number"
+          // InputProps={{
+          //   inputProps: { 
+          //       max: 100, min: 10, type: "number"  
+          //   }
+          // }}          
+        />
+      </div>
+      <div className="mb-4">
+        <Field
+          name="country_ru"
+          component={renderTextField}
+          label="Страна"
+        />
+      </div>
+      <div className="mb-4">
+        <Field
+          name="country_en"
+          component={renderTextField}
+          label="Страна — English"
+        />
+      </div>
+      <div className="mb-4">
+        <Field
+          name="area_ru"
+          component={renderTextField}
+          label="Район"
+        />
+      </div>
+      <div className="mb-4">
+        <Field
+          name="area_en"
+          component={renderTextField}
+          label="Район — English"
         />
       </div>
       <div className="mb-4">
