@@ -42,7 +42,31 @@ const validate = values => {
     'capacity',
     'price',
     'price_line_through',
-    'booking_mark'
+    'booking_mark',
+    'price_jan',
+    'price_feb',
+    'price_mar',
+    'price_apr',
+    'price_may',
+    'price_jun',
+    'price_jul',
+    'price_aug',
+    'price_sep',
+    'price_oct',
+    'price_nov',
+    'price_dec',
+    'price_oct_apr',
+    'discount',
+    'view_ru', 
+    'view_en', 
+    'dist_sea', 
+    'dist_tivat', 
+    'dist_podg', 
+    'transfer_payment_ru', 
+    'transfer_payment_en', 
+    'internet_payment_ru',
+    'internet_payment_en',    
+    'map_html'
   ]
 
   requiredFields.forEach(field => {
@@ -169,6 +193,20 @@ let EditForm = props => {
       <div><Field name="capacity" label="Вместимость (человек)" type="number" component={renderTextField} /></div>
       <div><Field name="price" label="Цена (€)" type="number" component={renderTextField} /></div>
       <div><Field name="price_line_through" label="Цена перечеркнутая (€)" type="number" component={renderTextField} /></div>
+      <div><Field name="price_jan" label="Цена — Январь (€)" type="number" component={renderTextField} /></div>
+      <div><Field name="price_feb" label="Цена — Февраль (€)" type="number" component={renderTextField} /></div>
+      <div><Field name="price_mar" label="Цена — Март(€)" type="number" component={renderTextField} /></div>
+      <div><Field name="price_apr" label="Цена — Апрель (€)" type="number" component={renderTextField} /></div>
+      <div><Field name="price_may" label="Цена — Май (€)" type="number" component={renderTextField} /></div>
+      <div><Field name="price_jun" label="Цена — Июнь (€)" type="number" component={renderTextField} /></div>
+      <div><Field name="price_jul" label="Цена — Июль (€)" type="number" component={renderTextField} /></div>
+      <div><Field name="price_aug" label="Цена — Август (€)" type="number" component={renderTextField} /></div>
+      <div><Field name="price_sep" label="Цена — Сентябрь (€)" type="number" component={renderTextField} /></div>
+      <div><Field name="price_oct" label="Цена — Октябрь (€)" type="number" component={renderTextField} /></div>
+      <div><Field name="price_nov" label="Цена — Ноябрь (€)" type="number" component={renderTextField} /></div>
+      <div><Field name="price_dec" label="Цена — Декабрь (€)" type="number" component={renderTextField} /></div>
+      <div><Field name="price_oct_apr" label="Цена — Октябрь-Апрель (€)" type="number" component={renderTextField} /></div>
+      <div><Field name="discount" label="Скидка (%). Не трогать. Оставить 1%, как сейчас." type="number" component={renderTextField} /></div>
       <div>
         <Field 
           name="booking_mark" 
@@ -183,6 +221,19 @@ let EditForm = props => {
           }}
         />
       </div>
+      <div><Field name="view_ru" label="Вид" component={renderTextField} /></div>
+      <div><Field name="view_en" label="Вид — English" component={renderTextField} /></div>
+      <div><Field name="dist_sea" label="Расстояние до моря (км)" type="number" component={renderTextField} /></div>
+      <div><Field name="dist_tivat" label="Расстояние до аэропорта Тиват (км)" type="number" component={renderTextField} /></div>
+      <div><Field name="dist_podg" label="Расстояние до аэропорта Подгорица (км)" type="number" component={renderTextField} /></div>
+
+      <div><Field name="transfer_payment_ru" label="Трансфер. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
+      <div><Field name="transfer_payment_en" label="Трансфер — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
+      <div><Field name="internet_payment_ru" label="Интернет. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
+      <div><Field name="internet_payment_en" label="Интернет — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
+      
+      <div><Field name="map_html" label="Карта (html-код)" component={renderTextField} /></div>
+
       <div>
         <Button ref={saveBtn} variant="primary" type="submit" disabled={pristine || submitting}>Сохранить</Button>
       </div>

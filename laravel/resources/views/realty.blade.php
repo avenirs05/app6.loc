@@ -7,5 +7,5 @@
   @include('chunks.realty-params-mobile') 
   @include('chunks.price-mobile')      
   @include('chunks.feedbacks') 
-  @include('chunks.google-map')
+  @include('chunks.google-map', ['map' => $realty->map_html])
 @endsection

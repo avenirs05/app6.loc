@@ -24,10 +24,7 @@ class CreateRealtiesTable extends Migration
 						$table->integer('dist_sea')->nullable();
 						$table->integer('dist_tivat')->nullable();
 						$table->integer('dist_podg')->nullable();
-						$table->float('booking_mark', 2, 1)->nullable();						
-						$table->string('feedback_author')->nullable();
-						$table->date('feedback_date')->nullable();
-						$table->text('feedback_text')->nullable();						
+						$table->float('booking_mark', 2, 1)->nullable();					
 						$table->text('map_html')->nullable();
 						$table->integer('discount')->default(0);
 						$table->integer('price')->nullable();
