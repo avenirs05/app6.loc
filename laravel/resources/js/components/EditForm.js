@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { compose } from 'redux'
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
@@ -118,6 +118,15 @@ const toggleOption = (prop, first, second) => prop === first ? second : first
 
   
 let EditForm = props => {
+  const saveBtn = useRef(null);
+
+  useEffect(() => { 
+    let listenerEnterKeydown = document.addEventListener('keydown', function(event) {
+      event.code == 'Enter' ? saveBtn.current.click() : null      
+    })
+    return () => { removeEventListener('keydown', listenerEnterKeydown) }
+  }, [])
+
   const { handleSubmit, pristine, submitting, classes, realtyEdit } = props
 
   return (
@@ -175,7 +184,7 @@ let EditForm = props => {
         />
       </div>
       <div>
-        <Button variant="primary" type="submit" disabled={pristine || submitting}>Сохранить</Button>
+        <Button ref={saveBtn} variant="primary" type="submit" disabled={pristine || submitting}>Сохранить</Button>
       </div>
     </form>
   )

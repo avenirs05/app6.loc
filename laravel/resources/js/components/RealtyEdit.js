@@ -34,17 +34,17 @@ class RealtyEdit extends Component {
   }
 
   render() {     
-      return ( 
-          this.props.isBtnUpdateRealtyClicked ? 
-          <Redirect to="/realties" /> :
-        <>
-          <NavLink to="/realties">
-            <Button size="sm" variant="outline-secondary" className="mt-3 mb-3">Назад</Button>
-          </NavLink> 
-          <h3 className="mt-3 mb-4">{this.props.realtyEdit.name}</h3> 
-          <EditForm onSubmit={this.submit.bind(this)}/>
-        </>
-      )  
+    return ( 
+      this.props.isBtnUpdateRealtyClicked ? 
+      <Redirect to="/realties" /> :
+      <>
+        <NavLink to="/realties">
+          <Button size="sm" variant="outline-secondary" className="mt-3 mb-3">Назад</Button>
+        </NavLink> 
+        <h3 className="mt-3 mb-4">{this.props.realtyEdit.name}</h3> 
+        <EditForm onSubmit={this.submit.bind(this)}/>
+      </>
+    )  
   }
 }  
 
