@@ -20,7 +20,7 @@ import Radio from '@material-ui/core/Radio'
 import RadioGroup from '@material-ui/core/RadioGroup'
 
 // Css Modules
-import FormCss from './css/Form.module.css'
+import EditFormCss from './css/EditForm.module.css'
 
 const validate = values => {
   const errors = {}
@@ -34,7 +34,15 @@ const validate = values => {
     'country_en',
     'area_ru',
     'area_en',
+    'city_ru',
+    'city_en',
     'square',
+    'visibility',
+    'bedrooms',
+    'capacity',
+    'price',
+    'price_line_through',
+    'booking_mark'
   ]
 
   requiredFields.forEach(field => {
@@ -46,6 +54,10 @@ const validate = values => {
   if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) { 
     errors.email = 'Недействительный email'
   }
+
+  if (String(values.booking_mark)[1] !== '.' || String(values.booking_mark).length > 3) {
+    errors.booking_mark = "1 знак до запятой и 1 знак после запятой: 9.3 или 7.0. Разделитель - точка, а не запятая."
+  } 
  
   return errors
 }
@@ -69,8 +81,6 @@ const renderTextField = ({
   )
 
 
-
-
 const renderFromHelper = ({ touched, error }) => {
   if (!(touched && error)) {
     return
@@ -88,7 +98,8 @@ const renderSelectField = ({
 }) => (
   <FormControl error={touched && error} fullWidth>
     <InputLabel htmlFor={input.name}>{label}</InputLabel>
-    <Select        
+    <Select    
+      style={{ backgroundColor: '#eeeeee' }}    
       native
       {...input}
       {...custom}
@@ -107,99 +118,63 @@ const toggleOption = (prop, first, second) => prop === first ? second : first
 
   
 let EditForm = props => {
-  const { handleSubmit, pristine, submitting, classes } = props
+  const { handleSubmit, pristine, submitting, classes, realtyEdit } = props
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="mb-4">
-        <Field
-          name="name"
-          component={renderTextField}
-          label="Название"
-        />
-      </div>
-      <div className="mb-4">
-        <Field
-          name="subname_ru"
-          component={renderTextField}
-          label="Мини-описание"
-        />
-      </div>
-      <div className="mb-4">
-        <Field
-          name="subname_en"
-          component={renderTextField}
-          label="Мини-описание — English"
-        />
-      </div>
-      <div className="mb-4">
-        <Field
-          classes={classes}
-          name="type_ru"
-          component={renderSelectField}
-          label="Тип объекта"
-        >          
-          <option value={props.realtyEdit.type_ru}>{props.realtyEdit.type_ru}</option>          
-          <option value={toggleOption(props.realtyEdit.type_ru, 'апартамент', 'вилла')}>
-            {toggleOption(props.realtyEdit.type_ru, 'апартамент', 'вилла')}
+    <form className={EditFormCss.form} onSubmit={handleSubmit}>
+      <div><Field name="name" label="Название" component={renderTextField} /></div>
+      <div><Field name="subname_ru" label="Мини-описание" component={renderTextField} /></div>
+      <div><Field name="subname_en" label="Мини-описание — English" component={renderTextField} /></div>
+      <div>
+        <Field name="type_ru" label="Тип объекта" classes={classes} component={renderSelectField}>          
+          <option value={realtyEdit.type_ru}>{realtyEdit.type_ru}</option>          
+          <option value={toggleOption(realtyEdit.type_ru, 'апартамент', 'вилла')}>
+            {toggleOption(realtyEdit.type_ru, 'апартамент', 'вилла')}
           </option>         
         </Field>
       </div>
-      <div className="mb-4">
-        <Field
-          classes={classes}
-          name="type_ru"
-          component={renderSelectField}
-          label="Тип объекта — English"
-        >          
-          <option value={props.realtyEdit.type_en}>{props.realtyEdit.type_en}</option>          
-          <option value={toggleOption(props.realtyEdit.type_en, 'apartment', 'villa')}>
-            {toggleOption(props.realtyEdit.type_en, 'apartment', 'villa')}
+      <div>
+        <Field name="type_en" label="Тип объекта — English" classes={classes} component={renderSelectField}>          
+          <option value={realtyEdit.type_en}>{realtyEdit.type_en}</option>          
+          <option value={toggleOption(realtyEdit.type_en, 'apartment', 'villa')}>
+            {toggleOption(realtyEdit.type_en, 'apartment', 'villa')}
           </option>         
         </Field>
       </div>
-      <div className="mb-4">
-        <Field
-          name="square"
-          component={renderTextField}
-          label="Площадь"
-          type="number"
-          // InputProps={{
-          //   inputProps: { 
-          //       max: 100, min: 10, type: "number"  
-          //   }
-          // }}          
+      <div><Field name="square" label="Площадь (метров)" type="number" component={renderTextField} /></div>
+      <div><Field name="country_ru" label="Страна" component={renderTextField} /></div>
+      <div><Field name="country_en" label="Страна — English" component={renderTextField} /></div>
+      <div><Field name="area_ru" label="Район" component={renderTextField} /></div>
+      <div><Field name="area_en" label="Район — English" component={renderTextField} /></div>
+      <div><Field name="city_ru" label="Город" component={renderTextField} /></div>
+      <div><Field name="city_en" label="Город — English" component={renderTextField} /></div>
+      <div>
+        <Field name="visibility" label="Видимость" classes={classes} component={renderSelectField}>          
+          <option value={realtyEdit.visibility}>{realtyEdit.visibility}</option>          
+          <option value={toggleOption(realtyEdit.visibility, 'опубликовано', 'скрыто')}>
+            {toggleOption(realtyEdit.visibility, 'опубликовано', 'скрыто')}
+          </option>         
+        </Field>
+      </div>
+      <div><Field name="bedrooms" label="Спален (количество)" type="number" component={renderTextField} /></div>
+      <div><Field name="capacity" label="Вместимость (человек)" type="number" component={renderTextField} /></div>
+      <div><Field name="price" label="Цена (€)" type="number" component={renderTextField} /></div>
+      <div><Field name="price_line_through" label="Цена перечеркнутая (€)" type="number" component={renderTextField} /></div>
+      <div>
+        <Field 
+          name="booking_mark" 
+          label="Букинг (оценка)" 
+          type="number" 
+          component={renderTextField} 
+          InputProps={{
+            inputProps: {
+              step: 0.1,
+              inputmode: "numeric"
+            }
+          }}
         />
       </div>
-      <div className="mb-4">
-        <Field
-          name="country_ru"
-          component={renderTextField}
-          label="Страна"
-        />
-      </div>
-      <div className="mb-4">
-        <Field
-          name="country_en"
-          component={renderTextField}
-          label="Страна — English"
-        />
-      </div>
-      <div className="mb-4">
-        <Field
-          name="area_ru"
-          component={renderTextField}
-          label="Район"
-        />
-      </div>
-      <div className="mb-4">
-        <Field
-          name="area_en"
-          component={renderTextField}
-          label="Район — English"
-        />
-      </div>
-      <div className="mb-4">
+      <div>
         <Button variant="primary" type="submit" disabled={pristine || submitting}>Сохранить</Button>
       </div>
     </form>
@@ -218,7 +193,6 @@ function mapStateToProps(state) {
     initialValues: state.realtyEdit,
     realtyEdit: state.realtyEdit,
     enableReinitialize: true,
-    //type_ru: state.form.editRealty.values.type_ru
   }
 }
 

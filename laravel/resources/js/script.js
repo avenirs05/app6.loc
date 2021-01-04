@@ -92,6 +92,7 @@ export function realtyAllDbFields(response) {
     area_ru: response.data.area_ru,
     area_en: response.data.area_en,
     city_ru: response.data.city_ru,
+    city_en: response.data.city_en,
     visibility: response.data.visibility,
     square: response.data.square,
     bedrooms: response.data.bedrooms,
