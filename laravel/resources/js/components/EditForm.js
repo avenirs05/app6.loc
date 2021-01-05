@@ -78,16 +78,13 @@ const validate = values => {
     if (!values[field]) {
       errors[field] = 'Обязательное поле'
     }
-  })
-  
+  })  
   if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) { 
     errors.email = 'Недействительный email'
   }
-
   if (String(values.booking_mark)[1] !== '.' || String(values.booking_mark).length > 3) {
     errors.booking_mark = "1 знак до запятой и 1 знак после запятой: 9.3 или 7.0. Разделитель - точка, а не запятая."
-  } 
- 
+  }
   return errors
 }
 
@@ -109,20 +106,12 @@ const renderTextField = ({
     />
   )
 
-const renderTextAreaField = ({
-  label,
-  input,
-  meta: { touched, invalid, error },
-  ...custom
-}) => (
-    <TextareaAutosize
-      rowsMax={4}
-      label={label}
-      placeholder={label}
-      {...input}
-      {...custom}
-    />
-  )  
+const renderTextArea = ({label, input, meta: { touched, invalid, error }}) => (    
+  <div>
+      <textarea {...input} placeholder={label} rows="10" cols="40" style={{ width: '100%', padding: '15px' }} />
+      {touched && invalid && <span style={{color: '#f44336'}}>{error}</span>}
+  </div>      
+)
 
 
 const renderFromHelper = ({ touched, error }) => {
@@ -158,11 +147,11 @@ const renderSelectField = ({
   </FormControl>
 )  
 
+
 const toggleOption = (prop, first, second) => prop === first ? second : first 
 
-  
-let EditForm = props => {
 
+let EditForm = props => {
   const saveBtn = useRef(null);
   useEffect(() => {     
     let listenerEnterKeydown = document.addEventListener('keydown', function(event) {
@@ -176,6 +165,14 @@ let EditForm = props => {
   return (
     <form className={EditFormCss.form} onSubmit={handleSubmit}>
       <div><Field name="name" label="Название" component={renderTextField} /></div>
+      <div>
+        <Field name="visibility" label="Видимость" classes={classes} component={renderSelectField}>          
+          <option value={realtyEdit.visibility}>{realtyEdit.visibility}</option>          
+          <option value={toggleOption(realtyEdit.visibility, 'опубликовано', 'скрыто')}>
+            {toggleOption(realtyEdit.visibility, 'опубликовано', 'скрыто')}
+          </option>         
+        </Field>
+      </div>
       <div><Field name="subname_ru" label="Мини-описание" component={renderTextField} /></div>
       <div><Field name="subname_en" label="Мини-описание — English" component={renderTextField} /></div>
       <div>
@@ -194,21 +191,46 @@ let EditForm = props => {
           </option>         
         </Field>
       </div>
-      <div><Field name="square" label="Площадь (метров)" type="number" component={renderTextField} /></div>
       <div><Field name="country_ru" label="Страна" component={renderTextField} /></div>
       <div><Field name="country_en" label="Страна — English" component={renderTextField} /></div>
       <div><Field name="area_ru" label="Район" component={renderTextField} /></div>
       <div><Field name="area_en" label="Район — English" component={renderTextField} /></div>
       <div><Field name="city_ru" label="Город" component={renderTextField} /></div>
       <div><Field name="city_en" label="Город — English" component={renderTextField} /></div>
-      <div>
-        <Field name="visibility" label="Видимость" classes={classes} component={renderSelectField}>          
-          <option value={realtyEdit.visibility}>{realtyEdit.visibility}</option>          
-          <option value={toggleOption(realtyEdit.visibility, 'опубликовано', 'скрыто')}>
-            {toggleOption(realtyEdit.visibility, 'опубликовано', 'скрыто')}
-          </option>         
-        </Field>
+      <div><Field name="view_ru" label="Вид" component={renderTextField} /></div>
+      <div><Field name="view_en" label="Вид — English" component={renderTextField} /></div>
+      <div><Field name="transfer_payment_ru" label="Трансфер. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
+      <div><Field name="transfer_payment_en" label="Трансфер — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
+      <div><Field name="internet_payment_ru" label="Интернет. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
+      <div><Field name="internet_payment_en" label="Интернет — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
+      <div><Field name="parking_payment_ru" label="Паркинг. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
+      <div><Field name="parking_payment_en" label="Паркинг — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
+      <div>    
+        <label>Описание подробное</label>    
+        <div>
+          <Field 
+            name="description_ru"
+            label="Описание подробное"          
+            rows={20}
+            width="100%"
+            component={renderTextArea}               
+          />
+        </div> 
+      </div>    
+      <div>    
+        <label>Описание подробное — English</label>    
+        <div>
+          <Field 
+            name="description_en"
+            label="Описание подробное — English"          
+            rows={20}
+            width="100%"
+            component={renderTextArea}               
+          />
+        </div> 
       </div>
+      <div><Field name="map_html" label="Карта (html-код)" component={renderTextField} /></div>
+      <div><Field name="square" label="Площадь (метров)" type="number" component={renderTextField} /></div>
       <div><Field name="bedrooms" label="Спален (количество)" type="number" component={renderTextField} /></div>
       <div><Field name="capacity" label="Вместимость (человек)" type="number" component={renderTextField} /></div>
       <div><Field name="price" label="Цена (€)" type="number" component={renderTextField} /></div>
@@ -226,7 +248,6 @@ let EditForm = props => {
       <div><Field name="price_nov" label="Цена — Ноябрь (€)" type="number" component={renderTextField} /></div>
       <div><Field name="price_dec" label="Цена — Декабрь (€)" type="number" component={renderTextField} /></div>
       <div><Field name="price_oct_apr" label="Цена — Октябрь-Апрель (€)" type="number" component={renderTextField} /></div>
-      <div><Field name="discount" label="Скидка (%). Не трогать. Оставить 1%, как сейчас." type="number" component={renderTextField} /></div>
       <div>
         <Field 
           name="booking_mark" 
@@ -241,32 +262,10 @@ let EditForm = props => {
           }}
         />
       </div>
-      <div><Field name="view_ru" label="Вид" component={renderTextField} /></div>
-      <div><Field name="view_en" label="Вид — English" component={renderTextField} /></div>
       <div><Field name="dist_sea" label="Расстояние до моря (км)" type="number" component={renderTextField} /></div>
       <div><Field name="dist_tivat" label="Расстояние до аэропорта Тиват (км)" type="number" component={renderTextField} /></div>
       <div><Field name="dist_podg" label="Расстояние до аэропорта Подгорица (км)" type="number" component={renderTextField} /></div>
-
-      <div><Field name="transfer_payment_ru" label="Трансфер. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
-      <div><Field name="transfer_payment_en" label="Трансфер — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
-      <div><Field name="internet_payment_ru" label="Интернет. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
-      <div><Field name="internet_payment_en" label="Интернет — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
-      <div><Field name="parking_payment_ru" label="Паркинг. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
-      <div><Field name="parking_payment_en" label="Паркинг — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
-      <div><Field name="map_html" label="Карта (html-код)" component={renderTextField} /></div>
-
-      <div>
-        <Field 
-          name="description_ru" 
-          label="Описание подробное" 
-          fullWidth 
-          multiLine={true}
-          rows={10}
-          width="100%"
-          component="textarea"
-        />
-      </div>    
-
+      <div><Field name="discount" label="Скидка (%). Не трогать. Оставить 1%, как сейчас." type="number" component={renderTextField} /></div>      
       <div>
         <Button ref={saveBtn} variant="primary" type="submit" disabled={pristine || submitting}>Сохранить</Button>
       </div>
