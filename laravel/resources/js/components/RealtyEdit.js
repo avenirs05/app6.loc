@@ -26,7 +26,9 @@ class RealtyEdit extends Component {
   }
   
   submit(values) {
-    this.props.onStoreRealty(values)     
+    //console.log(values); 
+    this.props.onStoreRealty(values)    
+    
   }
 
   componentDidMount() {   

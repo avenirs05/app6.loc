@@ -235,7 +235,8 @@ let EditForm = props => {
       <div><Field name="transfer_payment_en" label="Трансфер — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
       <div><Field name="internet_payment_ru" label="Интернет. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
       <div><Field name="internet_payment_en" label="Интернет — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
-      
+      <div><Field name="parking_payment_ru" label="Паркинг. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
+      <div><Field name="parking_payment_en" label="Паркинг — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
       <div><Field name="map_html" label="Карта (html-код)" component={renderTextField} /></div>
 
       <div>
@@ -252,7 +253,7 @@ EditForm = reduxForm({
 })(EditForm)
 
 
-function mapStateToProps(state) {
+function mapStateToProps(state) {  
   return {
     initialValues: state.realtyEdit,
     realtyEdit: state.realtyEdit,
