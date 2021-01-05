@@ -102,6 +102,7 @@ export let allRealtyDbFields = [
   'parking_payment_ru',
   'parking_payment_en',
   'description_ru',   
+  'description_en',   
   'map_html',
   'square',
   'bedrooms',

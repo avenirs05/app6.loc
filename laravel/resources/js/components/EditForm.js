@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button'
 
 // Material UI
 import TextField from '@material-ui/core/TextField'
+import TextareaAutosize from '@material-ui/core/TextareaAutosize'
 import Input from '@material-ui/core/Input';
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
@@ -108,6 +109,21 @@ const renderTextField = ({
     />
   )
 
+const renderTextAreaField = ({
+  label,
+  input,
+  meta: { touched, invalid, error },
+  ...custom
+}) => (
+    <TextareaAutosize
+      rowsMax={4}
+      label={label}
+      placeholder={label}
+      {...input}
+      {...custom}
+    />
+  )  
+
 
 const renderFromHelper = ({ touched, error }) => {
   if (!(touched && error)) {
@@ -146,9 +162,9 @@ const toggleOption = (prop, first, second) => prop === first ? second : first
 
   
 let EditForm = props => {
-  const saveBtn = useRef(null);
 
-  useEffect(() => { 
+  const saveBtn = useRef(null);
+  useEffect(() => {     
     let listenerEnterKeydown = document.addEventListener('keydown', function(event) {
       event.code == 'Enter' ? saveBtn.current.click() : null      
     })
@@ -220,7 +236,7 @@ let EditForm = props => {
           InputProps={{
             inputProps: {
               step: 0.1,
-              inputmode: "numeric"
+              inputMode: "numeric"
             }
           }}
         />
@@ -238,6 +254,18 @@ let EditForm = props => {
       <div><Field name="parking_payment_ru" label="Паркинг. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
       <div><Field name="parking_payment_en" label="Паркинг — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
       <div><Field name="map_html" label="Карта (html-код)" component={renderTextField} /></div>
+
+      <div>
+        <Field 
+          name="description_ru" 
+          label="Описание подробное" 
+          fullWidth 
+          multiLine={true}
+          rows={10}
+          width="100%"
+          component="textarea"
+        />
+      </div>    
 
       <div>
         <Button ref={saveBtn} variant="primary" type="submit" disabled={pristine || submitting}>Сохранить</Button>
