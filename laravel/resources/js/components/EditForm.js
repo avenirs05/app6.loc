@@ -23,6 +23,7 @@ import RadioGroup from '@material-ui/core/RadioGroup'
 // Css Modules
 import EditFormCss from './css/EditForm.module.css'
 
+
 const validate = values => {
   const errors = {}
   const requiredFields = [
@@ -73,7 +74,6 @@ const validate = values => {
     'dist_podg',
     'discount',
   ]
-
   requiredFields.forEach(field => {
     if (!values[field]) {
       errors[field] = 'Обязательное поле'
@@ -106,6 +106,7 @@ const renderTextField = ({
     />
   )
 
+
 const renderTextArea = ({label, input, meta: { touched, invalid, error }}) => (    
   <div>
       <textarea {...input} placeholder={label} rows="10" cols="40" style={{ width: '100%', padding: '15px' }} />
@@ -121,6 +122,7 @@ const renderFromHelper = ({ touched, error }) => {
     return <FormHelperText>{touched && error}</FormHelperText>
   }
 }
+
 
 const renderSelectField = ({
   input,
@@ -152,7 +154,7 @@ const toggleOption = (prop, first, second) => prop === first ? second : first
 
 
 let EditForm = props => {
-  const saveBtn = useRef(null);
+  const saveBtn = useRef();
   useEffect(() => {     
     let listenerEnterKeydown = document.addEventListener('keydown', function(event) {
       event.code == 'Enter' ? saveBtn.current.click() : null      

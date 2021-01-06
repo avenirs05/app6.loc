@@ -15,7 +15,7 @@ class RealtyResource extends Controller
      */
     public function index()
     {
-        return Realty::paginate(28);
+        return Realty::paginate(20);
     }
 
     /**
@@ -36,11 +36,7 @@ class RealtyResource extends Controller
      */
     public function store(Request $request)
     {
-        $realty = Realty::find($request->id);
-
-        return collect($request)->each(function($val, $key) use ($realty) {
-            $realty->update([$key => $val]);
-        }); 
+        //
     }
 
     /**
@@ -74,7 +70,9 @@ class RealtyResource extends Controller
      */
     public function update(Request $request, Realty $realty)
     {
-        //
+        return collect($request)->each(function($val, $key) use ($realty) {
+            $realty->update([$key => $val]);
+        }); 
     }
 
     /**
