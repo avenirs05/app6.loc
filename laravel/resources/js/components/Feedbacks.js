@@ -31,9 +31,9 @@ function Feedbacks({feedbacks, totalPages, currentPage, perPage, onGetFeedbacks}
           <td className={TableCss.td}>{rowTableNumber}</td>
           <td>{feedback.author}</td>
           <td>{feedback.date}</td>
-          <td className={TableCss.tdIcon}><EditOutlinedIcon color="primary"></EditOutlinedIcon></td>
-          <td className={TableCss.tdIcon}><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></td>
-          <td className={TableCss.tdIcon}><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></td>
+          <td className={TableCss.td_icon}><EditOutlinedIcon color="primary"></EditOutlinedIcon></td>
+          <td className={TableCss.td_icon}><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></td>
+          <td className={TableCss.td_icon}><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></td>
         </tr>
       )
     }
@@ -58,9 +58,9 @@ function Feedbacks({feedbacks, totalPages, currentPage, perPage, onGetFeedbacks}
             <th>№</th>
             <th>Автор</th>
             <th>Дата</th>
-            <th className="tdIcon"><EditOutlinedIcon color="primary"></EditOutlinedIcon></th>
-            <th className="tdIcon"><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></th>
-            <th className="tdIcon"><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></th>
+            <th className="td_icon"><EditOutlinedIcon color="primary"></EditOutlinedIcon></th>
+            <th className="td_icon"><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></th>
+            <th className="td_icon"><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></th>
           </tr>
         </thead>
         <tbody>

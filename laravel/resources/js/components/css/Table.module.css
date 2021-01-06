@@ -1,11 +1,11 @@
-.tdIcon {
-  /* cursor: pointer;  */
+.td_icon {
   text-align: center; 
   width: 15px;
 }
 
 .icon:hover {
-  color: #002884
+  color: #002884;
+  cursor: pointer; 
 }
 
 .td {

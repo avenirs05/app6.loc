@@ -1,5 +1,5 @@
 // React, Redux, Router 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { NavLink } from "react-router-dom"
@@ -8,6 +8,8 @@ import { NavLink } from "react-router-dom"
 import Table from 'react-bootstrap/Table'
 import Pagination from 'react-bootstrap/Pagination'
 import Alert from 'react-bootstrap/Alert'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 
 // Material UI
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
@@ -34,7 +36,14 @@ function Realties({ realties,
                     isBtnUpdateRealtyClicked,
                     setAlertVisibilityTrue,
                     setAlertVisibilityFalse,
-                    isAlertVisible}) { 
+                    isAlertVisible}) 
+  { 
+  
+  const [show, setShow] = useState(false);
+  const [realtyDeleteName, setRealtyDeleteName] = useState('');
+
+  const handleClose = () => setShow(false);     
+  const handleShow = () => setShow(true);            
    
   useEffect(() => { 
     setBtnUpdateRealtyClickedFalse()
@@ -56,6 +65,14 @@ function Realties({ realties,
     onGetRealties(currentPageNumber)
   }
 
+  function onDeleteResource(e, id, name) {
+    e.preventDefault()  
+    handleShow()
+    setRealtyDeleteName(() => name)
+    console.log(realtyDeleteName);    
+  }   
+  
+
   function showRealtiesItems(currentPage, perPage) {
     return function(realty, index) {
       let rowTableNumber = (currentPage * perPage) - perPage + 1 + index
@@ -66,18 +83,22 @@ function Realties({ realties,
           <td>{realty.type_ru}</td>
           <td>{realty.price}</td>
           <td>{realty.visibility}</td>
-          <td className={TableCss.tdIcon}>
+          <td className={TableCss.td_icon}>
             <NavLink to={`/realties/${realty.id}/edit`}>
               <EditOutlinedIcon color="primary" className={TableCss.icon}></EditOutlinedIcon>  
             </NavLink>  
           </td>
-          <td className={TableCss.tdIcon}>
+          <td className={TableCss.td_icon}>
             <NavLink to={`/realties/${realty.id}`}>
               <VisibilityOutlinedIcon color="primary" className={TableCss.icon}></VisibilityOutlinedIcon>  
             </NavLink>        
           </td>
-          <td className={TableCss.tdIcon}>
-            <DeleteOutlineOutlinedIcon color="primary" className={TableCss.icon}></DeleteOutlineOutlinedIcon>
+          <td className={TableCss.td_icon}>
+            <DeleteOutlineOutlinedIcon 
+              onClick={(e) => {onDeleteResource(e, realty.id, realty.name)}} 
+              color="primary" 
+              className={TableCss.icon}>
+            </DeleteOutlineOutlinedIcon>
           </td>
         </tr>
       )
@@ -108,9 +129,9 @@ function Realties({ realties,
             <th>Тип</th>
             <th>Цена</th>
             <th>Видимость</th>
-            <th className="tdIcon"><EditOutlinedIcon color="primary"></EditOutlinedIcon></th>
-            <th className="tdIcon"><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></th>
-            <th className="tdIcon"><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></th>
+            <th className="td_icon"><EditOutlinedIcon color="primary"></EditOutlinedIcon></th>
+            <th className="td_icon"><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></th>
+            <th className="td_icon"><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></th>
           </tr>
         </thead>
         <tbody>
@@ -118,6 +139,20 @@ function Realties({ realties,
         </tbody>
       </Table>
       <Pagination>{items}</Pagination>  
+
+      <Modal size="lg" show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Вы хотите удалить объект {realtyDeleteName}?</Modal.Title>
+        </Modal.Header>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Закрыть
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Удалить навсегда
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   )
 }
