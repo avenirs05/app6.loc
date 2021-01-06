@@ -15,7 +15,7 @@ import Button from 'react-bootstrap/Button'
 
 // Actions
 import { realtyEditAction } from '../actions/realtyEditAction'
-import { realtyStoreAction } from '../actions/realtyStoreAction'
+import { realtyUpdateAction } from '../actions/realtyUpdateAction'
 import { getRealtiesAction } from '../actions/getRealtiesAction'
 import { setBtnUpdateRealtyClickedTrueAction } from '../actions/setBtnUpdateRealtyClickedTrueAction'
 
@@ -52,7 +52,7 @@ class RealtyEdit extends Component {
 function mapStateToProps(state) {
   return {
     realtyEdit: state.realtyEdit,
-    realtyStore: state.realtyStore,
+    realtyUpdate: state.realtyUpdate,
     currentPage: state.realties.currentPage,
     isBtnUpdateRealtyClicked: state.isBtnUpdateRealtyClicked
   }
@@ -67,7 +67,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(getRealtiesAction(pageNumber))
     },
     onStoreRealty(values) {      
-      dispatch(realtyStoreAction(values, this.currentPage))      
+      dispatch(realtyUpdateAction(values, this.currentPage))      
     },
     setBtnUpdateRealtyClickedTrue() {
       dispatch(setBtnUpdateRealtyClickedTrueAction())
