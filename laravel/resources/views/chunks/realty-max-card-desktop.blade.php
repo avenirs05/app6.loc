@@ -20,5 +20,9 @@
         </a> 
       @endforeach
     </div>  
-    <div class="w-100 mt-3">{{ $realty->{"description_". app()->getLocale()} }}</div> 
+    <div class="w-100 mt-3">
+      @markdown
+        {{ $realty->{"description_". app()->getLocale()} }}
+      @endmarkdown
+    </div> 
   </div> 

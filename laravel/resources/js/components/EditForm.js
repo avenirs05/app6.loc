@@ -2,7 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import { compose } from 'redux'
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
-import { NavLink } from "react-router-dom"
+import ReactMDE from 'redux-forms-markdown-editor'
+import { allRealtyDbFields } from '../script'
+
 
 // React Bootstrap
 import Button from 'react-bootstrap/Button'
@@ -23,68 +25,26 @@ import RadioGroup from '@material-ui/core/RadioGroup'
 // Css Modules
 import EditFormCss from './css/EditForm.module.css'
 
-
 const validate = values => {
   const errors = {}
-  const requiredFields = [
-    'name',
-    'visibility',
-    'subname_ru',
-    'subname_en',    
-    'type_ru',
-    'type_en',
-    'country_ru',
-    'country_en',
-    'area_ru',
-    'area_en',
-    'city_ru',
-    'city_en',
-    'view_ru', 
-    'view_en',  
-    'transfer_payment_ru', 
-    'transfer_payment_en', 
-    'internet_payment_ru',
-    'internet_payment_en',   
-    'parking_payment_ru',   
-    'parking_payment_en',   
-    'description_ru', 
-    'description_en', 
-    'map_html',
-    'square',
-    'bedrooms',
-    'capacity',
-    'price',
-    'price_line_through',
-    'price_jan',
-    'price_feb',
-    'price_mar',
-    'price_apr',
-    'price_may',
-    'price_jun',
-    'price_jul',
-    'price_aug',
-    'price_sep',
-    'price_oct',
-    'price_nov',
-    'price_dec',
-    'price_oct_apr',
-    'booking_mark',
-    'dist_sea', 
-    'dist_tivat', 
-    'dist_podg',
-    'discount',
-  ]
+  const requiredFields = allRealtyDbFields
+ 
   requiredFields.forEach(field => {
-    if (!values[field]) {
+    if (!values[field] && (field === 'description_ru' || field === 'description_en')) {
+      errors[field] = eval(<span className={EditFormCss.error_text}>Описание — обязательное поле!</span>);
+    } 
+    else if (!values[field]) {
       errors[field] = 'Обязательное поле'
     }
-  })  
+  })   
+
   if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) { 
     errors.email = 'Недействительный email'
   }
   if (String(values.booking_mark)[1] !== '.' || String(values.booking_mark).length > 3) {
     errors.booking_mark = "1 знак до запятой и 1 знак после запятой: 9.3 или 7.0. Разделитель - точка, а не запятая."
   }
+
   return errors
 }
 
@@ -105,14 +65,6 @@ const renderTextField = ({
       {...custom}
     />
   )
-
-
-const renderTextArea = ({label, input, meta: { touched, invalid, error }}) => (    
-  <div>
-      <textarea {...input} placeholder={label} rows="10" cols="40" style={{ width: '100%', padding: '15px' }} />
-      {touched && invalid && <span style={{color: '#f44336'}}>{error}</span>}
-  </div>      
-)
 
 
 const renderFromHelper = ({ touched, error }) => {
@@ -156,10 +108,10 @@ const toggleOption = (prop, first, second) => prop === first ? second : first
 let EditForm = props => {
   const saveBtn = useRef();
   useEffect(() => {     
-    let listenerEnterKeydown = document.addEventListener('keydown', function(event) {
-      event.code == 'Enter' ? saveBtn.current.click() : null      
+    let listenerSaveKeydown = document.addEventListener('keydown', function(event) {
+      (event.key =='Escape') ? saveBtn.current.click() : null      
     })
-    return () => { removeEventListener('keydown', listenerEnterKeydown) }
+    return () => { removeEventListener('keydown', listenerSaveKeydown) }
   }, [])
 
   const { handleSubmit, pristine, submitting, classes, realtyEdit } = props
@@ -207,29 +159,13 @@ let EditForm = props => {
       <div><Field name="internet_payment_en" label="Интернет — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
       <div><Field name="parking_payment_ru" label="Паркинг. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
       <div><Field name="parking_payment_en" label="Паркинг — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
-      <div>    
-        <label>Описание подробное</label>    
-        <div>
-          <Field 
-            name="description_ru"
-            label="Описание подробное"          
-            rows={20}
-            width="100%"
-            component={renderTextArea}               
-          />
-        </div> 
-      </div>    
-      <div>    
-        <label>Описание подробное — English</label>    
-        <div>
-          <Field 
-            name="description_en"
-            label="Описание подробное — English"          
-            rows={20}
-            width="100%"
-            component={renderTextArea}               
-          />
-        </div> 
+      <div>
+        <label>Описание подробное</label>
+        <Field name="description_ru" component={ReactMDE} placeholder="Описание подробное" />
+      </div>
+      <div>
+        <label>Описание подробное — English</label>
+        <Field name="description_en" component={ReactMDE} placeholder="Описание подробное — English" />
       </div>
       <div><Field name="map_html" label="Карта (html-код)" component={renderTextField} /></div>
       <div><Field name="square" label="Площадь (метров)" type="number" component={renderTextField} /></div>
@@ -253,13 +189,13 @@ let EditForm = props => {
       <div>
         <Field 
           name="booking_mark" 
-          label="Букинг (оценка)" 
-          type="number" 
+          label="Букинг (оценка)"           
           component={renderTextField} 
           InputProps={{
             inputProps: {
               step: 0.1,
-              inputMode: "numeric"
+              inputMode: "numeric",
+              type: "number"
             }
           }}
         />
