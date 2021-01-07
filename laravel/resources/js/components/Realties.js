@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { NavLink } from "react-router-dom"
+import { NavLink, Redirect } from "react-router-dom"
 
 // React Bootstrap
 import Table from 'react-bootstrap/Table'
@@ -18,7 +18,9 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 
 // Actions
 import { getRealtiesAction } from '../actions/getRealtiesAction'
+import { realtyDeleteAction } from '../actions/realtyDeleteAction'
 import { setBtnUpdateRealtyClickedFalseAction } from '../actions/setBtnUpdateRealtyClickedFalseAction'
+import { setBtnDeleteRealtyClickedFalseAction } from '../actions/setBtnDeleteRealtyClickedFalseAction'
 import { setAlertVisibilityTrueAction } from '../actions/setAlertVisibilityTrueAction'
 import { setAlertVisibilityFalseAction } from '../actions/setAlertVisibilityFalseAction'
 
@@ -32,14 +34,17 @@ function Realties({ realties,
                     currentPage, 
                     perPage, 
                     onGetRealties, 
+                    onDeleteRealty,
                     setBtnUpdateRealtyClickedFalse,
+                    setBtnDeleteRealtyClickedFalse,
                     isBtnUpdateRealtyClicked,
+                    isBtnDeleteRealtyClicked,
                     setAlertVisibilityTrue,
                     setAlertVisibilityFalse,
-                    isAlertVisible}) 
-  { 
+                    isAlertVisible, }) { 
   
   const [show, setShow] = useState(false);
+  const [realtyDeleteId, setRealtyDeleteId] = useState(0);
   const [realtyDeleteName, setRealtyDeleteName] = useState('');
 
   const handleClose = () => setShow(false);     
@@ -50,6 +55,10 @@ function Realties({ realties,
     onGetRealties(currentPage)     
   }, [isBtnUpdateRealtyClicked])             
     
+  useEffect(() => { 
+    setBtnDeleteRealtyClickedFalse()
+    onGetRealties(currentPage)     
+  }, [isBtnDeleteRealtyClicked])  
 
   useEffect(() => { 
     if (isBtnUpdateRealtyClicked) {
@@ -65,11 +74,17 @@ function Realties({ realties,
     onGetRealties(currentPageNumber)
   }
 
-  function onDeleteResource(e, id, name) {
+  function onDeleteResource(e, id) {
+    e.preventDefault()
+    handleClose()
+    onDeleteRealty(id)
+  }
+
+  function setCandidateToDelete(e, id, name) {
     e.preventDefault()  
     handleShow()
-    setRealtyDeleteName(() => name)
-    console.log(realtyDeleteName);    
+    setRealtyDeleteId(() => id)
+    setRealtyDeleteName(() => name)  
   }   
   
 
@@ -95,7 +110,7 @@ function Realties({ realties,
           </td>
           <td className={TableCss.td_icon}>
             <DeleteOutlineOutlinedIcon 
-              onClick={(e) => {onDeleteResource(e, realty.id, realty.name)}} 
+              onClick={(e) => setCandidateToDelete(e, realty.id, realty.name)} 
               color="primary" 
               className={TableCss.icon}>
             </DeleteOutlineOutlinedIcon>
@@ -116,6 +131,8 @@ function Realties({ realties,
   }  
  
   return (
+    isBtnDeleteRealtyClicked ? 
+    <Redirect to="/realties" /> :
     <>    
       <h2 className={`${RealtiesCss.header} mb-4 mt-4 mr-4`}>Объекты</h2>
       <Alert variant="success" show={isAlertVisible} className={RealtiesCss.alert}>
@@ -148,7 +165,7 @@ function Realties({ realties,
           <Button variant="secondary" onClick={handleClose}>
             Закрыть
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="danger" onClick={(e) => onDeleteResource(e, realtyDeleteId)}>
             Удалить навсегда
           </Button>
         </Modal.Footer>
@@ -164,6 +181,7 @@ function mapStateToProps(state) {
     currentPage: state.realties.currentPage,
     perPage: state.realties.perPage,
     isBtnUpdateRealtyClicked: state.isBtnUpdateRealtyClicked,
+    isBtnDeleteRealtyClicked: state.isBtnDeleteRealtyClicked,
     isAlertVisible: state.isAlertVisible
   }
 }
@@ -173,8 +191,14 @@ function mapDispatchToProps(dispatch) {
     onGetRealties(currentPageNumber) {
       dispatch(getRealtiesAction(currentPageNumber))
     },
+    onDeleteRealty(id) {      
+      dispatch(realtyDeleteAction(id))
+    },
     setBtnUpdateRealtyClickedFalse() {
       dispatch(setBtnUpdateRealtyClickedFalseAction())
+    },
+    setBtnDeleteRealtyClickedFalse() {
+      dispatch(setBtnDeleteRealtyClickedFalseAction())
     },
     setAlertVisibilityTrue() {
       dispatch(setAlertVisibilityTrueAction())

@@ -83,6 +83,6 @@ class RealtyResource extends Controller
      */
     public function destroy(Realty $realty)
     {
-        //
+        Realty::destroy($realty->id);
     }
 }

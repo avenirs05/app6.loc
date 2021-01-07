@@ -17,7 +17,7 @@ class CreateImagesTable extends Migration
             $table->increments('id');
 
             $table->integer('realty_id')->unsigned()->index();
-            $table->foreign('realty_id')->references('id')->on('realties');
+            $table->foreign('realty_id')->references('id')->on('realties')->onDelete('cascade');
 			
 			$table->string('type');
 			$table->string('name');	

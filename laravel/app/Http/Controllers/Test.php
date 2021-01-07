@@ -10,10 +10,13 @@ class Test extends Controller
 {
     public function __invoke(Request $request)
     {
-        $realty = Realty::find(3);
+        $realty = Realty::find(2);
 
-        return collect($request->toArray())->each(function($val, $key) use ($realty) {
-            dump($realty);
-        }); 
+        //$realty->delete();
+        //Realty::destroy($realty);
+        //dump('hello1');
+        // return collect($request->toArray())->each(function($val, $key) use ($realty) {
+        //     dump($realty);
+        // }); 
     }
 }

@@ -17,7 +17,6 @@ import Button from 'react-bootstrap/Button'
 import { realtyEditAction } from '../actions/realtyEditAction'
 import { realtyUpdateAction } from '../actions/realtyUpdateAction'
 import { getRealtiesAction } from '../actions/getRealtiesAction'
-import { setBtnUpdateRealtyClickedTrueAction } from '../actions/setBtnUpdateRealtyClickedTrueAction'
 
 
 class RealtyEdit extends Component {
@@ -27,7 +26,6 @@ class RealtyEdit extends Component {
   
   submit(values) {
     this.props.onStoreRealty(values)    
-    
   }
 
   componentDidMount() {   
@@ -69,9 +67,6 @@ function mapDispatchToProps(dispatch) {
     onStoreRealty(values) {      
       dispatch(realtyUpdateAction(values, this.currentPage))      
     },
-    setBtnUpdateRealtyClickedTrue() {
-      dispatch(setBtnUpdateRealtyClickedTrueAction())
-    }
   }
 }
 
