@@ -23,6 +23,7 @@ import Realties from './Realties'
 import Feedbacks from './Feedbacks'
 import Images from './Images'
 import RealtyShow from './RealtyShow'
+import RealtyCreate from './RealtyCreate'
 import RealtyEdit from './RealtyEdit'
 import NavbarContainer from './NavbarContainer'
 import Test from './Test'
@@ -93,7 +94,7 @@ class App extends Component {
               <Switch>
                 <Route children={<Realties />} exact path="/" />
                 <Route children={<Realties />} exact path="/realties" />
-                <Route children={<Test />} exact path="/realties/create" />
+                <Route children={<RealtyCreate />} exact path="/realties/create" />
                 <Route children={<RealtyShow />} exact path="/realties/:id" />
                 <Route children={<RealtyEdit />} exact path="/realties/:id/edit" />
                 

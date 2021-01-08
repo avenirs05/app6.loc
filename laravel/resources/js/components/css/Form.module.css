@@ -1,0 +1,10 @@
+.form div {
+  margin-bottom: 10px;
+}
+
+.error_text {
+  color: #f44336; 
+  font-size: 0.75rem; 
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif
+}
+

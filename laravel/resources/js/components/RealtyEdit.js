@@ -22,7 +22,7 @@ class RealtyEdit extends Component {
   }
   
   submit(values) {
-    this.props.onStoreRealty(values)    
+    this.props.onUpdateRealty(values)    
   }
 
   componentDidMount() {   
@@ -62,7 +62,7 @@ function mapDispatchToProps(dispatch) {
     onGetRealties(pageNumber) {
       dispatch(getRealtiesAction(pageNumber))
     },
-    onStoreRealty(values) {      
+    onUpdateRealty(values) {      
       dispatch(realtyUpdateAction(values, this.currentPage))      
     },
   }

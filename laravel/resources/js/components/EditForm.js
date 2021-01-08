@@ -16,7 +16,7 @@ import InputLabel from '@material-ui/core/InputLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
 // Css Modules
-import EditFormCss from './css/EditForm.module.css'
+import FormCss from './css/Form.module.css'
 
 const validate = values => {
   const errors = {}
@@ -24,7 +24,7 @@ const validate = values => {
  
   requiredFields.forEach(field => {
     if (!values[field] && (field === 'description_ru' || field === 'description_en')) {
-      errors[field] = eval(<span className={EditFormCss.error_text}>Описание — обязательное поле!</span>);
+      errors[field] = eval(<span className={FormCss.error_text}>Описание — обязательное поле!</span>);
     } 
     else if (!values[field]) {
       errors[field] = 'Обязательное поле'
@@ -110,7 +110,7 @@ let EditForm = props => {
   const { handleSubmit, pristine, submitting, classes, realtyEdit } = props
 
   return (
-    <form className={EditFormCss.form} onSubmit={handleSubmit}>
+    <form className={FormCss.form} onSubmit={handleSubmit}>
       <div><Field name="name" label="Название" component={renderTextField} /></div>
       <div>
         <Field name="visibility" label="Видимость" classes={classes} component={renderSelectField}>          
