@@ -29,11 +29,11 @@ import TableCss from './css/Table.module.css'
 import RealtiesCss from './css/Realties.module.css'
 
 
-function Realties({ realties, 
-                    totalPages, 
-                    currentPage, 
-                    perPage, 
-                    onGetRealties, 
+function Realties({ realties,
+                    totalPages,
+                    currentPage,
+                    perPage,
+                    onGetRealties,
                     onDeleteRealty,
                     isJustUpdatedRealty,
                     isJustDeletedRealty,
@@ -41,35 +41,36 @@ function Realties({ realties,
                     setJustDeletedRealtyFalse,
                     setAlertUpdateVisibilityFalse,
                     setAlertDeleteVisibilityFalse,
-                    isAlertUpdateVisible, 
-                    isAlertDeleteVisible, }) { 
-  
+                    isAlertUpdateVisible,
+                    isAlertDeleteVisible, 
+                  }) {
+
   const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false)     
-  const handleShow = () => setShow(true)  
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   const [realtyDeleteId, setRealtyDeleteId] = useState(0)
-  const [realtyDeleteName, setRealtyDeleteName] = useState('')    
-   
-  useEffect(() => { 
-    if (isJustUpdatedRealty) {   
-      onGetRealties(currentPage)   
+  const [realtyDeleteName, setRealtyDeleteName] = useState('')
+
+  useEffect(() => {
+    if (isJustUpdatedRealty) {
+      onGetRealties(currentPage)
       window.setTimeout(() => {
-        setAlertUpdateVisibilityFalse()         
+        setAlertUpdateVisibilityFalse()
       }, 2000)
-      setJustUpdatedRealtyFalse()      
-    }  
-  }, [isJustUpdatedRealty])        
-  
-  useEffect(() => { 
-    if (isJustDeletedRealty) {   
-      onGetRealties(currentPage)   
+      setJustUpdatedRealtyFalse()
+    }
+  }, [isJustUpdatedRealty])
+
+  useEffect(() => {
+    if (isJustDeletedRealty) {
+      onGetRealties(currentPage)
       window.setTimeout(() => {
-        setAlertDeleteVisibilityFalse()         
+        setAlertDeleteVisibilityFalse()
       }, 2000)
-      setJustDeletedRealtyFalse()      
-    }  
-  }, [isJustDeletedRealty])  
+      setJustDeletedRealtyFalse()
+    }
+  }, [isJustDeletedRealty])
 
   function onGetResource(e, currentPageNumber) {
     onGetRealties(currentPageNumber)
@@ -83,12 +84,12 @@ function Realties({ realties,
   function setCandidateToDelete(e, id, name) {
     handleShow()
     setRealtyDeleteId(() => id)
-    setRealtyDeleteName(() => name)  
-  }   
-  
+    setRealtyDeleteName(() => name)
+  }
+
 
   function showRealtiesItems(currentPage, perPage) {
-    return function(realty, index) {
+    return function (realty, index) {
       let rowTableNumber = (currentPage * perPage) - perPage + 1 + index
       return (
         <tr key={index}>
@@ -99,73 +100,82 @@ function Realties({ realties,
           <td>{realty.visibility}</td>
           <td className={TableCss.td_icon}>
             <NavLink to={`/realties/${realty.id}/edit`}>
-              <EditOutlinedIcon color="primary" className={TableCss.icon}></EditOutlinedIcon>  
-            </NavLink>  
+              <EditOutlinedIcon color="primary" className={TableCss.icon}></EditOutlinedIcon>
+            </NavLink>
           </td>
           <td className={TableCss.td_icon}>
             <NavLink to={`/realties/${realty.id}`}>
-              <VisibilityOutlinedIcon color="primary" className={TableCss.icon}></VisibilityOutlinedIcon>  
-            </NavLink>        
+              <VisibilityOutlinedIcon color="primary" className={TableCss.icon}></VisibilityOutlinedIcon>
+            </NavLink>
           </td>
           <td className={TableCss.td_icon}>
-            <DeleteOutlineOutlinedIcon 
-              onClick={(e) => setCandidateToDelete(e, realty.id, realty.name)} 
-              color="primary" 
+            <DeleteOutlineOutlinedIcon
+              onClick={(e) => setCandidateToDelete(e, realty.id, realty.name)}
+              color="primary"
               className={TableCss.icon}>
             </DeleteOutlineOutlinedIcon>
           </td>
         </tr>
       )
     }
-  } 
+  }
 
   let items = []
   for (let number = 1; number <= totalPages; number++) {
     items.push(
       <Pagination.Item
-        onClick={(e) => {onGetResource(e, number)}} key={number} active={number === currentPage}>
+        onClick={(e) => { onGetResource(e, number) }} key={number} active={number === currentPage}>
         {number}
       </Pagination.Item>
     )
-  }  
- 
-  return (
-    <>    
-      <h2 className={`${RealtiesCss.header} mb-4 mt-4 mr-4`}>Объекты</h2>
-      <Alert variant="success" show={isAlertUpdateVisible} className={RealtiesCss.alert}>Объект успешно изменен!</Alert>       
-      <Alert variant="success" show={isAlertDeleteVisible} className={RealtiesCss.alert}>Объект успешно удален!</Alert>       
-      <Table bordered hover>
-        <thead>
-          <tr>
-            <th>№</th>
-            <th>Название</th>
-            <th>Тип</th>
-            <th>Цена</th>
-            <th>Видимость</th>
-            <th className="td_icon"><EditOutlinedIcon color="primary"></EditOutlinedIcon></th>
-            <th className="td_icon"><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></th>
-            <th className="td_icon"><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></th>
-          </tr>
-        </thead>
-        <tbody>
-          {realties.items.map(showRealtiesItems(currentPage, perPage))}
-        </tbody>
-      </Table>
-      <Pagination>{items}</Pagination>  
+  }
 
-      <Modal size="lg" show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Вы хотите удалить объект {realtyDeleteName}?</Modal.Title>
-        </Modal.Header>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Закрыть
+  return (
+    <>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-9 pl-0">
+            <h2 className={`${RealtiesCss.header} mb-4 mt-4 mr-4`}>Объекты</h2>
+            <Alert variant="success" show={isAlertUpdateVisible} className={RealtiesCss.alert}>Объект успешно изменен!</Alert>
+            <Alert variant="success" show={isAlertDeleteVisible} className={RealtiesCss.alert}>Объект успешно удален!</Alert>
+          </div>
+          <div class="col-sm-3 text-right pr-0">
+            <Button className="mb-4 mt-4" variant="success">Добавить объект</Button>
+          </div>
+        </div>
+      </div>
+        <Table bordered hover>
+          <thead>
+            <tr>
+              <th>№</th>
+              <th>Название</th>
+              <th>Тип</th>
+              <th>Цена</th>
+              <th>Видимость</th>
+              <th className="td_icon"><EditOutlinedIcon color="primary"></EditOutlinedIcon></th>
+              <th className="td_icon"><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></th>
+              <th className="td_icon"><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></th>
+            </tr>
+          </thead>
+          <tbody>
+            {realties.items.map(showRealtiesItems(currentPage, perPage))}
+          </tbody>
+        </Table>
+        <Pagination>{items}</Pagination>
+
+        <Modal size="lg" show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Вы хотите удалить объект {realtyDeleteName}?</Modal.Title>
+          </Modal.Header>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Закрыть
           </Button>
-          <Button variant="danger" onClick={(e) => onDeleteResource(e, realtyDeleteId)}>
-            Удалить навсегда
+            <Button variant="danger" onClick={(e) => onDeleteResource(e, realtyDeleteId)}>
+              Удалить навсегда
           </Button>
-        </Modal.Footer>
-      </Modal>
+          </Modal.Footer>
+        </Modal>
     </>
   )
 }
@@ -188,7 +198,7 @@ function mapDispatchToProps(dispatch) {
     onGetRealties(currentPageNumber) {
       dispatch(getRealtiesAction(currentPageNumber))
     },
-    onDeleteRealty(id) {      
+    onDeleteRealty(id) {
       dispatch(realtyDeleteAction(id))
     },
     setJustUpdatedRealtyFalse() {
