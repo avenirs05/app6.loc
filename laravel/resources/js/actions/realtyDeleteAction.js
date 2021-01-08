@@ -1,6 +1,6 @@
 import { REALTY_DELETE } from './consts'
-import { setAlertVisibilityTrueAction } from './setAlertVisibilityTrueAction'
-import { setBtnDeleteRealtyClickedTrueAction } from './setBtnDeleteRealtyClickedTrueAction'
+import { setJustDeletedRealtyTrueAction } from './setJustDeletedRealtyTrueAction'
+import { setAlertDeleteVisibilityTrueAction } from './setAlertDeleteVisibilityTrueAction'
 
 
 export function realtyDeleteAction(id) {
@@ -12,11 +12,11 @@ export function realtyDeleteAction(id) {
               id
             })        
           })
-          .then(() => {            
-            return dispatch(setBtnDeleteRealtyClickedTrueAction())       
+          .then(() => {
+            return dispatch(setJustDeletedRealtyTrueAction())        
           })
           .then(() => {            
-            return dispatch(setAlertVisibilityTrueAction())       
+            return dispatch(setAlertDeleteVisibilityTrueAction())       
           })
           .catch(error => {
             console.log(error)

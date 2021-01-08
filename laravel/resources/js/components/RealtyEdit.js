@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 import { compose } from 'redux'
 import { NavLink, withRouter, Redirect } from "react-router-dom"
 
-//Redux Form
-import { Field, reduxForm } from 'redux-form'
-
 // Components
 import EditForm from './EditForm';
 
@@ -34,7 +31,7 @@ class RealtyEdit extends Component {
 
   render() {     
     return ( 
-      this.props.isBtnUpdateRealtyClicked ? 
+      this.props.isJustUpdatedRealty ? 
       <Redirect to="/realties" /> :
       <>
         <NavLink to="/realties">
@@ -52,7 +49,8 @@ function mapStateToProps(state) {
     realtyEdit: state.realtyEdit,
     realtyUpdate: state.realtyUpdate,
     currentPage: state.realties.currentPage,
-    isBtnUpdateRealtyClicked: state.isBtnUpdateRealtyClicked
+    isAlertUpdateVisible: state.isAlertUpdateVisible,
+    isJustUpdatedRealty: state.isJustUpdatedRealty
   }
 }
 

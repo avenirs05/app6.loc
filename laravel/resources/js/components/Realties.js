@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { NavLink, Redirect } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 // React Bootstrap
 import Table from 'react-bootstrap/Table'
@@ -19,10 +19,10 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 // Actions
 import { getRealtiesAction } from '../actions/getRealtiesAction'
 import { realtyDeleteAction } from '../actions/realtyDeleteAction'
-import { setBtnUpdateRealtyClickedFalseAction } from '../actions/setBtnUpdateRealtyClickedFalseAction'
-import { setBtnDeleteRealtyClickedFalseAction } from '../actions/setBtnDeleteRealtyClickedFalseAction'
-import { setAlertVisibilityTrueAction } from '../actions/setAlertVisibilityTrueAction'
-import { setAlertVisibilityFalseAction } from '../actions/setAlertVisibilityFalseAction'
+import { setJustUpdatedRealtyFalseAction } from '../actions/setJustUpdatedRealtyFalseAction'
+import { setJustDeletedRealtyFalseAction } from '../actions/setJustDeletedRealtyFalseAction'
+import { setAlertUpdateVisibilityFalseAction } from '../actions/setAlertUpdateVisibilityFalseAction'
+import { setAlertDeleteVisibilityFalseAction } from '../actions/setAlertDeleteVisibilityFalseAction'
 
 // Css Modules
 import TableCss from './css/Table.module.css'
@@ -35,53 +35,52 @@ function Realties({ realties,
                     perPage, 
                     onGetRealties, 
                     onDeleteRealty,
-                    setBtnUpdateRealtyClickedFalse,
-                    setBtnDeleteRealtyClickedFalse,
-                    isBtnUpdateRealtyClicked,
-                    isBtnDeleteRealtyClicked,
-                    setAlertVisibilityTrue,
-                    setAlertVisibilityFalse,
-                    isAlertVisible, }) { 
+                    isJustUpdatedRealty,
+                    isJustDeletedRealty,
+                    setJustUpdatedRealtyFalse,
+                    setJustDeletedRealtyFalse,
+                    setAlertUpdateVisibilityFalse,
+                    setAlertDeleteVisibilityFalse,
+                    isAlertUpdateVisible, 
+                    isAlertDeleteVisible, }) { 
   
-  const [show, setShow] = useState(false);
-  const [realtyDeleteId, setRealtyDeleteId] = useState(0);
-  const [realtyDeleteName, setRealtyDeleteName] = useState('');
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)     
+  const handleShow = () => setShow(true)  
 
-  const handleClose = () => setShow(false);     
-  const handleShow = () => setShow(true);            
+  const [realtyDeleteId, setRealtyDeleteId] = useState(0)
+  const [realtyDeleteName, setRealtyDeleteName] = useState('')    
    
   useEffect(() => { 
-    setBtnUpdateRealtyClickedFalse()
-    onGetRealties(currentPage)     
-  }, [isBtnUpdateRealtyClicked])             
-    
-  useEffect(() => { 
-    setBtnDeleteRealtyClickedFalse()
-    onGetRealties(currentPage)     
-  }, [isBtnDeleteRealtyClicked])  
-
-  useEffect(() => { 
-    if (isBtnUpdateRealtyClicked) {
-      setAlertVisibilityTrue()
+    if (isJustUpdatedRealty) {   
+      onGetRealties(currentPage)   
       window.setTimeout(() => {
-        setAlertVisibilityFalse()
+        setAlertUpdateVisibilityFalse()         
       }, 2000)
+      setJustUpdatedRealtyFalse()      
     }  
-  }, [isAlertVisible])
+  }, [isJustUpdatedRealty])        
+  
+  useEffect(() => { 
+    if (isJustDeletedRealty) {   
+      onGetRealties(currentPage)   
+      window.setTimeout(() => {
+        setAlertDeleteVisibilityFalse()         
+      }, 2000)
+      setJustDeletedRealtyFalse()      
+    }  
+  }, [isJustDeletedRealty])  
 
   function onGetResource(e, currentPageNumber) {
-    e.preventDefault()
     onGetRealties(currentPageNumber)
   }
 
   function onDeleteResource(e, id) {
-    e.preventDefault()
     handleClose()
     onDeleteRealty(id)
   }
 
   function setCandidateToDelete(e, id, name) {
-    e.preventDefault()  
     handleShow()
     setRealtyDeleteId(() => id)
     setRealtyDeleteName(() => name)  
@@ -131,13 +130,10 @@ function Realties({ realties,
   }  
  
   return (
-    isBtnDeleteRealtyClicked ? 
-    <Redirect to="/realties" /> :
     <>    
       <h2 className={`${RealtiesCss.header} mb-4 mt-4 mr-4`}>Объекты</h2>
-      <Alert variant="success" show={isAlertVisible} className={RealtiesCss.alert}>
-        Объект успешно изменен!
-      </Alert>       
+      <Alert variant="success" show={isAlertUpdateVisible} className={RealtiesCss.alert}>Объект успешно изменен!</Alert>       
+      <Alert variant="success" show={isAlertDeleteVisible} className={RealtiesCss.alert}>Объект успешно удален!</Alert>       
       <Table bordered hover>
         <thead>
           <tr>
@@ -180,9 +176,10 @@ function mapStateToProps(state) {
     totalPages: state.realties.totalPages,
     currentPage: state.realties.currentPage,
     perPage: state.realties.perPage,
-    isBtnUpdateRealtyClicked: state.isBtnUpdateRealtyClicked,
-    isBtnDeleteRealtyClicked: state.isBtnDeleteRealtyClicked,
-    isAlertVisible: state.isAlertVisible
+    isJustUpdatedRealty: state.isJustUpdatedRealty,
+    isJustDeletedRealty: state.isJustDeletedRealty,
+    isAlertUpdateVisible: state.isAlertUpdateVisible,
+    isAlertDeleteVisible: state.isAlertDeleteVisible,
   }
 }
 
@@ -194,17 +191,17 @@ function mapDispatchToProps(dispatch) {
     onDeleteRealty(id) {      
       dispatch(realtyDeleteAction(id))
     },
-    setBtnUpdateRealtyClickedFalse() {
-      dispatch(setBtnUpdateRealtyClickedFalseAction())
+    setJustUpdatedRealtyFalse() {
+      dispatch(setJustUpdatedRealtyFalseAction())
     },
-    setBtnDeleteRealtyClickedFalse() {
-      dispatch(setBtnDeleteRealtyClickedFalseAction())
+    setJustDeletedRealtyFalse() {
+      dispatch(setJustDeletedRealtyFalseAction())
     },
-    setAlertVisibilityTrue() {
-      dispatch(setAlertVisibilityTrueAction())
+    setAlertUpdateVisibilityFalse() {
+      dispatch(setAlertUpdateVisibilityFalseAction())
     },
-    setAlertVisibilityFalse() {
-      dispatch(setAlertVisibilityFalseAction())
+    setAlertDeleteVisibilityFalse() {
+      dispatch(setAlertDeleteVisibilityFalseAction())
     }
   }
 }

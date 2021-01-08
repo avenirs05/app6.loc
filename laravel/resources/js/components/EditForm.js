@@ -5,22 +5,15 @@ import { Field, reduxForm } from 'redux-form'
 import ReactMDE from 'redux-forms-markdown-editor'
 import { allRealtyDbFields } from '../script'
 
-
 // React Bootstrap
 import Button from 'react-bootstrap/Button'
 
 // Material UI
 import TextField from '@material-ui/core/TextField'
-import TextareaAutosize from '@material-ui/core/TextareaAutosize'
-import Input from '@material-ui/core/Input';
-import Checkbox from '@material-ui/core/Checkbox'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import InputLabel from '@material-ui/core/InputLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
-import Radio from '@material-ui/core/Radio'
-import RadioGroup from '@material-ui/core/RadioGroup'
 
 // Css Modules
 import EditFormCss from './css/EditForm.module.css'

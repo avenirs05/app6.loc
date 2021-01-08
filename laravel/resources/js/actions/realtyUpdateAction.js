@@ -1,13 +1,15 @@
 import { REALTY_UPDATE } from './consts';
 import { allRealtyDbFields } from '../script';
-import { setBtnUpdateRealtyClickedTrueAction } from './setBtnUpdateRealtyClickedTrueAction'
+import { setJustUpdatedRealtyTrueAction } from './setJustUpdatedRealtyTrueAction'
+import { setAlertUpdateVisibilityTrueAction } from './setAlertUpdateVisibilityTrueAction'
+
 
 export function realtyUpdateAction(values) {
   return function(dispatch) {  
     axios.patch(route('realties.update', values.id), {...values}) 
          .then(response => { 
             const realty = {}
-            
+
             allRealtyDbFields.forEach(prop => { 
               realty[prop] = response.data[prop] 
             }) 
@@ -18,7 +20,10 @@ export function realtyUpdateAction(values) {
             })        
           })
           .then(() => {
-            return dispatch(setBtnUpdateRealtyClickedTrueAction())        
+            return dispatch(setJustUpdatedRealtyTrueAction())        
+          })
+          .then(() => {
+            return dispatch(setAlertUpdateVisibilityTrueAction())        
           })
           .catch(error => {
             console.log(error)

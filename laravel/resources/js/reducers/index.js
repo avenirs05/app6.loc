@@ -7,9 +7,10 @@ import realtyDelete from './realtyDelete'
 import feedbacks from './feedbacks'
 import images from './images'
 import isFirstLoading from './isFirstLoading'
-import isBtnUpdateRealtyClicked from './isBtnUpdateRealtyClicked'
-import isBtnDeleteRealtyClicked from './isBtnDeleteRealtyClicked'
-import isAlertVisible from './isAlertVisible'
+import isJustUpdatedRealty from './isJustUpdatedRealty'
+import isJustDeletedRealty from './isJustDeletedRealty'
+import isAlertUpdateVisible from './isAlertUpdateVisible'
+import isAlertDeleteVisible from './isAlertDeleteVisible'
 import { reducer as formReducer } from 'redux-form'
 
 
@@ -22,8 +23,9 @@ export default combineReducers({
   realtyEdit,
   realtyUpdate,  
   realtyDelete,
-  isBtnUpdateRealtyClicked,
-  isBtnDeleteRealtyClicked,
-  isAlertVisible,
+  isJustUpdatedRealty, 
+  isJustDeletedRealty, 
+  isAlertUpdateVisible,
+  isAlertDeleteVisible,
   form: formReducer,
 })
