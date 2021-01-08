@@ -132,15 +132,17 @@ function Realties({ realties,
 
   return (
     <>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-9 pl-0">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-sm-9 pl-0">
             <h2 className={`${RealtiesCss.header} mb-4 mt-4 mr-4`}>Объекты</h2>
             <Alert variant="success" show={isAlertUpdateVisible} className={RealtiesCss.alert}>Объект успешно изменен!</Alert>
             <Alert variant="success" show={isAlertDeleteVisible} className={RealtiesCss.alert}>Объект успешно удален!</Alert>
           </div>
-          <div class="col-sm-3 text-right pr-0">
-            <Button className="mb-4 mt-4" variant="success">Добавить объект</Button>
+          <div className={"col-sm-3 text-right pr-0"}>
+            <NavLink to="/realties/create">
+              <Button className="mb-4 mt-4" variant="success">Добавить объект</Button>
+            </NavLink>
           </div>
         </div>
       </div>

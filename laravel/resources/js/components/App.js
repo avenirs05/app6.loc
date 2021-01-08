@@ -1,31 +1,31 @@
 // React, Redux, Router 
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { Switch, Route, NavLink } from "react-router-dom";
-import { withRouter } from "react-router";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { Switch, Route, NavLink } from "react-router-dom"
+import { withRouter } from "react-router"
 
 // React Bootstrap
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import ListGroup from 'react-bootstrap/ListGroup'
 
 // Actions
-import { getRealtiesAction } from '../actions/getRealtiesAction';
-import { getFeedbacksAction } from '../actions/getFeedbacksAction';
-import { getImagesAction } from '../actions/getImagesAction';
-import { setFirstLoadingTrueAction } from '../actions/setFirstLoadingTrueAction';
-import { setFirstLoadingFalseAction } from '../actions/setFirstLoadingFalseAction';
+import { getRealtiesAction } from '../actions/getRealtiesAction'
+import { getFeedbacksAction } from '../actions/getFeedbacksAction'
+import { getImagesAction } from '../actions/getImagesAction'
+import { setFirstLoadingTrueAction } from '../actions/setFirstLoadingTrueAction'
+import { setFirstLoadingFalseAction } from '../actions/setFirstLoadingFalseAction'
 
 // Components
-import Realties from './Realties';
-import Feedbacks from './Feedbacks';
-import Images from './Images';
-import RealtyShow from './RealtyShow';
-import RealtyEdit from './RealtyEdit';
-import NavbarContainer from './NavbarContainer';
-import Test from './Test';
+import Realties from './Realties'
+import Feedbacks from './Feedbacks'
+import Images from './Images'
+import RealtyShow from './RealtyShow'
+import RealtyEdit from './RealtyEdit'
+import NavbarContainer from './NavbarContainer'
+import Test from './Test'
 
 // Css Modules
 import NavLinkCss from './css/NavLink.module.css';
@@ -93,8 +93,10 @@ class App extends Component {
               <Switch>
                 <Route children={<Realties />} exact path="/" />
                 <Route children={<Realties />} exact path="/realties" />
+                <Route children={<Test />} exact path="/realties/create" />
                 <Route children={<RealtyShow />} exact path="/realties/:id" />
                 <Route children={<RealtyEdit />} exact path="/realties/:id/edit" />
+                
                 <Route children={<Feedbacks />} exact path="/feedbacks" />
                 <Route children={<Images />} exact path="/images" />
                 <Route children={<Test />} exact path="/test" />
