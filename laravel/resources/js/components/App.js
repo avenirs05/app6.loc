@@ -96,8 +96,7 @@ class App extends Component {
                 <Route children={<Realties />} exact path="/realties" />
                 <Route children={<RealtyCreate />} exact path="/realties/create" />
                 <Route children={<RealtyShow />} exact path="/realties/:id" />
-                <Route children={<RealtyEdit />} exact path="/realties/:id/edit" />
-                
+                <Route children={<RealtyEdit />} exact path="/realties/:id/edit" />                
                 <Route children={<Feedbacks />} exact path="/feedbacks" />
                 <Route children={<Images />} exact path="/images" />
                 <Route children={<Test />} exact path="/test" />

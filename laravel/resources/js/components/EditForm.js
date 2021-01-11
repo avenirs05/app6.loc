@@ -102,7 +102,9 @@ let EditForm = props => {
   const saveBtn = useRef();
   useEffect(() => {     
     let listenerSaveKeydown = document.addEventListener('keydown', function(event) {
-      (event.key =='Escape') ? saveBtn.current.click() : null      
+      if (event.key =='Escape') { 
+        saveBtn.current.click()
+      }      
     })
     return () => { removeEventListener('keydown', listenerSaveKeydown) }
   }, [])

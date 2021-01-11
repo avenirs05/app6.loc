@@ -26,7 +26,7 @@ class RealtyEdit extends Component {
   }
 
   componentDidMount() {   
-    this.props.onGetRealtyEdit(this.props.match.params.id)     
+    this.props.onRealtyEdit(this.props.match.params.id)     
   }
 
   render() {     
@@ -56,7 +56,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onGetRealtyEdit(id) {
+    onRealtyEdit(id) {
       dispatch(realtyEditAction(id))
     },
     onGetRealties(pageNumber) {
