@@ -89,8 +89,8 @@ function Realties({ realties,
 
 
   function showRealtiesItems(currentPage, perPage) {
-    return function (realty, index) {
-      let rowTableNumber = (currentPage * perPage) - perPage + 1 + index
+    return function(realty, index) {
+      let rowTableNumber = (currentPage * perPage) - perPage + 1 + index      
       return (
         <tr key={index}>
           <td className={TableCss.td}>{rowTableNumber}</td>

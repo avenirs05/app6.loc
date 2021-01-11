@@ -99,11 +99,11 @@ const toggleOption = (prop, first, second) => prop === first ? second : first
 
 
 let EditForm = props => {
-  const saveBtn = useRef();
+  const updateBtn = useRef()
   useEffect(() => {     
     let listenerSaveKeydown = document.addEventListener('keydown', function(event) {
-      if (event.key =='Escape') { 
-        saveBtn.current.click()
+      if (event.key == 'Escape') { 
+        updateBtn.current.click()
       }      
     })
     return () => { removeEventListener('keydown', listenerSaveKeydown) }
@@ -200,7 +200,7 @@ let EditForm = props => {
       <div><Field name="dist_podg" label="Расстояние до аэропорта Подгорица (км)" type="number" component={renderTextField} /></div>
       <div><Field name="discount" label="Скидка (%). Не трогать. Оставить 1%, как сейчас." type="number" component={renderTextField} /></div>      
       <div>
-        <Button ref={saveBtn} variant="primary" type="submit" disabled={pristine || submitting}>Сохранить</Button>
+        <Button ref={updateBtn} variant="primary" type="submit" disabled={pristine || submitting}>Сохранить</Button>
       </div>
     </form>
   )

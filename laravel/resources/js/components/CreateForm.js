@@ -103,7 +103,7 @@ let CreateForm = props => {
 
   useEffect(() => {     
     let listenerSaveKeydown = document.addEventListener('keydown', function(event) {
-      if (event.key =='Escape') {
+      if (event.key == 'Escape') {
         createBtn.current.click() 
       }     
     })
@@ -121,25 +121,22 @@ let CreateForm = props => {
           <option value="скрыто">Скрыто</option>         
         </Field>
       </div>
-      {/* <div><Field name="subname_ru" label="Мини-описание" component={renderTextField} /></div>
-      <div><Field name="subname_en" label="Мини-описание — English" component={renderTextField} /></div> */}
-      {/* <div>
+      <div><Field name="subname_ru" label="Мини-описание" component={renderTextField} /></div>
+      <div><Field name="subname_en" label="Мини-описание — English" component={renderTextField} /></div>
+      <div>
         <Field name="type_ru" label="Тип объекта" classes={classes} component={renderSelectField}>          
-          <option value={realtyEdit.type_ru}>{realtyEdit.type_ru}</option>          
-          <option value={toggleOption(realtyEdit.type_ru, 'апартамент', 'вилла')}>
-            {toggleOption(realtyEdit.type_ru, 'апартамент', 'вилла')}
-          </option>         
+          <option value="апартамент">апартамент</option>          
+          <option value="вилла">вилла</option>         
         </Field>
-      </div> */}
-      {/* <div>
+      </div>
+      <div>
         <Field name="type_en" label="Тип объекта — English" classes={classes} component={renderSelectField}>          
-          <option value={realtyEdit.type_en}>{realtyEdit.type_en}</option>          
-          <option value={toggleOption(realtyEdit.type_en, 'apartment', 'villa')}>
-            {toggleOption(realtyEdit.type_en, 'apartment', 'villa')}
-          </option>         
+          <option value="apartment">apartment</option>          
+          <option value="villa">villa</option>         
         </Field>
-      </div> */}
-      {/* <div><Field name="country_ru" label="Страна" component={renderTextField} /></div>
+      </div>
+
+      <div><Field name="country_ru" label="Страна" component={renderTextField} /></div>
       <div><Field name="country_en" label="Страна — English" component={renderTextField} /></div>
       <div><Field name="area_ru" label="Район" component={renderTextField} /></div>
       <div><Field name="area_en" label="Район — English" component={renderTextField} /></div>
@@ -197,9 +194,9 @@ let CreateForm = props => {
       <div><Field name="dist_sea" label="Расстояние до моря (км)" type="number" component={renderTextField} /></div>
       <div><Field name="dist_tivat" label="Расстояние до аэропорта Тиват (км)" type="number" component={renderTextField} /></div>
       <div><Field name="dist_podg" label="Расстояние до аэропорта Подгорица (км)" type="number" component={renderTextField} /></div>
-      <div><Field name="discount" label="Скидка (%). Не трогать. Оставить 1%, как сейчас." type="number" component={renderTextField} /></div>       */}
+      <div><Field name="discount" label="Скидка (%). Не трогать. Оставить 1%, как сейчас." type="number" component={renderTextField} /></div>      
       <div>
-        <Button ref={createBtn} variant="primary" type="submit" disabled={pristine || submitting}>Сохранить</Button>
+        <Button ref={createBtn} variant="primary" type="submit" disabled={pristine || submitting}>Создать</Button>
       </div>
     </form>
   )

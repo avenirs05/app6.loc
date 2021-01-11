@@ -11,7 +11,7 @@ import CreateForm from './CreateForm';
 import Button from 'react-bootstrap/Button'
 
 // Actions
-import { realtyEditAction } from '../actions/realtyEditAction'
+import { realtyCreateAction } from '../actions/realtyCreateAction'
 import { realtyUpdateAction } from '../actions/realtyUpdateAction'
 import { getRealtiesAction } from '../actions/getRealtiesAction'
 
@@ -22,7 +22,7 @@ class RealtyCreate extends Component {
   }
   
   submit(values) {
-    console.log(values)       
+    this.props.onRealtyCreate(values)   
   }
 
   componentDidMount() { }
@@ -42,7 +42,7 @@ class RealtyCreate extends Component {
 
 function mapStateToProps(state) {
   return {
-    // realtyEdit: state.realtyEdit,
+    // realtyCreate: state.realtyCreate,
     // realtyUpdate: state.realtyUpdate,
     // currentPage: state.realties.currentPage,
     // isAlertUpdateVisible: state.isAlertUpdateVisible,
@@ -52,9 +52,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    // onGetRealtyEdit(id) {
-    //   dispatch(realtyEditAction(id))
-    // },
+    onRealtyCreate(values) {
+      //console.log('create clicked')
+      dispatch(realtyCreateAction(values))
+    },
     // onGetRealties(pageNumber) {
     //   dispatch(getRealtiesAction(pageNumber))
     // },
