@@ -44,6 +44,9 @@ RUN (crontab -l ; echo "* * * * * /usr/bin/php /var/www/artisan schedule:run >>/
 # Copy existing application directory permissions
 COPY --chown=www:www . /var/www
 
+# Laravel Storage Link
+
+
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 #CMD ["php-fpm"]
