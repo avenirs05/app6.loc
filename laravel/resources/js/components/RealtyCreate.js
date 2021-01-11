@@ -5,7 +5,7 @@ import { compose } from 'redux'
 import { NavLink, withRouter, Redirect } from "react-router-dom"
 
 // Components
-import CreateForm from './CreateForm';
+import CreateRealtyForm from './CreateRealtyForm';
 
 // React Bootstrap
 import Button from 'react-bootstrap/Button'
@@ -34,7 +34,7 @@ class RealtyCreate extends Component {
           <Button size="sm" variant="outline-secondary" className="mt-3 mb-3">Назад</Button>
         </NavLink> 
         <h3 className="mt-3 mb-4">Добавление объекта</h3> 
-        <CreateForm onSubmit={this.submit.bind(this)}/>
+        <CreateRealtyForm onSubmit={this.submit.bind(this)}/>
       </>
     )  
   }

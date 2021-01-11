@@ -5,7 +5,7 @@ import { compose } from 'redux'
 import { NavLink, withRouter, Redirect } from "react-router-dom"
 
 // Components
-import EditForm from './EditForm';
+import EditRealtyForm from './EditRealtyForm';
 
 // React Bootstrap
 import Button from 'react-bootstrap/Button'
@@ -38,7 +38,7 @@ class RealtyEdit extends Component {
           <Button size="sm" variant="outline-secondary" className="mt-3 mb-3">Назад</Button>
         </NavLink> 
         <h3 className="mt-3 mb-4">{this.props.realtyEdit.name}</h3> 
-        <EditForm onSubmit={this.submit.bind(this)}/>
+        <EditRealtyForm onSubmit={this.submit.bind(this)}/>
       </>
     )  
   }
