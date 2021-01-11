@@ -12,7 +12,7 @@ import Button from 'react-bootstrap/Button'
 
 // Actions
 import { realtyCreateAction } from '../actions/realtyCreateAction'
-import { realtyUpdateAction } from '../actions/realtyUpdateAction'
+//import { realtyUpdateAction } from '../actions/realtyUpdateAction'
 import { getRealtiesAction } from '../actions/getRealtiesAction'
 
 
@@ -25,10 +25,16 @@ class RealtyCreate extends Component {
     this.props.onRealtyCreate(values)   
   }
 
-  componentDidMount() { }
+  // componentDidUpdate() {
+  //   if (this.props.isJustCreatedRealty) {
+  //     this.props.onGetRealties(this.props.currentPage)
+  //   }
+  // }
 
   render() {     
     return ( 
+      this.props.isJustCreatedRealty ? 
+      <Redirect to="/realties" /> :
       <>
         <NavLink to="/realties">
           <Button size="sm" variant="outline-secondary" className="mt-3 mb-3">Назад</Button>
@@ -44,21 +50,20 @@ function mapStateToProps(state) {
   return {
     // realtyCreate: state.realtyCreate,
     // realtyUpdate: state.realtyUpdate,
-    // currentPage: state.realties.currentPage,
+    currentPage: state.realties.currentPage,
     // isAlertUpdateVisible: state.isAlertUpdateVisible,
-    // isJustUpdatedRealty: state.isJustUpdatedRealty
+    isJustCreatedRealty: state.isJustCreatedRealty
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     onRealtyCreate(values) {
-      //console.log('create clicked')
       dispatch(realtyCreateAction(values))
     },
-    // onGetRealties(pageNumber) {
-    //   dispatch(getRealtiesAction(pageNumber))
-    // },
+    onGetRealties(pageNumber) {
+      dispatch(getRealtiesAction(pageNumber))
+    },
     // onStoreRealty(values) {      
     //   dispatch(realtyUpdateAction(values, this.currentPage))      
     // },

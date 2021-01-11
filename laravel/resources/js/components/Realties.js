@@ -19,8 +19,10 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 // Actions
 import { getRealtiesAction } from '../actions/getRealtiesAction'
 import { realtyDeleteAction } from '../actions/realtyDeleteAction'
+import { setJustCreatedRealtyFalseAction } from '../actions/setJustCreatedRealtyFalseAction'
 import { setJustUpdatedRealtyFalseAction } from '../actions/setJustUpdatedRealtyFalseAction'
 import { setJustDeletedRealtyFalseAction } from '../actions/setJustDeletedRealtyFalseAction'
+import { setAlertCreateVisibilityFalseAction } from '../actions/setAlertCreateVisibilityFalseAction'
 import { setAlertUpdateVisibilityFalseAction } from '../actions/setAlertUpdateVisibilityFalseAction'
 import { setAlertDeleteVisibilityFalseAction } from '../actions/setAlertDeleteVisibilityFalseAction'
 
@@ -35,12 +37,16 @@ function Realties({ realties,
                     perPage,
                     onGetRealties,
                     onDeleteRealty,
+                    isJustCreatedRealty,
                     isJustUpdatedRealty,
                     isJustDeletedRealty,
+                    setJustCreatedRealtyFalse,
                     setJustUpdatedRealtyFalse,
                     setJustDeletedRealtyFalse,
+                    setAlertCreateVisibilityFalse,
                     setAlertUpdateVisibilityFalse,
                     setAlertDeleteVisibilityFalse,
+                    isAlertCreateVisible,
                     isAlertUpdateVisible,
                     isAlertDeleteVisible, 
                   }) {
@@ -51,6 +57,16 @@ function Realties({ realties,
 
   const [realtyDeleteId, setRealtyDeleteId] = useState(0)
   const [realtyDeleteName, setRealtyDeleteName] = useState('')
+
+  useEffect(() => {
+    if (isJustCreatedRealty) {
+      onGetRealties(currentPage)
+      window.setTimeout(() => {
+        setAlertCreateVisibilityFalse()
+      }, 2000)
+      setJustCreatedRealtyFalse()
+    }
+  }, [isJustCreatedRealty])                  
 
   useEffect(() => {
     if (isJustUpdatedRealty) {
@@ -136,12 +152,13 @@ function Realties({ realties,
         <div className="row">
           <div className="col-sm-9 pl-0">
             <h2 className={`${RealtiesCss.header} mb-4 mt-4 mr-4`}>Объекты</h2>
-            <Alert variant="success" show={isAlertUpdateVisible} className={RealtiesCss.alert}>Объект успешно изменен!</Alert>
-            <Alert variant="success" show={isAlertDeleteVisible} className={RealtiesCss.alert}>Объект успешно удален!</Alert>
+            <Alert variant="success" show={isAlertCreateVisible} className={RealtiesCss.alert}>Объект успешно создан!</Alert>
+            <Alert variant="success" show={isAlertUpdateVisible} className={RealtiesCss.alert}>Объект успешно изменён!</Alert>
+            <Alert variant="success" show={isAlertDeleteVisible} className={RealtiesCss.alert}>Объект успешно удалён!</Alert>
           </div>
           <div className={"col-sm-3 text-right pr-0"}>
             <NavLink to="/realties/create">
-              <Button className="mb-4 mt-4" variant="success">Добавить объект</Button>
+              <Button className="mb-4 mt-4" variant="success">Создать новый объект</Button>
             </NavLink>
           </div>
         </div>
@@ -188,8 +205,10 @@ function mapStateToProps(state) {
     totalPages: state.realties.totalPages,
     currentPage: state.realties.currentPage,
     perPage: state.realties.perPage,
+    isJustCreatedRealty: state.isJustCreatedRealty,
     isJustUpdatedRealty: state.isJustUpdatedRealty,
     isJustDeletedRealty: state.isJustDeletedRealty,
+    isAlertCreateVisible: state.isAlertCreateVisible,
     isAlertUpdateVisible: state.isAlertUpdateVisible,
     isAlertDeleteVisible: state.isAlertDeleteVisible,
   }
@@ -203,11 +222,17 @@ function mapDispatchToProps(dispatch) {
     onDeleteRealty(id) {
       dispatch(realtyDeleteAction(id))
     },
+    setJustCreatedRealtyFalse() {
+      dispatch(setJustCreatedRealtyFalseAction())
+    },
     setJustUpdatedRealtyFalse() {
       dispatch(setJustUpdatedRealtyFalseAction())
     },
     setJustDeletedRealtyFalse() {
       dispatch(setJustDeletedRealtyFalseAction())
+    },
+    setAlertCreateVisibilityFalse() {
+      dispatch(setAlertCreateVisibilityFalseAction())
     },
     setAlertUpdateVisibilityFalse() {
       dispatch(setAlertUpdateVisibilityFalseAction())

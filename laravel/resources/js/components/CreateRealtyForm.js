@@ -53,7 +53,6 @@ let CreateRealtyForm = props => {
           <option value="villa">villa</option>         
         </Field>
       </div>
-
       <div><Field name="country_ru" label="Страна" component={renderTextField} /></div>
       <div><Field name="country_en" label="Страна — English" component={renderTextField} /></div>
       <div><Field name="area_ru" label="Район" component={renderTextField} /></div>

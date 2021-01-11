@@ -19,16 +19,6 @@ class RealtyResource extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -36,7 +26,13 @@ class RealtyResource extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $realty = new Realty;
+
+        collect($request)->each(function($val, $key) use ($realty) {
+            $realty->$key = $val;
+        }); 
+
+        $realty->save();
     }
 
     /**

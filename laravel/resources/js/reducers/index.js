@@ -10,6 +10,7 @@ import isFirstLoading from './isFirstLoading'
 import isJustCreatedRealty from './isJustCreatedRealty'
 import isJustUpdatedRealty from './isJustUpdatedRealty'
 import isJustDeletedRealty from './isJustDeletedRealty'
+import isAlertCreateVisible from './isAlertCreateVisible'
 import isAlertUpdateVisible from './isAlertUpdateVisible'
 import isAlertDeleteVisible from './isAlertDeleteVisible'
 import { reducer as formReducer } from 'redux-form'
@@ -27,6 +28,7 @@ export default combineReducers({
   isJustCreatedRealty,
   isJustUpdatedRealty, 
   isJustDeletedRealty, 
+  isAlertCreateVisible,
   isAlertUpdateVisible,
   isAlertDeleteVisible,  
   form: formReducer,

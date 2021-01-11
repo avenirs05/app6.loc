@@ -21,14 +21,10 @@ export function realtyCreateAction(values) {
             //   ...realty,
             // })        
           })
-          // .then(() => {
-          //   return dispatch(setJustCreatedRealtyTrueAction())        
-          // })
-          // .then(() => {
-          //   return dispatch(setAlertCreateVisibilityTrueAction())        
-          // })
-          .catch(error => {
-            console.log(error)
+          .then(() => dispatch(setJustCreatedRealtyTrueAction()))
+          .then(() => dispatch(setAlertCreateVisibilityTrueAction()))
+          .catch(error => { 
+            console.log(error) 
           })
   }
 }
