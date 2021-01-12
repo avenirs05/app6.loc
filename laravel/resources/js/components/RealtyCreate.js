@@ -12,7 +12,6 @@ import Button from 'react-bootstrap/Button'
 
 // Actions
 import { realtyCreateAction } from '../actions/realtyCreateAction'
-//import { realtyUpdateAction } from '../actions/realtyUpdateAction'
 import { getRealtiesAction } from '../actions/getRealtiesAction'
 
 
@@ -24,12 +23,6 @@ class RealtyCreate extends Component {
   submit(values) {
     this.props.onRealtyCreate(values)   
   }
-
-  // componentDidUpdate() {
-  //   if (this.props.isJustCreatedRealty) {
-  //     this.props.onGetRealties(this.props.currentPage)
-  //   }
-  // }
 
   render() {     
     return ( 
@@ -48,10 +41,7 @@ class RealtyCreate extends Component {
 
 function mapStateToProps(state) {
   return {
-    // realtyCreate: state.realtyCreate,
-    // realtyUpdate: state.realtyUpdate,
     currentPage: state.realties.currentPage,
-    // isAlertUpdateVisible: state.isAlertUpdateVisible,
     isJustCreatedRealty: state.isJustCreatedRealty
   }
 }
@@ -64,9 +54,6 @@ function mapDispatchToProps(dispatch) {
     onGetRealties(pageNumber) {
       dispatch(getRealtiesAction(pageNumber))
     },
-    // onStoreRealty(values) {      
-    //   dispatch(realtyUpdateAction(values, this.currentPage))      
-    // },
   }
 }
 
