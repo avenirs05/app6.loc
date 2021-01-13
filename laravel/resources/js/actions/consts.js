@@ -24,5 +24,7 @@ export const GET_FEEDBACKS = 'GET_FEEDBACKS'
 export const GET_IMAGES = 'GET_IMAGES'
 export const GET_LANGUAGES = 'GET_LANGUAGES'
 
+export const GET_FILE_LIST = 'GET_FILE_LIST'
+
 
 

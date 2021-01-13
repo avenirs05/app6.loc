@@ -4,27 +4,27 @@ import { setJustCreatedRealtyTrueAction } from './setJustCreatedRealtyTrueAction
 import { setAlertCreateVisibilityTrueAction } from './setAlertCreateVisibilityTrueAction'
 
 
-export function realtyCreateAction(values) {
+export function realtyCreateAction(values, fileList) {
+  let formData = new FormData()
+  
+  for (let key in values) {
+    formData.set(key, values[key])
+  }
+
   return function(dispatch) {  
-    //console.log('done1')
-    axios.post(route('realties.store'), values) 
-         .then(response => { 
-           console.log(response.data)
-            // const realty = {}
-
-            // allRealtyDbFields.forEach(prop => { 
-            //   realty[prop] = response.data[prop] 
-            // }) 
-
-            // return dispatch({ 
-            //   type: REALTY_CREATE, 
-            //   ...realty,
-            // })        
-          })
-          .then(() => dispatch(setJustCreatedRealtyTrueAction()))
-          .then(() => dispatch(setAlertCreateVisibilityTrueAction()))
-          .catch(error => { 
-            console.log(error) 
+    axios.post(route('realties.store'), formData) 
+           .then((response) => { 
+             //console.log(response)
+             fileList.set('realtyId', response.data)
+             return axios.post(route('test'), fileList)
+               .then((response) => {
+                 console.log(response)
+               })
+            })
+           .then(() => dispatch(setJustCreatedRealtyTrueAction()))
+           .then(() => dispatch(setAlertCreateVisibilityTrueAction()))
+           .catch(error => { 
+             console.log(error) 
           })
   }
 }

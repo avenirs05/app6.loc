@@ -9,14 +9,16 @@ use App\Realty;
 class Test extends Controller
 {
     public function __invoke(Request $request)
-    {
-        $realty = Realty::find(2);
-
-        //$realty->delete();
-        //Realty::destroy($realty);
-        //dump('hello1');
-        // return collect($request->toArray())->each(function($val, $key) use ($realty) {
-        //     dump($realty);
-        // }); 
+    {        
+        //$path = $request->file('image')->store('uploads', 'public');
+        if($request->hasfile('images')) {           
+           foreach($request->file('images') as $image)
+           {
+               $name = $image->getClientOriginalName();         
+               $image->storeAs("uploads/" . $request->realtyId . '/', $name, 'public');              
+           }
+        }
+        
+        return $request;
     }
 }

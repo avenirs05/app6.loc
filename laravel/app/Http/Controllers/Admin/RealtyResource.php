@@ -33,6 +33,11 @@ class RealtyResource extends Controller
         }); 
 
         $realty->save();
+
+        return $realty->id;
+
+
+        //return $request->file('videoFile');
     }
 
     /**

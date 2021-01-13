@@ -17,9 +17,6 @@ function NavbarContainer() {
 
   return (
     <>
-      {/* <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
-        <Navbar.Brand href="#home">Admin Panel mybudva.ru</Navbar.Brand>
-      </Navbar> */}
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
         <Navbar.Brand>
           <img

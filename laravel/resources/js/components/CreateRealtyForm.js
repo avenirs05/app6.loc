@@ -7,6 +7,12 @@ import ReactMDE from 'redux-forms-markdown-editor'
 // React Bootstrap
 import Button from 'react-bootstrap/Button'
 
+// Actions
+import { realtyCreateAction } from '../actions/realtyCreateAction'
+
+// Components
+import FileInput from './FileInput';
+
 // Helpers
 import { validate, 
   renderTextField,  
@@ -17,8 +23,13 @@ import FormCss from './css/Form.module.css'
 
 
 let CreateRealtyForm = props => {
-  const createBtn = useRef()
+  const { handleSubmit, pristine, submitting, classes, onRealtyCreate, fileList } = props
 
+  function submit(values) {  
+    onRealtyCreate(values, fileList)
+  }
+
+  const createBtn = useRef()
   useEffect(() => {     
     let listenerSaveKeydown = document.addEventListener('keydown', function(event) {
       if (event.key == 'Escape') {
@@ -27,11 +38,14 @@ let CreateRealtyForm = props => {
     })
     return () => { removeEventListener('keydown', listenerSaveKeydown) }
   }, [])
+  
+  useEffect(() => {     
+    //console.log(fileList.getAll('images'))  
+  }, [fileList])
 
-  const { handleSubmit, pristine, submitting, classes } = props
 
   return (
-    <form className={FormCss.form} onSubmit={handleSubmit}>
+    <form className={FormCss.form} onSubmit={handleSubmit(submit)} encType="multipart/form-data">
       <div><Field name="name" label="Название" component={renderTextField} /></div>
       <div>
         <Field name="visibility" label="Видимость" classes={classes} component={renderSelectField}>     
@@ -112,8 +126,21 @@ let CreateRealtyForm = props => {
       <div><Field name="dist_tivat" label="Расстояние до аэропорта Тиват (км)" type="number" component={renderTextField} /></div>
       <div><Field name="dist_podg" label="Расстояние до аэропорта Подгорица (км)" type="number" component={renderTextField} /></div>
       <div><Field name="discount" label="Скидка (%). Не трогать. Оставить 1%, как сейчас." type="number" component={renderTextField} /></div>      
+      <div className="mb-4">
+        <Field
+          component={FileInput}
+          name="videoFile"
+          my="my444"
+        />
+      </div>        
       <div>
-        <Button ref={createBtn} variant="primary" type="submit" disabled={pristine || submitting}>Создать</Button>
+        <Button className="mb-4" 
+                ref={createBtn} 
+                variant="primary" 
+                type="submit"                 
+                disabled={pristine || submitting}>
+                Создать
+        </Button>
       </div>
     </form>
   )
@@ -128,6 +155,7 @@ CreateRealtyForm = reduxForm({
 
 function mapStateToProps(state) {  
   return {
+    fileList: state.fileList,
     initialValues: {
       visibility: 'опубликовано',
       subname_ru: 'subname_ru',
@@ -173,14 +201,18 @@ function mapStateToProps(state) {
       dist_sea: 28,
       dist_tivat: 29,
       dist_podg: 30,
-      discount: 1 
+      discount: 1,
     },
     enableReinitialize: true,
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return {}
+  return {
+    onRealtyCreate(values, fileList) {
+      dispatch(realtyCreateAction(values, fileList))
+    },
+  }
 }
 
 

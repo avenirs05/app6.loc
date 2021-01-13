@@ -11,17 +11,17 @@ import CreateRealtyForm from './CreateRealtyForm';
 import Button from 'react-bootstrap/Button'
 
 // Actions
-import { realtyCreateAction } from '../actions/realtyCreateAction'
 import { getRealtiesAction } from '../actions/getRealtiesAction'
 
 
 class RealtyCreate extends Component {
   constructor(props) {
     super(props)
+    this.submit = this.submit.bind(this)
   }
-  
-  submit(values) {
-    this.props.onRealtyCreate(values)   
+ 
+  submit(values) {  
+    this.props.onRealtyCreate(values)
   }
 
   render() {     
@@ -33,7 +33,7 @@ class RealtyCreate extends Component {
           <Button size="sm" variant="outline-secondary" className="mt-3 mb-3">Назад</Button>
         </NavLink> 
         <h3 className="mt-3 mb-4">Добавление объекта</h3> 
-        <CreateRealtyForm onSubmit={this.submit.bind(this)}/>
+        <CreateRealtyForm />
       </>
     )  
   }
@@ -48,9 +48,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onRealtyCreate(values) {
-      dispatch(realtyCreateAction(values))
-    },
     onGetRealties(pageNumber) {
       dispatch(getRealtiesAction(pageNumber))
     },

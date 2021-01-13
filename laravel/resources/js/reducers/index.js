@@ -6,6 +6,7 @@ import realtyUpdate from './realtyUpdate'
 import realtyDelete from './realtyDelete'
 import feedbacks from './feedbacks'
 import images from './images'
+import fileList from './fileList'
 import isFirstLoading from './isFirstLoading'
 import isJustCreatedRealty from './isJustCreatedRealty'
 import isJustUpdatedRealty from './isJustUpdatedRealty'
@@ -30,6 +31,7 @@ export default combineReducers({
   isJustDeletedRealty, 
   isAlertCreateVisible,
   isAlertUpdateVisible,
-  isAlertDeleteVisible,  
+  isAlertDeleteVisible, 
+  fileList, 
   form: formReducer,
 })
