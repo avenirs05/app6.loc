@@ -14,7 +14,6 @@ export function getRealtiesAction(pageNumber) {
              totalItems: response.data.total,    
             })   
          })
-         //.then(() => dispatch(setJustCreatedRealtyFalseAction()))
   }
 }
 

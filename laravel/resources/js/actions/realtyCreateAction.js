@@ -15,7 +15,7 @@ export function realtyCreateAction(values, fileList) {
       .then(() => dispatch(setJustCreatedRealtyTrueAction()))
       .then(() => dispatch(setAlertCreateVisibilityTrueAction()))
       .catch(error => { console.log(error) })
-    axios.post(route('test'), fileList)
+    axios.post(route('images.download'), fileList)
       .catch(error => { console.log(error) })
   }
 }

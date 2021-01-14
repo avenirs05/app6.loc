@@ -10,20 +10,12 @@ import CreateRealtyForm from './CreateRealtyForm';
 // React Bootstrap
 import Button from 'react-bootstrap/Button'
 
-// Actions
-import { getRealtiesAction } from '../actions/getRealtiesAction'
-
 
 class RealtyCreate extends Component {
   constructor(props) {
     super(props)
-    this.submit = this.submit.bind(this)
   }
  
-  submit(values) {  
-    this.props.onRealtyCreate(values)
-  }
-
   render() {     
     return ( 
       this.props.isJustCreatedRealty ? 
@@ -41,17 +33,12 @@ class RealtyCreate extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentPage: state.realties.currentPage,
     isJustCreatedRealty: state.isJustCreatedRealty
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    onGetRealties(pageNumber) {
-      dispatch(getRealtiesAction(pageNumber))
-    },
-  }
+  return {}
 }
 
 

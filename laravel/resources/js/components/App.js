@@ -134,9 +134,6 @@ function mapDispatchToProps(dispatch) {
     setFirstLoadingTrue() {
       dispatch(setFirstLoadingTrueAction())
     },
-    onGetTests() {
-      //console.log('test');
-    },
   }
 }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Realty;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Image;
 
 class RealtyResource extends Controller
 {
@@ -85,5 +86,36 @@ class RealtyResource extends Controller
     public function destroy(Realty $realty)
     {
         Realty::destroy($realty->id);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function downloadImages(Request $request)
+    {
+        $isImageFirstInList = true;
+
+        if ($request->hasfile('images')) {           
+            foreach ($request->file('images') as $image) {
+                // Store Image
+                $name = $image->getClientOriginalName();         
+                $image->storeAs("uploads/" . $request->realtyId . '/', $name, 'public');    
+               
+                // Create Image in Db
+                $this->createImageEloquent($request, $name, $request->realtyId, $isImageFirstInList);
+                $isImageFirstInList = false;
+            }
+        } 
+    }
+
+    protected static function createImageEloquent($request, $imageName, $realtyId, $isFirst) 
+    {
+        $image = new Image;
+        $image->name = $imageName;
+        $isFirst ? $image->type = 'main' : $image->type = 'thumbnail';                
+        $image->realty_id = $request->realtyId;       
+        $image->save();
     }
 }

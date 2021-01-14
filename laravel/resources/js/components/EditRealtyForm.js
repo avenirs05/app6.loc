@@ -14,7 +14,7 @@ import FormCss from './css/Form.module.css'
 import { validate, 
          renderTextField,  
          renderSelectField,
-         toggleOption } from './helpers'
+         toggleOption } from './formHelpers'
 
 
 let EditRealtyForm = props => {

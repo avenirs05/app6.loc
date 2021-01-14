@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { GET_FILE_LIST } from '../actions/consts';
+
+// Actions
+import { getFileListAction } from '../actions/getFileListAction'
+
 
 function FileInput ({
   onGetFileList,
@@ -12,7 +15,6 @@ function FileInput ({
     ...inputProps    
   },
   meta: omitMeta,   
-  ...custom 
 }) {
 
   const adaptFileEventToValue = () => e => {
@@ -36,10 +38,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onGetFileList(payload) {
-      dispatch({
-        type: GET_FILE_LIST,
-        payload
-      })
+      dispatch(getFileListAction(payload))
     },
   }
 }

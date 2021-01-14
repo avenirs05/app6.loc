@@ -16,7 +16,7 @@ import FileInput from './FileInput';
 // Helpers
 import { validate, 
   renderTextField,  
-  renderSelectField } from './helpers'
+  renderSelectField } from './formHelpers'
 
 // Css Modules
 import FormCss from './css/Form.module.css'
