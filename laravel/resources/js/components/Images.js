@@ -84,7 +84,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onGetImages(pageNumber) {
-      dispatch(getImages(pageNumber))
+      dispatch(getImagesAction(pageNumber))
     },
   }
 }

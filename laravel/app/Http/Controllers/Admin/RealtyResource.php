@@ -99,12 +99,14 @@ class RealtyResource extends Controller
 
         if ($request->hasfile('images')) {           
             foreach ($request->file('images') as $image) {
+                
                 // Store Image
-                $name = $image->getClientOriginalName();         
-                $image->storeAs("uploads/" . $request->realtyId . '/', $name, 'public');    
+                $name = $image->getClientOriginalName();    
+                $realtyId = $request->realtyId;      
+                $image->storeAs("uploads/realties/{$realtyId}/", $name, 'public');    
                
                 // Create Image in Db
-                $this->createImageEloquent($request, $name, $request->realtyId, $isImageFirstInList);
+                $this->createImageEloquent($request, $name, $realtyId, $isImageFirstInList);
                 $isImageFirstInList = false;
             }
         } 

@@ -10,6 +10,6 @@ class Test2 extends Controller
 {
     public function __invoke(Request $request)
     {        
-        dd(storage_path());
+        //dd(asset('uploads'));
     }
 }

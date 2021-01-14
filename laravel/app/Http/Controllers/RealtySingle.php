@@ -50,7 +50,7 @@ class RealtySingle extends Controller
             'content'     => $content,    
         ];             
         
-
+        //dd($mainImage);
         return view('realty', $data);
     }
 }

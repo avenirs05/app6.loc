@@ -62,5 +62,7 @@
       </div>
     </div>
   </div>
-
+  {{-- <div>
+    <img src={{ asset('storage/uploads/79/06.jpeg.jpg') }} alt="">
+  </div> --}}
 @endsection

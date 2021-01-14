@@ -2,7 +2,7 @@
     <div class="row">       
       {{-- Main image --}}
       <div class="col-5">
-        <img src={{ asset("images/$mainImage") }} class="img-fluid img-main-lightgallery" alt="Responsive image">
+        <img src={{ asset("storage/uploads/realties/34/{$mainImage}") }} class="img-fluid img-main-lightgallery" alt="Responsive image">
       </div>
       {{-- Realty Params --}}      
       <div class="col-4">
