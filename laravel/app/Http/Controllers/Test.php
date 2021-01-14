@@ -10,10 +10,8 @@ class Test extends Controller
 {
     public function __invoke(Request $request)
     {        
-        //$path = $request->file('image')->store('uploads', 'public');
-        if($request->hasfile('images')) {           
-           foreach($request->file('images') as $image)
-           {
+        if ($request->hasfile('images')) {           
+           foreach ($request->file('images') as $image) {
                $name = $image->getClientOriginalName();         
                $image->storeAs("uploads/" . $request->realtyId . '/', $name, 'public');              
            }

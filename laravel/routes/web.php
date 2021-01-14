@@ -24,7 +24,7 @@ Route::get('apartments', 'Realties')->name('apartments');
 Route::get('villa/{id}', 'RealtySingle')->name('villa');
 Route::get('apartment/{id}', 'RealtySingle')->name('apartment');
 Route::get('contact', 'Contact')->name('contact');
-//Route::get('test', 'Test')->name('test');
+Route::get('test2', 'Test2')->name('test2');
 Route::post('test', 'Test')->name('test');
 
 

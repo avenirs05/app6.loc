@@ -8,15 +8,7 @@ export default function fileList(state = new FormData(), action) {
       let images = action.payload
       for (let key in images) {
         formData.append('images[]', images[key])
-      }
-      
-      //formData.append('image', images[0])
-      // for (let key in images) {
-      //   formData.append('images', images[key])
-      // }
-
-
-      
+      }      
       return formData      
       
     default:
