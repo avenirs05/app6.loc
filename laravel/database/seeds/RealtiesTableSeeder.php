@@ -12,6 +12,6 @@ class RealtiesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Realty::class, 30)->create();
+        factory(Realty::class, 10)->create();
     }
 }

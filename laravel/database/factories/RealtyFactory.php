@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Realty::class, function (Faker $faker) {
     return [        
         'name'                 => $faker->unique()->name,
-        'visibility'           => $faker->randomElement(['опубликовано' ,'скрыто']),
+        'visibility'           => $faker->randomElement(['опубликовано']),
         'subname_ru'           => $faker->text(40),
         'subname_en'           => $faker->text(40),   
         'type_ru'              => $faker->randomElement(['вилла', 'апартамент']),

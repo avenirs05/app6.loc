@@ -9,6 +9,7 @@ class Feedback extends Model
 {
     protected $table = 'feedbacks';	
     protected $guarded = [];
+    protected $fillable = ['realty_id'];
     
     public function realty() 
 	{
