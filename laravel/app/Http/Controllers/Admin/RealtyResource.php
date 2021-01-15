@@ -16,7 +16,7 @@ class RealtyResource extends Controller
      */
     public function index()
     {
-        return Realty::paginate(20);
+        return Realty::paginate(5);
     }
 
     /**
@@ -36,9 +36,6 @@ class RealtyResource extends Controller
         $realty->save();
 
         return $realty->id;
-
-
-        //return $request->file('videoFile');
     }
 
     /**
@@ -72,9 +69,11 @@ class RealtyResource extends Controller
      */
     public function update(Request $request, Realty $realty)
     {
-        return collect($request)->each(function($val, $key) use ($realty) {
+        collect($request)->each(function($val, $key) use ($realty) {
             $realty->update([$key => $val]);
         }); 
+
+        return $request->id;
     }
 
     /**

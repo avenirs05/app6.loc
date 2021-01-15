@@ -3,14 +3,8 @@ import { setAlertCreateVisibilityTrueAction } from './setAlertCreateVisibilityTr
 
 
 export function realtyCreateAction(values, fileList) {
-  let formData = new FormData()
-
-  for (let key in values) {
-    formData.set(key, values[key])
-  }
-
   return async function (dispatch) {
-    await axios.post(route('realties.store'), formData)
+    await axios.post(route('realties.store'), values)
       .then(response => { fileList.set('realtyId', response.data) })
       .then(() => dispatch(setJustCreatedRealtyTrueAction()))
       .then(() => dispatch(setAlertCreateVisibilityTrueAction()))

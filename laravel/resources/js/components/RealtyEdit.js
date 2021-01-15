@@ -22,7 +22,7 @@ class RealtyEdit extends Component {
   }
   
   submit(values) {
-    this.props.onUpdateRealty(values)    
+    this.props.onUpdateRealty(values, this.props.fileList)    
   }
 
   componentDidMount() {   
@@ -38,7 +38,7 @@ class RealtyEdit extends Component {
           <Button size="sm" variant="outline-secondary" className="mt-3 mb-3">Назад</Button>
         </NavLink> 
         <h3 className="mt-3 mb-4">{this.props.realtyEdit.name}</h3> 
-        <EditRealtyForm onSubmit={this.submit.bind(this)}/>
+        <EditRealtyForm onSubmit={this.submit.bind(this)} />
       </>
     )  
   }
@@ -50,7 +50,8 @@ function mapStateToProps(state) {
     realtyUpdate: state.realtyUpdate,
     currentPage: state.realties.currentPage,
     isAlertUpdateVisible: state.isAlertUpdateVisible,
-    isJustUpdatedRealty: state.isJustUpdatedRealty
+    isJustUpdatedRealty: state.isJustUpdatedRealty,
+    fileList: state.fileList,
   }
 }
 
@@ -62,8 +63,8 @@ function mapDispatchToProps(dispatch) {
     onGetRealties(pageNumber) {
       dispatch(getRealtiesAction(pageNumber))
     },
-    onUpdateRealty(values) {      
-      dispatch(realtyUpdateAction(values, this.currentPage))      
+    onUpdateRealty(values, fileList) {    
+      dispatch(realtyUpdateAction(values, fileList))      
     },
   }
 }

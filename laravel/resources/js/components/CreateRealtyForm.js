@@ -126,13 +126,7 @@ let CreateRealtyForm = props => {
       <div><Field name="dist_tivat" label="Расстояние до аэропорта Тиват (км)" type="number" component={renderTextField} /></div>
       <div><Field name="dist_podg" label="Расстояние до аэропорта Подгорица (км)" type="number" component={renderTextField} /></div>
       <div><Field name="discount" label="Скидка (%). Не трогать. Оставить 1%, как сейчас." type="number" component={renderTextField} /></div>      
-      <div className="mb-4">
-        <Field
-          component={FileInput}
-          name="videoFile"
-          my="my444"
-        />
-      </div>        
+      <div className="mb-4"><Field component={FileInput} name="images" /></div>        
       <div>
         <Button className="mb-4" 
                 ref={createBtn} 

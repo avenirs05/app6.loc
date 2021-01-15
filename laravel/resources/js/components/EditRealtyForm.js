@@ -10,6 +10,9 @@ import Button from 'react-bootstrap/Button'
 // Css Modules
 import FormCss from './css/Form.module.css'
 
+// Components
+import FileInput from './FileInput';
+
 // Helpers
 import { validate, 
          renderTextField,  
@@ -18,6 +21,8 @@ import { validate,
 
 
 let EditRealtyForm = props => {
+  const { handleSubmit, pristine, submitting, classes, realtyEdit, fileList } = props
+  
   const updateBtn = useRef()
   useEffect(() => {     
     let listenerSaveKeydown = document.addEventListener('keydown', function(event) {
@@ -27,8 +32,7 @@ let EditRealtyForm = props => {
     })
     return () => { removeEventListener('keydown', listenerSaveKeydown) }
   }, [])
-
-  const { handleSubmit, pristine, submitting, classes, realtyEdit } = props
+  
 
   return (
     <form className={FormCss.form} onSubmit={handleSubmit}>
@@ -118,6 +122,7 @@ let EditRealtyForm = props => {
       <div><Field name="dist_tivat" label="Расстояние до аэропорта Тиват (км)" type="number" component={renderTextField} /></div>
       <div><Field name="dist_podg" label="Расстояние до аэропорта Подгорица (км)" type="number" component={renderTextField} /></div>
       <div><Field name="discount" label="Скидка (%). Не трогать. Оставить 1%, как сейчас." type="number" component={renderTextField} /></div>      
+      <div className="mb-4"><Field component={FileInput} name="images" /></div> 
       <div>
         <Button ref={updateBtn} variant="primary" type="submit" disabled={pristine || submitting}>Сохранить</Button>
       </div>
@@ -135,8 +140,9 @@ EditRealtyForm = reduxForm({
 function mapStateToProps(state) {  
   return {
     initialValues: state.realtyEdit,
-    realtyEdit: state.realtyEdit,
     enableReinitialize: true,
+    realtyEdit: state.realtyEdit,    
+    fileList: state.fileList,
   }
 }
 
