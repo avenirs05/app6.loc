@@ -39,9 +39,9 @@ let CreateRealtyForm = props => {
     return () => { removeEventListener('keydown', listenerSaveKeydown) }
   }, [])
   
-  useEffect(() => {     
-    //console.log(fileList.getAll('images'))  
-  }, [fileList])
+  // useEffect(() => {     
+  //   console.log(fileList.getAll('images'))  
+  // }, [fileList])
 
 
   return (
