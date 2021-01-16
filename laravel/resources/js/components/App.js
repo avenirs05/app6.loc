@@ -12,7 +12,7 @@ import Col from 'react-bootstrap/Col'
 import ListGroup from 'react-bootstrap/ListGroup'
 
 // Actions
-import { getRealtiesAction } from '../actions/getRealtiesAction'
+import { getRealtiesAsync } from '../actions/getRealtiesAsync'
 import { getFeedbacksAction } from '../actions/getFeedbacksAction'
 import { getImagesAction } from '../actions/getImagesAction'
 import { setFirstLoadingTrueAction } from '../actions/setFirstLoadingTrueAction'
@@ -42,7 +42,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.onGetRealties()
+    this.props.getRealties()
     this.props.setFirstLoadingTrue()
   }
 
@@ -67,7 +67,7 @@ class App extends Component {
                 <NavLink to="/realties"
                   className={NavLinkCss.main + ' ' + (this.props.isFirstLoading ? NavLinkCss.active : '')}
                   activeClassName={NavLinkCss.active}
-                  onClick={this.props.onGetRealties}
+                  onClick={this.props.getRealties}
                   ref={this.realtiesMenuItem}
                   onMouseOver={this.makeCursorNotPointerIfActive.bind(this, this.realtiesMenuItem)}>
                   Объекты
@@ -119,8 +119,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onGetRealties() {
-      dispatch(getRealtiesAction())
+    getRealties() {
+      dispatch(getRealtiesAsync())
     },
     onGetFeedbacks() {
       dispatch(getFeedbacksAction())

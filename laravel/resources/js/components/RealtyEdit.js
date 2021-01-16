@@ -13,7 +13,7 @@ import Button from 'react-bootstrap/Button'
 // Actions
 import { realtyEditAction } from '../actions/realtyEditAction'
 import { realtyUpdateAction } from '../actions/realtyUpdateAction'
-import { getRealtiesAction } from '../actions/getRealtiesAction'
+import { getRealtiesAsync } from '../actions/getRealtiesAsync'
 
 
 class RealtyEdit extends Component {
@@ -60,8 +60,8 @@ function mapDispatchToProps(dispatch) {
     onRealtyEdit(id) {
       dispatch(realtyEditAction(id))
     },
-    onGetRealties(pageNumber) {
-      dispatch(getRealtiesAction(pageNumber))
+    getRealties(pageNumber) {
+      dispatch(getRealtiesAsync(pageNumber))
     },
     onUpdateRealty(values, fileList) {    
       dispatch(realtyUpdateAction(values, fileList))      

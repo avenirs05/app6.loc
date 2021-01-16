@@ -17,7 +17,7 @@ import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 
 // Actions
-import { getRealtiesAction } from '../actions/getRealtiesAction'
+import { getRealtiesAsync } from '../actions/getRealtiesAsync'
 import { realtyDeleteAction } from '../actions/realtyDeleteAction'
 import { setJustCreatedRealtyFalseAction } from '../actions/setJustCreatedRealtyFalseAction'
 import { setJustUpdatedRealtyFalseAction } from '../actions/setJustUpdatedRealtyFalseAction'
@@ -35,7 +35,7 @@ function Realties({ realties,
                     totalPages,
                     currentPage,
                     perPage,
-                    onGetRealties,
+                    getRealties,
                     onDeleteRealty,
                     isJustCreatedRealty,
                     isJustUpdatedRealty,
@@ -60,7 +60,7 @@ function Realties({ realties,
 
   useEffect(() => {
     if (isJustCreatedRealty) {
-      onGetRealties(currentPage)
+      getRealties(currentPage)
       window.setTimeout(() => {
         setAlertCreateVisibilityFalse()
       }, 2000)
@@ -70,7 +70,7 @@ function Realties({ realties,
 
   useEffect(() => {
     if (isJustUpdatedRealty) {
-      onGetRealties(currentPage)
+      getRealties(currentPage)
       window.setTimeout(() => {
         setAlertUpdateVisibilityFalse()
       }, 2000)
@@ -80,7 +80,7 @@ function Realties({ realties,
 
   useEffect(() => {
     if (isJustDeletedRealty) {
-      onGetRealties(currentPage)
+      getRealties(currentPage)
       window.setTimeout(() => {
         setAlertDeleteVisibilityFalse()
       }, 2000)
@@ -89,7 +89,7 @@ function Realties({ realties,
   }, [isJustDeletedRealty])
 
   function onGetResource(e, currentPageNumber) {
-    onGetRealties(currentPageNumber)
+    getRealties(currentPageNumber)
   }
 
   function onDeleteResource(e, id) {
@@ -216,8 +216,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onGetRealties(currentPageNumber) {
-      dispatch(getRealtiesAction(currentPageNumber))
+    getRealties(currentPageNumber) {
+      dispatch(getRealtiesAsync(currentPageNumber))
     },
     onDeleteRealty(id) {
       dispatch(realtyDeleteAction(id))
