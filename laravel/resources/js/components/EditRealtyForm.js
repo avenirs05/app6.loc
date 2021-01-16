@@ -122,7 +122,12 @@ let EditRealtyForm = props => {
       <div><Field name="dist_tivat" label="Расстояние до аэропорта Тиват (км)" type="number" component={renderTextField} /></div>
       <div><Field name="dist_podg" label="Расстояние до аэропорта Подгорица (км)" type="number" component={renderTextField} /></div>
       <div><Field name="discount" label="Скидка (%). Не трогать. Оставить 1%, как сейчас." type="number" component={renderTextField} /></div>      
-      <div className="mb-4"><Field component={FileInput} name="images" /></div> 
+      <div className="mb-4">
+        <div>
+          <label htmlFor="images">Изображения галереи</label>
+        </div>
+        <Field component={FileInput} name="images" />
+      </div> 
       <div>
         <Button ref={updateBtn} variant="primary" type="submit" disabled={pristine || submitting}>Сохранить</Button>
       </div>

@@ -39,10 +39,6 @@ let CreateRealtyForm = props => {
     return () => { removeEventListener('keydown', listenerSaveKeydown) }
   }, [])
   
-  // useEffect(() => {     
-  //   console.log(fileList.getAll('images'))  
-  // }, [fileList])
-
 
   return (
     <form className={FormCss.form} onSubmit={handleSubmit(submit)} encType="multipart/form-data">
@@ -82,11 +78,17 @@ let CreateRealtyForm = props => {
       <div><Field name="parking_payment_ru" label="Паркинг. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
       <div><Field name="parking_payment_en" label="Паркинг — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
       <div>
-        <label>Описание подробное</label>
+        <label 
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
+              Подробное описание
+        </label>
         <Field name="description_ru" component={ReactMDE} placeholder="Описание подробное" />
       </div>
       <div>
-        <label>Описание подробное — English</label>
+        <label 
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
+              Подробное описание — English
+        </label>
         <Field name="description_en" component={ReactMDE} placeholder="Описание подробное — English" />
       </div>
       <div><Field name="map_html" label="Карта (html-код)" component={renderTextField} /></div>
@@ -126,7 +128,22 @@ let CreateRealtyForm = props => {
       <div><Field name="dist_tivat" label="Расстояние до аэропорта Тиват (км)" type="number" component={renderTextField} /></div>
       <div><Field name="dist_podg" label="Расстояние до аэропорта Подгорица (км)" type="number" component={renderTextField} /></div>
       <div><Field name="discount" label="Скидка (%). Не трогать. Оставить 1%, как сейчас." type="number" component={renderTextField} /></div>      
-      <div className="mb-4"><Field component={FileInput} name="images" /></div>        
+      <div className="mb-4">
+        <div>
+          <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
+              Главное изображение
+          </label>
+        </div>
+        <Field component={FileInput} name="main_image" imgType="main" multiple={false} />
+      </div> 
+      <div className="mb-4">
+        <div>
+          <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
+              Изображения галереи
+          </label>
+        </div>
+        <Field component={FileInput} name="images" imgType="thumbnail" multiple={true}/>
+      </div>        
       <div>
         <Button className="mb-4" 
                 ref={createBtn} 

@@ -7,25 +7,27 @@ import { getFileListAction } from '../actions/getFileListAction'
 
 
 function FileInput ({
+  multiple,
+  imgType,
   onGetFileList,
   input: {
     value: omitValue,
     onChange,
     onBlur,
-    ...inputProps    
+    ...inputProps       
   },
-  meta: omitMeta,   
+  meta: omitMeta,
 }) {
 
-  const adaptFileEventToValue = () => e => {
-    onGetFileList(e.target.files)  
+  const adaptFileEventToValue = (imgType) => e => { 
+    onGetFileList(e.target.files, imgType)     
   }
 
   return (
     <input
-      onChange={adaptFileEventToValue()}
+      onChange={adaptFileEventToValue(imgType)}
       type="file"
-      multiple
+      multiple={multiple}
       {...inputProps}
     />
   )
@@ -37,8 +39,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {    
-    onGetFileList(payload) {
-      dispatch(getFileListAction(payload))
+    onGetFileList(payload, imgType) {
+      dispatch(getFileListAction(payload, imgType))
     },
   }
 }

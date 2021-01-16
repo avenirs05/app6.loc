@@ -94,28 +94,28 @@ class RealtyResource extends Controller
      */
     public function downloadImages(Request $request)
     {
-        $isImageFirstInList = true;
+        $realtyId = $request->realtyId;
 
         if ($request->hasfile('images')) {           
-            foreach ($request->file('images') as $image) {
-                
-                // Store Image
-                $name = $image->getClientOriginalName();    
-                $realtyId = $request->realtyId;      
-                $image->storeAs("uploads/realties/{$realtyId}/", $name, 'public');    
-               
-                // Create Image in Db
-                $this->createImageEloquent($request, $name, $realtyId, $isImageFirstInList);
-                $isImageFirstInList = false;
+            foreach ($request->file('images') as $image) {  
+                $name = $image->getClientOriginalName();              
+                $image->storeAs("uploads/realties/{$realtyId}/", $name, 'public');   
+                $this->createImageEloquent($request, $name, $realtyId, 'thumbnail');                
             }
         } 
+
+        if ($request->hasfile('main_image')) {       
+            $name = $request->file('main_image')->getClientOriginalName();   
+            $image->storeAs("uploads/realties/{$realtyId}/", $name, 'public');  
+            $this->createImageEloquent($request, $name, $realtyId, 'main');           
+        }
     }
 
-    protected static function createImageEloquent($request, $imageName, $realtyId, $isFirst) 
+    private function createImageEloquent($request, $imageName, $realtyId, $imageType) 
     {
         $image = new Image;
         $image->name = $imageName;
-        $isFirst ? $image->type = 'main' : $image->type = 'thumbnail';                
+        $image->type = $imageType;                
         $image->realty_id = $request->realtyId;       
         $image->save();
     }
