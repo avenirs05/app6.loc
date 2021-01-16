@@ -8,7 +8,7 @@ import { NavLink, withRouter } from "react-router-dom"
 import Button from 'react-bootstrap/Button'
 
 // Actions
-import { realtyShowAction } from '../actions/realtyShowAction'
+import { realtyShowAsync } from '../actions/realtyShowAsync'
 
 
 class RealtyShow extends Component {
@@ -90,7 +90,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onGetRealtyShow(id) {
-      dispatch(realtyShowAction(id))
+      dispatch(realtyShowAsync(id))
     },
   }
 }

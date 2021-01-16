@@ -11,7 +11,7 @@ import EditRealtyForm from './EditRealtyForm';
 import Button from 'react-bootstrap/Button'
 
 // Actions
-import { realtyEditAction } from '../actions/realtyEditAction'
+import { realtyEditAsync } from '../actions/realtyEditAsync'
 import { realtyUpdateAction } from '../actions/realtyUpdateAction'
 import { getRealtiesAsync } from '../actions/getRealtiesAsync'
 
@@ -58,7 +58,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onRealtyEdit(id) {
-      dispatch(realtyEditAction(id))
+      dispatch(realtyEditAsync(id))
     },
     getRealties(pageNumber) {
       dispatch(getRealtiesAsync(pageNumber))

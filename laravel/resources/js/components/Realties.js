@@ -19,12 +19,12 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 // Actions
 import { getRealtiesAsync } from '../actions/getRealtiesAsync'
 import { realtyDeleteAction } from '../actions/realtyDeleteAction'
-import { setJustCreatedRealtyFalseAction } from '../actions/setJustCreatedRealtyFalseAction'
-import { setJustUpdatedRealtyFalseAction } from '../actions/setJustUpdatedRealtyFalseAction'
-import { setJustDeletedRealtyFalseAction } from '../actions/setJustDeletedRealtyFalseAction'
-import { setAlertCreateVisibilityFalseAction } from '../actions/setAlertCreateVisibilityFalseAction'
-import { setAlertUpdateVisibilityFalseAction } from '../actions/setAlertUpdateVisibilityFalseAction'
-import { setAlertDeleteVisibilityFalseAction } from '../actions/setAlertDeleteVisibilityFalseAction'
+import { setJustCreatedRealtyFalseAC } from '../actions/setJustCreatedRealtyFalseAC'
+import { setJustUpdatedRealtyFalseAC } from '../actions/setJustUpdatedRealtyFalseAC'
+import { setJustDeletedRealtyFalseAC } from '../actions/setJustDeletedRealtyFalseAC'
+import { setAlertCreateVisibilityFalseAC } from '../actions/setAlertCreateVisibilityFalseAC'
+import { setAlertUpdateVisibilityFalseAC } from '../actions/setAlertUpdateVisibilityFalseAC'
+import { setAlertDeleteVisibilityFalseAC } from '../actions/setAlertDeleteVisibilityFalseAC'
 
 // Css Modules
 import TableCss from './css/Table.module.css'
@@ -223,22 +223,22 @@ function mapDispatchToProps(dispatch) {
       dispatch(realtyDeleteAction(id))
     },
     setJustCreatedRealtyFalse() {
-      dispatch(setJustCreatedRealtyFalseAction())
+      dispatch(setJustCreatedRealtyFalseAC())
     },
     setJustUpdatedRealtyFalse() {
-      dispatch(setJustUpdatedRealtyFalseAction())
+      dispatch(setJustUpdatedRealtyFalseAC())
     },
     setJustDeletedRealtyFalse() {
-      dispatch(setJustDeletedRealtyFalseAction())
+      dispatch(setJustDeletedRealtyFalseAC())
     },
     setAlertCreateVisibilityFalse() {
-      dispatch(setAlertCreateVisibilityFalseAction())
+      dispatch(setAlertCreateVisibilityFalseAC())
     },
     setAlertUpdateVisibilityFalse() {
-      dispatch(setAlertUpdateVisibilityFalseAction())
+      dispatch(setAlertUpdateVisibilityFalseAC())
     },
     setAlertDeleteVisibilityFalse() {
-      dispatch(setAlertDeleteVisibilityFalseAction())
+      dispatch(setAlertDeleteVisibilityFalseAC())
     }
   }
 }

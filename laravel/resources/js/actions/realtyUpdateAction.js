@@ -1,7 +1,7 @@
 import { REALTY_UPDATE } from './consts';
 import { allRealtyDbFields } from '../script';
-import { setJustUpdatedRealtyTrueAction } from './setJustUpdatedRealtyTrueAction'
-import { setAlertUpdateVisibilityTrueAction } from './setAlertUpdateVisibilityTrueAction'
+import { setJustUpdatedRealtyTrueAC } from './setJustUpdatedRealtyTrueAC'
+import { setAlertUpdateVisibilityTrueAC } from './setAlertUpdateVisibilityTrueAC'
 
 
 export function realtyUpdateAction(values, fileList) {
@@ -20,8 +20,8 @@ export function realtyUpdateAction(values, fileList) {
         })
       })
       .then(() => { fileList.set('realtyId', values.id) })
-      .then(() => dispatch(setJustUpdatedRealtyTrueAction()))
-      .then(() => dispatch(setAlertUpdateVisibilityTrueAction()))
+      .then(() => dispatch(setJustUpdatedRealtyTrueAC()))
+      .then(() => dispatch(setAlertUpdateVisibilityTrueAC()))
       .catch(error => { console.log(error) })
     axios.post(route('images.download'), fileList)
       .catch(error => { console.log(error) })
