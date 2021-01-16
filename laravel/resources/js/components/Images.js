@@ -11,16 +11,16 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 import Pagination from 'react-bootstrap/Pagination'
 
 // Actions
-import { getImagesAction } from '../actions/getImagesAction'
+import { getImagesAsync } from '../actions/getImagesAsync'
 
 // Css Modules
 import TableCss from './css/Table.module.css'
 
 
-function Images({images, totalPages, currentPage, perPage, onGetImages}) {
+function Images({images, totalPages, currentPage, perPage, getImages}) {
   function onGetResource(e, number) {
     e.preventDefault()
-    onGetImages(number)
+    getImages(number)
   }
 
   function showImagesItems(currentPage, perPage) {
@@ -83,8 +83,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onGetImages(pageNumber) {
-      dispatch(getImagesAction(pageNumber))
+    getImages(pageNumber) {
+      dispatch(getImagesAsync(pageNumber))
     },
   }
 }

@@ -13,8 +13,8 @@ import ListGroup from 'react-bootstrap/ListGroup'
 
 // Actions
 import { getRealtiesAsync } from '../actions/getRealtiesAsync'
-import { getFeedbacksAction } from '../actions/getFeedbacksAction'
-import { getImagesAction } from '../actions/getImagesAction'
+import { getFeedbacksAsync } from '../actions/getFeedbacksAsync'
+import { getImagesAsync } from '../actions/getImagesAsync'
 import { setFirstLoadingTrueAction } from '../actions/setFirstLoadingTrueAction'
 import { setFirstLoadingFalseAction } from '../actions/setFirstLoadingFalseAction'
 
@@ -75,7 +75,7 @@ class App extends Component {
                 <NavLink to="/feedbacks"
                   className={NavLinkCss.main}
                   activeClassName={NavLinkCss.active}
-                  onClick={this.props.onGetFeedbacks}
+                  onClick={this.props.getFeedbacks}
                   ref={this.feedbacksMenuItem}
                   onMouseOver={this.makeCursorNotPointerIfActive.bind(this, this.feedbacksMenuItem)}>
                   Отзывы
@@ -83,7 +83,7 @@ class App extends Component {
                 <NavLink to="/images"
                   className={NavLinkCss.main}
                   activeClassName={NavLinkCss.active}
-                  onClick={this.props.onGetImages}
+                  onClick={this.props.getImages}
                   ref={this.imagesMenuItem}
                   onMouseOver={this.makeCursorNotPointerIfActive.bind(this, this.imagesMenuItem)}>
                   Изображения
@@ -96,7 +96,7 @@ class App extends Component {
                 <Route children={<Realties />} exact path="/realties" />
                 <Route children={<RealtyCreate />} exact path="/realties/create" />
                 <Route children={<RealtyShow />} exact path="/realties/:id" />
-                <Route children={<RealtyEdit />} exact path="/realties/:id/edit" />                
+                <Route children={<RealtyEdit />} exact path="/realties/:id/edit" />
                 <Route children={<Feedbacks />} exact path="/feedbacks" />
                 <Route children={<Images />} exact path="/images" />
                 <Route children={<Test />} exact path="/test" />
@@ -110,32 +110,28 @@ class App extends Component {
 }
 
 
-function mapStateToProps(state) {
-  return {
-    isFirstLoading: state.isFirstLoading,
-  }
-}
+const mapStateToProps = state => ({
+  isFirstLoading: state.isFirstLoading,
+})
 
 
-function mapDispatchToProps(dispatch) {
-  return {
-    getRealties() {
-      dispatch(getRealtiesAsync())
-    },
-    onGetFeedbacks() {
-      dispatch(getFeedbacksAction())
-    },
-    onGetImages() {
-      dispatch(getImagesAction())
-    },
-    setFirstLoadingFalse() {
-      dispatch(setFirstLoadingFalseAction())
-    },
-    setFirstLoadingTrue() {
-      dispatch(setFirstLoadingTrueAction())
-    },
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  getRealties() {
+    dispatch(getRealtiesAsync())
+  },
+  getFeedbacks() {
+    dispatch(getFeedbacksAsync())
+  },
+  getImages() {
+    dispatch(getImagesAsync())
+  },
+  setFirstLoadingFalse() {
+    dispatch(setFirstLoadingFalseAction())
+  },
+  setFirstLoadingTrue() {
+    dispatch(setFirstLoadingTrueAction())
+  },
+})
 
 
 export default compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(App)
