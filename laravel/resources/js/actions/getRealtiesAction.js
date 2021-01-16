@@ -1,5 +1,4 @@
 import { GET_REALTIES } from './consts';
-import { setJustCreatedRealtyFalseAction } from './setJustCreatedRealtyFalseAction';
 
 export function getRealtiesAction(pageNumber) {
   return function(dispatch) {  
