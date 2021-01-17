@@ -6,6 +6,7 @@ use App\Realty;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Image;
+use Illuminate\Support\Facades\Storage;
 
 class RealtyResource extends Controller
 {
@@ -84,7 +85,8 @@ class RealtyResource extends Controller
      */
     public function destroy(Realty $realty)
     {
-        Realty::destroy($realty->id);        
+        Realty::destroy($realty->id);
+        Storage::disk('public')->deleteDirectory("uploads/realties/{$realty->id}");        
     }
 
     /**
@@ -96,7 +98,8 @@ class RealtyResource extends Controller
     {
         $realtyId = $request->realtyId;
 
-        if ($request->hasfile('images')) {           
+        if ($request->hasfile('images')) {     
+            //return 'images';      
             foreach ($request->file('images') as $image) {  
                 $name = $image->getClientOriginalName();              
                 $image->storeAs("uploads/realties/{$realtyId}/", $name, 'public');   
@@ -108,7 +111,7 @@ class RealtyResource extends Controller
             $name = $request->file('main_image')->getClientOriginalName();   
             $image->storeAs("uploads/realties/{$realtyId}/", $name, 'public');  
             $this->createImageEloquent($request, $name, $realtyId, 'main');           
-        }
+        }        
     }
 
     private function createImageEloquent($request, $imageName, $realtyId, $imageType) 
