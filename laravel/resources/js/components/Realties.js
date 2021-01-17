@@ -18,7 +18,7 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 
 // Actions
 import { getRealtiesAsync } from '../actions/getRealtiesAsync'
-import { realtyDeleteAction } from '../actions/realtyDeleteAction'
+import { realtyDeleteAsync } from '../actions/realtyDeleteAsync'
 import { setJustCreatedRealtyFalseAC } from '../actions/setJustCreatedRealtyFalseAC'
 import { setJustUpdatedRealtyFalseAC } from '../actions/setJustUpdatedRealtyFalseAC'
 import { setJustDeletedRealtyFalseAC } from '../actions/setJustDeletedRealtyFalseAC'
@@ -36,7 +36,7 @@ function Realties({ realties,
                     currentPage,
                     perPage,
                     getRealties,
-                    onDeleteRealty,
+                    realtyDelete,
                     isJustCreatedRealty,
                     isJustUpdatedRealty,
                     isJustDeletedRealty,
@@ -94,7 +94,7 @@ function Realties({ realties,
 
   function onDeleteResource(e, id) {
     handleClose()
-    onDeleteRealty(id)
+    realtyDelete(id)
   }
 
   function setCandidateToDelete(e, id, name) {
@@ -219,8 +219,8 @@ function mapDispatchToProps(dispatch) {
     getRealties(currentPageNumber) {
       dispatch(getRealtiesAsync(currentPageNumber))
     },
-    onDeleteRealty(id) {
-      dispatch(realtyDeleteAction(id))
+    realtyDelete(id) {
+      dispatch(realtyDeleteAsync(id))
     },
     setJustCreatedRealtyFalse() {
       dispatch(setJustCreatedRealtyFalseAC())

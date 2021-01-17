@@ -8,7 +8,7 @@ import ReactMDE from 'redux-forms-markdown-editor'
 import Button from 'react-bootstrap/Button'
 
 // Actions
-import { realtyCreateAction } from '../actions/realtyCreateAction'
+import { realtyCreateAsync } from '../actions/realtyCreateAsync'
 
 // Components
 import FileInput from './FileInput';
@@ -221,7 +221,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onRealtyCreate(values, fileList) {
-      dispatch(realtyCreateAction(values, fileList))
+      dispatch(realtyCreateAsync(values, fileList))
     },
   }
 }

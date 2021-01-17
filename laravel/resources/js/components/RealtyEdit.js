@@ -22,11 +22,11 @@ class RealtyEdit extends Component {
   }
   
   submit(values) {
-    this.props.onUpdateRealty(values, this.props.fileList)    
+    this.props.realtyUpdate(values, this.props.fileList)    
   }
 
   componentDidMount() {   
-    this.props.onRealtyEdit(this.props.match.params.id)     
+    this.props.realtyEdit(this.props.match.params.id)     
   }
 
   render() {     
@@ -57,13 +57,13 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onRealtyEdit(id) {
+    realtyEdit(id) {
       dispatch(realtyEditAsync(id))
     },
     getRealties(pageNumber) {
       dispatch(getRealtiesAsync(pageNumber))
     },
-    onUpdateRealty(values, fileList) {    
+    realtyUpdate(values, fileList) {    
       dispatch(realtyUpdateAction(values, fileList))      
     },
   }

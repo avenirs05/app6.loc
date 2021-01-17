@@ -3,7 +3,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 
 // Actions
-import { getFileListAction } from '../actions/getFileListAction'
+import { getFileListAC } from '../actions/getFileListAC'
 
 
 function FileInput ({
@@ -40,7 +40,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {    
     onGetFileList(payload, imgType) {
-      dispatch(getFileListAction(payload, imgType))
+      dispatch(getFileListAC(payload, imgType))
     },
   }
 }
