@@ -12,7 +12,7 @@ import Button from 'react-bootstrap/Button'
 
 // Actions
 import { realtyEditAsync } from '../actions/realtyEditAsync'
-import { realtyUpdateAction } from '../actions/realtyUpdateAction'
+import { realtyUpdateAsync } from '../actions/realtyUpdateAsync'
 import { getRealtiesAsync } from '../actions/getRealtiesAsync'
 
 
@@ -22,11 +22,11 @@ class RealtyEdit extends Component {
   }
   
   submit(values) {
-    this.props.realtyUpdate(values, this.props.fileList)    
+    this.props.handleRealtyUpdate(values, this.props.fileList)    
   }
 
   componentDidMount() {   
-    this.props.realtyEdit(this.props.match.params.id)     
+    this.props.handleRealtyEdit(this.props.match.params.id)        
   }
 
   render() {     
@@ -57,14 +57,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    realtyEdit(id) {
+    handleRealtyEdit(id) {
       dispatch(realtyEditAsync(id))
     },
-    getRealties(pageNumber) {
-      dispatch(getRealtiesAsync(pageNumber))
-    },
-    realtyUpdate(values, fileList) {    
-      dispatch(realtyUpdateAction(values, fileList))      
+    handleRealtyUpdate(values, fileList) {    
+      dispatch(realtyUpdateAsync(values, fileList))      
     },
   }
 }

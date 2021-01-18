@@ -35,8 +35,8 @@ function Realties({ realties,
                     totalPages,
                     currentPage,
                     perPage,
-                    getRealties,
-                    realtyDelete,
+                    handleGetRealties,
+                    handleRealtyDelete,
                     isJustCreatedRealty,
                     isJustUpdatedRealty,
                     isJustDeletedRealty,
@@ -60,7 +60,7 @@ function Realties({ realties,
 
   useEffect(() => {
     if (isJustCreatedRealty) {
-      getRealties(currentPage)
+      handleGetRealties(currentPage)
       window.setTimeout(() => {
         setAlertCreateVisibilityFalse()
       }, 2000)
@@ -70,7 +70,7 @@ function Realties({ realties,
 
   useEffect(() => {
     if (isJustUpdatedRealty) {
-      getRealties(currentPage)
+      handleGetRealties(currentPage)
       window.setTimeout(() => {
         setAlertUpdateVisibilityFalse()
       }, 2000)
@@ -80,7 +80,7 @@ function Realties({ realties,
 
   useEffect(() => {
     if (isJustDeletedRealty) {
-      getRealties(currentPage)
+      handleGetRealties(currentPage)
       window.setTimeout(() => {
         setAlertDeleteVisibilityFalse()
       }, 2000)
@@ -89,12 +89,12 @@ function Realties({ realties,
   }, [isJustDeletedRealty])
 
   function onGetResource(e, currentPageNumber) {
-    getRealties(currentPageNumber)
+    handleGetRealties(currentPageNumber)
   }
 
   function onDeleteResource(e, id) {
     handleClose()
-    realtyDelete(id)
+    handleRealtyDelete(id)
   }
 
   function setCandidateToDelete(e, id, name) {
@@ -102,7 +102,6 @@ function Realties({ realties,
     setRealtyDeleteId(() => id)
     setRealtyDeleteName(() => name)
   }
-
 
   function showRealtiesItems(currentPage, perPage) {
     return function(realty, index) {
@@ -163,38 +162,38 @@ function Realties({ realties,
           </div>
         </div>
       </div>
-        <Table bordered hover>
-          <thead>
-            <tr>
-              <th>№</th>
-              <th>Название</th>
-              <th>Тип</th>
-              <th>Цена</th>
-              <th>Видимость</th>
-              <th className="td_icon"><EditOutlinedIcon color="primary"></EditOutlinedIcon></th>
-              <th className="td_icon"><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></th>
-              <th className="td_icon"><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></th>
-            </tr>
-          </thead>
-          <tbody>
-            {realties.items.map(showRealtiesItems(currentPage, perPage))}
-          </tbody>
-        </Table>
-        <Pagination>{items}</Pagination>
+      <Table bordered hover>
+        <thead>
+          <tr>
+            <th>№</th>
+            <th>Название</th>
+            <th>Тип</th>
+            <th>Цена</th>
+            <th>Видимость</th>
+            <th className="td_icon"><EditOutlinedIcon color="primary"></EditOutlinedIcon></th>
+            <th className="td_icon"><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></th>
+            <th className="td_icon"><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></th>
+          </tr>
+        </thead>
+        <tbody>
+          {realties.items.map(showRealtiesItems(currentPage, perPage))}
+        </tbody>
+      </Table>
+      <Pagination>{items}</Pagination>
 
-        <Modal size="lg" show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Вы хотите удалить объект {realtyDeleteName}?</Modal.Title>
-          </Modal.Header>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Закрыть
-          </Button>
-            <Button variant="danger" onClick={(e) => onDeleteResource(e, realtyDeleteId)}>
-              Удалить навсегда
-          </Button>
-          </Modal.Footer>
-        </Modal>
+      <Modal size="lg" show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Вы хотите удалить объект {realtyDeleteName}?</Modal.Title>
+        </Modal.Header>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Закрыть
+        </Button>
+          <Button variant="danger" onClick={(e) => onDeleteResource(e, realtyDeleteId)}>
+            Удалить навсегда
+        </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   )
 }
@@ -216,10 +215,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getRealties(currentPageNumber) {
+    handleGetRealties(currentPageNumber) {
       dispatch(getRealtiesAsync(currentPageNumber))
     },
-    realtyDelete(id) {
+    handleRealtyDelete(id) {
       dispatch(realtyDeleteAsync(id))
     },
     setJustCreatedRealtyFalse() {

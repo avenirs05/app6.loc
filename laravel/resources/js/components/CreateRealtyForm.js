@@ -136,12 +136,10 @@ let CreateRealtyForm = props => {
         </div>
         <Field component={FileInput} name="main_image" imgType="main" multiple={false} />
       </div> 
-      <div className="mb-4">
-        <div>
-          <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-              Изображения галереи
-          </label>
-        </div>
+      <div className="mb-4">        
+        <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
+            Изображения галереи
+        </label>        
         <Field component={FileInput} name="images" imgType="thumbnail" multiple={true}/>
       </div>        
       <div>
