@@ -98,8 +98,7 @@ class RealtyResource extends Controller
     {
         $realtyId = $request->realtyId;
 
-        if ($request->hasfile('images')) {     
-            //return 'images';      
+        if ($request->hasfile('images')) {    
             foreach ($request->file('images') as $image) {  
                 $name = $image->getClientOriginalName();              
                 $image->storeAs("uploads/realties/{$realtyId}/", $name, 'public');   

@@ -15,15 +15,17 @@
       @include('chunks.price')      
     </div>
   </div>       
-  <div class="w-100 mt-1" id="lightgallery">     
-    @foreach ($realty->images as $image)
-      <a href={{ asset("storage/uploads/realties/{$realty->id}/$image->name") }}>
-        <img src={{ asset("storage/uploads/realties/{$realty->id}/$image->name") }} 
-             width="65" 
-             height="43" 
-             class="mb-1 img-thumb-lightgallery">
-      </a> 
-    @endforeach
+  <div class="w-100 mt-1" id="lightgallery"> 
+    @isset($realty->images[0])  
+      @foreach ($realty->images as $image)
+        <a href={{ asset("storage/uploads/realties/{$realty->id}/$image->name") }}>
+          <img src={{ asset("storage/uploads/realties/{$realty->id}/$image->name") }} 
+              width="65" 
+              height="43" 
+              class="mb-1 img-thumb-lightgallery">
+        </a> 
+      @endforeach
+    @endisset
   </div>  
   <div class="w-100 mt-3">
     @markdown

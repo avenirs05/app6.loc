@@ -10,13 +10,15 @@
            class="d-block w-100" 
            alt="">
     </div>
-    @foreach ($thumbImages as $thumbImage)
-      <div class="carousel-item">
-        <img src={{ asset("storage/uploads/realties/{$realty->id}/{$thumbImage}") }} 
-             class="d-block w-100" 
-             alt="">
-      </div>
-    @endforeach
+    @isset($thumbImages[0])
+      @foreach ($thumbImages as $thumbImage)
+        <div class="carousel-item">
+          <img src={{ asset("storage/uploads/realties/{$realty->id}/{$thumbImage}") }} 
+              class="d-block w-100" 
+              alt="">
+        </div>
+      @endforeach
+    @endisset
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -3,9 +3,11 @@
     <div class="row no-gutters">
       <div class="col-md-4">
         <a href="{{ route($realtyType, ['id' => $realty->id]) }}">
-          <img src={{ asset("storage/uploads/realties/{$realty->id}/{$realty->images[0]['name']}") }} 
-               class="card-img" 
-               alt="">
+          @isset($realty->images[0])
+            <img src={{ asset("storage/uploads/realties/{$realty->id}/{$realty->images[0]['name']}") }} 
+                class="card-img" 
+                alt="">
+          @endisset
         </a>        
       </div>      
       <div class="col-md-8">
