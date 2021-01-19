@@ -6,6 +6,7 @@ import ReactMDE from 'redux-forms-markdown-editor'
 
 // React Bootstrap
 import Button from 'react-bootstrap/Button'
+import Image from 'react-bootstrap/Image'
 
 // Css Modules
 import FormCss from './css/Form.module.css'
@@ -33,8 +34,19 @@ let EditRealtyForm = props => {
       }      
     })
     return () => { removeEventListener('keydown', listenerSaveKeydown) }
-  }, [])
+  }, []);
+
  
+  const getMainImagePath = (realtyId, images) => {
+    const basePath = '/storage/uploads/realties'    
+    const mainImage = img => img.type === 'main'    
+    const mainImageName = images.find(mainImage)
+    
+    if (mainImageName) {
+      return `${basePath}/${realtyId}/${mainImageName.name}`
+    } else return '/images/no-photo.jpg'      
+  }
+
 
   return (
     <form className={FormCss.form} onSubmit={handleSubmit}>
@@ -125,30 +137,41 @@ let EditRealtyForm = props => {
       <div><Field name="dist_podg" label="Расстояние до аэропорта Подгорица (км)" type="number" component={renderTextField} /></div>
       <div><Field name="discount" label="Скидка (%). Не трогать. Оставить 1%, как сейчас." type="number" component={renderTextField} /></div>      
       <div className="mb-4">  
-        <div>{ typeof realtyEdit.images !== 'undefined' ? 
-               <div>
-                 <img 
-                   width="150" 
-                   height="100" 
-                   src={`/storage/uploads/realties/${realtyEdit.id}/` + realtyEdit.images.find(img => img.type === 'main').name } 
-                   alt=""/>
-                 <div>{ realtyEdit.images.find(img => img.type === 'main').name }</div>
-               </div> :
-              null 
-             }              
-        </div>      
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
             Главное изображение
         </label>   
-        <div>
-          <img width="150" height="100" src="/storage/uploads/realties/1/01.jpg" alt=""/>  
-        </div>     
+        <div>{ typeof realtyEdit.images !== 'undefined' ?                
+               <Image 
+                 width="300"
+                 height="200"
+                 rounded
+                //  src={`/storage/uploads/realties/${realtyEdit.id}/` + realtyEdit.images.find(img => img.type === 'main').name } 
+                 src={ getMainImagePath(realtyEdit.id, realtyEdit.images) } 
+                 alt=""/> :
+               null 
+             }              
+        </div>    
         <Field component={FileInput} name="main_image" imgType="main" multiple={false} />
       </div> 
       <div className="mb-4">        
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
               Изображения галереи
         </label>        
+        <div>
+            { 
+              typeof realtyEdit.images !== 'undefined' ?     
+              realtyEdit.images.map((image, index) =>               
+                <Image 
+                  key={index}
+                  width="200"
+                  height="150"
+                  thumbnail
+                  src={`/storage/uploads/realties/${realtyEdit.id}/${image.name}`} 
+                  alt=""/> 
+              ) :         
+              null 
+            }              
+        </div> 
         <Field component={FileInput} name="images" />
       </div> 
       <div>
