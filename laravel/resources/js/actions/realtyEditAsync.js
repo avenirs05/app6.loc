@@ -1,13 +1,14 @@
 import { allRealtyDbFields } from '../script'
-import { realtyEditAC } from './realtyEditAC'
+import { realtyEditAC } from './ac/realtyEditAC'
 
 export function realtyEditAsync(id) {
   return function (dispatch) {
     axios.get(route('realties.edit', id))
-      .then(response => {
+      .then(response => { 
         const realty = {}
+
         allRealtyDbFields.forEach(prop => {
-          realty[prop] = response.data[prop]
+          realty[prop] = response.data[prop]      
         })
 
         return dispatch(realtyEditAC(realty))

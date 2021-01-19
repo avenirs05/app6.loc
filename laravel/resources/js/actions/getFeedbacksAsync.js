@@ -1,4 +1,4 @@
-import { getFeedbacksAC } from './getFeedbacksAC'
+import { getFeedbacksAC } from './ac/getFeedbacksAC'
 
 
 export const getFeedbacksAsync = pageNumber => {

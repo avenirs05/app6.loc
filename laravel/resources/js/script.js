@@ -127,5 +127,6 @@ export let allRealtyDbFields = [
   'dist_tivat',
   'dist_podg',
   'discount',  
+  'images'
 ]
 

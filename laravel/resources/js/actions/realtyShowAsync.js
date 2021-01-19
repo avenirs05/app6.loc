@@ -1,5 +1,5 @@
 import { allRealtyDbFields } from '../script'
-import { realtyShowAC } from './realtyShowAC'
+import { realtyShowAC } from './ac/realtyShowAC'
 
 export function realtyShowAsync(id) {
   return function (dispatch) {

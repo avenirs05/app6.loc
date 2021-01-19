@@ -1,4 +1,4 @@
-import { getImagesAC } from './getImagesAC'
+import { getImagesAC } from './ac/getImagesAC'
 
 
 export const getImagesAsync = pageNumber => {

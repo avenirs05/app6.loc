@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux'
+
+// Regular Reducers
 import realties from './realties'
 import realtyShow from './realtyShow'
 import realtyEdit from './realtyEdit'
@@ -7,14 +9,18 @@ import realtyDelete from './realtyDelete'
 import feedbacks from './feedbacks'
 import images from './images'
 import fileList from './fileList'
-import isFirstLoading from './isFirstLoading'
-import isJustCreatedRealty from './isJustCreatedRealty'
-import isJustUpdatedRealty from './isJustUpdatedRealty'
-import isJustDeletedRealty from './isJustDeletedRealty'
-import isAlertCreateVisible from './isAlertCreateVisible'
-import isAlertUpdateVisible from './isAlertUpdateVisible'
-import isAlertDeleteVisible from './isAlertDeleteVisible'
+
+// Redux Form Reducer
 import { reducer as formReducer } from 'redux-form'
+
+// Flags Reducers
+import { isAlertCreateVisible,
+         isAlertUpdateVisible,
+         isAlertDeleteVisible,
+         isFirstLoading,
+         isJustCreatedRealty,
+         isJustUpdatedRealty,
+         isJustDeletedRealty } from './flags'
 
 
 export default combineReducers({

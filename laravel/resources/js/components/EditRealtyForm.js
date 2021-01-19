@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { compose } from 'redux'
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
@@ -22,6 +22,8 @@ import { validate,
 
 let EditRealtyForm = props => {
   const { handleSubmit, pristine, submitting, classes, realtyEdit } = props
+  let [mainImage, setMainImage] = useState('')
+
   
   const updateBtn = useRef()
   useEffect(() => {     
@@ -32,7 +34,7 @@ let EditRealtyForm = props => {
     })
     return () => { removeEventListener('keydown', listenerSaveKeydown) }
   }, [])
-  
+ 
 
   return (
     <form className={FormCss.form} onSubmit={handleSubmit}>
@@ -122,6 +124,27 @@ let EditRealtyForm = props => {
       <div><Field name="dist_tivat" label="Расстояние до аэропорта Тиват (км)" type="number" component={renderTextField} /></div>
       <div><Field name="dist_podg" label="Расстояние до аэропорта Подгорица (км)" type="number" component={renderTextField} /></div>
       <div><Field name="discount" label="Скидка (%). Не трогать. Оставить 1%, как сейчас." type="number" component={renderTextField} /></div>      
+      <div className="mb-4">  
+        <div>{ typeof realtyEdit.images !== 'undefined' ? 
+               <div>
+                 <img 
+                   width="150" 
+                   height="100" 
+                   src={`/storage/uploads/realties/${realtyEdit.id}/` + realtyEdit.images.find(img => img.type === 'main').name } 
+                   alt=""/>
+                 <div>{ realtyEdit.images.find(img => img.type === 'main').name }</div>
+               </div> :
+              null 
+             }              
+        </div>      
+        <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
+            Главное изображение
+        </label>   
+        <div>
+          <img width="150" height="100" src="/storage/uploads/realties/1/01.jpg" alt=""/>  
+        </div>     
+        <Field component={FileInput} name="main_image" imgType="main" multiple={false} />
+      </div> 
       <div className="mb-4">        
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
               Изображения галереи

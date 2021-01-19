@@ -1,5 +1,5 @@
-import { setJustCreatedRealtyTrueAC } from './setJustCreatedRealtyTrueAC'
-import { setAlertCreateVisibilityTrueAC } from './setAlertCreateVisibilityTrueAC'
+import { setJustCreatedRealtyTrueAC } from './ac/flagsAC'
+import { setAlertCreateVisibilityTrueAC } from './ac/flagsAC'
 
 
 export function realtyCreateAsync(values, fileList) {

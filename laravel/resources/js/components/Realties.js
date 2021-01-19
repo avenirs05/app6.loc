@@ -19,12 +19,12 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 // Actions
 import { getRealtiesAsync } from '../actions/getRealtiesAsync'
 import { realtyDeleteAsync } from '../actions/realtyDeleteAsync'
-import { setJustCreatedRealtyFalseAC } from '../actions/setJustCreatedRealtyFalseAC'
-import { setJustUpdatedRealtyFalseAC } from '../actions/setJustUpdatedRealtyFalseAC'
-import { setJustDeletedRealtyFalseAC } from '../actions/setJustDeletedRealtyFalseAC'
-import { setAlertCreateVisibilityFalseAC } from '../actions/setAlertCreateVisibilityFalseAC'
-import { setAlertUpdateVisibilityFalseAC } from '../actions/setAlertUpdateVisibilityFalseAC'
-import { setAlertDeleteVisibilityFalseAC } from '../actions/setAlertDeleteVisibilityFalseAC'
+import { setJustCreatedRealtyFalseAC, 
+         setJustUpdatedRealtyFalseAC, 
+         setJustDeletedRealtyFalseAC, 
+         setAlertCreateVisibilityFalseAC, 
+         setAlertUpdateVisibilityFalseAC,
+         setAlertDeleteVisibilityFalseAC } from '../actions/ac/flagsAC'
 
 // Css Modules
 import TableCss from './css/Table.module.css'

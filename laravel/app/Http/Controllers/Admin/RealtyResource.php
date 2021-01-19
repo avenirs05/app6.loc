@@ -58,7 +58,7 @@ class RealtyResource extends Controller
      */
     public function edit(Realty $realty)
     {
-        return $realty;
+        return Realty::with(['images'])->where('id', $realty->id)->first();
     }
 
     /**
@@ -70,8 +70,11 @@ class RealtyResource extends Controller
      */
     public function update(Request $request, Realty $realty)
     {
-        collect($request)->each(function($val, $key) use ($realty) {
-            $realty->update([$key => $val]);
+        //return collect($request);
+        collect($request)->each(function($val, $key) use ($realty) {  
+            if ($key !== 'images') {
+                $realty->update([$key => $val]);           
+            }          
         }); 
 
         return $request->id;

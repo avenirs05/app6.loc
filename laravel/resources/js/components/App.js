@@ -15,8 +15,8 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import { getRealtiesAsync } from '../actions/getRealtiesAsync'
 import { getFeedbacksAsync } from '../actions/getFeedbacksAsync'
 import { getImagesAsync } from '../actions/getImagesAsync'
-import { setFirstLoadingTrueAC } from '../actions/setFirstLoadingTrueAC'
-import { setFirstLoadingFalseAC } from '../actions/setFirstLoadingFalseAC'
+import { setFirstLoadingTrueAC, setFirstLoadingFalseAC } from '../actions/ac/flagsAC'
+
 
 // Components
 import Realties from './Realties'

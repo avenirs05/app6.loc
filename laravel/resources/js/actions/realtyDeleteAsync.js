@@ -1,6 +1,6 @@
-import { setJustDeletedRealtyTrueAC } from './setJustDeletedRealtyTrueAC'
-import { setAlertDeleteVisibilityTrueAC } from './setAlertDeleteVisibilityTrueAC'
-import { realtyDeleteAC } from './realtyDeleteAC'
+import { setJustDeletedRealtyTrueAC } from './ac/flagsAC'
+import { setAlertDeleteVisibilityTrueAC } from './ac/flagsAC'
+import { realtyDeleteAC } from './ac/realtyDeleteAC'
 
 export function realtyDeleteAsync(id) {
   return function (dispatch) {

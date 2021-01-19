@@ -17,7 +17,7 @@ export default function fileList(state = new FormData(), action) {
         formData.set('main_image', images[0])      
       }
       
-    return formData      
+      return formData      
       
     default:
       return state  

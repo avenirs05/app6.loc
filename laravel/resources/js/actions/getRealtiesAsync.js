@@ -1,4 +1,4 @@
-import { getRealtiesAC } from './getRealtiesAC'
+import { getRealtiesAC } from './ac/getRealtiesAC'
 
 export const getRealtiesAsync = pageNumber => {
   return async dispatch => {

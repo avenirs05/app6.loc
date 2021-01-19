@@ -3,7 +3,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 
 // Actions
-import { getFileListAC } from '../actions/getFileListAC'
+import { getFileListAC } from '../actions/ac/getFileListAC'
 
 
 function FileInput ({

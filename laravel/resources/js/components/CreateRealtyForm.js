@@ -25,10 +25,6 @@ import FormCss from './css/Form.module.css'
 let CreateRealtyForm = props => {
   const { handleSubmit, pristine, submitting, classes, onRealtyCreate, fileList } = props
 
-  function submit(values) {  
-    onRealtyCreate(values, fileList)
-  }
-
   const createBtn = useRef()
   useEffect(() => {     
     let listenerSaveKeydown = document.addEventListener('keydown', function(event) {
@@ -39,6 +35,9 @@ let CreateRealtyForm = props => {
     return () => { removeEventListener('keydown', listenerSaveKeydown) }
   }, [])
   
+  function submit(values) {  
+    onRealtyCreate(values, fileList)
+  }
 
   return (
     <form className={FormCss.form} onSubmit={handleSubmit(submit)} encType="multipart/form-data">
@@ -78,16 +77,14 @@ let CreateRealtyForm = props => {
       <div><Field name="parking_payment_ru" label="Паркинг. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
       <div><Field name="parking_payment_en" label="Паркинг — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
       <div>
-        <label 
-            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-              Подробное описание
+        <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
+          Подробное описание
         </label>
         <Field name="description_ru" component={ReactMDE} placeholder="Описание подробное" />
       </div>
       <div>
-        <label 
-            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-              Подробное описание — English
+        <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
+          Подробное описание — English
         </label>
         <Field name="description_en" component={ReactMDE} placeholder="Описание подробное — English" />
       </div>
@@ -128,12 +125,10 @@ let CreateRealtyForm = props => {
       <div><Field name="dist_tivat" label="Расстояние до аэропорта Тиват (км)" type="number" component={renderTextField} /></div>
       <div><Field name="dist_podg" label="Расстояние до аэропорта Подгорица (км)" type="number" component={renderTextField} /></div>
       <div><Field name="discount" label="Скидка (%). Не трогать. Оставить 1%, как сейчас." type="number" component={renderTextField} /></div>      
-      <div className="mb-4">
-        <div>
-          <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-              Главное изображение
-          </label>
-        </div>
+      <div className="mb-4">        
+        <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
+            Главное изображение
+        </label>        
         <Field component={FileInput} name="main_image" imgType="main" multiple={false} />
       </div> 
       <div className="mb-4">        

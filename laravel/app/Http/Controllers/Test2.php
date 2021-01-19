@@ -19,5 +19,14 @@ class Test2 extends Controller
         //dd(Storage::getFacadeRoot());
         //Storage::delete('fox.png');
         //dd(Storage::disk('public')->deleteDirectory('uploads/realties/14'));
+        $realty = Realty::find(10);
+        //dd($realty->images);
+
+        //foreach ($realty->images as $image) {
+            //dump($image->name) . '\n';
+            // if ($image->type === 'main') {
+            //     $mainImage = $image->name;                
+            // }
+        //} 
     }
 }
