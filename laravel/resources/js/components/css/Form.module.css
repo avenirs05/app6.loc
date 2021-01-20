@@ -8,3 +8,22 @@
   font-family: "Roboto", "Helvetica", "Arial", sans-serif
 }
 
+.thumb_wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.delete_thumb_icon {
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.delete_thumb_icon:hover {
+  cursor: pointer;
+  color: #002884;
+
+}
+

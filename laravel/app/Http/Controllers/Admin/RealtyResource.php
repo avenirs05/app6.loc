@@ -70,7 +70,6 @@ class RealtyResource extends Controller
      */
     public function update(Request $request, Realty $realty)
     {
-        //return collect($request);
         collect($request)->each(function($val, $key) use ($realty) {  
             if ($key !== 'images') {
                 $realty->update([$key => $val]);           
@@ -101,17 +100,17 @@ class RealtyResource extends Controller
     {
         $realtyId = $request->realtyId;
 
-        if ($request->hasfile('images')) {    
-            foreach ($request->file('images') as $image) {  
+        if ($request->hasfile('thumbnails')) {    
+            foreach ($request->file('thumbnails') as $image) {  
                 $name = $image->getClientOriginalName();              
                 $image->storeAs("uploads/realties/{$realtyId}/", $name, 'public');   
                 $this->createImageEloquent($request, $name, $realtyId, 'thumbnail');                
             }
         } 
 
-        if ($request->hasfile('main_image')) {       
+        if ($request->hasfile('main_image')) {    
             $name = $request->file('main_image')->getClientOriginalName();   
-            $image->storeAs("uploads/realties/{$realtyId}/", $name, 'public');  
+            $request->file('main_image')->storeAs("uploads/realties/{$realtyId}/", $name, 'public');  
             $this->createImageEloquent($request, $name, $realtyId, 'main');           
         }        
     }

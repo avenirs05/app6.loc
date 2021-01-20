@@ -14,6 +14,9 @@ import FormCss from './css/Form.module.css'
 // Components
 import FileInput from './FileInput';
 
+// Icons
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+
 // Helpers
 import { validate, 
          renderTextField,  
@@ -23,8 +26,6 @@ import { validate,
 
 let EditRealtyForm = props => {
   const { handleSubmit, pristine, submitting, classes, realtyEdit } = props
-  let [mainImage, setMainImage] = useState('')
-
   
   const updateBtn = useRef()
   useEffect(() => {     
@@ -140,18 +141,20 @@ let EditRealtyForm = props => {
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
             Главное изображение
         </label>   
-        <div>{ typeof realtyEdit.images !== 'undefined' ?                
-               <Image 
-                 width="300"
-                 height="200"
-                 rounded
-                //  src={`/storage/uploads/realties/${realtyEdit.id}/` + realtyEdit.images.find(img => img.type === 'main').name } 
-                 src={ getMainImagePath(realtyEdit.id, realtyEdit.images) } 
-                 alt=""/> :
-               null 
-             }              
+        <div>
+          { typeof realtyEdit.images !== 'undefined' ?    
+            <>                
+              <Image 
+                width="300"
+                height="200"
+                rounded
+                src={ getMainImagePath(realtyEdit.id, realtyEdit.images) } 
+                alt="" /> 
+            </> :
+            null 
+          }              
         </div>    
-        <Field component={FileInput} name="main_image" imgType="main" multiple={false} />
+        <Field component={FileInput} name="main_image" imgType="main_image" multiple={false} />
       </div> 
       <div className="mb-4">        
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
@@ -159,20 +162,26 @@ let EditRealtyForm = props => {
         </label>        
         <div>
             { 
-              typeof realtyEdit.images !== 'undefined' ?     
-              realtyEdit.images.map((image, index) =>               
-                <Image 
-                  key={index}
-                  width="200"
-                  height="150"
-                  thumbnail
-                  src={`/storage/uploads/realties/${realtyEdit.id}/${image.name}`} 
-                  alt=""/> 
-              ) :         
+              typeof realtyEdit.images !== 'undefined' ?   
+              realtyEdit.images.map((image, index) => {  
+                if (image.type === 'thumbnail') {
+                  return (
+                    <div key={index} className={`${FormCss.thumb_wrapper} mr-2`}> 
+                      <HighlightOffIcon color="primary" className={FormCss.delete_thumb_icon}></HighlightOffIcon>          
+                      <Image                     
+                      width="200"
+                      height="150"
+                      thumbnail
+                      src={`/storage/uploads/realties/${realtyEdit.id}/${image.name}`} 
+                      alt=""/> 
+                    </div> 
+                  )
+                }
+              }) :         
               null 
             }              
         </div> 
-        <Field component={FileInput} name="images" />
+        <Field component={FileInput} name="thumbnails" imgType="thumbnails" multiple={true} />
       </div> 
       <div>
         <Button ref={updateBtn} variant="primary" type="submit" disabled={pristine || submitting}>Сохранить</Button>

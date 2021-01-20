@@ -9,7 +9,7 @@ import { getFileListAC } from '../actions/ac/getFileListAC'
 function FileInput ({
   multiple,
   imgType,
-  onGetFileList,
+  handleGetFileList,
   input: {
     value: omitValue,
     onChange,
@@ -20,7 +20,7 @@ function FileInput ({
 }) {
 
   const adaptFileEventToValue = (imgType) => e => { 
-    onGetFileList(e.target.files, imgType)     
+    handleGetFileList(e.target.files, imgType)     
   }
 
   return (
@@ -39,7 +39,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {    
-    onGetFileList(payload, imgType) {
+    handleGetFileList(payload, imgType) {
       dispatch(getFileListAC(payload, imgType))
     },
   }

@@ -35,7 +35,7 @@ let CreateRealtyForm = props => {
     return () => { removeEventListener('keydown', listenerSaveKeydown) }
   }, [])
   
-  function submit(values) {  
+  function submit(values) {     
     onRealtyCreate(values, fileList)
   }
 
@@ -129,13 +129,13 @@ let CreateRealtyForm = props => {
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
             Главное изображение
         </label>        
-        <Field component={FileInput} name="main_image" imgType="main" multiple={false} />
+        <Field component={FileInput} name="main_image" imgType="main_image" multiple={false} />
       </div> 
       <div className="mb-4">        
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
             Изображения галереи
         </label>        
-        <Field component={FileInput} name="images" imgType="thumbnail" multiple={true}/>
+        <Field component={FileInput} name="thumbnails" imgType="thumbnails" multiple={true}/>
       </div>        
       <div>
         <Button className="mb-4" 

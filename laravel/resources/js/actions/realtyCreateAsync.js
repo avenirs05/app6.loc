@@ -1,5 +1,6 @@
 import { setJustCreatedRealtyTrueAC } from './ac/flagsAC'
 import { setAlertCreateVisibilityTrueAC } from './ac/flagsAC'
+import { cleanFileListAC } from './ac/cleanFileListAC'
 
 
 export function realtyCreateAsync(values, fileList) {
@@ -10,6 +11,7 @@ export function realtyCreateAsync(values, fileList) {
       .then(() => dispatch(setAlertCreateVisibilityTrueAC()))
       .catch(error => { console.log(error) })
     axios.post(route('images.download'), fileList)
+      .then(() => dispatch(cleanFileListAC()))      
       .catch(error => { console.log(error) })
   }
 }

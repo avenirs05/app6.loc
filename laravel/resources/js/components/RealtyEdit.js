@@ -13,7 +13,6 @@ import Button from 'react-bootstrap/Button'
 // Actions
 import { realtyEditAsync } from '../actions/realtyEditAsync'
 import { realtyUpdateAsync } from '../actions/realtyUpdateAsync'
-import { getRealtiesAsync } from '../actions/getRealtiesAsync'
 
 
 class RealtyEdit extends Component {
