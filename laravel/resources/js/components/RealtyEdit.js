@@ -21,7 +21,7 @@ class RealtyEdit extends Component {
   }
   
   submit(values) {
-    this.props.handleRealtyUpdate(values, this.props.fileList)    
+    this.props.handleRealtyUpdate(values, this.props.formDataImages)    
   }
 
   componentDidMount() {   
@@ -50,7 +50,7 @@ function mapStateToProps(state) {
     currentPage: state.realties.currentPage,
     isAlertUpdateVisible: state.isAlertUpdateVisible,
     isJustUpdatedRealty: state.isJustUpdatedRealty,
-    fileList: state.fileList,
+    formDataImages: state.formDataImages,
   }
 }
 
@@ -59,8 +59,8 @@ function mapDispatchToProps(dispatch) {
     handleRealtyEdit(id) {
       dispatch(realtyEditAsync(id))
     },
-    handleRealtyUpdate(values, fileList) {    
-      dispatch(realtyUpdateAsync(values, fileList))      
+    handleRealtyUpdate(values, formDataImages) {    
+      dispatch(realtyUpdateAsync(values, formDataImages))      
     },
   }
 }

@@ -3,13 +3,13 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 
 // Actions
-import { getFileListAC } from '../actions/ac/getFileListAC'
+import { getFormDataImagesAC } from '../actions/ac/getFormDataImagesAC'
 
 
 function FileInput ({
   multiple,
   imgType,
-  handleGetFileList,
+  handleGetFormDataImages,
   input: {
     value: omitValue,
     onChange,
@@ -20,7 +20,7 @@ function FileInput ({
 }) {
 
   const adaptFileEventToValue = (imgType) => e => { 
-    handleGetFileList(e.target.files, imgType)     
+    handleGetFormDataImages(e.target.files, imgType)     
   }
 
   return (
@@ -39,8 +39,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {    
-    handleGetFileList(payload, imgType) {
-      dispatch(getFileListAC(payload, imgType))
+    handleGetFormDataImages(payload, imgType) {
+      dispatch(getFormDataImagesAC(payload, imgType))
     },
   }
 }

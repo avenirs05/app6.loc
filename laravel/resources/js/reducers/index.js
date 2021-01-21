@@ -8,7 +8,7 @@ import realtyUpdate from './realtyUpdate'
 import realtyDelete from './realtyDelete'
 import feedbacks from './feedbacks'
 import images from './images'
-import fileList from './fileList'
+import formDataImages from './formDataImages'
 
 // Redux Form Reducer
 import { reducer as formReducer } from 'redux-form'
@@ -38,6 +38,6 @@ export default combineReducers({
   isAlertCreateVisible,
   isAlertUpdateVisible,
   isAlertDeleteVisible, 
-  fileList, 
+  formDataImages, 
   form: formReducer,
 })

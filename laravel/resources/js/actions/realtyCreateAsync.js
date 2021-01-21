@@ -1,17 +1,19 @@
 import { setJustCreatedRealtyTrueAC } from './ac/flagsAC'
 import { setAlertCreateVisibilityTrueAC } from './ac/flagsAC'
-import { cleanFileListAC } from './ac/cleanFileListAC'
+import { cleanFormDataImagesAC } from './ac/cleanFormDataImagesAC'
 
 
-export function realtyCreateAsync(values, fileList) {
-  return async function (dispatch) {
-    await axios.post(route('realties.store'), values)
-      .then(response => { fileList.set('realtyId', response.data) })
-      .then(() => dispatch(setJustCreatedRealtyTrueAC()))
-      .then(() => dispatch(setAlertCreateVisibilityTrueAC()))
-      .catch(error => { console.log(error) })
-    axios.post(route('images.download'), fileList)
-      .then(() => dispatch(cleanFileListAC()))      
-      .catch(error => { console.log(error) })
+export const realtyCreateAsync = (values, formDataImages) =>
+  async dispatch => {
+    try {
+      const response = await axios.post(route('realties.store'), values)
+      await formDataImages.set('realtyId', response.data)
+      await axios.post(route('images.download'), formDataImages)
+      await dispatch(setJustCreatedRealtyTrueAC())
+      await dispatch(setAlertCreateVisibilityTrueAC())
+      dispatch(cleanFormDataImagesAC())
+    } 
+    catch (error) {
+      console.log(error)
+    }
   }
-}

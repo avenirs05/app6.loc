@@ -23,7 +23,7 @@ import FormCss from './css/Form.module.css'
 
 
 let CreateRealtyForm = props => {
-  const { handleSubmit, pristine, submitting, classes, onRealtyCreate, fileList } = props
+  const { handleSubmit, pristine, submitting, classes, handleRealtyCreate, formDataImages } = props
 
   const createBtn = useRef()
   useEffect(() => {     
@@ -32,11 +32,13 @@ let CreateRealtyForm = props => {
         createBtn.current.click() 
       }     
     })
-    return () => { removeEventListener('keydown', listenerSaveKeydown) }
+    return () => { 
+      removeEventListener('keydown', listenerSaveKeydown) 
+    }
   }, [])
   
   function submit(values) {     
-    onRealtyCreate(values, fileList)
+    handleRealtyCreate(values, formDataImages)
   }
 
   return (
@@ -159,7 +161,7 @@ CreateRealtyForm = reduxForm({
 
 function mapStateToProps(state) {  
   return {
-    fileList: state.fileList,
+    formDataImages: state.formDataImages,
     initialValues: {
       visibility: 'опубликовано',
       subname_ru: 'subname_ru',
@@ -213,8 +215,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onRealtyCreate(values, fileList) {
-      dispatch(realtyCreateAsync(values, fileList))
+    handleRealtyCreate(values, formDataImages) {
+      dispatch(realtyCreateAsync(values, formDataImages))
     },
   }
 }

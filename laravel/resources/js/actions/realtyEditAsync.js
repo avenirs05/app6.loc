@@ -1,17 +1,15 @@
 import { allRealtyDbFields } from '../script'
 import { realtyEditAC } from './ac/realtyEditAC'
+import { reduceObjByArray } from '../script'
 
-export function realtyEditAsync(id) {
-  return function (dispatch) {
-    axios.get(route('realties.edit', id))
-      .then(response => {         
-        const realty = {}
 
-        allRealtyDbFields.forEach(prop => {
-          realty[prop] = response.data[prop]      
-        })
-
-        return dispatch(realtyEditAC(realty))
-      })
+export const realtyEditAsync = id =>
+  async dispatch => {
+    try {
+      const response = await axios.get(route('realties.edit', id))
+      return dispatch(realtyEditAC(reduceObjByArray(allRealtyDbFields, response.data)))
+    }
+    catch (error) {
+      console.log(error)
+    }
   }
-}

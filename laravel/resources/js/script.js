@@ -128,6 +128,18 @@ export let allRealtyDbFields = [
   'dist_podg',
   'discount',  
   'images'
-  //'images'
 ]
 
+
+// Return object with props only of array has it prop 
+export const reduceObjByArray = (array, obj) => { 
+  let result = {}
+
+  array.forEach(prop => {
+    if (obj[prop]) {
+      result[prop] = obj[prop]
+    }    
+  }) 
+
+  return result
+}
