@@ -2,6 +2,7 @@ import { setJustDeletedRealtyTrueAC } from './ac/flagsAC'
 import { setAlertDeleteVisibilityTrueAC } from './ac/flagsAC'
 import { realtyDeleteAC } from './ac/realtyDeleteAC'
 
+
 export const realtyDeleteAsync = id => 
   async dispatch => {
     try {

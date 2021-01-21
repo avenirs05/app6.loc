@@ -17,14 +17,13 @@ import { getFeedbacksAsync } from '../actions/getFeedbacksAsync'
 import { getImagesAsync } from '../actions/getImagesAsync'
 import { setFirstLoadingTrueAC, setFirstLoadingFalseAC } from '../actions/ac/flagsAC'
 
-
 // Components
-import Realties from './Realties'
-import Feedbacks from './Feedbacks'
-import Images from './Images'
-import RealtyShow from './RealtyShow'
-import RealtyCreate from './RealtyCreate'
-import RealtyEdit from './RealtyEdit'
+import RealtiesPage from './RealtiesPage'
+import FeedbacksPage from './FeedbacksPage'
+import ImagesPage from './ImagesPage'
+import RealtyShowPage from './RealtyShowPage'
+import RealtyCreatePage from './RealtyCreatePage'
+import RealtyEditPage from './RealtyEditPage'
 import NavbarContainer from './NavbarContainer'
 import Test from './Test'
 
@@ -92,13 +91,13 @@ class App extends Component {
             </Col>
             <Col>
               <Switch>
-                <Route children={<Realties />} exact path="/" />
-                <Route children={<Realties />} exact path="/realties" />
-                <Route children={<RealtyCreate />} exact path="/realties/create" />
-                <Route children={<RealtyShow />} exact path="/realties/:id" />
-                <Route children={<RealtyEdit />} exact path="/realties/:id/edit" />
-                <Route children={<Feedbacks />} exact path="/feedbacks" />
-                <Route children={<Images />} exact path="/images" />
+                <Route children={<RealtiesPage />} exact path="/" />
+                <Route children={<RealtiesPage />} exact path="/realties" />
+                <Route children={<RealtyCreatePage />} exact path="/realties/create" />
+                <Route children={<RealtyShowPage />} exact path="/realties/:id" />
+                <Route children={<RealtyEditPage />} exact path="/realties/:id/edit" />
+                <Route children={<FeedbacksPage />} exact path="/feedbacks" />
+                <Route children={<ImagesPage />} exact path="/images" />
                 <Route children={<Test />} exact path="/test" />
               </Switch>
             </Col>
