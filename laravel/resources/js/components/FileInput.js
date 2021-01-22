@@ -1,7 +1,7 @@
 import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { NavLink, withRouter, Redirect } from "react-router-dom"
+//import { NavLink, withRouter, Redirect } from "react-router-dom"
 
 // Actions
 import { getFormDataImagesAC } from '../actions/ac/getFormDataImagesAC'
@@ -22,7 +22,7 @@ function FileInput ({
   meta: omitMeta,
 }) {
 
-  const adaptFileEventToValue = (imgType, realtyId) => e => { 
+  const adaptFileEventToValue = (imgType) => e => { 
     
     
     handleGetFormDataImages(e.target.files, imgType)  
@@ -33,7 +33,7 @@ function FileInput ({
 
   return (
     <input
-      onChange={adaptFileEventToValue(imgType, realtyEdit.id, handleRealtyEdit)}
+      onChange={adaptFileEventToValue(imgType)}
       type="file"
       multiple={multiple}
       {...inputProps}
