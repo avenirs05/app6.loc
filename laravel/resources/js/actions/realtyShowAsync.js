@@ -13,20 +13,3 @@ export const realtyShowAsync = id =>
       console.log(error)
     }    
   }
-
-
-
-// export function realtyShowAsync(id) {
-//   return function (dispatch) {
-//     axios.get(route('realties.show', id))
-//       .then(response => {
-//         const realty = {}
-
-//         allRealtyDbFields.forEach(prop => {
-//           realty[prop] = response.data[prop]
-//         })
-
-//         return dispatch(realtyShowAC(realty))
-//       })
-//   }
-// }

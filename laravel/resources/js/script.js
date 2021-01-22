@@ -79,56 +79,20 @@ export function getTotalPagesForPagination(totalCount, perPage) {
 }
 
 
-export let allRealtyDbFields = [
-  'id',
-  'name',
-  'visibility',
-  'subname_ru',
-  'subname_en',
-  'type_ru',
-  'type_en',
-  'country_ru',
-  'country_en',
-  'area_ru',
-  'area_en',
-  'city_ru',
-  'city_en',
-  'view_ru',
-  'view_en',
-  'transfer_payment_ru',
-  'transfer_payment_en',
-  'internet_payment_ru',
-  'internet_payment_en',
-  'parking_payment_ru',
-  'parking_payment_en',
-  'description_ru',   
-  'description_en',   
-  'map_html',
-  'square',
-  'bedrooms',
-  'capacity',
-  'price',
-  'price_line_through',
-  'price_jan',
-  'price_feb',
-  'price_mar',
-  'price_apr',
-  'price_may',
-  'price_jun',
-  'price_jul',
-  'price_aug',
-  'price_sep',
-  'price_oct',
-  'price_nov',
-  'price_dec',
-  'price_oct_apr',
-  'booking_mark',
-  'dist_sea',
-  'dist_tivat',
-  'dist_podg',
-  'discount',  
-  'images'
-]
+function getRealtyModelFields(realtyLabels) {
+  let result = Object.keys(realtyLabels)
+  
+  result = result.filter(item => {
+    if (item === 'thumbnails' || item === 'main_image') {
+      return false
+    } else return item
+  })
+  
+  result.push('images')
+
+  return result
+}
+
 
 export const realtyLabels = {
   'id': 'id',
@@ -182,6 +146,9 @@ export const realtyLabels = {
   'main_image': 'Главное изображение'
 }
 
+
+export let allRealtyDbFields = getRealtyModelFields(realtyLabels)
+
 // Return object with props only of array has it prop 
 export const reduceObjByArray = (array, obj) => { 
   let result = {}
@@ -194,3 +161,4 @@ export const reduceObjByArray = (array, obj) => {
 
   return result
 }
+
