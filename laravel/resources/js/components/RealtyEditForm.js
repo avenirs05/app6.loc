@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { compose } from 'redux'
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
@@ -35,7 +35,7 @@ let RealtyEditForm = props => {
           submitting, 
           classes, 
           realtyEdit, 
-          realtyUpdate, 
+          handleRealtyUpdate, 
           formDataImages } = props
   
   const updateBtn = useRef()
@@ -60,17 +60,17 @@ let RealtyEditForm = props => {
   }
 
   const submit = values => {
-    realtyUpdate(values, formDataImages)    
+    handleRealtyUpdate(values, formDataImages)    
   }
 
   return (
-    <form className={FormCss.form} onSubmit={handleSubmit(submit)}>
+    <form className={FormCss.form} onSubmit={handleSubmit(submit)} encType="multipart/form-data">
       <div><Field name="name" label={l.name} component={renderTextField} /></div>
       <div>
         <Field name="visibility" label={l.visibility} classes={classes} component={renderSelectField}>          
           <option value={realtyEdit.visibility}>{realtyEdit.visibility}</option>          
-          <option value={toggleOption(realtyEdit.visibility, 'опубликовано', 'скрыто')}>
-            {toggleOption(realtyEdit.visibility, 'опубликовано', 'скрыто')}
+          <option value={toggleOption(realtyEdit.visibility, l.options.visibility.published, l.options.visibility.hidden)}>
+            {toggleOption(realtyEdit.visibility, l.options.visibility.published, l.options.visibility.hidden)}
           </option>         
         </Field>
       </div>
@@ -79,16 +79,16 @@ let RealtyEditForm = props => {
       <div>
         <Field name="type_ru" label={l.type_ru} classes={classes} component={renderSelectField}>          
           <option value={realtyEdit.type_ru}>{realtyEdit.type_ru}</option>          
-          <option value={toggleOption(realtyEdit.type_ru, 'апартамент', 'вилла')}>
-            {toggleOption(realtyEdit.type_ru, 'апартамент', 'вилла')}
+          <option value={toggleOption(realtyEdit.type_ru, l.options.type.apartment, l.options.type.villa)}>
+            {toggleOption(realtyEdit.type_ru, l.options.type.apartment, l.options.type.villa)}
           </option>         
         </Field>
       </div>
       <div>
         <Field name="type_en" label={l.type_en} classes={classes} component={renderSelectField}>          
           <option value={realtyEdit.type_en}>{realtyEdit.type_en}</option>          
-          <option value={toggleOption(realtyEdit.type_en, 'apartment', 'villa')}>
-            {toggleOption(realtyEdit.type_en, 'apartment', 'villa')}
+          <option value={toggleOption(realtyEdit.type_en, l.options.type.apartment, l.options.type.villa)}>
+            {toggleOption(realtyEdit.type_en, l.options.type.apartment, l.options.type.villa)}
           </option>         
         </Field>
       </div>
@@ -100,19 +100,23 @@ let RealtyEditForm = props => {
       <div><Field name="city_en" label={l.city_en} component={renderTextField} /></div>
       <div><Field name="view_ru" label={l.view_ru} component={renderTextField} /></div>
       <div><Field name="view_en" label={l.view_en} component={renderTextField} /></div>
-      <div><Field name="transfer_payment_ru" label={`${l.transfer_payment_ru}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
-      <div><Field name="transfer_payment_en" label={`${l.transfer_payment_en}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
-      <div><Field name="internet_payment_ru" label={`${l.internet_payment_ru}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
-      <div><Field name="internet_payment_en" label={`${l.internet_payment_en}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
-      <div><Field name="parking_payment_ru" label={`${l.parking_payment_ru}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
-      <div><Field name="parking_payment_en" label={`${l.parking_payment_en}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
+      <div><Field name="transfer_payment_ru" label={l.transfer_payment_ru} component={renderTextField} /></div>
+      <div><Field name="transfer_payment_en" label={l.transfer_payment_en} component={renderTextField} /></div>
+      <div><Field name="internet_payment_ru" label={l.internet_payment_ru} component={renderTextField} /></div>
+      <div><Field name="internet_payment_en" label={l.internet_payment_en} component={renderTextField} /></div>
+      <div><Field name="parking_payment_ru" label={l.parking_payment_ru} component={renderTextField} /></div>
+      <div><Field name="parking_payment_en" label={l.parking_payment_en} component={renderTextField} /></div>
       <div>
-        <label>{l.description_ru}</label>
-        <Field name="description_ru" component={ReactMDE} placeholder="Описание подробное" />
+        <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
+          {l.description_ru}
+        </label>
+        <Field name="description_ru" component={ReactMDE} placeholder={l.description_ru} />
       </div>
       <div>
-        <label>{l.description_en}</label>
-        <Field name="description_en" component={ReactMDE} placeholder="Описание подробное — English" />
+        <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
+          {l.description_en}
+        </label>
+        <Field name="description_en" component={ReactMDE} placeholder={l.description_en} />
       </div>
       <div><Field name="map_html" label={l.map_html} component={renderTextField} /></div>
       <div><Field name="square" label={l.square} type="number" component={renderTextField} /></div>
@@ -150,10 +154,10 @@ let RealtyEditForm = props => {
       <div><Field name="dist_sea" label={l.dist_sea} type="number" component={renderTextField} /></div>
       <div><Field name="dist_tivat" label={l.dist_tivat} type="number" component={renderTextField} /></div>
       <div><Field name="dist_podg" label={l.dist_podg} type="number" component={renderTextField} /></div>
-      <div><Field name="discount" label={`${l.discount} (%). Не трогать. Оставить 1%, как сейчас.`} type="number" component={renderTextField} /></div>      
+      <div><Field name="discount" label={l.discount} type="number" component={renderTextField} /></div>      
       <div className="mb-4">  
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-          {l.thumbnails}
+          {l.main_image}
         </label>   
         <div>
           { typeof realtyEdit.images !== 'undefined' ?    
@@ -172,7 +176,7 @@ let RealtyEditForm = props => {
       </div> 
       <div className="mb-4">        
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-          {l.main_image}
+          {l.thumbnails}
         </label>        
         <div>
             { 
@@ -222,7 +226,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    realtyUpdate(values, formDataImages) {    
+    handleRealtyUpdate(values, formDataImages) {    
       dispatch(realtyUpdateAsync(values, formDataImages))      
     },
   }

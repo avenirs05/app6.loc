@@ -15,12 +15,14 @@ import FileInput from './FileInput';
 
 // Helpers
 import { validate, 
-  renderTextField,  
-  renderSelectField } from './formHelpers'
+         renderTextField,  
+         renderSelectField } from './formHelpers'
 
 // Css Modules
 import FormCss from './css/Form.module.css'
 
+// Helpers
+import { realtyLabels as l } from '../script'
 
 let RealtyCreateForm = props => {
   const { handleSubmit, pristine, submitting, classes, handleRealtyCreate, formDataImages } = props
@@ -43,76 +45,84 @@ let RealtyCreateForm = props => {
 
   return (
     <form className={FormCss.form} onSubmit={handleSubmit(submit)} encType="multipart/form-data">
-      <div><Field name="name" label="Название" component={renderTextField} /></div>
+      <div><Field name="name" label={l.name} component={renderTextField} /></div>
       <div>
-        <Field name="visibility" label="Видимость" classes={classes} component={renderSelectField}>     
-          <option value="опубликовано">Опубликовано</option>          
-          <option value="скрыто">Скрыто</option>         
+        <Field name="visibility" label={l.visibility} classes={classes} component={renderSelectField}>     
+          <option value={l.options.visibility.published}>{l.options.visibility.published}</option>          
+          <option value={l.options.visibility.hidden}>{l.options.visibility.hidden}</option>         
         </Field>
       </div>
-      <div><Field name="subname_ru" label="Мини-описание" component={renderTextField} /></div>
-      <div><Field name="subname_en" label="Мини-описание — English" component={renderTextField} /></div>
+      <div><Field name="subname_ru" label={l.subname_ru} component={renderTextField} /></div>
+      <div><Field name="subname_en" label={l.subname_en} component={renderTextField} /></div>
       <div>
-        <Field name="type_ru" label="Тип объекта" classes={classes} component={renderSelectField}>          
-          <option value="апартамент">апартамент</option>          
-          <option value="вилла">вилла</option>         
+        <Field name="type_ru" label={l.type_ru} classes={classes} component={renderSelectField}>          
+          <option value={l.options.type.apartment}>
+            {l.options.type.apartment}
+          </option>          
+          <option value={l.options.type.villa}>
+            {l.options.type.villa}
+          </option>         
         </Field>
       </div>
       <div>
-        <Field name="type_en" label="Тип объекта — English" classes={classes} component={renderSelectField}>          
-          <option value="apartment">apartment</option>          
-          <option value="villa">villa</option>         
+        <Field name="type_en" label={l.type_en} classes={classes} component={renderSelectField}>          
+          <option value={l.options.type.apartment}>
+            {l.options.type.apartment}
+          </option>          
+          <option value={l.options.type.villa}>
+            {l.options.type.villa}
+          </option>         
         </Field>
       </div>
-      <div><Field name="country_ru" label="Страна" component={renderTextField} /></div>
-      <div><Field name="country_en" label="Страна — English" component={renderTextField} /></div>
-      <div><Field name="area_ru" label="Район" component={renderTextField} /></div>
-      <div><Field name="area_en" label="Район — English" component={renderTextField} /></div>
-      <div><Field name="city_ru" label="Город" component={renderTextField} /></div>
-      <div><Field name="city_en" label="Город — English" component={renderTextField} /></div>
-      <div><Field name="view_ru" label="Вид" component={renderTextField} /></div>
-      <div><Field name="view_en" label="Вид — English" component={renderTextField} /></div>
-      <div><Field name="transfer_payment_ru" label="Трансфер. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
-      <div><Field name="transfer_payment_en" label="Трансфер — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
-      <div><Field name="internet_payment_ru" label="Интернет. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
-      <div><Field name="internet_payment_en" label="Интернет — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
-      <div><Field name="parking_payment_ru" label="Паркинг. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
-      <div><Field name="parking_payment_en" label="Паркинг — English. Текстовое поле. Можно писать и текст" component={renderTextField} /></div>
+      <div><Field name="country_ru" label={l.country_ru} component={renderTextField} /></div>
+      <div><Field name="country_en" label={l.country_en} component={renderTextField} /></div>
+      <div><Field name="area_ru" label={l.area_ru} component={renderTextField} /></div>
+      <div><Field name="area_en" label={l.area_en} component={renderTextField} /></div>
+      <div><Field name="city_ru" label={l.city_ru} component={renderTextField} /></div>
+      <div><Field name="city_en" label={l.city_en} component={renderTextField} /></div>
+      <div><Field name="view_ru" label={l.view_ru} component={renderTextField} /></div>
+      <div><Field name="view_en" label={l.view_en} component={renderTextField} /></div>
+      <div><Field name="transfer_payment_ru" label={`${l.transfer_payment_ru}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
+      <div><Field name="transfer_payment_en" label={`${l.transfer_payment_en}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
+      <div><Field name="internet_payment_ru" label={`${l.internet_payment_ru}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
+      <div><Field name="internet_payment_en" label={`${l.internet_payment_en}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
+      <div><Field name="parking_payment_ru" label={`${l.parking_payment_ru}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
+      <div><Field name="parking_payment_en" label={`${l.parking_payment_en}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
       <div>
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-          Подробное описание
+          {l.description_ru}
         </label>
-        <Field name="description_ru" component={ReactMDE} placeholder="Описание подробное" />
+        <Field name="description_ru" component={ReactMDE} placeholder={l.description_ru} />
       </div>
       <div>
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-          Подробное описание — English
+          {l.description_en}
         </label>
-        <Field name="description_en" component={ReactMDE} placeholder="Описание подробное — English" />
+        <Field name={l.description_en} component={ReactMDE} placeholder={l.description_en} />
       </div>
-      <div><Field name="map_html" label="Карта (html-код)" component={renderTextField} /></div>
-      <div><Field name="square" label="Площадь (метров)" type="number" component={renderTextField} /></div>
-      <div><Field name="bedrooms" label="Спален (количество)" type="number" component={renderTextField} /></div>
-      <div><Field name="capacity" label="Вместимость (человек)" type="number" component={renderTextField} /></div>
-      <div><Field name="price" label="Цена (€)" type="number" component={renderTextField} /></div>
-      <div><Field name="price_line_through" label="Цена перечеркнутая (€)" type="number" component={renderTextField} /></div>
-      <div><Field name="price_jan" label="Цена — Январь (€)" type="number" component={renderTextField} /></div>
-      <div><Field name="price_feb" label="Цена — Февраль (€)" type="number" component={renderTextField} /></div>
-      <div><Field name="price_mar" label="Цена — Март(€)" type="number" component={renderTextField} /></div>
-      <div><Field name="price_apr" label="Цена — Апрель (€)" type="number" component={renderTextField} /></div>
-      <div><Field name="price_may" label="Цена — Май (€)" type="number" component={renderTextField} /></div>
-      <div><Field name="price_jun" label="Цена — Июнь (€)" type="number" component={renderTextField} /></div>
-      <div><Field name="price_jul" label="Цена — Июль (€)" type="number" component={renderTextField} /></div>
-      <div><Field name="price_aug" label="Цена — Август (€)" type="number" component={renderTextField} /></div>
-      <div><Field name="price_sep" label="Цена — Сентябрь (€)" type="number" component={renderTextField} /></div>
-      <div><Field name="price_oct" label="Цена — Октябрь (€)" type="number" component={renderTextField} /></div>
-      <div><Field name="price_nov" label="Цена — Ноябрь (€)" type="number" component={renderTextField} /></div>
-      <div><Field name="price_dec" label="Цена — Декабрь (€)" type="number" component={renderTextField} /></div>
-      <div><Field name="price_oct_apr" label="Цена — Октябрь-Апрель (€)" type="number" component={renderTextField} /></div>
+      <div><Field name="map_html" label={l.map_html} component={renderTextField} /></div>
+      <div><Field name="square" label={l.square} type="number" component={renderTextField} /></div>
+      <div><Field name="bedrooms" label={l.bedrooms} type="number" component={renderTextField} /></div>
+      <div><Field name="capacity" label={l.capacity} type="number" component={renderTextField} /></div>
+      <div><Field name="price" label={l.price} type="number" component={renderTextField} /></div>
+      <div><Field name="price_line_through" label={l.price_line_through} type="number" component={renderTextField} /></div>
+      <div><Field name="price_jan" label={l.price_jan} type="number" component={renderTextField} /></div>
+      <div><Field name="price_feb" label={l.price_feb} type="number" component={renderTextField} /></div>
+      <div><Field name="price_mar" label={l.price_mar} type="number" component={renderTextField} /></div>
+      <div><Field name="price_apr" label={l.price_apr} type="number" component={renderTextField} /></div>
+      <div><Field name="price_may" label={l.price_may} type="number" component={renderTextField} /></div>
+      <div><Field name="price_jun" label={l.price_jun} type="number" component={renderTextField} /></div>
+      <div><Field name="price_jul" label={l.price_jul} type="number" component={renderTextField} /></div>
+      <div><Field name="price_aug" label={l.price_aug} type="number" component={renderTextField} /></div>
+      <div><Field name="price_sep" label={l.price_sep} type="number" component={renderTextField} /></div>
+      <div><Field name="price_oct" label={l.price_oct} type="number" component={renderTextField} /></div>
+      <div><Field name="price_nov" label={l.price_nov} type="number" component={renderTextField} /></div>
+      <div><Field name="price_dec" label={l.price_dec} type="number" component={renderTextField} /></div>
+      <div><Field name="price_oct_apr" label={l.price_oct_apr} type="number" component={renderTextField} /></div>
       <div>
         <Field 
           name="booking_mark" 
-          label="Букинг (оценка)"           
+          label={l.booking_mark}           
           component={renderTextField} 
           InputProps={{
             inputProps: {
@@ -123,19 +133,19 @@ let RealtyCreateForm = props => {
           }}
         />
       </div>
-      <div><Field name="dist_sea" label="Расстояние до моря (км)" type="number" component={renderTextField} /></div>
-      <div><Field name="dist_tivat" label="Расстояние до аэропорта Тиват (км)" type="number" component={renderTextField} /></div>
-      <div><Field name="dist_podg" label="Расстояние до аэропорта Подгорица (км)" type="number" component={renderTextField} /></div>
-      <div><Field name="discount" label="Скидка (%). Не трогать. Оставить 1%, как сейчас." type="number" component={renderTextField} /></div>      
+      <div><Field name="dist_sea" label={l.dist_sea} type="number" component={renderTextField} /></div>
+      <div><Field name="dist_tivat" label={l.dist_tivat} type="number" component={renderTextField} /></div>
+      <div><Field name="dist_podg" label={l.dist_podg} type="number" component={renderTextField} /></div>
+      <div><Field name="discount" label={l.discount} type="number" component={renderTextField} /></div>      
       <div className="mb-4">        
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-            Главное изображение
+          {l.main_image}
         </label>        
         <Field component={FileInput} name="main_image" imgType="main_image" multiple={false} />
       </div> 
       <div className="mb-4">        
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-            Изображения галереи
+          {l.thumbnails}
         </label>        
         <Field component={FileInput} name="thumbnails" imgType="thumbnails" multiple={true}/>
       </div>        

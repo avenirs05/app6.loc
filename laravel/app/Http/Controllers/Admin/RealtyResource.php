@@ -108,7 +108,15 @@ class RealtyResource extends Controller
             }
         } 
 
-        if ($request->hasfile('main_image')) {    
+        if ($request->hasfile('main_image')) {   
+            // Delete main images if exists
+            $realty = Realty::find($realtyId);
+            $realty->images()->each(function($image) {
+                if ($image->type === 'main') {
+                    Image::destroy($image->id);
+                }            
+            });
+            
             $name = $request->file('main_image')->getClientOriginalName();   
             $request->file('main_image')->storeAs("uploads/realties/{$realtyId}/", $name, 'public');  
             $this->createImageEloquent($request, $name, $realtyId, 'main');           

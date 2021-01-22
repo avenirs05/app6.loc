@@ -36,7 +36,7 @@ export function markActualMenuPage() {
 // Прижать футер к низу
 export function footerToBottom() {
   if ($(document).height() <= $(window).height()) {
-    $(".footer").addClass("fixed-bottom");
+    $(".footer").addClass("fixed-bottom")
   }
 }
 
@@ -52,7 +52,7 @@ export function openLightGalleryIfClickMainImg() {
 }
 
 export function getLocation(href) {
-  var match = href.match(/^(https?\:)\/\/(([^:\/?#]*)(?:\:([0-9]+))?)([\/]{0,1}[^?#]*)(\?[^#]*|)(#.*|)$/);
+  var match = href.match(/^(https?\:)\/\/(([^:\/?#]*)(?:\:([0-9]+))?)([\/]{0,1}[^?#]*)(\?[^#]*|)(#.*|)$/)
 
   return match && {
     href: href,
@@ -83,9 +83,13 @@ function getRealtyModelFields(realtyLabels) {
   let result = Object.keys(realtyLabels)
   
   result = result.filter(item => {
-    if (item === 'thumbnails' || item === 'main_image') {
+    if (item === 'thumbnails' || 
+        item === 'main_image' ||
+        item === 'options') 
+    {
       return false
-    } else return item
+    } 
+      else return item
   })
   
   result.push('images')
@@ -95,59 +99,72 @@ function getRealtyModelFields(realtyLabels) {
 
 
 export const realtyLabels = {
-  'id': 'id',
-  'name': 'Название объекта',
-  'visibility': 'Видимость',
-  'subname_ru': 'Мини-описание',
-  'subname_en': 'Мини-описание — English',
-  'type_ru': 'Тип объекта',
-  'type_en': 'Тип объекта — English',
-  'country_ru': 'Страна',
-  'country_en': 'Страна — English',
-  'area_ru': 'Район',
-  'area_en': 'Район — English',
-  'city_ru': 'Город',
-  'city_en': 'Город — English',
-  'view_ru': 'Вид',
-  'view_en': 'Вид — English',
-  'transfer_payment_ru': 'Трансфер',
-  'transfer_payment_en': 'Трансфер — English',
-  'internet_payment_ru': 'Интернет',
-  'internet_payment_en': 'Интернет — English',
-  'parking_payment_ru': 'Паркинг',
-  'parking_payment_en': 'Паркинг — English',
-  'description_ru': 'Описание подробное',   
-  'description_en': 'Описание подробное — English',   
-  'map_html': 'Карта (html-код)',
-  'square': 'Площадь (метров)',
-  'bedrooms': 'Спален (количество)',
-  'capacity': 'Вместимость (человек)',
-  'price': 'Цена (€)',
-  'price_line_through': 'Цена перечеркнутая (€)',
-  'price_jan': 'Цена — Январь (€)',
-  'price_feb': 'Цена — Февраль (€)',
-  'price_mar': 'Цена — Март(€)',
-  'price_apr': 'Цена — Апрель (€)',
-  'price_may': 'Цена — Май (€)',
-  'price_jun': 'Цена — Июнь (€)',
-  'price_jul': 'Цена — Июль (€)',
-  'price_aug': 'Цена — Август (€)',
-  'price_sep': 'Цена — Сентябрь (€)',
-  'price_oct': 'Цена — Октябрь (€)',
-  'price_nov': 'Цена — Ноябрь (€)',
-  'price_dec': 'Цена — Декабрь (€)',
-  'price_oct_apr': 'Цена — Октябрь-Апрель (€)',
-  'booking_mark': 'Букинг (оценка)',
-  'dist_sea': 'Расстояние до моря (км)',
-  'dist_tivat': 'Расстояние до аэропорта Тиват (км)',
-  'dist_podg': 'Расстояние до аэропорта Подгорица (км)',
-  'discount': 'Скидка (%)',  
-  'thumbnails': 'Изображения галереи',
-  'main_image': 'Главное изображение'
+  id: 'id',
+  name: 'Название объекта',
+  visibility: 'Видимость',
+  subname_ru: 'Мини-описание',
+  subname_en: 'Мини-описание — English',
+  type_ru: 'Тип объекта',
+  type_en: 'Тип объекта — English',
+  country_ru: 'Страна',
+  country_en: 'Страна — English',
+  area_ru: 'Район',
+  area_en: 'Район — English',
+  city_ru: 'Город',
+  city_en: 'Город — English',
+  view_ru: 'Вид',
+  view_en: 'Вид — English',
+  transfer_payment_ru: 'Трансфер. Текстовое поле. Можно писать и текст',
+  transfer_payment_en: 'Трансфер — English. Текстовое поле. Можно писать и текст',
+  internet_payment_ru: 'Интернет. Текстовое поле. Можно писать и текст',
+  internet_payment_en: 'Интернет — English. Текстовое поле. Можно писать и текст',
+  parking_payment_ru: 'Паркинг. Текстовое поле. Можно писать и текст',
+  parking_payment_en: 'Паркинг — English. Текстовое поле. Можно писать и текст',
+  description_ru: 'Описание подробное',   
+  description_en: 'Описание подробное — English',   
+  map_html: 'Карта (html-код)',
+  square: 'Площадь (метров)',
+  bedrooms: 'Спален (количество)',
+  capacity: 'Вместимость (человек)',
+  price: 'Цена (€)',
+  price_line_through: 'Цена перечеркнутая (€)',
+  price_jan: 'Цена — Январь (€)',
+  price_feb: 'Цена — Февраль (€)',
+  price_mar: 'Цена — Март(€)',
+  price_apr: 'Цена — Апрель (€)',
+  price_may: 'Цена — Май (€)',
+  price_jun: 'Цена — Июнь (€)',
+  price_jul: 'Цена — Июль (€)',
+  price_aug: 'Цена — Август (€)',
+  price_sep: 'Цена — Сентябрь (€)',
+  price_oct: 'Цена — Октябрь (€)',
+  price_nov: 'Цена — Ноябрь (€)',
+  price_dec: 'Цена — Декабрь (€)',
+  price_oct_apr: 'Цена — Октябрь-Апрель (€)',
+  booking_mark: 'Букинг (оценка)',
+  dist_sea: 'Расстояние до моря (км)',
+  dist_tivat: 'Расстояние до аэропорта Тиват (км)',
+  dist_podg: 'Расстояние до аэропорта Подгорица (км)',
+  discount: 'Скидка (%). Не трогать. Оставить 1%, как сейчас.',  
+  thumbnails: 'Изображения галереи',
+  main_image: 'Главное изображение',
+  options: {
+    visibility: {
+      published: 'опубликовано',
+      hidden: 'скрыто'
+    },
+    type: {
+      apartment: 'апартамент',
+      villa: 'вилла'
+    }
+  }
 }
 
 
-export let allRealtyDbFields = getRealtyModelFields(realtyLabels)
+export let realtyModelFields = getRealtyModelFields(realtyLabels)
+
+//console.log(Object.keys(realtyLabels));
+
 
 // Return object with props only of array has it prop 
 export const reduceObjByArray = (array, obj) => { 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { allRealtyDbFields } from '../script'
+import { realtyModelFields } from '../script'
 
 // Material UI
 import TextField from '@material-ui/core/TextField'
@@ -13,7 +13,7 @@ import FormCss from './css/Form.module.css'
 
 export const validate = values => {
   const errors = {}
-  const requiredFields = allRealtyDbFields
+  const requiredFields = realtyModelFields
  
   requiredFields.forEach(field => {
     if (!values[field] && (field === 'description_ru' || field === 'description_en')) {
