@@ -1,20 +1,15 @@
 import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-//import { NavLink, withRouter, Redirect } from "react-router-dom"
 
 // Actions
-import { getFormDataImagesAC } from '../actions/ac/getFormDataImagesAC'
-// import { realtyEditAsync } from '../actions/realtyEditAsync'
-// import { imageUpdateAsync } from '../actions/imageUpdateAsync'
+import { loadMainImageAsync } from '../actions/loadMainImageAsync'
 
 function FileInput ({
   realtyEdit,
-  //imageUpdateAsync,
-  //handleRealtyEdit,
+  handleLoadMainImageAsync,
   multiple,
   imgType,
-  handleGetFormDataImages,
   input: {
     value: omitValue,
     onChange,
@@ -24,13 +19,19 @@ function FileInput ({
   meta: omitMeta,
 }) {
 
-  const adaptFileEventToValue = (imgType, realtyId, imageUpdateAsync) => e => {    
-    handleGetFormDataImages(e.target.files, imgType)  
+  const adaptFileEventToValue = (imgType, realtyId, handleLoadMainImageAsync) => e => {   
+    if (imgType === 'main_image') {
+      let formData = new FormData()
+      formData.set('main_image', e.target.files[0])
+      formData.set('imgType', imgType)
+      formData.set('realtyId', realtyId)
+      handleLoadMainImageAsync(formData)
+    }        
   }
 
   return (
     <input
-      onChange={adaptFileEventToValue(imgType, realtyEdit.id, imageUpdateAsync)}
+      onChange={adaptFileEventToValue(imgType, realtyEdit.id, handleLoadMainImageAsync)}
       type="file"
       multiple={multiple}
       {...inputProps}
@@ -46,13 +47,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {    
-    async handleGetFormDataImages(payload, imgType) {
-      await dispatch(getFormDataImagesAC(payload, imgType)) 
-      //await dispatch(imageUpdateAsync())     
-    },
-    // handleRealtyEdit(id) {
-    //   dispatch(realtyEditAsync(id))
-    // },
+    handleLoadMainImageAsync(formData) {
+      dispatch(loadMainImageAsync(formData))
+    }
   }
 }
 

@@ -123,6 +123,26 @@ class RealtyResource extends Controller
         }        
     }
 
+    public function mainImageLoad(Request $request)
+    {
+        //return $request;
+        $realtyId = $request->realtyId;
+
+        if ($request->hasfile('main_image')) { 
+            // Delete main images if exists
+            $realty = Realty::find($realtyId);
+            $realty->images()->each(function($image) {
+                if ($image->type === 'main') {
+                    Image::destroy($image->id);
+                }            
+            });
+            
+            $name = $request->file('main_image')->getClientOriginalName();   
+            $request->file('main_image')->storeAs("uploads/realties/{$realtyId}/", $name, 'public');  
+            $this->createImageEloquent($request, $name, $realtyId, 'main');           
+        } else return 'no';        
+    }
+
     private function createImageEloquent($request, $imageName, $realtyId, $imageType) 
     {
         $image = new Image;

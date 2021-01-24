@@ -60,7 +60,7 @@ let RealtyEditForm = props => {
   }
 
   const submit = values => {
-    handleRealtyUpdate(values, formDataImages)    
+    handleRealtyUpdate(values)    
   }
 
   return (
@@ -226,8 +226,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleRealtyUpdate(values, formDataImages) {    
-      dispatch(realtyUpdateAsync(values, formDataImages))      
+    handleRealtyUpdate(values) {    
+      dispatch(realtyUpdateAsync(values))      
     },
   }
 }
