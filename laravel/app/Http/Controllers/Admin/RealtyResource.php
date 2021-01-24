@@ -125,12 +125,20 @@ class RealtyResource extends Controller
 
     public function mainImageLoad(Request $request)
     {
-        if ($request->hasfile('main_image')) { 
-            $originalImageName = $request->file('main_image')->getClientOriginalName();   
-            $this->deleteOtherImagesByTypeEloquent($request->realtyId, "main");            
-            $this->storeImageAsFile($request, 'main_image');        
-            $this->createImageEloquent($request, $originalImageName, $request->realtyId, 'main');           
-        }       
+        $originalImageName = $request->file('main_image')->getClientOriginalName();   
+        $this->deleteOtherImagesByTypeEloquent($request->realtyId, "main");            
+        $this->storeImageAsFile($request, 'main_image');        
+        $this->createImageEloquent($request, $originalImageName, $request->realtyId, 'main');           
+    }
+
+    public function thumbnailsLoad(Request $request)
+    {
+        //return 'hello';
+        // foreach ($request->file('thumbnail') as $image) {  
+        //     $originalImageName = $image->getClientOriginalName();       
+        //     $this->storeImageAsFile($request, 'thumbnail');      
+        //     $this->createImageEloquent($request, $originalImageName, $request->realtyId, 'thumbnail');                
+        // }        
     }
 
     private function storeImageAsFile(Request $request, $formDataKey) 

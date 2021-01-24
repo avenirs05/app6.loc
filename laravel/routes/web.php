@@ -44,6 +44,7 @@ Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function()
 	Route::get('/', 'Index')->name('admin.index');
 	Route::post('/download-images', 'RealtyResource@downloadImages')->name('images.download');
 	Route::post('/realty-main-image-load', 'RealtyResource@mainImageLoad')->name('realty-main-image-load');
+	Route::post('/realty-thumbnails-load', 'RealtyResource@thumbnailsLoad')->name('realty-thumbnails-load');
 	
 	Route::resources([
     'realties'  => 'RealtyResource',

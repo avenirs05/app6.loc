@@ -172,7 +172,7 @@ let RealtyEditForm = props => {
             null 
           }              
         </div>    
-        <Field component={FileInput} name="main_image" imgType="main_image" multiple={false} />
+        <Field component={FileInput} name="main_image" imgType="change_main_image" multiple={false} />
       </div> 
       <div className="mb-4">        
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
@@ -199,7 +199,7 @@ let RealtyEditForm = props => {
               null 
             }              
         </div> 
-        <Field component={FileInput} name="thumbnails" imgType="thumbnails" multiple={true} />
+        <Field component={FileInput} name="thumbnails" imgType="change_thumbnails" multiple={true} />
       </div> 
       <div>
         <Button ref={updateBtn} variant="primary" type="submit" disabled={pristine || submitting}>Сохранить</Button>
