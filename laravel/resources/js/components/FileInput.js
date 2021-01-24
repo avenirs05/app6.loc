@@ -3,11 +3,11 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 
 // Actions
-import { loadMainImageAsync } from '../actions/loadMainImageAsync'
+import { realtyMainImageLoadAsync } from '../actions/realtyMainImageLoadAsync'
 
 function FileInput ({
   realtyEdit,
-  handleLoadMainImageAsync,
+  handleRealtyMainImageLoad,
   multiple,
   imgType,
   input: {
@@ -19,19 +19,19 @@ function FileInput ({
   meta: omitMeta,
 }) {
 
-  const adaptFileEventToValue = (imgType, realtyId, handleLoadMainImageAsync) => e => {   
+  const adaptFileEventToValue = (imgType, realtyId, handleRealtyMainImageLoad) => e => {   
     if (imgType === 'main_image') {
       let formData = new FormData()
       formData.set('main_image', e.target.files[0])
       formData.set('imgType', imgType)
       formData.set('realtyId', realtyId)
-      handleLoadMainImageAsync(formData)
+      handleRealtyMainImageLoad(formData)
     }        
   }
 
   return (
     <input
-      onChange={adaptFileEventToValue(imgType, realtyEdit.id, handleLoadMainImageAsync)}
+      onChange={adaptFileEventToValue(imgType, realtyEdit.id, handleRealtyMainImageLoad)}
       type="file"
       multiple={multiple}
       {...inputProps}
@@ -47,8 +47,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {    
-    handleLoadMainImageAsync(formData) {
-      dispatch(loadMainImageAsync(formData))
+    handleRealtyMainImageLoad(formData) {
+      dispatch(realtyMainImageLoadAsync(formData))
     }
   }
 }

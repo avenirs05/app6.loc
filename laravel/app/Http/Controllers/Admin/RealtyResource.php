@@ -125,30 +125,36 @@ class RealtyResource extends Controller
 
     public function mainImageLoad(Request $request)
     {
-        //return $request;
-        $realtyId = $request->realtyId;
-
         if ($request->hasfile('main_image')) { 
-            // Delete main images if exists
-            $realty = Realty::find($realtyId);
-            $realty->images()->each(function($image) {
-                if ($image->type === 'main') {
-                    Image::destroy($image->id);
-                }            
-            });
-            
-            $name = $request->file('main_image')->getClientOriginalName();   
-            $request->file('main_image')->storeAs("uploads/realties/{$realtyId}/", $name, 'public');  
-            $this->createImageEloquent($request, $name, $realtyId, 'main');           
-        } else return 'no';        
+            $originalImageName = $request->file('main_image')->getClientOriginalName();   
+            $this->deleteOtherImagesByTypeEloquent($request->realtyId, "main");            
+            $this->storeImageAsFile($request, 'main_image');        
+            $this->createImageEloquent($request, $originalImageName, $request->realtyId, 'main');           
+        }       
     }
 
-    private function createImageEloquent($request, $imageName, $realtyId, $imageType) 
+    private function storeImageAsFile(Request $request, $formDataKey) 
+    {
+        $name = $request->file($formDataKey)->getClientOriginalName();   
+        $request->file($formDataKey)->storeAs("uploads/realties/{$request->realtyId}/", $name, 'public');  
+    }
+
+    private function createImageEloquent(Request $request, $originalImageName, $realtyId, $imageType) 
     {
         $image = new Image;
-        $image->name = $imageName;
+        $image->name = $originalImageName;
         $image->type = $imageType;                
         $image->realty_id = $request->realtyId;       
         $image->save();
+    }
+
+    private function deleteOtherImagesByTypeEloquent($realtyId, $imageType) 
+    {
+        $realty = Realty::find($realtyId);
+        $realty->images()->each(function($image) use ($imageType) {
+            if ($image->type === $imageType) {
+                Image::destroy($image->id);
+            }            
+        });
     }
 }

@@ -1,7 +1,7 @@
 import { realtyEditAsync } from './realtyEditAsync'
 
 
-export const loadMainImageAsync = formData => 
+export const realtyMainImageLoadAsync = formData => 
   async dispatch => {
     try {
       await axios.post(route('realty-main-image-load'), formData)    
