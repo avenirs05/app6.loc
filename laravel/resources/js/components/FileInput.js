@@ -6,9 +6,11 @@ import { connect } from 'react-redux'
 // Actions
 import { getFormDataImagesAC } from '../actions/ac/getFormDataImagesAC'
 // import { realtyEditAsync } from '../actions/realtyEditAsync'
+// import { imageUpdateAsync } from '../actions/imageUpdateAsync'
 
 function FileInput ({
   realtyEdit,
+  //imageUpdateAsync,
   //handleRealtyEdit,
   multiple,
   imgType,
@@ -22,18 +24,13 @@ function FileInput ({
   meta: omitMeta,
 }) {
 
-  const adaptFileEventToValue = (imgType) => e => { 
-    
-    
+  const adaptFileEventToValue = (imgType, realtyId, imageUpdateAsync) => e => {    
     handleGetFormDataImages(e.target.files, imgType)  
-
-    //handleRealtyEdit(realtyId);
-    //return <Redirect to="/realties" />   
   }
 
   return (
     <input
-      onChange={adaptFileEventToValue(imgType)}
+      onChange={adaptFileEventToValue(imgType, realtyEdit.id, imageUpdateAsync)}
       type="file"
       multiple={multiple}
       {...inputProps}
@@ -50,7 +47,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {    
     async handleGetFormDataImages(payload, imgType) {
-      await dispatch(getFormDataImagesAC(payload, imgType))      
+      await dispatch(getFormDataImagesAC(payload, imgType)) 
+      //await dispatch(imageUpdateAsync())     
     },
     // handleRealtyEdit(id) {
     //   dispatch(realtyEditAsync(id))
