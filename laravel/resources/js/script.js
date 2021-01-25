@@ -163,8 +163,6 @@ export const realtyLabels = {
 
 export let realtyModelFields = getRealtyModelFields(realtyLabels)
 
-//console.log(Object.keys(realtyLabels));
-
 
 // Return object with props only of array has it prop 
 export const reduceObjByArray = (array, obj) => { 

@@ -92,7 +92,7 @@ class RealtyResource extends Controller
     }
 
 
-    public function downloadImages(Request $request)
+    public function imagesLoadWhenRealtyCreate(Request $request)
     {
         if ($request->hasfile('thumbnails')) {    
             $this->thumbnailsLoad($request);

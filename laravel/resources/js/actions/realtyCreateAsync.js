@@ -8,10 +8,10 @@ export const realtyCreateAsync = (values, formDataImages) =>
     try {
       const response = await axios.post(route('realties.store'), values)
       await formDataImages.set('realtyId', response.data)
-      await axios.post(route('images.download'), formDataImages)
+      await axios.post(route('realty-create-images-load'), formDataImages)
       await dispatch(setJustCreatedRealtyTrueAC())
       await dispatch(setAlertCreateVisibilityTrueAC())
-      dispatch(cleanFormDataImagesAC())
+      await dispatch(cleanFormDataImagesAC())
     } 
     catch (error) {
       console.log(error)

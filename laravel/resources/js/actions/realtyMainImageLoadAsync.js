@@ -1,4 +1,5 @@
 import { realtyEditAsync } from './realtyEditAsync'
+import { cleanFormDataImagesAC } from './ac/cleanFormDataImagesAC'
 
 
 export const realtyMainImageLoadAsync = formData => 
@@ -6,6 +7,7 @@ export const realtyMainImageLoadAsync = formData =>
     try {
       await axios.post(route('realty-main-image-load'), formData)    
       await dispatch(realtyEditAsync(formData.get('realtyId')))
+      await dispatch(cleanFormDataImagesAC())
     }
     catch (error) {
       console.log(error)

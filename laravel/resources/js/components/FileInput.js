@@ -5,12 +5,11 @@ import { connect } from 'react-redux'
 // Actions
 import { realtyMainImageLoadAsync } from '../actions/realtyMainImageLoadAsync'
 import { realtyThumbnailsLoadAsync } from '../actions/realtyThumbnailsLoadAsync'
-
-import { getFormDataImagesAC } from '../actions/ac/getFormDataImagesAC'
+import { createFormDataImagesAC } from '../actions/ac/createFormDataImagesAC'
 
 function FileInput ({
   realtyEdit,
-  handleGetFormDataImages,
+  handleCreateFormDataImages,
   handleRealtyMainImageLoad,
   handleRealtyThumbnailsLoad,  
   multiple,
@@ -24,10 +23,9 @@ function FileInput ({
   meta: omitMeta,
 }) {
 
-  const adaptFileEventToValue = (imgType, realtyId) => e => {  
-    
-    if (imgType === 'main_image' || imgType === 'thumbnails') {   
-      handleGetFormDataImages(e.target.files, imgType)      
+  const adaptFileEventToValue = (imgType, realtyId) => e => { 
+    if (imgType === 'main_image_create' || imgType === 'thumbnails_create') {   
+      handleCreateFormDataImages(e.target.files, imgType)      
     }    
     
     if (imgType === 'main_image_change') {     
@@ -38,9 +36,7 @@ function FileInput ({
       handleRealtyMainImageLoad(formData)
     }        
 
-    if (imgType === 'thumbnails_add') {
-      //console.log('hhh');
-      
+    if (imgType === 'thumbnails_add') {     
       let formData = new FormData()
       let thumbnails = e.target.files
       for (let key in thumbnails) {
@@ -76,8 +72,8 @@ function mapDispatchToProps(dispatch) {
     handleRealtyThumbnailsLoad(formData) {
       dispatch(realtyThumbnailsLoadAsync(formData))
     },
-    handleGetFormDataImages(payload, imgType) {     
-      dispatch(getFormDataImagesAC(payload, imgType))      
+    handleCreateFormDataImages(payload, imgType) {     
+      dispatch(createFormDataImagesAC(payload, imgType))      
     },
   }
 }
