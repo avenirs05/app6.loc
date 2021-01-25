@@ -35,8 +35,7 @@ let RealtyEditForm = props => {
           submitting, 
           classes, 
           realtyEdit, 
-          handleRealtyUpdate, 
-          formDataImages } = props
+          handleRealtyUpdate, } = props
   
   const updateBtn = useRef()
   useEffect(() => {     
@@ -49,13 +48,12 @@ let RealtyEditForm = props => {
   }, [])
 
  
-  const getMainImagePath = (realtyId, images) => {
-    const basePath = '/storage/uploads/realties'    
+  const getMainImagePath = images => {
     const mainImage = img => img.type === 'main'    
     const mainImageName = images.find(mainImage)
     
     if (mainImageName) {
-      return `${basePath}/${realtyId}/${mainImageName.name}`
+      return `storage/${mainImageName.name}`
     } else return '/images/no-photo.jpg'      
   }
 
@@ -166,7 +164,7 @@ let RealtyEditForm = props => {
                 width="300"
                 height="200"
                 rounded
-                src={ getMainImagePath(realtyEdit.id, realtyEdit.images) } 
+                src={getMainImagePath(realtyEdit.images)} 
                 alt="" /> 
             </> :
             null 
@@ -190,7 +188,7 @@ let RealtyEditForm = props => {
                       width="200"
                       height="150"
                       thumbnail
-                      src={`/storage/uploads/realties/${realtyEdit.id}/${image.name}`} 
+                      src={`storage/${image.name}`} 
                       alt=""/> 
                     </div> 
                   )
@@ -219,8 +217,7 @@ function mapStateToProps(state) {
   return {
     initialValues: state.realtyEdit,
     enableReinitialize: true,
-    realtyEdit: state.realtyEdit,   
-    formDataImages: state.formDataImages, 
+    realtyEdit: state.realtyEdit,  
   }
 }
 
