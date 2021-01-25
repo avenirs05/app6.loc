@@ -30,9 +30,7 @@ function FileInput ({
       handleGetFormDataImages(e.target.files, imgType)      
     }    
     
-    if (imgType === 'change_main_image') {
-      console.log('change_main_image');
-      
+    if (imgType === 'main_image_change') {     
       let formData = new FormData()
       formData.set('main_image', e.target.files[0])
       formData.set('imgType', imgType)
@@ -40,7 +38,9 @@ function FileInput ({
       handleRealtyMainImageLoad(formData)
     }        
 
-    if (imgType === 'change_thumbnails') {
+    if (imgType === 'thumbnails_add') {
+      //console.log('hhh');
+      
       let formData = new FormData()
       let thumbnails = e.target.files
       for (let key in thumbnails) {

@@ -5,7 +5,7 @@ import { CLEAN_FORM_DATA_IMAGES } from '../actions/consts';
 export default function formDataImages(state = new FormData(), action) {
   switch (action.type) {
     case GET_FORM_DATA_IMAGES:    
-      console.log(action.payload);
+      //console.log(action.payload);
         
       let formData = state
       let images = action.payload   
