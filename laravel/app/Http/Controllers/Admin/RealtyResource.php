@@ -94,40 +94,25 @@ class RealtyResource extends Controller
 
     public function downloadImages(Request $request)
     {
-        $realtyId = $request->realtyId;
-        $basePath = 'uploads/realties';
-
         if ($request->hasfile('thumbnails')) {    
-            foreach ($request->file('thumbnails') as $image) {  
-                $imgName = $image->getClientOriginalName();              
-                $image->storeAs("{$basePath}/{$realtyId}/", $imgName, 'public');   
-                $this->createImageEloquent($request, $imgName, $realtyId, 'thumbnail');                
-            }
+            $this->thumbnailsLoad($request);
         } 
 
         if ($request->hasfile('main_image')) {  
-            $this->mainImageChange($request, 'main_image'); 
-            // $file = $request->file('main_image');
-            // $imgName = $file->getClientOriginalName();
-
-            // $this->deleteOtherImagesEloquentByType($realtyId, "main");            
-            // $file->storeAs("{$basePath}/{$realtyId}/", $imgName, 'public');  
-            // $this->createImageEloquent($request, $imgName, $realtyId, 'main');           
+            $this->mainImageLoad($request);          
         }        
     }
 
-
-    public function mainImageLoad(Request $request)
+    public function mainImageLoad(Request $request) 
     {
-        $this->mainImageChange($request, 'main_image'); 
-        // $file = $request->file('main_image');
-        // $imgName = $request->file('main_image')->getClientOriginalName();  
-        // $realtyId = $request->realtyId;        
-        // $basePath = 'uploads/realties';
+        $basePath = 'uploads/realties';
+        $realtyId = $request->realtyId;
+        $file = $request->file('main_image');
+        $imgName = $file->getClientOriginalName();
 
-        // $this->deleteOtherImagesEloquentByType($realtyId, "main");    
-        // $file->storeAs("{$basePath}/{$realtyId}/", $imgName, 'public');       
-        // $this->createImageEloquent($request, $imgName, $realtyId, 'main');           
+        $this->deleteOtherImagesEloquentByType($realtyId, "main");    
+        $file->storeAs("{$basePath}/{$realtyId}/", $imgName, 'public');       
+        $this->createImageEloquent($request, $imgName, $realtyId, 'main');   
     }
 
 
@@ -143,7 +128,6 @@ class RealtyResource extends Controller
             $this->createImageEloquent($request, $imgName, $realtyId, 'thumbnail');                
         }        
     }
-
 
     private function createImageEloquent(Request $request, $originalImageName, $realtyId, $imageType) 
     {
@@ -163,18 +147,5 @@ class RealtyResource extends Controller
                 Image::destroy($image->id);
             }            
         });
-    }
-    
-
-    private function mainImageChange(Request $request, $formDataKey) 
-    {
-        $basePath = 'uploads/realties';
-        $realtyId = $request->realtyId;
-        $file = $request->file($formDataKey);
-        $imgName = $file->getClientOriginalName();
-
-        $this->deleteOtherImagesEloquentByType($realtyId, "main");    
-        $file->storeAs("{$basePath}/{$realtyId}/", $imgName, 'public');       
-        $this->createImageEloquent($request, $imgName, $realtyId, 'main');   
     }
 }
