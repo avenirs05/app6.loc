@@ -1,0 +1,141 @@
+export const realtyLabels = {
+  id: 'id',
+  name: 'Название объекта',
+  visibility: 'Видимость',
+  subname_ru: 'Мини-описание',
+  subname_en: 'Мини-описание — English',
+  type_ru: 'Тип объекта',
+  type_en: 'Тип объекта — English',
+  country_ru: 'Страна',
+  country_en: 'Страна — English',
+  area_ru: 'Район',
+  area_en: 'Район — English',
+  city_ru: 'Город',
+  city_en: 'Город — English',
+  view_ru: 'Вид',
+  view_en: 'Вид — English',
+  transfer_payment_ru: 'Трансфер. Текстовое поле. Можно писать и текст',
+  transfer_payment_en: 'Трансфер — English. Текстовое поле. Можно писать и текст',
+  internet_payment_ru: 'Интернет. Текстовое поле. Можно писать и текст',
+  internet_payment_en: 'Интернет — English. Текстовое поле. Можно писать и текст',
+  parking_payment_ru: 'Паркинг. Текстовое поле. Можно писать и текст',
+  parking_payment_en: 'Паркинг — English. Текстовое поле. Можно писать и текст',
+  description_ru: 'Описание подробное',   
+  description_en: 'Описание подробное — English',   
+  map_html: 'Карта (html-код)',
+  square: 'Площадь (метров)',
+  bedrooms: 'Спален (количество)',
+  capacity: 'Вместимость (человек)',
+  price: 'Цена (€)',
+  price_line_through: 'Цена перечеркнутая (€)',
+  price_jan: 'Цена — Январь (€)',
+  price_feb: 'Цена — Февраль (€)',
+  price_mar: 'Цена — Март(€)',
+  price_apr: 'Цена — Апрель (€)',
+  price_may: 'Цена — Май (€)',
+  price_jun: 'Цена — Июнь (€)',
+  price_jul: 'Цена — Июль (€)',
+  price_aug: 'Цена — Август (€)',
+  price_sep: 'Цена — Сентябрь (€)',
+  price_oct: 'Цена — Октябрь (€)',
+  price_nov: 'Цена — Ноябрь (€)',
+  price_dec: 'Цена — Декабрь (€)',
+  price_oct_apr: 'Цена — Октябрь-Апрель (€)',
+  booking_mark: 'Букинг (оценка)',
+  dist_sea: 'Расстояние до моря (км)',
+  dist_tivat: 'Расстояние до аэропорта Тиват (км)',
+  dist_podg: 'Расстояние до аэропорта Подгорица (км)',
+  discount: 'Скидка (%). Не трогать. Оставить 1%, как сейчас.',  
+  thumbnails: 'Изображения галереи',
+  main_image: 'Главное изображение',
+  options: {
+    visibility: {
+      published: 'опубликовано',
+      hidden: 'скрыто'
+    },
+    type: {
+      apartment: 'апартамент',
+      villa: 'вилла'
+    }
+  }
+}
+
+export const realtyFields = {
+  id: {name: 'id', label: 'id', model: true},
+  name: {name: 'name', label: 'Название объекта', model: true},
+  visibility: {
+    name: 'visibility', 
+    label: 'Видимость', 
+    model: true,
+    options: {
+      published: 'опубликовано',
+      hidden: 'скрыто'
+    }
+  },
+  subname_ru: {name: 'subname_ru', label: 'Мини-описание', model: true},
+  subname_en: {name: 'subname_en', label: 'Мини-описание — English', model: true},
+  type_ru: {
+    name: 'type_ru', 
+    label: 'Тип объекта', 
+    model: true,
+    options: {
+      apartment: 'апартамент',
+      villa: 'вилла'
+    }
+  },
+  type_en: {
+    name: 'type_en', 
+    label: 'Тип объекта — English', 
+    model: true,
+    options: {
+      apartment: 'apartment',
+      villa: 'villa'
+    }
+  },
+  country_ru: {name: 'country_ru', label: 'Страна', model: true},
+  country_en: {name: 'country_en', label: 'Страна — English', model: true},
+  area_ru: {name: 'area_ru', label: 'Район', model: true},
+  area_en: {name: 'area_en', label: 'Район — English', model: true},
+  city_ru: {name: 'city_ru', label: 'Город', model: true},
+  city_en: {name: 'city_en', label: 'Город — English', model: true},
+  view_ru: {name: 'view_ru', label: 'Вид', model: true},
+  view_en: {name: 'view_en', label: 'Вид — English', model: true},
+  transfer_payment_ru: {name: 'transfer_payment_ru', label: 'Трансфер', model: true},
+  transfer_payment_en: {name: 'transfer_payment_en', label: 'Трансфер — English', model: true},
+  internet_payment_ru: {name: 'internet_payment_ru', label: 'Интернет', model: true},
+  internet_payment_en: {name: 'internet_payment_en', label: 'Интернет — English', model: true},
+  parking_payment_ru: {name: 'parking_payment_ru', label: 'Паркинг', model: true},
+  parking_payment_en: {name: 'parking_payment_en', label: 'Паркинг — English', model: true},
+  description_ru: {name: 'description_ru', label: 'Описание подробное', model: true},  
+  description_en: {name: 'description_en', label: 'Описание подробное — English', model: true},   
+  map_html: {name: 'map_html', label: 'Карта (html-код)', model: true},
+  square: {name: 'square', label: 'Площадь (метров)', model: true},
+  bedrooms: {name: 'bedrooms', label: 'Спален (количество)', model: true},
+  capacity: {name: 'capacity', label: 'Вместимость (человек)', model: true},
+  price: {name: 'price', label: 'Цена (€)', model: true},
+  price_line_through: {name: 'price_line_through', label: 'Цена перечеркнутая (€)', model: true},
+  price_jan: {name: 'price_jan', label: 'Цена — Январь (€)', model: true},
+  price_feb: {name: 'price_feb', label: 'Цена — Февраль (€)', model: true},
+  price_mar: {name: 'price_mar', label: 'Цена — Март(€)', model: true},
+  price_apr: {name: 'price_apr', label: 'Цена — Апрель (€)', model: true},
+  price_may: {name: 'price_may', label: 'Цена — Май (€)', model: true},
+  price_jun: {name: 'price_jun', label: 'Цена — Июнь (€)', model: true},
+  price_jul: {name: 'price_jul', label: 'Цена — Июль (€)', model: true},
+  price_aug: {name: 'price_aug', label: 'Цена — Август (€)', model: true},
+  price_sep: {name: 'price_sep', label: 'Цена — Сентябрь (€)', model: true},
+  price_oct: {name: 'price_oct', label: 'Цена — Октябрь (€)', model: true},
+  price_nov: {name: 'price_nov', label: 'Цена — Ноябрь (€)', model: true},
+  price_dec: {name: 'price_dec', label: 'Цена — Декабрь (€)', model: true},
+  price_oct_apr: {name: 'price_oct_apr', label: 'Цена — Октябрь-Апрель (€)', model: true},
+  booking_mark: {name: 'booking_mark', label: 'Букинг (оценка)', model: true},
+  dist_sea: {name: 'dist_sea', label: 'Расстояние до моря (км)', model: true},
+  dist_tivat: {name: 'dist_tivat', label: 'Расстояние до аэропорта Тиват (км)', model: true},
+  dist_podg: {name: 'dist_podg', label: 'Расстояние до аэропорта Подгорица (км)', model: true},
+  discount: {name: 'discount', label: 'Скидка (%)', model: true},  
+  images: {name: 'images', label: '', model: true},
+  thumbnails: {name: 'thumbnails', label: 'Изображения галереи', model: false},
+  main_image: {name: 'main_image', label: 'Главное изображение', model: false},  
+}
+
+
+

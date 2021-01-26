@@ -22,7 +22,7 @@ import { validate,
 import FormCss from './css/Form.module.css'
 
 // Helpers
-import { realtyLabels as l } from '../script'
+import { realtyFields as f } from '../consts'
 
 let RealtyCreateForm = props => {
   const { handleSubmit, pristine, submitting, classes, handleRealtyCreate, formDataImages } = props
@@ -45,84 +45,84 @@ let RealtyCreateForm = props => {
 
   return (
     <form className={FormCss.form} onSubmit={handleSubmit(submit)} encType="multipart/form-data">
-      <div><Field name="name" label={l.name} component={renderTextField} /></div>
+      <div><Field name={f.name.name} label={f.name.label} component={renderTextField} /></div>
       <div>
-        <Field name="visibility" label={l.visibility} classes={classes} component={renderSelectField}>     
-          <option value={l.options.visibility.published}>{l.options.visibility.published}</option>          
-          <option value={l.options.visibility.hidden}>{l.options.visibility.hidden}</option>         
+        <Field name={f.visibility.name} label={f.visibility.label} classes={classes} component={renderSelectField}>     
+          <option value={f.visibility.options.published}>{f.visibility.options.published}</option>          
+          <option value={f.visibility.options.hidden}>{f.visibility.options.hidden}</option>         
         </Field>
       </div>
-      <div><Field name="subname_ru" label={l.subname_ru} component={renderTextField} /></div>
-      <div><Field name="subname_en" label={l.subname_en} component={renderTextField} /></div>
+      <div><Field name={f.subname_ru.name} label={f.subname_ru.label} component={renderTextField} /></div>
+      <div><Field name={f.subname_en.name} label={f.subname_en.label} component={renderTextField} /></div>
       <div>
-        <Field name="type_ru" label={l.type_ru} classes={classes} component={renderSelectField}>          
-          <option value={l.options.type.apartment}>
-            {l.options.type.apartment}
+        <Field name="type_ru" label={f.type_ru.label} classes={classes} component={renderSelectField}>          
+          <option value={f.type_ru.options.apartment}>
+            {f.type_ru.options.apartment}
           </option>          
-          <option value={l.options.type.villa}>
-            {l.options.type.villa}
+          <option value={f.type_ru.options.villa}>
+            {f.type_ru.options.villa}
           </option>         
         </Field>
       </div>
       <div>
-        <Field name="type_en" label={l.type_en} classes={classes} component={renderSelectField}>          
-          <option value={l.options.type.apartment}>
-            {l.options.type.apartment}
+        <Field name="type_en" label={f.type_en.label} classes={classes} component={renderSelectField}>          
+          <option value={f.type_en.options.apartment}>
+            {f.type_en.options.apartment}
           </option>          
-          <option value={l.options.type.villa}>
-            {l.options.type.villa}
+          <option value={f.type_en.options.villa}>
+            {f.type_en.options.villa}
           </option>         
         </Field>
       </div>
-      <div><Field name="country_ru" label={l.country_ru} component={renderTextField} /></div>
-      <div><Field name="country_en" label={l.country_en} component={renderTextField} /></div>
-      <div><Field name="area_ru" label={l.area_ru} component={renderTextField} /></div>
-      <div><Field name="area_en" label={l.area_en} component={renderTextField} /></div>
-      <div><Field name="city_ru" label={l.city_ru} component={renderTextField} /></div>
-      <div><Field name="city_en" label={l.city_en} component={renderTextField} /></div>
-      <div><Field name="view_ru" label={l.view_ru} component={renderTextField} /></div>
-      <div><Field name="view_en" label={l.view_en} component={renderTextField} /></div>
-      <div><Field name="transfer_payment_ru" label={`${l.transfer_payment_ru}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
-      <div><Field name="transfer_payment_en" label={`${l.transfer_payment_en}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
-      <div><Field name="internet_payment_ru" label={`${l.internet_payment_ru}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
-      <div><Field name="internet_payment_en" label={`${l.internet_payment_en}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
-      <div><Field name="parking_payment_ru" label={`${l.parking_payment_ru}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
-      <div><Field name="parking_payment_en" label={`${l.parking_payment_en}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
+      <div><Field name={f.country_ru.name} label={f.country_ru.label} component={renderTextField} /></div>
+      <div><Field name={f.country_en.name} label={f.country_en.label} component={renderTextField} /></div>
+      <div><Field name={f.area_ru.name} label={f.area_ru.label} component={renderTextField} /></div>
+      <div><Field name={f.area_en.name} label={f.area_en.label} component={renderTextField} /></div>
+      <div><Field name={f.city_ru.name} label={f.city_ru.label} component={renderTextField} /></div>
+      <div><Field name={f.city_en.name} label={f.city_en.label} component={renderTextField} /></div>
+      <div><Field name={f.view_ru.name} label={f.view_ru.label} component={renderTextField} /></div>
+      <div><Field name={f.view_en.name} label={f.view_en.label} component={renderTextField} /></div>
+      <div><Field name={f.transfer_payment_ru.name} label={`${f.transfer_payment_ru.label}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
+      <div><Field name={f.transfer_payment_en.name} label={`${f.transfer_payment_en.label}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
+      <div><Field name={f.internet_payment_ru.name} label={`${f.internet_payment_ru.label}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
+      <div><Field name={f.internet_payment_en.name} label={`${f.internet_payment_en.label}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
+      <div><Field name={f.parking_payment_ru.name} label={`${f.parking_payment_ru.label}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
+      <div><Field name={f.parking_payment_en.name} label={`${f.parking_payment_en.label}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
       <div>
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-          {l.description_ru}
+          {f.description_ru.label}
         </label>
-        <Field name="description_ru" component={ReactMDE} placeholder={l.description_ru} />
+        <Field name={f.description_ru.name} component={ReactMDE} placeholder={f.description_ru.label} />
       </div>
-      <div>
+      <div className="mt-4">
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-          {l.description_en}
+          {f.description_en.label}
         </label>
-        <Field name={l.description_en} component={ReactMDE} placeholder={l.description_en} />
+        <Field name={f.description_en.name} component={ReactMDE} placeholder={f.description_en.label} />
       </div>
-      <div><Field name="map_html" label={l.map_html} component={renderTextField} /></div>
-      <div><Field name="square" label={l.square} type="number" component={renderTextField} /></div>
-      <div><Field name="bedrooms" label={l.bedrooms} type="number" component={renderTextField} /></div>
-      <div><Field name="capacity" label={l.capacity} type="number" component={renderTextField} /></div>
-      <div><Field name="price" label={l.price} type="number" component={renderTextField} /></div>
-      <div><Field name="price_line_through" label={l.price_line_through} type="number" component={renderTextField} /></div>
-      <div><Field name="price_jan" label={l.price_jan} type="number" component={renderTextField} /></div>
-      <div><Field name="price_feb" label={l.price_feb} type="number" component={renderTextField} /></div>
-      <div><Field name="price_mar" label={l.price_mar} type="number" component={renderTextField} /></div>
-      <div><Field name="price_apr" label={l.price_apr} type="number" component={renderTextField} /></div>
-      <div><Field name="price_may" label={l.price_may} type="number" component={renderTextField} /></div>
-      <div><Field name="price_jun" label={l.price_jun} type="number" component={renderTextField} /></div>
-      <div><Field name="price_jul" label={l.price_jul} type="number" component={renderTextField} /></div>
-      <div><Field name="price_aug" label={l.price_aug} type="number" component={renderTextField} /></div>
-      <div><Field name="price_sep" label={l.price_sep} type="number" component={renderTextField} /></div>
-      <div><Field name="price_oct" label={l.price_oct} type="number" component={renderTextField} /></div>
-      <div><Field name="price_nov" label={l.price_nov} type="number" component={renderTextField} /></div>
-      <div><Field name="price_dec" label={l.price_dec} type="number" component={renderTextField} /></div>
-      <div><Field name="price_oct_apr" label={l.price_oct_apr} type="number" component={renderTextField} /></div>
+      <div><Field name={f.map_html.name} label={f.map_html.label} component={renderTextField} /></div>
+      <div><Field name={f.square.name} label={f.square.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.bedrooms.name} label={f.bedrooms.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.capacity.name} label={f.capacity.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.price.name} label={f.price.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.price_line_through.name} label={f.price_line_through.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.price_jan.name} label={f.price_jan.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.price_feb.name} label={f.price_feb.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.price_mar.name} label={f.price_mar.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.price_apr.name} label={f.price_apr.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.price_may.name} label={f.price_may.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.price_jun.name} label={f.price_jun.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.price_jul.name} label={f.price_jul.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.price_aug.name} label={f.price_aug.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.price_sep.name} label={f.price_sep.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.price_oct.name} label={f.price_oct.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.price_nov.name} label={f.price_nov.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.price_dec.name} label={f.price_dec.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.price_oct_apr.name} label={f.price_oct_apr.label} type="number" component={renderTextField} /></div>
       <div>
         <Field 
-          name="booking_mark" 
-          label={l.booking_mark}           
+          name={f.booking_mark.name} 
+          label={f.booking_mark.label}           
           component={renderTextField} 
           InputProps={{
             inputProps: {
@@ -133,21 +133,21 @@ let RealtyCreateForm = props => {
           }}
         />
       </div>
-      <div><Field name="dist_sea" label={l.dist_sea} type="number" component={renderTextField} /></div>
-      <div><Field name="dist_tivat" label={l.dist_tivat} type="number" component={renderTextField} /></div>
-      <div><Field name="dist_podg" label={l.dist_podg} type="number" component={renderTextField} /></div>
-      <div><Field name="discount" label={l.discount} type="number" component={renderTextField} /></div>      
+      <div><Field name={f.dist_sea.name} label={f.dist_sea.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.dist_tivat.name} label={f.dist_tivat.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.dist_podg.name} label={f.dist_podg.label} type="number" component={renderTextField} /></div>
+      <div><Field name={f.discount.name} label={f.discount.label} type="number" component={renderTextField} /></div>      
       <div className="mb-4">        
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-          {l.main_image}
+          {f.main_image.label}
         </label>        
-        <Field component={FileInput} name="main_image" imgType="main_image_create" multiple={false} />
+        <Field component={FileInput} name={f.main_image.name} imgType="main_image_create" multiple={false} />
       </div> 
       <div className="mb-4">        
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-          {l.thumbnails}
+          {f.thumbnails.label}
         </label>        
-        <Field component={FileInput} name="thumbnails" imgType="thumbnails_create" multiple={true}/>
+        <Field component={FileInput} name={f.thumbnails.name} imgType="thumbnails_create" multiple={true}/>
       </div>        
       <div>
         <Button className="mb-4" 
@@ -173,7 +173,7 @@ function mapStateToProps(state) {
   return {
     formDataImages: state.formDataImages,
     initialValues: {
-      visibility: 'опубликовано',
+      [f.visibility.name]: 'опубликовано',
       subname_ru: 'subname_ru',
       subname_en: 'subname_en',
       type_ru: 'апартамент',

@@ -22,6 +22,7 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 
 // Helpers
 import { realtyLabels as l } from '../script'
+import { realtyFields as f } from '../consts'
 import { validate, 
          renderTextField,  
          renderSelectField,
@@ -49,12 +50,10 @@ let RealtyEditForm = props => {
 
  
   const getMainImagePath = images => {
+    const noPhotoPath = '/images/no-photo.jpg'
     const mainImage = img => img.type === 'main'    
-    const mainImageName = images.find(mainImage)
-    
-    if (mainImageName) {
-      return `storage/${mainImageName.name}`
-    } else return '/images/no-photo.jpg'      
+    const mainImageName = images.find(mainImage)        
+    return mainImageName ? `storage/${mainImageName.name}` : noPhotoPath      
   }
 
   const submit = values => {
@@ -63,82 +62,82 @@ let RealtyEditForm = props => {
 
   return (
     <form className={FormCss.form} onSubmit={handleSubmit(submit)} encType="multipart/form-data">
-      <div><Field name="name" label={l.name} component={renderTextField} /></div>
+      <div><Field name="name" label={f.name.label} component={renderTextField} /></div>
       <div>
-        <Field name="visibility" label={l.visibility} classes={classes} component={renderSelectField}>          
+        <Field name="visibility" label={f.visibility.label} classes={classes} component={renderSelectField}>          
           <option value={realtyEdit.visibility}>{realtyEdit.visibility}</option>          
           <option value={toggleOption(realtyEdit.visibility, l.options.visibility.published, l.options.visibility.hidden)}>
             {toggleOption(realtyEdit.visibility, l.options.visibility.published, l.options.visibility.hidden)}
           </option>         
         </Field>
       </div>
-      <div><Field name="subname_ru" label={l.subname_ru} component={renderTextField} /></div>
-      <div><Field name="subname_en" label={l.subname_en} component={renderTextField} /></div>
+      <div><Field name="subname_ru" label={f.subname_ru.label} component={renderTextField} /></div>
+      <div><Field name="subname_en" label={f.subname_en.label} component={renderTextField} /></div>
       <div>
-        <Field name="type_ru" label={l.type_ru} classes={classes} component={renderSelectField}>          
+        <Field name="type_ru" label={f.type_ru.label} classes={classes} component={renderSelectField}>          
           <option value={realtyEdit.type_ru}>{realtyEdit.type_ru}</option>          
-          <option value={toggleOption(realtyEdit.type_ru, l.options.type.apartment, l.options.type.villa)}>
-            {toggleOption(realtyEdit.type_ru, l.options.type.apartment, l.options.type.villa)}
+          <option value={toggleOption(realtyEdit.type_ru, f.type_ru.options.apartment, f.type_ru.options.villa)}>
+            {toggleOption(realtyEdit.type_ru, f.type_ru.options.apartment, f.type_ru.options.villa)}
           </option>         
         </Field>
       </div>
       <div>
-        <Field name="type_en" label={l.type_en} classes={classes} component={renderSelectField}>          
+        <Field name="type_en" label={f.type_en.label} classes={classes} component={renderSelectField}>          
           <option value={realtyEdit.type_en}>{realtyEdit.type_en}</option>          
-          <option value={toggleOption(realtyEdit.type_en, l.options.type.apartment, l.options.type.villa)}>
-            {toggleOption(realtyEdit.type_en, l.options.type.apartment, l.options.type.villa)}
+          <option value={toggleOption(realtyEdit.type_en, f.type_en.options.apartment, f.type_en.options.villa)}>
+            {toggleOption(realtyEdit.type_en, f.type_en.options.apartment, f.type_en.options.villa)}
           </option>         
         </Field>
       </div>
-      <div><Field name="country_ru" label={l.country_ru} component={renderTextField} /></div>
-      <div><Field name="country_en" label={l.country_en} component={renderTextField} /></div>
-      <div><Field name="area_ru" label={l.area_ru} component={renderTextField} /></div>
-      <div><Field name="area_en" label={l.area_en} component={renderTextField} /></div>
-      <div><Field name="city_ru" label={l.city_ru} component={renderTextField} /></div>
-      <div><Field name="city_en" label={l.city_en} component={renderTextField} /></div>
-      <div><Field name="view_ru" label={l.view_ru} component={renderTextField} /></div>
-      <div><Field name="view_en" label={l.view_en} component={renderTextField} /></div>
-      <div><Field name="transfer_payment_ru" label={l.transfer_payment_ru} component={renderTextField} /></div>
-      <div><Field name="transfer_payment_en" label={l.transfer_payment_en} component={renderTextField} /></div>
-      <div><Field name="internet_payment_ru" label={l.internet_payment_ru} component={renderTextField} /></div>
-      <div><Field name="internet_payment_en" label={l.internet_payment_en} component={renderTextField} /></div>
-      <div><Field name="parking_payment_ru" label={l.parking_payment_ru} component={renderTextField} /></div>
-      <div><Field name="parking_payment_en" label={l.parking_payment_en} component={renderTextField} /></div>
+      <div><Field name="country_ru" label={f.country_ru.label} component={renderTextField} /></div>
+      <div><Field name="country_en" label={f.country_en.label} component={renderTextField} /></div>
+      <div><Field name="area_ru" label={f.area_ru.label} component={renderTextField} /></div>
+      <div><Field name="area_en" label={f.area_en.label} component={renderTextField} /></div>
+      <div><Field name="city_ru" label={f.city_ru.label} component={renderTextField} /></div>
+      <div><Field name="city_en" label={f.city_en.label} component={renderTextField} /></div>
+      <div><Field name="view_ru" label={f.view_ru.label} component={renderTextField} /></div>
+      <div><Field name="view_en" label={f.view_en.label} component={renderTextField} /></div>
+      <div><Field name="transfer_payment_ru" label={f.transfer_payment_ru.label} component={renderTextField} /></div>
+      <div><Field name="transfer_payment_en" label={f.transfer_payment_en.label} component={renderTextField} /></div>
+      <div><Field name="internet_payment_ru" label={f.internet_payment_ru.label} component={renderTextField} /></div>
+      <div><Field name="internet_payment_en" label={f.internet_payment_en.label} component={renderTextField} /></div>
+      <div><Field name="parking_payment_ru" label={f.parking_payment_ru.label} component={renderTextField} /></div>
+      <div><Field name="parking_payment_en" label={f.parking_payment_en.label} component={renderTextField} /></div>
       <div>
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-          {l.description_ru}
+          {f.description_ru.label}
         </label>
-        <Field name="description_ru" component={ReactMDE} placeholder={l.description_ru} />
+        <Field name="description_ru" component={ReactMDE} placeholder={f.description_ru.label} />
       </div>
       <div>
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-          {l.description_en}
+          {f.description_en.label}
         </label>
-        <Field name="description_en" component={ReactMDE} placeholder={l.description_en} />
+        <Field name="description_en" component={ReactMDE} placeholder={f.description_en.label} />
       </div>
-      <div><Field name="map_html" label={l.map_html} component={renderTextField} /></div>
-      <div><Field name="square" label={l.square} type="number" component={renderTextField} /></div>
-      <div><Field name="bedrooms" label={l.bedrooms} type="number" component={renderTextField} /></div>
-      <div><Field name="capacity" label={l.capacity} type="number" component={renderTextField} /></div>
-      <div><Field name="price" label={l.price} type="number" component={renderTextField} /></div>
-      <div><Field name="price_line_through" label={l.price_line_through} type="number" component={renderTextField} /></div>
-      <div><Field name="price_jan" label={l.price_jan} type="number" component={renderTextField} /></div>
-      <div><Field name="price_feb" label={l.price_feb} type="number" component={renderTextField} /></div>
-      <div><Field name="price_mar" label={l.price_mar} type="number" component={renderTextField} /></div>
-      <div><Field name="price_apr" label={l.price_apr} type="number" component={renderTextField} /></div>
-      <div><Field name="price_may" label={l.price_may} type="number" component={renderTextField} /></div>
-      <div><Field name="price_jun" label={l.price_jun} type="number" component={renderTextField} /></div>
-      <div><Field name="price_jul" label={l.price_jul} type="number" component={renderTextField} /></div>
-      <div><Field name="price_aug" label={l.price_aug} type="number" component={renderTextField} /></div>
-      <div><Field name="price_sep" label={l.price_sep} type="number" component={renderTextField} /></div>
-      <div><Field name="price_oct" label={l.price_oct} type="number" component={renderTextField} /></div>
-      <div><Field name="price_nov" label={l.price_nov} type="number" component={renderTextField} /></div>
-      <div><Field name="price_dec" label={l.price_dec} type="number" component={renderTextField} /></div>
-      <div><Field name="price_oct_apr" label={l.price_oct_apr} type="number" component={renderTextField} /></div>
+      <div><Field name="map_html" label={f.map_html.label} component={renderTextField} /></div>
+      <div><Field name="square" label={f.square.label} type="number" component={renderTextField} /></div>
+      <div><Field name="bedrooms" label={f.bedrooms.label} type="number" component={renderTextField} /></div>
+      <div><Field name="capacity" label={f.capacity.label} type="number" component={renderTextField} /></div>
+      <div><Field name="price" label={f.price.label} type="number" component={renderTextField} /></div>
+      <div><Field name="price_line_through" label={f.price_line_through.label} type="number" component={renderTextField} /></div>
+      <div><Field name="price_jan" label={f.price_jan.label} type="number" component={renderTextField} /></div>
+      <div><Field name="price_feb" label={f.price_feb.label} type="number" component={renderTextField} /></div>
+      <div><Field name="price_mar" label={f.price_mar.label} type="number" component={renderTextField} /></div>
+      <div><Field name="price_apr" label={f.price_apr.label} type="number" component={renderTextField} /></div>
+      <div><Field name="price_may" label={f.price_may.label} type="number" component={renderTextField} /></div>
+      <div><Field name="price_jun" label={f.price_jun.label} type="number" component={renderTextField} /></div>
+      <div><Field name="price_jul" label={f.price_jul.label} type="number" component={renderTextField} /></div>
+      <div><Field name="price_aug" label={f.price_aug.label} type="number" component={renderTextField} /></div>
+      <div><Field name="price_sep" label={f.price_sep.label} type="number" component={renderTextField} /></div>
+      <div><Field name="price_oct" label={f.price_oct.label} type="number" component={renderTextField} /></div>
+      <div><Field name="price_nov" label={f.price_nov.label} type="number" component={renderTextField} /></div>
+      <div><Field name="price_dec" label={f.price_dec.label} type="number" component={renderTextField} /></div>
+      <div><Field name="price_oct_apr" label={f.price_oct_apr.label} type="number" component={renderTextField} /></div>
       <div>
         <Field 
           name="booking_mark" 
-          label={l.booking_mark}           
+          label={f.booking_mark.label}           
           component={renderTextField} 
           InputProps={{
             inputProps: {
@@ -149,13 +148,13 @@ let RealtyEditForm = props => {
           }}
         />
       </div>
-      <div><Field name="dist_sea" label={l.dist_sea} type="number" component={renderTextField} /></div>
-      <div><Field name="dist_tivat" label={l.dist_tivat} type="number" component={renderTextField} /></div>
-      <div><Field name="dist_podg" label={l.dist_podg} type="number" component={renderTextField} /></div>
-      <div><Field name="discount" label={l.discount} type="number" component={renderTextField} /></div>      
+      <div><Field name="dist_sea" label={f.dist_sea.label} type="number" component={renderTextField} /></div>
+      <div><Field name="dist_tivat" label={f.dist_tivat.label} type="number" component={renderTextField} /></div>
+      <div><Field name="dist_podg" label={f.dist_podg.label} type="number" component={renderTextField} /></div>
+      <div><Field name="discount" label={f.discount.label} type="number" component={renderTextField} /></div>      
       <div className="mb-4">  
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-          {l.main_image}
+          {f.main_image.label}
         </label>   
         <div>
           { typeof realtyEdit.images !== 'undefined' ?    
@@ -174,7 +173,7 @@ let RealtyEditForm = props => {
       </div> 
       <div className="mb-4">        
         <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
-          {l.thumbnails}
+          {f.thumbnails.label}
         </label>        
         <div>
             { 
