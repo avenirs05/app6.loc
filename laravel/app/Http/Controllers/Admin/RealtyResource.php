@@ -91,7 +91,6 @@ class RealtyResource extends Controller
         Storage::disk('public')->deleteDirectory("uploads/realties/{$realty->id}");        
     }
 
-
     public function imagesLoadWhenRealtyCreate(Request $request)
     {
         if ($request->hasfile('thumbnails')) {    
@@ -113,7 +112,6 @@ class RealtyResource extends Controller
         $this->createImageEloquent($request, $imgName, $realtyId, 'main');    
     }
 
-
     public function thumbnailsLoad(Request $request)
     {
         $basePath = 'uploads/realties';
@@ -134,9 +132,6 @@ class RealtyResource extends Controller
         $image->realty_id = $request->realtyId;       
         $image->save();
     }
-
-
-
 
     private function deleteOtherImagesEloquentByType($realtyId, $imageType) 
     {

@@ -4,7 +4,7 @@
       <div class="col-md-4">
         <a href="{{ route($realtyType, ['id' => $realty->id]) }}">
           @isset($realty->images[0])
-            <img src={{ asset("storage/uploads/realties/{$realty->id}/{$realty->images[0]['name']}") }} 
+            <img src={{ asset("storage/{$realty->images[0]['name']}") }} 
                 class="card-img" 
                 alt="">
           @endisset

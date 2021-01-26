@@ -2,7 +2,7 @@
   <div class="row">       
     {{-- Main image --}}
     <div class="col-5">
-      <img src={{ asset("storage/uploads/realties/{$realty->id}/{$mainImage}") }} 
+      <img src={{ asset("storage/$mainImage") }} 
            class="img-fluid img-main-lightgallery" 
            alt="Responsive image">
     </div>
@@ -18,8 +18,8 @@
   <div class="w-100 mt-1" id="lightgallery"> 
     @isset($realty->images[0])  
       @foreach ($realty->images as $image)
-        <a href={{ asset("storage/uploads/realties/{$realty->id}/$image->name") }}>
-          <img src={{ asset("storage/uploads/realties/{$realty->id}/$image->name") }} 
+        <a href={{ asset("storage/$image->name") }}>
+          <img src={{ asset("storage/$image->name") }} 
               width="65" 
               height="43" 
               class="mb-1 img-thumb-lightgallery">

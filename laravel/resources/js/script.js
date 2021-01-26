@@ -160,6 +160,10 @@ export const realtyLabels = {
   }
 }
 
+export const realtyFields = {
+  
+}
+
 
 export let realtyModelFields = getRealtyModelFields(realtyLabels)
 

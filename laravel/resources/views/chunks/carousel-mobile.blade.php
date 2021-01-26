@@ -6,14 +6,14 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src={{ asset("storage/uploads/realties/{$realty->id}/{$mainImage}") }} 
+      <img src={{ asset("storage/$mainImage") }} 
            class="d-block w-100" 
            alt="">
     </div>
     @isset($thumbImages[0])
       @foreach ($thumbImages as $thumbImage)
         <div class="carousel-item">
-          <img src={{ asset("storage/uploads/realties/{$realty->id}/{$thumbImage}") }} 
+          <img src={{ asset("storage/$thumbImage") }} 
               class="d-block w-100" 
               alt="">
         </div>
