@@ -28,7 +28,6 @@ import { validate,
          toggleOption } from './formHelpers'
 
 
-
 let RealtyEditForm = props => {
   const { handleSubmit, 
           pristine, 
@@ -165,7 +164,11 @@ let RealtyEditForm = props => {
               null 
           }              
         </div>    
-        <Field component={FileInput} name={f.main_image.name} imgType="main_image_change" multiple={false} />
+        <Field component={FileInput} 
+               name={f.main_image.name} 
+               imgType="main_image_change" 
+               multiple={false} 
+               saveBtnRef={updateBtn.current} />
       </div> 
       <div className="mb-4">        
         <label className={muiFormLabelClass} data-shrink="true">
@@ -189,7 +192,11 @@ let RealtyEditForm = props => {
               <Image width="150" height="100" rounded src='/images/no-photo.jpg' />
           }
         </div> 
-        <Field component={FileInput} name="thumbnails" imgType="thumbnails_add" multiple={true} />
+        <Field component={FileInput} 
+               name="thumbnails" 
+               imgType="thumbnails_add" 
+               multiple={true} 
+               saveBtnRef={updateBtn.current} />
       </div> 
       <div>
         <Button ref={updateBtn} variant="primary" type="submit" disabled={pristine || submitting}>Сохранить</Button>

@@ -143,13 +143,21 @@ let RealtyCreateForm = props => {
         <label className={muiFormLabelClass} data-shrink="true">
           {f.main_image.label}
         </label>        
-        <Field component={FileInput} name={f.main_image.name} imgType="main_image_create" multiple={false} />
+        <Field component={FileInput} 
+               name={f.main_image.name} 
+               imgType="main_image_create" 
+               multiple={false} 
+               saveBtnRef={createBtn.current}/>
       </div> 
       <div className="mb-4">        
         <label className={muiFormLabelClass} data-shrink="true">
           {f.thumbnails.label}
         </label>        
-        <Field component={FileInput} name={f.thumbnails.name} imgType="thumbnails_create" multiple={true}/>
+        <Field component={FileInput} 
+               name={f.thumbnails.name} 
+               imgType="thumbnails_create" 
+               multiple={true} 
+               saveBtnRef={createBtn.current} />
       </div>        
       <div>
         <Button className="mb-4" 

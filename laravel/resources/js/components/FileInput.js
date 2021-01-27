@@ -8,6 +8,7 @@ import { realtyThumbnailsLoadAsync } from '../actions/realtyThumbnailsLoadAsync'
 import { createFormDataImagesAC } from '../actions/ac/createFormDataImagesAC'
 
 function FileInput ({
+  saveBtnRef,
   realtyEdit,
   handleCreateFormDataImages,
   handleRealtyMainImageLoad,
@@ -21,22 +22,24 @@ function FileInput ({
     ...inputProps       
   },
   meta: omitMeta,
-}) {
+}) { 
+  
 
-  const adaptFileEventToValue = (imgType, realtyId) => e => { 
+  const adaptFileEventToValue = (imgType, realtyId, saveBtnRef) => e => {    
     if (imgType === 'main_image_create' || imgType === 'thumbnails_create') {   
       handleCreateFormDataImages(e.target.files, imgType)      
     }    
     
-    if (imgType === 'main_image_change') {     
+    if (imgType === 'main_image_change') {  
       let formData = new FormData()
       formData.set('main_image', e.target.files[0])
       formData.set('imgType', imgType)
       formData.set('realtyId', realtyId)
       handleRealtyMainImageLoad(formData)
+      saveBtnRef.removeAttribute("disabled");
     }        
 
-    if (imgType === 'thumbnails_add') {     
+    if (imgType === 'thumbnails_add') { 
       let formData = new FormData()
       let thumbnails = e.target.files
       for (let key in thumbnails) {
@@ -45,12 +48,13 @@ function FileInput ({
       formData.set('imgType', imgType)
       formData.set('realtyId', realtyId)
       handleRealtyThumbnailsLoad(formData)
+      saveBtnRef.removeAttribute("disabled");
     }  
   }
 
   return (
     <input
-      onChange={adaptFileEventToValue(imgType, realtyEdit.id)}
+      onChange={adaptFileEventToValue(imgType, realtyEdit.id, saveBtnRef)}
       type="file"
       multiple={multiple}
       {...inputProps}
