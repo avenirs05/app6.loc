@@ -43,19 +43,21 @@ let RealtyCreateForm = props => {
     handleRealtyCreate(values, formDataImages)
   }
 
+  const muiFormLabelClass = "MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+
   return (
     <form className={FormCss.form} onSubmit={handleSubmit(submit)} encType="multipart/form-data">
       <div><Field name={f.name.name} label={f.name.label} component={renderTextField} /></div>
       <div>
         <Field name={f.visibility.name} label={f.visibility.label} classes={classes} component={renderSelectField}>     
-          <option value={f.visibility.options.published}>{f.visibility.options.published}</option>          
-          <option value={f.visibility.options.hidden}>{f.visibility.options.hidden}</option>         
+            <option value={f.visibility.options.published}>{f.visibility.options.published}</option>          
+            <option value={f.visibility.options.hidden}>{f.visibility.options.hidden}</option>         
         </Field>
       </div>
       <div><Field name={f.subname_ru.name} label={f.subname_ru.label} component={renderTextField} /></div>
       <div><Field name={f.subname_en.name} label={f.subname_en.label} component={renderTextField} /></div>
       <div>
-        <Field name="type_ru" label={f.type_ru.label} classes={classes} component={renderSelectField}>          
+        <Field name={f.type_ru.name} label={f.type_ru.label} classes={classes} component={renderSelectField}>          
           <option value={f.type_ru.options.apartment}>
             {f.type_ru.options.apartment}
           </option>          
@@ -65,7 +67,7 @@ let RealtyCreateForm = props => {
         </Field>
       </div>
       <div>
-        <Field name="type_en" label={f.type_en.label} classes={classes} component={renderSelectField}>          
+        <Field name={f.type_en.name} label={f.type_en.label} classes={classes} component={renderSelectField}>          
           <option value={f.type_en.options.apartment}>
             {f.type_en.options.apartment}
           </option>          
@@ -89,13 +91,13 @@ let RealtyCreateForm = props => {
       <div><Field name={f.parking_payment_ru.name} label={`${f.parking_payment_ru.label}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
       <div><Field name={f.parking_payment_en.name} label={`${f.parking_payment_en.label}. Текстовое поле. Можно писать и текст`} component={renderTextField} /></div>
       <div>
-        <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
+        <label className={muiFormLabelClass} data-shrink="true">
           {f.description_ru.label}
         </label>
         <Field name={f.description_ru.name} component={ReactMDE} placeholder={f.description_ru.label} />
       </div>
       <div className="mt-4">
-        <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
+        <label className={muiFormLabelClass} data-shrink="true">
           {f.description_en.label}
         </label>
         <Field name={f.description_en.name} component={ReactMDE} placeholder={f.description_en.label} />
@@ -138,13 +140,13 @@ let RealtyCreateForm = props => {
       <div><Field name={f.dist_podg.name} label={f.dist_podg.label} type="number" component={renderTextField} /></div>
       <div><Field name={f.discount.name} label={f.discount.label} type="number" component={renderTextField} /></div>      
       <div className="mb-4">        
-        <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
+        <label className={muiFormLabelClass} data-shrink="true">
           {f.main_image.label}
         </label>        
         <Field component={FileInput} name={f.main_image.name} imgType="main_image_create" multiple={false} />
       </div> 
       <div className="mb-4">        
-        <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled" data-shrink="true">
+        <label className={muiFormLabelClass} data-shrink="true">
           {f.thumbnails.label}
         </label>        
         <Field component={FileInput} name={f.thumbnails.name} imgType="thumbnails_create" multiple={true}/>
@@ -173,51 +175,51 @@ function mapStateToProps(state) {
   return {
     formDataImages: state.formDataImages,
     initialValues: {
-      [f.visibility.name]: 'опубликовано',
-      subname_ru: 'subname_ru',
-      subname_en: 'subname_en',
-      type_ru: 'апартамент',
-      type_en: 'apartment',
-      country_ru: 'Черногория',
-      country_en: 'Montenegro',
-      area_ru: 'Будванская ривьера',
-      area_en: 'Budva Riviera',
-      city_ru: 'Будва',
-      city_en: 'Budva',
-      view_ru: 'на море',
-      view_en: 'sea',
-      transfer_payment_ru: 'бесплатный',
-      transfer_payment_en: 'free',
-      internet_payment_ru: 'бесплатный',
-      internet_payment_en: 'free',
-      parking_payment_ru: 'бесплатный',
-      parking_payment_en: 'free',
-      description_ru: 'description_ru',   
-      description_en: 'description_en',   
-      map_html: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2951.3632492036777!2d18.867321315101165!3d42.292113947382965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDLCsDE3JzMxLjYiTiAxOMKwNTInMTAuMiJF!5e0!3m2!1sru!2sru!4v1507902217396" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>',
-      square: 10,
-      bedrooms: 11,
-      capacity: 12,
-      price: 13,
-      price_line_through: 14,
-      price_jan: 15,
-      price_feb: 16,
-      price_mar: 17,
-      price_apr: 18,
-      price_may: 19,
-      price_jun: 20,
-      price_jul: 21,
-      price_aug: 22,
-      price_sep: 23,
-      price_oct: 24,
-      price_nov: 25,
-      price_dec: 26,
-      price_oct_apr: 27,
-      booking_mark: 7.1,
-      dist_sea: 28,
-      dist_tivat: 29,
-      dist_podg: 30,
-      discount: 1,
+      [f.visibility.name]: f.visibility.default,
+      [f.subname_ru.name]: f.subname_ru.default,
+      [f.subname_en.name]: f.subname_en.default,
+      [f.type_ru.name]: f.type_ru.default,
+      [f.type_en.name]: f.type_en.default,
+      [f.country_ru.name]: f.country_ru.default,
+      [f.country_en.name]: f.country_en.default,
+      [f.area_ru.name]: f.area_ru.default,
+      [f.area_en.name]: f.area_en.default,
+      [f.city_ru.name]: f.city_ru.default,
+      [f.city_en.name]: f.city_en.default,
+      [f.view_ru.name]: f.view_ru.default,
+      [f.view_en.name]: f.view_en.default,
+      [f.transfer_payment_ru.name]: f.transfer_payment_ru.default,
+      [f.transfer_payment_en.name]: f.transfer_payment_en.default,
+      [f.internet_payment_ru.name]: f.internet_payment_ru.default,
+      [f.internet_payment_en.name]: f.internet_payment_en.default,
+      [f.parking_payment_ru.name]: f.parking_payment_ru.default,
+      [f.parking_payment_en.name]: f.parking_payment_en.default,
+      [f.description_ru.name]: f.description_ru.default,   
+      [f.description_en.name]: f.description_en.default,   
+      [f.map_html.name]: f.map_html.default,
+      [f.square.name]: f.square.default,
+      [f.bedrooms.name]: f.bedrooms.default,
+      [f.capacity.name]: f.capacity.default,
+      [f.price.name]: f.price.default,
+      [f.price_line_through.name]: f.price_line_through.default,
+      [f.price_jan.name]: f.price_jan.default,
+      [f.price_feb.name]: f.price_feb.default,
+      [f.price_mar.name]: f.price_mar.default,
+      [f.price_apr.name]: f.price_apr.default,
+      [f.price_may.name]: f.price_may.default,
+      [f.price_jun.name]: f.price_jun.default,
+      [f.price_jul.name]: f.price_jul.default,
+      [f.price_aug.name]: f.price_aug.default,
+      [f.price_sep.name]: f.price_sep.default,
+      [f.price_oct.name]: f.price_oct.default,
+      [f.price_nov.name]: f.price_nov.default,
+      [f.price_dec.name]: f.price_dec.default,
+      [f.price_oct_apr.name]: f.price_oct_apr.default,
+      [f.booking_mark.name]: f.booking_mark.default,
+      [f.dist_sea.name]: f.dist_sea.default,
+      [f.dist_tivat.name]: f.dist_tivat.default,
+      [f.dist_podg.name]: f.dist_podg.default,
+      [f.discount.name]: f.discount.default,
     },
     enableReinitialize: true,
   }
