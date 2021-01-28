@@ -142,4 +142,9 @@ class RealtyResource extends Controller
             }            
         });
     }
+
+    public function deleteImage($id) 
+    {
+        Image::destroy($id);
+    }
 }

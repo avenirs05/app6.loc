@@ -16,6 +16,7 @@ import FileInput from './FileInput'
 
 // Actions
 import { realtyUpdateAsync } from '../actions/realtyUpdateAsync'
+import { thumbnailDeleteAsync } from '../actions/thumbnailDeleteAsync'
 
 // Icons
 import HighlightOffIcon from '@material-ui/icons/HighlightOff'
@@ -34,7 +35,8 @@ let RealtyEditForm = props => {
           submitting, 
           classes, 
           realtyEdit, 
-          handleRealtyUpdate, } = props
+          handleRealtyUpdate,
+          thumbnailDelete } = props
   
   const updateBtn = useRef()
   useEffect(() => {     
@@ -58,9 +60,11 @@ let RealtyEditForm = props => {
     handleRealtyUpdate(values)    
   }
 
-  const muiFormLabelClass = 'MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled'
+  const onDeleteThumbnail = (e, thumbnail) => {
+    thumbnailDelete(thumbnail)      
+  }
 
-  
+  const muiFormLabelClass = 'MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled'
 
   return (
     <form className={FormCss.form} onSubmit={handleSubmit(submit)} encType="multipart/form-data">
@@ -183,7 +187,7 @@ let RealtyEditForm = props => {
                 if (image.type === 'thumbnail') {
                   return (
                     <div key={index} className={`${FormCss.thumb_wrapper} mr-2`}> 
-                      <HighlightOffIcon color="primary" className={FormCss.delete_thumb_icon}></HighlightOffIcon>          
+                      <HighlightOffIcon onClick={(e) => { onDeleteThumbnail(e, image) }}  color="primary" className={FormCss.delete_thumb_icon}></HighlightOffIcon>          
                       <Image width="200" height="150" thumbnail src={`storage/${image.name}`} /> 
                     </div> 
                   )
@@ -225,6 +229,9 @@ function mapDispatchToProps(dispatch) {
     handleRealtyUpdate(values) {    
       dispatch(realtyUpdateAsync(values))      
     },
+    thumbnailDelete(thumbnail) {
+      dispatch(thumbnailDeleteAsync(thumbnail))
+    }
   }
 }
 
