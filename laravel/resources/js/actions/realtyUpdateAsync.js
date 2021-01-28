@@ -1,4 +1,5 @@
-import { realtyModelFields } from '../script';
+import { realtyFields } from '../consts'
+import { getModelFieldsList } from '../script'
 import { setJustUpdatedRealtyTrueAC } from './ac/flagsAC'
 import { setAlertUpdateVisibilityTrueAC } from './ac/flagsAC'
 import { realtyUpdateAC } from './ac/realtyUpdateAC'
@@ -9,7 +10,9 @@ export const realtyUpdateAsync = values =>
   async dispatch => {
     try {
       const response = await axios.patch(route('realties.update', values.id), values)
-      await dispatch(realtyUpdateAC(reduceObjByArray(realtyModelFields, response.data)))    
+      const realtyModelFieldsList = getModelFieldsList(realtyFields)
+      const responseData = reduceObjByArray(realtyModelFieldsList, response.data)  
+      await dispatch(realtyUpdateAC(responseData))    
       await dispatch(setJustUpdatedRealtyTrueAC())
       await dispatch(setAlertUpdateVisibilityTrueAC())
     }

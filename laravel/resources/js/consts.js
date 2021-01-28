@@ -1,65 +1,3 @@
-export const realtyLabels = {
-  id: 'id',
-  name: 'Название объекта',
-  visibility: 'Видимость',
-  subname_ru: 'Мини-описание',
-  subname_en: 'Мини-описание — English',
-  type_ru: 'Тип объекта',
-  type_en: 'Тип объекта — English',
-  country_ru: 'Страна',
-  country_en: 'Страна — English',
-  area_ru: 'Район',
-  area_en: 'Район — English',
-  city_ru: 'Город',
-  city_en: 'Город — English',
-  view_ru: 'Вид',
-  view_en: 'Вид — English',
-  transfer_payment_ru: 'Трансфер. Текстовое поле. Можно писать и текст',
-  transfer_payment_en: 'Трансфер — English. Текстовое поле. Можно писать и текст',
-  internet_payment_ru: 'Интернет. Текстовое поле. Можно писать и текст',
-  internet_payment_en: 'Интернет — English. Текстовое поле. Можно писать и текст',
-  parking_payment_ru: 'Паркинг. Текстовое поле. Можно писать и текст',
-  parking_payment_en: 'Паркинг — English. Текстовое поле. Можно писать и текст',
-  description_ru: 'Описание подробное',   
-  description_en: 'Описание подробное — English',   
-  map_html: 'Карта (html-код)',
-  square: 'Площадь (метров)',
-  bedrooms: 'Спален (количество)',
-  capacity: 'Вместимость (человек)',
-  price: 'Цена (€)',
-  price_line_through: 'Цена перечеркнутая (€)',
-  price_jan: 'Цена — Январь (€)',
-  price_feb: 'Цена — Февраль (€)',
-  price_mar: 'Цена — Март(€)',
-  price_apr: 'Цена — Апрель (€)',
-  price_may: 'Цена — Май (€)',
-  price_jun: 'Цена — Июнь (€)',
-  price_jul: 'Цена — Июль (€)',
-  price_aug: 'Цена — Август (€)',
-  price_sep: 'Цена — Сентябрь (€)',
-  price_oct: 'Цена — Октябрь (€)',
-  price_nov: 'Цена — Ноябрь (€)',
-  price_dec: 'Цена — Декабрь (€)',
-  price_oct_apr: 'Цена — Октябрь-Апрель (€)',
-  booking_mark: 'Букинг (оценка)',
-  dist_sea: 'Расстояние до моря (км)',
-  dist_tivat: 'Расстояние до аэропорта Тиват (км)',
-  dist_podg: 'Расстояние до аэропорта Подгорица (км)',
-  discount: 'Скидка (%). Не трогать. Оставить 1%, как сейчас.',  
-  thumbnails: 'Изображения галереи',
-  main_image: 'Главное изображение',
-  options: {
-    visibility: {
-      published: 'опубликовано',
-      hidden: 'скрыто'
-    },
-    type: {
-      apartment: 'апартамент',
-      villa: 'вилла'
-    }
-  }
-}
-
 export const realtyFields = {
   id: {name: 'id', label: 'id', model: true, default: null},
   name: {name: 'name', label: 'Название объекта', model: true, default: null},
@@ -139,6 +77,8 @@ export const realtyFields = {
   thumbnails: {name: 'thumbnails', label: 'Изображения галереи', model: false, default: null},
   main_image: {name: 'main_image', label: 'Главное изображение', model: false, default: null},  
 }
+
+
 
 
 

@@ -1,5 +1,6 @@
 import React from 'react';
-import { realtyModelFields } from '../script'
+import { realtyFields } from '../consts'
+import { getModelFieldsList } from '../script'
 
 // Material UI
 import TextField from '@material-ui/core/TextField'
@@ -13,7 +14,7 @@ import FormCss from './css/Form.module.css'
 
 export const validate = values => {
   const errors = {}
-  const requiredFields = realtyModelFields
+  const requiredFields = getModelFieldsList(realtyFields)
  
   requiredFields.forEach(field => {
     if (!values[field] && (field === 'description_ru' || field === 'description_en')) {
