@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Realty;
 use App\Image;
+use App\Feedback;
 use Illuminate\Support\Facades\Storage;
 
 class Test2 extends Controller
@@ -54,7 +55,12 @@ class Test2 extends Controller
         //     });
         // } else dd('no');
 
-        // dd('hhh');
+        //dd(Feedback::with('realty')->paginate(20));
+        // $users = Feedback::with(['realty' => function ($query) {
+        //     $query->where('title', 'like', '%first%');
+        // }])->get();
+
+
 
 
 

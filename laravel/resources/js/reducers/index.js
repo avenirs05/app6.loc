@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 // Regular Reducers
 import realties from './realties'
 import realtyShow from './realtyShow'
+import feedbackShow from './feedbackShow'
 import realtyEdit from './realtyEdit'
 import realtyUpdate from './realtyUpdate'
 import realtyDelete from './realtyDelete'
@@ -27,6 +28,7 @@ export default combineReducers({
   isFirstLoading,
   realties,  
   feedbacks,
+  feedbackShow,
   images,
   realtyShow,
   realtyEdit,

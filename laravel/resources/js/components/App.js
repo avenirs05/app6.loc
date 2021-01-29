@@ -22,6 +22,7 @@ import RealtiesPage from './RealtiesPage'
 import FeedbacksPage from './FeedbacksPage'
 import ImagesPage from './ImagesPage'
 import RealtyShowPage from './RealtyShowPage'
+import FeedbackShowPage from './FeedbackShowPage'
 import RealtyCreatePage from './RealtyCreatePage'
 import RealtyEditPage from './RealtyEditPage'
 import NavbarContainer from './NavbarContainer'
@@ -42,7 +43,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.getRealties()
-    this.props.setFirstLoadingTrue()
+    this.props.setFirstLoadingTrue()     
   }
 
   componentWillUpdate() {
@@ -64,12 +65,12 @@ class App extends Component {
             <Col xs={2} style={{ paddingLeft: 0 }}>
               <ListGroup as="div" className={ListGroupCss.main}>
                 <NavLink to="/realties"
-                  className={NavLinkCss.main + ' ' + (this.props.isFirstLoading ? NavLinkCss.active : '')}
+                  className={NavLinkCss.main + ' ' + (this.props.location.pathname === '/' ? NavLinkCss.active : '')}
                   activeClassName={NavLinkCss.active}
                   onClick={this.props.getRealties}
                   ref={this.realtiesMenuItem}
                   onMouseOver={this.makeCursorNotPointerIfActive.bind(this, this.realtiesMenuItem)}>
-                  Объекты
+                    Объекты
                 </NavLink>
                 <NavLink to="/feedbacks"
                   className={NavLinkCss.main}
@@ -77,7 +78,7 @@ class App extends Component {
                   onClick={this.props.getFeedbacks}
                   ref={this.feedbacksMenuItem}
                   onMouseOver={this.makeCursorNotPointerIfActive.bind(this, this.feedbacksMenuItem)}>
-                  Отзывы
+                    Отзывы
                 </NavLink>
                 <NavLink to="/images"
                   className={NavLinkCss.main}
@@ -85,7 +86,7 @@ class App extends Component {
                   onClick={this.props.getImages}
                   ref={this.imagesMenuItem}
                   onMouseOver={this.makeCursorNotPointerIfActive.bind(this, this.imagesMenuItem)}>
-                  Изображения
+                    Изображения
                 </NavLink>
               </ListGroup>
             </Col>
@@ -97,6 +98,7 @@ class App extends Component {
                 <Route children={<RealtyShowPage />} exact path="/realties/:id" />
                 <Route children={<RealtyEditPage />} exact path="/realties/:id/edit" />
                 <Route children={<FeedbacksPage />} exact path="/feedbacks" />
+                <Route children={<FeedbackShowPage />} exact path="/feedbacks/:id" />
                 <Route children={<ImagesPage />} exact path="/images" />
                 <Route children={<Test />} exact path="/test" />
               </Switch>

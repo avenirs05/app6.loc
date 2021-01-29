@@ -78,6 +78,14 @@ export const realtyFields = {
   main_image: {name: 'main_image', label: 'Главное изображение', model: false, default: null},  
 }
 
+export const feedbackFields = {
+  id: {name: 'id', label: 'id', model: true, default: null},
+  author: {name: 'author', label: 'Автор', model: true, default: 'Инкогнито'}, 
+  date: {name: 'date', label: 'Дата', model: true, default: '2000-00-00'}, 
+  text: {name: 'text', label: 'Текст', model: true, default: 'Текст по умолчанию'}, 
+  realty: {name: 'realty', label: 'Объект', model: true, default: 'Объект'}, 
+}
+
 
 
 

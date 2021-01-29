@@ -15,7 +15,7 @@ class FeedbackResource extends Controller
      */
     public function index()
     {
-        return Feedback::paginate(50);
+        return Feedback::with('realty')->paginate(50);
     }
 
     /**
@@ -47,7 +47,7 @@ class FeedbackResource extends Controller
      */
     public function show($id)
     {
-        //
+        return Feedback::with(['realty'])->where('id', $id)->first();
     }
 
     /**
