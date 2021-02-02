@@ -1,0 +1,18 @@
+import { feedbackFields } from '../consts'
+import { getModelFieldsList } from '../script'
+import { feedbackEditAC } from './ac/feedbackEditAC'
+import { reduceObjByArray } from '../script'
+
+
+export const feedbackEditAsync = id =>
+  async dispatch => {
+    try {
+      const response = await axios.get(route('feedbacks.edit', id))      
+      const feedbackModelFieldsList = getModelFieldsList(feedbackFields)
+      const responseData = reduceObjByArray(feedbackModelFieldsList, response.data)       
+      return dispatch(feedbackEditAC(responseData)) 
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }

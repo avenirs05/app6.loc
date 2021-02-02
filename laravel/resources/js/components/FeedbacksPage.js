@@ -18,13 +18,13 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 
 // Actions
 import { getFeedbacksAsync } from '../actions/getFeedbacksAsync'
-// import { feedbackDeleteAsync } from '../actions/feedbackDeleteAsync'
-// import { setJustCreatedFeedbackFalseAC, 
-//          setJustUpdatedFeedbackFalseAC, 
-//          setJustDeletedFeedbackFalseAC, 
-//          setAlertCreateVisibilityFalseAC, 
-//          setAlertUpdateVisibilityFalseAC,
-//          setAlertDeleteVisibilityFalseAC } from '../actions/ac/flagsAC'
+import { feedbackDeleteAsync } from '../actions/feedbackDeleteAsync'
+import { //setJustCreatedFeedbackFalseAC, 
+         setJustUpdatedFeedbackFalseAC, 
+         setJustDeletedFeedbackFalseAC, 
+         setAlertCreateVisibilityFalseAC, 
+         setAlertUpdateVisibilityFalseAC,
+         setAlertDeleteVisibilityFalseAC } from '../actions/ac/flagsAC'
 
 // Css Modules
 import TableCss from './css/Table.module.css'
@@ -97,15 +97,15 @@ function FeedbacksPage({
     handleGetFeedbacks(currentPageNumber)
   }
 
-  function onDeleteResource(e, id) {
+  function onDeleteResource(e, id) {    
     handleClose()
-    handleFeedbackDelete(id)
+    handleFeedbackDelete(id)   
   }
 
-  function setCandidateToDelete(e, id, name) {
-    handleShow()
+  function setCandidateToDelete(e, id, author) {
+    handleShow() 
     setFeedbackDeleteId(() => id)
-    setFeedbackDeleteName(() => name)
+    setFeedbackDeleteName(() => author)
   }
 
   function showFeedbacksItems(currentPage, perPage) {
@@ -129,7 +129,7 @@ function FeedbacksPage({
           </td>
           <td className={TableCss.td_icon}>
             <DeleteOutlineOutlinedIcon
-              onClick={(e) => setCandidateToDelete(e, feedback.id, feedback.name)}
+              onClick={(e) => setCandidateToDelete(e, feedback.id, feedback.author)}
               color="primary"
               className={TableCss.icon}>
             </DeleteOutlineOutlinedIcon>
@@ -189,12 +189,8 @@ function FeedbacksPage({
           <Modal.Title>Вы хотите удалить отзыв {feedbackDeleteName}?</Modal.Title>
         </Modal.Header>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Закрыть
-        </Button>
-          <Button variant="danger" onClick={(e) => onDeleteResource(e, feedbackDeleteId)}>
-            Удалить навсегда
-        </Button>
+          <Button variant="secondary" onClick={handleClose}>Закрыть</Button>
+          <Button variant="danger" onClick={(e) => onDeleteResource(e, feedbackDeleteId)}>Удалить навсегда</Button>
         </Modal.Footer>
       </Modal>
     </>
@@ -221,7 +217,7 @@ function mapDispatchToProps(dispatch) {
     handleGetFeedbacks(currentPageNumber) {
       dispatch(getFeedbacksAsync(currentPageNumber))
     },
-    handleFeedbackDelete(id) {
+    handleFeedbackDelete(id) {      
       dispatch(feedbackDeleteAsync(id))
     },
     setJustCreatedFeedbackFalse() {

@@ -9,32 +9,8 @@ import Select from '@material-ui/core/Select'
 import InputLabel from '@material-ui/core/InputLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
-// Css Modules
+// Css
 import FormCss from './css/Form.module.css'
-
-export const validate = values => {
-  const errors = {}
-  const requiredFields = getModelFieldsList(realtyFields)
- 
-  requiredFields.forEach(field => {
-    if (!values[field] && (field === 'description_ru' || field === 'description_en')) {
-      errors[field] = eval(<span className={FormCss.error_text}>Описание — обязательное поле!</span>);
-    } 
-    else if (!values[field]) {
-      errors[field] = 'Обязательное поле'
-    }
-  })   
-
-  if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) { 
-    errors.email = 'Недействительный email'
-  }
-  if (String(values.booking_mark)[1] !== '.' || String(values.booking_mark).length > 3) {
-    errors.booking_mark = "1 знак до запятой и 1 знак после запятой: 9.3 или 7.0. Разделитель - точка, а не запятая."
-  }
-
-  return errors
-}
-
 
 export const renderTextField = ({
   label,
@@ -85,5 +61,26 @@ export const renderSelectField = ({
     {renderFromHelper({ touched, error })}
   </FormControl>
 )  
+
+export const renderTextArea = ({
+  input, 
+  meta: { touched, error, warning },
+  ...custom
+  }) => (
+  <div>
+    <label className={custom.labelClassName}>
+      {custom.label}
+    </label>
+    <div>
+      <textarea 
+        {...input}
+        className={custom.textareaClassName}         
+        rows={custom.rows}         
+        cols={custom.cols}         
+        placeholder={custom.label} />
+      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+    </div>
+  </div>
+) 
 
 export const toggleOption = (prop, first, second) => prop === first ? second : first 

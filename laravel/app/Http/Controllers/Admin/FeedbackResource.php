@@ -58,19 +58,25 @@ class FeedbackResource extends Controller
      */
     public function edit($id)
     {
-        //
+        return Feedback::with(['realty'])->where('id', $id)->first();
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Feedback  $feedback
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Feedback $feedback)
     {
-        //
+        collect($request)->each(function($val, $key) use ($feedback) {  
+            if ($key !== 'realty') {
+                $feedback->update([$key => $val]);           
+            }   
+        }); 
+
+        return $feedback->id;
     }
 
     /**
@@ -79,8 +85,8 @@ class FeedbackResource extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Feedback $feedback)
     {
-        //
+        Feedback::destroy($feedback->id);
     }
 }

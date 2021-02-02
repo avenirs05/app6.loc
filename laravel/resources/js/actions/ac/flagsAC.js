@@ -6,6 +6,10 @@ import { SET_JUST_UPDATED_REALTY_TRUE } from '../consts'
 import { SET_JUST_UPDATED_REALTY_FALSE } from '../consts'
 import { SET_JUST_DELETED_REALTY_TRUE } from '../consts'
 import { SET_JUST_DELETED_REALTY_FALSE } from '../consts'
+import { SET_JUST_UPDATED_FEEDBACK_TRUE } from '../consts'
+import { SET_JUST_UPDATED_FEEDBACK_FALSE } from '../consts'
+import { SET_JUST_DELETED_FEEDBACK_TRUE } from '../consts'
+import { SET_JUST_DELETED_FEEDBACK_FALSE } from '../consts'
 import { SET_ALERT_CREATE_VISIBILITY_TRUE } from '../consts'
 import { SET_ALERT_CREATE_VISIBILITY_FALSE } from '../consts'
 import { SET_ALERT_UPDATE_VISIBILITY_TRUE } from '../consts'
@@ -22,6 +26,13 @@ export const setJustUpdatedRealtyTrueAC = () => ({ type: SET_JUST_UPDATED_REALTY
 export const setJustUpdatedRealtyFalseAC = () => ({ type: SET_JUST_UPDATED_REALTY_FALSE })
 export const setJustDeletedRealtyTrueAC = () => ({ type: SET_JUST_DELETED_REALTY_TRUE })
 export const setJustDeletedRealtyFalseAC = () => ({ type: SET_JUST_DELETED_REALTY_FALSE })
+
+export const setJustUpdatedFeedbackTrueAC = () => ({ type: SET_JUST_UPDATED_FEEDBACK_TRUE })
+export const setJustUpdatedFeedbackFalseAC = () => ({ type: SET_JUST_UPDATED_FEEDBACK_FALSE })
+
+
+export const setJustDeletedFeedbackTrueAC = () => ({ type: SET_JUST_DELETED_FEEDBACK_TRUE })
+export const setJustDeletedFeedbackFalseAC = () => ({ type: SET_JUST_DELETED_FEEDBACK_FALSE })
 export const setAlertCreateVisibilityTrueAC = () => ({ type: SET_ALERT_CREATE_VISIBILITY_TRUE })
 export const setAlertCreateVisibilityFalseAC = () => ({ type: SET_ALERT_CREATE_VISIBILITY_FALSE })
 export const setAlertUpdateVisibilityTrueAC = () => ({ type: SET_ALERT_UPDATE_VISIBILITY_TRUE })

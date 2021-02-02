@@ -60,6 +60,14 @@ class Test2 extends Controller
         //     $query->where('title', 'like', '%first%');
         // }])->get();
 
+        $test = [3];
+
+        collect([2, 8])->each(function($val, $key) use (&$test) {  
+            //dump('hhh');  
+            $test[] = 3;                
+        }); 
+
+        dd($test);
 
 
 

@@ -24,6 +24,10 @@
 .delete_thumb_icon:hover {
   cursor: pointer;
   color: #002884;
+}
 
+.textarea {
+  width: 100%; 
+  padding: 5px;
 }
 

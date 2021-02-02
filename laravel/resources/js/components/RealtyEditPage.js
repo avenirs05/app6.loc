@@ -41,7 +41,6 @@ class RealtyEditPage extends Component {
 function mapStateToProps(state) {
   return {
     realtyEdit: state.realtyEdit,
-    realtyUpdate: state.realtyUpdate,
     isJustUpdatedRealty: state.isJustUpdatedRealty,
   }
 }

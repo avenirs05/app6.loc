@@ -25,6 +25,7 @@ import RealtyShowPage from './RealtyShowPage'
 import FeedbackShowPage from './FeedbackShowPage'
 import RealtyCreatePage from './RealtyCreatePage'
 import RealtyEditPage from './RealtyEditPage'
+import FeedbackEditPage from './FeedbackEditPage'
 import NavbarContainer from './NavbarContainer'
 import Test from './Test'
 
@@ -99,6 +100,7 @@ class App extends Component {
                 <Route children={<RealtyEditPage />} exact path="/realties/:id/edit" />
                 <Route children={<FeedbacksPage />} exact path="/feedbacks" />
                 <Route children={<FeedbackShowPage />} exact path="/feedbacks/:id" />
+                <Route children={<FeedbackEditPage />} exact path="/feedbacks/:id/edit" />
                 <Route children={<ImagesPage />} exact path="/images" />
                 <Route children={<Test />} exact path="/test" />
               </Switch>

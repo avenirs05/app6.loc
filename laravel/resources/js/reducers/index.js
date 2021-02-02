@@ -3,11 +3,13 @@ import { combineReducers } from 'redux'
 // Regular Reducers
 import realties from './realties'
 import realtyShow from './realtyShow'
-import feedbackShow from './feedbackShow'
 import realtyEdit from './realtyEdit'
 import realtyUpdate from './realtyUpdate'
 import realtyDelete from './realtyDelete'
 import feedbacks from './feedbacks'
+import feedbackShow from './feedbackShow'
+import feedbackUpdate from './feedbackUpdate'
+import feedbackEdit from './feedbackEdit'
 import images from './images'
 import formDataImages from './formDataImages'
 
@@ -21,7 +23,9 @@ import { isAlertCreateVisible,
          isFirstLoading,
          isJustCreatedRealty,
          isJustUpdatedRealty,
-         isJustDeletedRealty } from './flags'
+         isJustUpdatedFeedback,
+         isJustDeletedRealty,
+         isJustDeletedFeedback } from './flags'
 
 
 export default combineReducers({
@@ -29,6 +33,8 @@ export default combineReducers({
   realties,  
   feedbacks,
   feedbackShow,
+  feedbackEdit,
+  feedbackUpdate,
   images,
   realtyShow,
   realtyEdit,
@@ -36,7 +42,9 @@ export default combineReducers({
   realtyDelete,
   isJustCreatedRealty,
   isJustUpdatedRealty, 
+  isJustUpdatedFeedback, 
   isJustDeletedRealty, 
+  isJustDeletedFeedback, 
   isAlertCreateVisible,
   isAlertUpdateVisible,
   isAlertDeleteVisible, 
