@@ -9,7 +9,7 @@ import { reduceObjByArray } from '../script'
 export const feedbackUpdateAsync = values => 
   async dispatch => {
     try {   
-      const response = await axios.patch(route('feedbacks.update', values.id), values)
+      const response = await axios.patch(route('feedbacks.update', values.id), values)     
       const feedbackModelFieldsList = getModelFieldsList(feedbackFields)
       const responseData = reduceObjByArray(feedbackModelFieldsList, response.data)  
       await dispatch(feedbackUpdateAC(responseData))    

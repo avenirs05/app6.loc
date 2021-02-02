@@ -79,11 +79,13 @@ export const realtyFields = {
 }
 
 export const feedbackFields = {
-  id: {name: 'id', label: 'id', model: true, default: null},
+  id: {name: 'id', label: 'Id', model: true, default: null},
   author: {name: 'author', label: 'Автор', model: true, default: 'Инкогнито'}, 
   date: {name: 'date', label: 'Дата', model: true, default: '2000-00-00'}, 
   text: {name: 'text', label: 'Текст', model: true, default: 'Текст по умолчанию'}, 
   realty: {name: 'realty', label: 'Объект', model: true, default: 'Объект'}, 
+  realty_id: {name: 'realty_id', label: 'Id объекта', model: true, default: 'realty_id'}, 
+  realty_name: {name: 'realty_name', label: 'Объект', model: false, default: 'realty_name'}, 
 }
 
 

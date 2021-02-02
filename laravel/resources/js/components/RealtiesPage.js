@@ -114,6 +114,7 @@ function RealtiesPage({
           <td>{realty.type_ru}</td>
           <td>{realty.price}</td>
           <td>{realty.visibility}</td>
+          <td className={TableCss.td}>{realty.id}</td>
           <td className={TableCss.td_icon}>
             <NavLink to={`/realties/${realty.id}/edit`}>
               <EditOutlinedIcon color="primary" className={TableCss.icon}></EditOutlinedIcon>
@@ -171,6 +172,7 @@ function RealtiesPage({
             <th>Тип</th>
             <th>Цена</th>
             <th>Видимость</th>
+            <th>Id</th>
             <th className="td_icon"><EditOutlinedIcon color="primary"></EditOutlinedIcon></th>
             <th className="td_icon"><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></th>
             <th className="td_icon"><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></th>

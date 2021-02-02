@@ -10,7 +10,7 @@ export const feedbackEditAsync = id =>
       const response = await axios.get(route('feedbacks.edit', id))      
       const feedbackModelFieldsList = getModelFieldsList(feedbackFields)
       const responseData = reduceObjByArray(feedbackModelFieldsList, response.data)       
-      return dispatch(feedbackEditAC(responseData)) 
+      return dispatch(feedbackEditAC({...responseData, realty_name: responseData.realty.name})) 
     }
     catch (error) {
       console.log(error)

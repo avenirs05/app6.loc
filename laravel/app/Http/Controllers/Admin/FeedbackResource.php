@@ -71,8 +71,9 @@ class FeedbackResource extends Controller
     public function update(Request $request, Feedback $feedback)
     {
         collect($request)->each(function($val, $key) use ($feedback) {  
-            if ($key !== 'realty') {
-                $feedback->update([$key => $val]);           
+            if ($key !== 'realty' && $key !== 'realty_name') {
+                $feedback->update([$key => $val]);  
+                $test[] = $key;         
             }   
         }); 
 
