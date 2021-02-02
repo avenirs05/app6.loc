@@ -65,7 +65,6 @@ let FeedbackEditForm = props => {
     handleFeedbackUpdate(values)    
   }
 
-  const muiFormLabelClass = 'MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled'
 
   return (    
     <form className={FormCss.form} onSubmit={handleSubmit(submit)} encType="multipart/form-data">
@@ -98,7 +97,6 @@ function mapStateToProps(state) {
   return {
     initialValues: state.feedbackEdit,
     enableReinitialize: true,
-    feedbackEdit: state.feedbackEdit,  
   }
 }
 
