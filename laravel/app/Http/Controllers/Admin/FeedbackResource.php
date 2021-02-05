@@ -36,7 +36,15 @@ class FeedbackResource extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $feedback = new Feedback;
+
+        collect($request)->each(function($val, $key) use ($feedback) {
+            $feedback->$key = $val;
+        }); 
+
+        $feedback->save();
+
+        return $feedback->id;
     }
 
     /**

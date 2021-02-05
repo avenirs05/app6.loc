@@ -16,7 +16,7 @@ class RealtySingle extends Controller
      */
     public function __invoke(int $id)
     {     
-        $feedbacksCount = 30;
+        $feedbacksCount = 60;
 
         $realty = Realty::with(['images', 'feedbacks' => function($query) use ($feedbacksCount) {
             $query->take($feedbacksCount);

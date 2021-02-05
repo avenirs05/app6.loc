@@ -8,8 +8,8 @@ import realtyUpdate from './realtyUpdate'
 import realtyDelete from './realtyDelete'
 import feedbacks from './feedbacks'
 import feedbackShow from './feedbackShow'
-import feedbackUpdate from './feedbackUpdate'
 import feedbackEdit from './feedbackEdit'
+import feedbackUpdate from './feedbackUpdate'
 import images from './images'
 import formDataImages from './formDataImages'
 
@@ -17,37 +17,39 @@ import formDataImages from './formDataImages'
 import { reducer as formReducer } from 'redux-form'
 
 // Flags Reducers
-import { isAlertCreateVisible,
+import { isFirstLoading, 
+         isAlertCreateVisible,
          isAlertUpdateVisible,
-         isAlertDeleteVisible,
-         isFirstLoading,
-         isJustCreatedRealty,
+         isAlertDeleteVisible,         
+         isJustCreatedRealty,         
          isJustUpdatedRealty,
-         isJustUpdatedFeedback,
          isJustDeletedRealty,
+         isJustCreatedFeedback,
+         isJustUpdatedFeedback,         
          isJustDeletedFeedback } from './flags'
 
 
-export default combineReducers({
-  isFirstLoading,
-  realties,  
+export default combineReducers({ 
+  realties,    
+  realtyShow,
+  realtyEdit,
+  realtyUpdate,  
+  realtyDelete,
   feedbacks,
   feedbackShow,
   feedbackEdit,
   feedbackUpdate,
   images,
-  realtyShow,
-  realtyEdit,
-  realtyUpdate,  
-  realtyDelete,
+  formDataImages, 
+  form: formReducer,
+  isFirstLoading,
   isJustCreatedRealty,
   isJustUpdatedRealty, 
-  isJustUpdatedFeedback, 
   isJustDeletedRealty, 
+  isJustCreatedFeedback,
+  isJustUpdatedFeedback, 
   isJustDeletedFeedback, 
   isAlertCreateVisible,
   isAlertUpdateVisible,
   isAlertDeleteVisible, 
-  formDataImages, 
-  form: formReducer,
 })

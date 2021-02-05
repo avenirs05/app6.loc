@@ -16,9 +16,7 @@ import { feedbackUpdateAsync } from '../actions/feedbackUpdateAsync'
 // Helpers
 import { feedbackFields as f } from '../consts'
 import { renderTextField, 
-         renderTextArea, 
-         renderSelectField,
-         toggleOption } from './formHelpers'
+         renderTextArea } from './formHelpers'
 import { getModelFieldsList } from '../script' 
 
 
@@ -99,7 +97,6 @@ function mapStateToProps(state) {
   return {
     initialValues: state.feedbackEdit,
     enableReinitialize: true,
-    feedbackEdit: state.feedbackEdit
   }
 }
 

@@ -22,6 +22,7 @@ import RealtiesPage from './RealtiesPage'
 import FeedbacksPage from './FeedbacksPage'
 import ImagesPage from './ImagesPage'
 import RealtyShowPage from './RealtyShowPage'
+import FeedbackCreatePage from './FeedbackCreatePage'
 import FeedbackShowPage from './FeedbackShowPage'
 import RealtyCreatePage from './RealtyCreatePage'
 import RealtyEditPage from './RealtyEditPage'
@@ -99,6 +100,7 @@ class App extends Component {
                 <Route children={<RealtyShowPage />} exact path="/realties/:id" />
                 <Route children={<RealtyEditPage />} exact path="/realties/:id/edit" />
                 <Route children={<FeedbacksPage />} exact path="/feedbacks" />
+                <Route children={<FeedbackCreatePage />} exact path="/feedbacks/create" />
                 <Route children={<FeedbackShowPage />} exact path="/feedbacks/:id" />
                 <Route children={<FeedbackEditPage />} exact path="/feedbacks/:id/edit" />
                 <Route children={<ImagesPage />} exact path="/images" />
