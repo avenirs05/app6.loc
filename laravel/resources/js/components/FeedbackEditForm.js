@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
-import ReactMDE from 'redux-forms-markdown-editor'
 
 // React Bootstrap
 import Button from 'react-bootstrap/Button'
@@ -44,8 +43,6 @@ let FeedbackEditForm = props => {
   const { handleSubmit, 
           pristine, 
           submitting, 
-          classes, 
-          feedbackEdit, 
           handleFeedbackUpdate } = props
   
   const updateBtn = useRef()
@@ -65,7 +62,7 @@ let FeedbackEditForm = props => {
 
 
   return (    
-    <form className={FormCss.form} onSubmit={handleSubmit(submit)} encType="multipart/form-data">
+    <form className={FormCss.form} onSubmit={handleSubmit(submit)} >
       <div><Field name={f.author.name} label={f.author.label} component={renderTextField} /></div>
       <div><Field name={f.realty_name.name} label={f.realty_name.label} component={renderTextField} disabled/></div> 
       <div><Field name={f.realty_id.name} label={f.realty_id.label} component={renderTextField} /></div>
