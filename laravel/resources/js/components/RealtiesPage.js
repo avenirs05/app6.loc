@@ -10,6 +10,8 @@ import Pagination from 'react-bootstrap/Pagination'
 import Alert from 'react-bootstrap/Alert'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import InputGroup from 'react-bootstrap/InputGroup'
+import FormControl from 'react-bootstrap/FormControl'
 
 // Material UI
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
@@ -18,39 +20,43 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 
 // Actions
 import { getRealtiesAsync } from '../actions/getRealtiesAsync'
+import { getRealtiesSearchedAsync } from '../actions/getRealtiesSearchedAsync'
 import { realtyDeleteAsync } from '../actions/realtyDeleteAsync'
-import { setJustCreatedRealtyFalseAC, 
-         setJustUpdatedRealtyFalseAC, 
-         setJustDeletedRealtyFalseAC, 
-         setAlertCreateVisibilityFalseAC, 
-         setAlertUpdateVisibilityFalseAC,
-         setAlertDeleteVisibilityFalseAC } from '../actions/ac/flagsAC'
+import {
+  setJustCreatedRealtyFalseAC,
+  setJustUpdatedRealtyFalseAC,
+  setJustDeletedRealtyFalseAC,
+  setAlertCreateVisibilityFalseAC,
+  setAlertUpdateVisibilityFalseAC,
+  setAlertDeleteVisibilityFalseAC
+} from '../actions/ac/flagsAC'
 
 // Css Modules
 import TableCss from './css/Table.module.css'
 import RealtiesCss from './css/Realties.module.css'
 
 
-function RealtiesPage({ 
-                    realties,
-                    totalPages,
-                    currentPage,
-                    perPage,
-                    handleGetRealties,
-                    handleRealtyDelete,
-                    isJustCreatedRealty,
-                    isJustUpdatedRealty,
-                    isJustDeletedRealty,
-                    setJustCreatedRealtyFalse,
-                    setJustUpdatedRealtyFalse,
-                    setJustDeletedRealtyFalse,
-                    setAlertCreateVisibilityFalse,
-                    setAlertUpdateVisibilityFalse,
-                    setAlertDeleteVisibilityFalse,
-                    isAlertCreateVisible,
-                    isAlertUpdateVisible,
-                    isAlertDeleteVisible, 
-                  }) {
+function RealtiesPage({
+  realties,
+  totalPages,
+  currentPage,
+  perPage,
+  handleGetRealties,
+  handleGetRealtiesSearched,
+  handleRealtyDelete,
+  isJustCreatedRealty,
+  isJustUpdatedRealty,
+  isJustDeletedRealty,
+  setJustCreatedRealtyFalse,
+  setJustUpdatedRealtyFalse,
+  setJustDeletedRealtyFalse,
+  setAlertCreateVisibilityFalse,
+  setAlertUpdateVisibilityFalse,
+  setAlertDeleteVisibilityFalse,
+  isAlertCreateVisible,
+  isAlertUpdateVisible,
+  isAlertDeleteVisible,
+}) {
 
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -67,7 +73,7 @@ function RealtiesPage({
       }, 2000)
       setJustCreatedRealtyFalse()
     }
-  }, [isJustCreatedRealty])                  
+  }, [isJustCreatedRealty])
 
   useEffect(() => {
     if (isJustUpdatedRealty) {
@@ -105,8 +111,8 @@ function RealtiesPage({
   }
 
   function showRealtiesItems(currentPage, perPage) {
-    return function(realty, index) {
-      let rowTableNumber = (currentPage * perPage) - perPage + 1 + index      
+    return function (realty, index) {
+      let rowTableNumber = (currentPage * perPage) - perPage + 1 + index
       return (
         <tr key={index}>
           <td className={TableCss.td}>{rowTableNumber}</td>
@@ -137,6 +143,11 @@ function RealtiesPage({
     }
   }
 
+  function onGetRealtiesSearched(e) {
+    handleGetRealtiesSearched(e)
+  }
+  
+
   let items = []
   for (let number = 1; number <= totalPages; number++) {
     items.push(
@@ -149,6 +160,16 @@ function RealtiesPage({
 
   return (
     <>
+      <div>
+        <InputGroup className="mb-3 mt-3">
+          <FormControl
+            placeholder="Введите название объекта"
+            aria-label="Введите название объекта"
+            aria-describedby="basic-addon2"
+            onChange={onGetRealtiesSearched}
+          />
+        </InputGroup>
+      </div>
       <div className="container-fluid">
         <div className="row">
           <div className="col-sm-9 pl-0">
@@ -220,6 +241,9 @@ function mapDispatchToProps(dispatch) {
   return {
     handleGetRealties(currentPageNumber) {
       dispatch(getRealtiesAsync(currentPageNumber))
+    },
+    handleGetRealtiesSearched(e) {   
+      dispatch(getRealtiesSearchedAsync(e.target.value))
     },
     handleRealtyDelete(id) {
       dispatch(realtyDeleteAsync(id))

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Storage;
 
 class RealtyResource extends Controller
 {
+    private $paginateItems = 5;
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +19,13 @@ class RealtyResource extends Controller
      */
     public function index()
     {
-        return Realty::paginate(5);
+        return Realty::paginate($this->paginateItems);
+    }
+
+
+    public function search(Request $request)
+    {
+        return Realty::where('name', 'like', $request->input . '%')->paginate($this->paginateItems);
     }
 
     /**

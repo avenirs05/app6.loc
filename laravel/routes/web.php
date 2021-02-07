@@ -46,7 +46,8 @@ Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function()
 	Route::post('/realty-main-image-load', 'RealtyResource@mainImageLoad')->name('realty-main-image-load');
 	Route::post('/realty-thumbnails-load', 'RealtyResource@thumbnailsLoad')->name('realty-thumbnails-load');
 	Route::delete('/realty-delete-image/{id}', 'RealtyResource@deleteImage')->name('realty-delete-image');
-	
+	Route::post('/realties-search', 'RealtyResource@search')->name('realties.search');
+
 	Route::resources([
     'realties'  => 'RealtyResource',
     'feedbacks' => 'FeedbackResource',

@@ -65,7 +65,9 @@ class Test2 extends Controller
         // collect([2, 8])->each(function($val, $key) use (&$test) {  
         //     $test[] = 3;                
         // }); 
-        $realty = Realty::find(2);    
-        dd($realty->feedbacks);
+        //$realty = Realty::find(2);    
+        //dd($realty->feedbacks);
+        //dd()
+        //dd(Realty::where('name', 'like', '%')->paginate(10));
     }
 }
