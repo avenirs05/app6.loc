@@ -10,6 +10,8 @@ import Pagination from 'react-bootstrap/Pagination'
 import Alert from 'react-bootstrap/Alert'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import InputGroup from 'react-bootstrap/InputGroup'
+import FormControl from 'react-bootstrap/FormControl'
 
 // Material UI
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
@@ -18,13 +20,16 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 
 // Actions
 import { getFeedbacksAsync } from '../actions/getFeedbacksAsync'
+import { getFeedbacksSearchedAsync } from '../actions/getFeedbacksSearchedAsync'
 import { feedbackDeleteAsync } from '../actions/feedbackDeleteAsync'
-import { setJustCreatedFeedbackFalseAC, 
-         setJustUpdatedFeedbackFalseAC, 
-         setJustDeletedFeedbackFalseAC, 
-         setAlertCreateVisibilityFalseAC, 
-         setAlertUpdateVisibilityFalseAC,
-         setAlertDeleteVisibilityFalseAC } from '../actions/ac/flagsAC'
+import { 
+  setJustCreatedFeedbackFalseAC, 
+  setJustUpdatedFeedbackFalseAC, 
+  setJustDeletedFeedbackFalseAC, 
+  setAlertCreateVisibilityFalseAC, 
+  setAlertUpdateVisibilityFalseAC,
+  setAlertDeleteVisibilityFalseAC 
+} from '../actions/ac/flagsAC'
 
 // Css Modules
 import TableCss from './css/Table.module.css'
@@ -37,6 +42,7 @@ function FeedbacksPage({
                     currentPage,
                     perPage,
                     handleGetFeedbacks,
+                    handleGetFeedbacksSearched,
                     handleFeedbackDelete,
                     isJustCreatedFeedback,
                     isJustUpdatedFeedback,
@@ -139,6 +145,10 @@ function FeedbacksPage({
     }
   }
 
+  function onGetFeedbacksSearched(e) {
+    handleGetFeedbacksSearched(e)
+  }  
+
   let items = []
   for (let number = 1; number <= totalPages; number++) {
     items.push(
@@ -151,6 +161,16 @@ function FeedbacksPage({
 
   return (
     <>
+      <div>
+        <InputGroup className="mb-3 mt-3">
+          <FormControl
+            placeholder="Введите название объекта"
+            aria-label="Введите название объекта"
+            aria-describedby="basic-addon2"
+            onChange={onGetFeedbacksSearched}
+          />
+        </InputGroup>
+      </div>
       <div className="container-fluid">
         <div className="row">
           <div className="col-sm-9 pl-0">
@@ -216,6 +236,9 @@ function mapDispatchToProps(dispatch) {
   return {
     handleGetFeedbacks(currentPageNumber) {
       dispatch(getFeedbacksAsync(currentPageNumber))
+    },
+    handleGetFeedbacksSearched(e) {   
+      dispatch(getFeedbacksSearchedAsync(e.target.value))
     },
     handleFeedbackDelete(id) {      
       dispatch(feedbackDeleteAsync(id))

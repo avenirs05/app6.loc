@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Feedback;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class FeedbackResource extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +17,14 @@ class FeedbackResource extends Controller
      */
     public function index()
     {
-        return Feedback::with('realty')->paginate(50);
+        return Feedback::with('realty')->paginate(60);
+    }
+
+    public function search(Request $request, Feedback $feedback)
+    {
+        return Feedback::with(['realty' => function($query) use ($request) {
+            $query->where('name', 'like', $request->input . '%');    
+        }])->paginate(1000);
     }
 
     /**

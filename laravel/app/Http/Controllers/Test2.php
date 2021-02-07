@@ -8,66 +8,35 @@ use App\Realty;
 use App\Image;
 use App\Feedback;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class Test2 extends Controller
 {
     public function __invoke(Request $request)
     {        
-        //dd(storage_path('uploads/realties'));
-        //dd(storage_path() . "/uploads/realties/14/");
-        //dd(Storage::deleteDirectory(storage_path() . "/app/public/test1"));
-        //dd(storage_path() . "/app/public/test1");
-        //dd(Storage::deleteDirectory('images2'));
-        //dd(Storage::getFacadeRoot());
-        //Storage::delete('fox.png');
-        //dd(Storage::disk('public')->deleteDirectory('uploads/realties/14'));
-        //$realty = Realty::find(10);
-        //dd($realty->images);
+        //$res = DB::select("select * from feedbacks where realty_id in (select id from realties where name like 'm%')");
+        // $res = Feedback::with(['realty' => function($query) {
+        //     $query->where('name', 'Eino Howell');    
+        // }])->paginate(1000);
 
-        //foreach ($realty->images as $image) {
-            //dump($image->name) . '\n';
-            // if ($image->type === 'main') {
-            //     $mainImage = $image->name;                
-            // }
-        //} 
-        //dd(Realty::find(5)->with(['images'])->count());
-        // $realty = Realty::find(5)->with(['images' => function($query) {
-        //     $query->where('type', 'main');
-        // }]);
+        // dd(collect($res)["data"]);
 
+        //dump($res)->items();
 
-        //$realty = Realty::find(5);
-        //dd($realty->images()->count());
-        // dd($realty->images()->each(function($image) {
-        //     if ($image->type === 'main') {
-        //         $image->delete();
-        //         //dump('main');
-        //     }            
-        // }));  
+        // $res = collect($res);
+        // dd($res);
 
-        // $realty = Realty::find(6);
+        // $res->each(function ($item, $key) use (&$res) {
+        //     dump($item);
+        //     if ($value['realty'] !== null) {
+        //         return true;
+        //     } else return false;
+        // });
 
-        // if ($realty->images()) {
-        //     $realty->images()->each(function($image) {
-        //         if ($image->type === 'thumbnail') {
-        //             Image::destroy($image->id);
-        //         }            
-        //     });
-        // } else dd('no');
+        //dd(collect($res));
+        //dd($filtered);
 
-        //dd(Feedback::with('realty')->paginate(20));
-        // $users = Feedback::with(['realty' => function ($query) {
-        //     $query->where('title', 'like', '%first%');
-        // }])->get();
-
-        // $test = [3];
-
-        // collect([2, 8])->each(function($val, $key) use (&$test) {  
-        //     $test[] = 3;                
-        // }); 
-        //$realty = Realty::find(2);    
-        //dd($realty->feedbacks);
-        //dd()
-        //dd(Realty::where('name', 'like', '%')->paginate(10));
+                // $realtiesIds = "SELECT id from `realties` WHERE name LIKE '{$request->input}%'";
+        // return DB::select("SELECT * from `feedbacks` WHERE realty_id IN ({$realtiesIds})")->paginate($this->paginateItems);
     }
 }

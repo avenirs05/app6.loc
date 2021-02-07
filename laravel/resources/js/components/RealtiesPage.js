@@ -145,8 +145,7 @@ function RealtiesPage({
 
   function onGetRealtiesSearched(e) {
     handleGetRealtiesSearched(e)
-  }
-  
+  }  
 
   let items = []
   for (let number = 1; number <= totalPages; number++) {
