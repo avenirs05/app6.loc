@@ -17,14 +17,13 @@ import { feedbackFields as f } from '../consts'
 import { renderTextField, 
          renderTextArea } from './formHelpers'
 import { getModelFieldsList } from '../script' 
+import { muiFormLabelClass } from '../consts'
 
-
-const muiFormLabelClass = 'MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled'
 
 const validate = values => {
   const errors = {}
   const requiredFields = getModelFieldsList(f)
- 
+   
   requiredFields.forEach(field => {
     if (!values[field]) {
       errors[field] = eval(<span className={FormCss.error_text}>Обязательное поле!</span>)

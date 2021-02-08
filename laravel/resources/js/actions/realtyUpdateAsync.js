@@ -6,17 +6,16 @@ import { realtyUpdateAC } from './ac/realtyUpdateAC'
 import { reduceObjByArray } from '../script'
 
 
-export const realtyUpdateAsync = values => 
-  async dispatch => {
-    try {
-      const response = await axios.patch(route('realties.update', values.id), values)
-      const realtyModelFieldsList = getModelFieldsList(realtyFields)
-      const responseData = reduceObjByArray(realtyModelFieldsList, response.data)  
-      await dispatch(realtyUpdateAC(responseData))    
-      await dispatch(setJustUpdatedRealtyTrueAC())
-      await dispatch(setAlertUpdateVisibilityTrueAC())
-    }
-    catch (error) {
-      console.log(error)
-    }
+export const realtyUpdateAsync = values => async dispatch => {
+  try {
+    const response = await axios.patch(route('realties.update', values.id), values)
+    const realtyModelFieldsList = getModelFieldsList(realtyFields)
+    const responseData = reduceObjByArray(realtyModelFieldsList, response.data)  
+    await dispatch(realtyUpdateAC(responseData))    
+    await dispatch(setJustUpdatedRealtyTrueAC())
+    await dispatch(setAlertUpdateVisibilityTrueAC())
   }
+  catch (error) {
+    console.log(error)
+  }
+}

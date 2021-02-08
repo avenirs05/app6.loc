@@ -88,6 +88,8 @@ export const feedbackFields = {
   realty_name: {name: 'realty_name', label: 'Объект', model: false, default: 'realty_name'}, 
 }
 
+export const muiFormLabelClass = "MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+
 
 
 

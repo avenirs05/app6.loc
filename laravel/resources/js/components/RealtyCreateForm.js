@@ -1,6 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+// Libs
+//import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
+import { useRefEffect } from 'react-use-ref-effect';
+
 import { compose } from 'redux'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import ReactMDE from 'redux-forms-markdown-editor'
 
@@ -11,62 +15,37 @@ import Button from 'react-bootstrap/Button'
 import { realtyCreateAsync } from '../actions/realtyCreateAsync'
 
 // Components
-import FileInput from './FileInput';
+import FileInput from './FileInput'
 
-// Helpers
-import { renderTextField,  
-         renderSelectField } from './formHelpers'
-
-// Css Modules
+// Css
 import FormCss from './css/Form.module.css'
 
 // Helpers
-import { realtyFields as f } from '../consts'
-import { getModelFieldsList } from '../script'
+import { renderTextField, renderSelectField } from './formHelpers'
+import { realtyFields as f, muiFormLabelClass } from '../consts'
+import { validateRealtyForm as validate } from './helpers' 
 
-const validate = values => {
-  const errors = {}
-  const requiredFields = getModelFieldsList(f)
+// Hooks
+//import { useSetListenerSaveBtn } from './hooks'
 
-  requiredFields.forEach(field => {
-    if (!values[field] && (field === 'description_ru' || field === 'description_en')) {
-      errors[field] = eval(<span className={FormCss.error_text}>Описание — обязательное поле!</span>);
-    } 
-    else if (!values[field]) {
-      errors[field] = 'Обязательное поле'
-    }
-  })   
-
-  if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) { 
-    errors.email = 'Недействительный email'
-  }
-  if (String(values.booking_mark)[1] !== '.' || String(values.booking_mark).length > 3) {
-    errors.booking_mark = "1 знак до запятой и 1 знак после запятой: 9.3 или 7.0. Разделитель - точка, а не запятая."
-  }
-
-  return errors
-}
 
 let RealtyCreateForm = props => {
   const { handleSubmit, pristine, submitting, classes, handleRealtyCreate, formDataImages } = props
 
-  const createBtn = useRef()
-  useEffect(() => {     
+  const createBtn = useRefEffect(el => {    
     let listenerSaveKeydown = document.addEventListener('keydown', function(event) {
       if (event.key == 'Escape') {
-        createBtn.current.click() 
+        el.click() 
       }     
-    })
+    }) 
     return () => { 
       removeEventListener('keydown', listenerSaveKeydown) 
-    }
-  }, [])
+    }    
+  }, []);
   
   function submit(values) {     
     handleRealtyCreate(values, formDataImages)
   }
-
-  const muiFormLabelClass = "MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
 
   return (
     <form className={FormCss.form} onSubmit={handleSubmit(submit)} encType="multipart/form-data">

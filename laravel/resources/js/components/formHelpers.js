@@ -9,8 +9,6 @@ import Select from '@material-ui/core/Select'
 import InputLabel from '@material-ui/core/InputLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
-// Css
-import FormCss from './css/Form.module.css'
 
 export const renderTextField = ({
   label,

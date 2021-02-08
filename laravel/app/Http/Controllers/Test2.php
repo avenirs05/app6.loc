@@ -48,11 +48,11 @@ class Test2 extends Controller
         // ->with(['wallets' => $filter ])
         // ->get();
         
-        $feedbacks = Feedback::whereHas('realty', $filter = function($query) {
-            $query->where('name', 'like', 'e%');
-        })
-        ->with(['realty' => $filter ])
-        ->get();
+        // $feedbacks = Feedback::whereHas('realty', $filter = function($query) {
+        //     $query->where('name', 'like', 'e%');
+        // })
+        // ->with(['realty' => $filter])
+        // ->get();
 
 
         // $feedbacks = Feedback::whereHas('realty')->with(['realty' => function($query) {
@@ -64,7 +64,7 @@ class Test2 extends Controller
         //     $query->where('name', '=', 'Joanny Dickinson');
         // }])->get();
 
-        dd($feedbacks);
+        //dd($feedbacks);
 
         // $res = Feedback::with(['realty' => function($query) {
         //     $query->where('name', 'Eino Howell');    
