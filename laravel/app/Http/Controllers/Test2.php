@@ -38,5 +38,38 @@ class Test2 extends Controller
 
                 // $realtiesIds = "SELECT id from `realties` WHERE name LIKE '{$request->input}%'";
         // return DB::select("SELECT * from `feedbacks` WHERE realty_id IN ({$realtiesIds})")->paginate($this->paginateItems);
+        
+        //$feedbacks = Feedback::with(['realty']);
+        //dd($feedbacks->realty()->where('name', 'Joanny Dickinson'));
+
+        // $users = User::whereHas('wallets', $filter = function($query) {
+        //     $query->where('address', '=', 'BTC');
+        // })
+        // ->with(['wallets' => $filter ])
+        // ->get();
+        
+        $feedbacks = Feedback::whereHas('realty', $filter = function($query) {
+            $query->where('name', 'like', 'e%');
+        })
+        ->with(['realty' => $filter ])
+        ->get();
+
+
+        // $feedbacks = Feedback::whereHas('realty')->with(['realty' => function($query) {
+        //     $query->where('name', '=', 'Joanny Dickinson');
+        // }])
+        // ->get();
+
+        // $feedbacks = Feedback::with(['realty' => function($query) {
+        //     $query->where('name', '=', 'Joanny Dickinson');
+        // }])->get();
+
+        dd($feedbacks);
+
+        // $res = Feedback::with(['realty' => function($query) {
+        //     $query->where('name', 'Eino Howell');    
+        // }])->get();
+
+        //dd(collect($res)[0]);
     }
 }

@@ -23,7 +23,7 @@ class RealtyResource extends Controller
 
     public function search(Request $request)
     {
-        return Realty::where('name', 'like', $request->input . '%')->paginate(1000);
+        return Realty::where('name', 'like', "{$request->input}%")->paginate(1000);
     }
 
     /**
