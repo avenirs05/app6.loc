@@ -1,14 +1,14 @@
-import { useEffect } from 'react'
+import { useRefEffect } from 'react-use-ref-effect';
 
-export const useSetListenerSaveBtn = refBtn => {
-  useEffect(() => {     
-    let listenerSaveKeydown = document.addEventListener('keydown', function(event) {
-      if (event.key == 'Escape') {
-        refBtn.current.click() 
+export const useClickByHotKey = (eventName, eventKey) => 
+  useRefEffect(el => {    
+    let listener = document.addEventListener(eventName, function(event) {
+      if (event.key == eventKey) {
+        el.click() 
       }     
-    })
+    }) 
+
     return () => { 
-      removeEventListener('keydown', listenerSaveKeydown) 
-    }
-  }, [refBtn.current])
-} 
+      removeEventListener(eventName, listener) 
+    }    
+  }, [])

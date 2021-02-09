@@ -1,8 +1,5 @@
 // Libs
-//import React, { useEffect, useRef } from 'react'
-import React, { useEffect } from 'react'
-import { useRefEffect } from 'react-use-ref-effect';
-
+import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
@@ -23,26 +20,16 @@ import FormCss from './css/Form.module.css'
 // Helpers
 import { renderTextField, renderSelectField } from './formHelpers'
 import { realtyFields as f, muiFormLabelClass } from '../consts'
-import { validateRealtyForm as validate } from './helpers' 
+import { validate } from './helpers' 
 
 // Hooks
-//import { useSetListenerSaveBtn } from './hooks'
+import { useClickByHotKey } from './hooks'
 
 
 let RealtyCreateForm = props => {
   const { handleSubmit, pristine, submitting, classes, handleRealtyCreate, formDataImages } = props
+  const createBtn = useClickByHotKey('keydown', 'Escape')
 
-  const createBtn = useRefEffect(el => {    
-    let listenerSaveKeydown = document.addEventListener('keydown', function(event) {
-      if (event.key == 'Escape') {
-        el.click() 
-      }     
-    }) 
-    return () => { 
-      removeEventListener('keydown', listenerSaveKeydown) 
-    }    
-  }, []);
-  
   function submit(values) {     
     handleRealtyCreate(values, formDataImages)
   }
@@ -177,7 +164,7 @@ let RealtyCreateForm = props => {
 
 RealtyCreateForm = reduxForm({
   form: 'createRealty',
-  validate
+  validate: validate('realty') 
 })(RealtyCreateForm)
 
 
@@ -185,6 +172,7 @@ function mapStateToProps(state) {
   return {
     formDataImages: state.formDataImages,
     initialValues: {
+      [f.name.name]: f.name.default,
       [f.visibility.name]: f.visibility.default,
       [f.subname_ru.name]: f.subname_ru.default,
       [f.subname_en.name]: f.subname_en.default,

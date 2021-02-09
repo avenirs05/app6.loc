@@ -1,6 +1,6 @@
 export const realtyFields = {
   id: {name: 'id', label: 'id', model: true, default: null},
-  name: {name: 'name', label: 'Название объекта', model: true, default: null},
+  name: {name: 'name', label: 'Название объекта', model: true, default: ''},
   visibility: {
     name: 'visibility', 
     label: 'Видимость', 

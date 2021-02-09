@@ -1,5 +1,5 @@
 // Libs
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { compose } from 'redux'
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
@@ -27,8 +27,10 @@ import { realtyFields as f, muiFormLabelClass } from '../consts'
 import { renderTextField,  
          renderSelectField,
          toggleOption } from './formHelpers'
-import { validateRealtyForm as validate } from './helpers' 
+import { validate } from './helpers' 
 
+// Hooks
+import { useClickByHotKey } from './hooks'
 
 let RealtyEditForm = props => {
   const { handleSubmit, 
@@ -39,16 +41,7 @@ let RealtyEditForm = props => {
           handleRealtyUpdate,
           thumbnailDelete } = props
   
-  const updateBtn = useRef()
-  useEffect(() => {     
-    let listenerSaveKeydown = document.addEventListener('keydown', function(event) {
-      if (event.key == 'Escape') { 
-        updateBtn.current.click()
-      }      
-    })
-    return () => { removeEventListener('keydown', listenerSaveKeydown) }
-  }, [])
-
+  const updateBtn = useClickByHotKey('keydown', 'Escape')
  
   const getMainImagePath = images => {
     const noPhotoPath = '/images/no-photo.jpg'
@@ -186,7 +179,11 @@ let RealtyEditForm = props => {
                 if (image.type === 'thumbnail') {
                   return (
                     <div key={index} className={`${FormCss.thumb_wrapper} mr-2`}> 
-                      <HighlightOffIcon onClick={(e) => { onDeleteThumbnail(e, image) }}  color="primary" className={FormCss.delete_thumb_icon}></HighlightOffIcon>          
+                      <HighlightOffIcon 
+                        onClick={(e) => { onDeleteThumbnail(e, image) }}  
+                        color="primary" 
+                        className={FormCss.delete_thumb_icon}>
+                      </HighlightOffIcon>          
                       <Image width="200" height="150" thumbnail src={`storage/${image.name}`} /> 
                     </div> 
                   )
@@ -202,7 +199,12 @@ let RealtyEditForm = props => {
                saveBtnRef={updateBtn.current} />
       </div> 
       <div>
-        <Button ref={updateBtn} variant="primary" type="submit" disabled={pristine || submitting}>Сохранить</Button>
+        <Button ref={updateBtn} 
+                variant="primary" 
+                type="submit" 
+                disabled={pristine || submitting}>
+          Сохранить
+        </Button>
       </div>
     </form>
   )
@@ -211,7 +213,7 @@ let RealtyEditForm = props => {
 
 RealtyEditForm = reduxForm({
   form: 'RealtyEditForm',
-  validate
+  validate: validate('realty')
 })(RealtyEditForm)
 
 

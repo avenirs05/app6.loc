@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { compose } from 'redux'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 
 // React Bootstrap
@@ -13,52 +13,22 @@ import FormCss from './css/Form.module.css'
 import { feedbackUpdateAsync } from '../actions/feedbackUpdateAsync'
 
 // Helpers
-import { feedbackFields as f } from '../consts'
-import { renderTextField, 
-         renderTextArea } from './formHelpers'
-import { getModelFieldsList } from '../script' 
-import { muiFormLabelClass } from '../consts'
+import { feedbackFields as f, muiFormLabelClass } from '../consts'
+import { renderTextField, renderTextArea } from './formHelpers'
+import { validate } from './helpers' 
 
-
-const validate = values => {
-  const errors = {}
-  const requiredFields = getModelFieldsList(f)
-   
-  requiredFields.forEach(field => {
-    if (!values[field]) {
-      errors[field] = eval(<span className={FormCss.error_text}>Обязательное поле!</span>)
-    }
-  })   
-
-  if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) { 
-    errors.email = 'Недействительный email'
-  }
-
-  return errors
-}
-        
+// Hooks
+import { useClickByHotKey } from './hooks'
+      
 
 let FeedbackEditForm = props => {
-  const { handleSubmit, 
-          pristine, 
-          submitting, 
-          handleFeedbackUpdate } = props
+  const { handleSubmit, pristine, submitting, handleFeedbackUpdate } = props
   
-  const updateBtn = useRef()
-  useEffect(() => {     
-    let listenerSaveKeydown = document.addEventListener('keydown', function(event) {
-      if (event.key == 'Escape') { 
-        updateBtn.current.click()
-      }      
-    })
-    return () => { removeEventListener('keydown', listenerSaveKeydown) }
-  }, [])
-
+  const updateBtn = useClickByHotKey('keydown', 'Escape')
  
   const submit = values => {
     handleFeedbackUpdate(values)    
   }
-
 
   return (    
     <form className={FormCss.form} onSubmit={handleSubmit(submit)} >
@@ -85,7 +55,7 @@ let FeedbackEditForm = props => {
 
 FeedbackEditForm = reduxForm({
   form: 'FeedbackEditForm',
-  validate
+  validate: validate('feedback')
 })(FeedbackEditForm)
 
 

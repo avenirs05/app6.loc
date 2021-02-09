@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react'
 import { compose } from 'redux'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 
 // React Bootstrap
@@ -9,45 +9,22 @@ import Button from 'react-bootstrap/Button'
 // Actions
 import { feedbackCreateAsync } from '../actions/feedbackCreateAsync'
 
-// Helpers
-import { renderTextField, renderTextArea } from './formHelpers'
-import { muiFormLabelClass } from '../consts'
-
 // Css Modules
 import FormCss from './css/Form.module.css'
 
 // Helpers
-import { feedbackFields as f } from '../consts'
-import { getModelFieldsList } from '../script'
+import { renderTextField, renderTextArea } from './formHelpers'
+import { feedbackFields as f, muiFormLabelClass } from '../consts'
+import { validate } from './helpers' 
 
-const validate = values => {
-  const errors = {}
-  const requiredFields = getModelFieldsList(f) 
-  requiredFields.forEach(field => {
-    if (!values[field]) {
-      errors[field] = eval(<span className={FormCss.error_text}>Обязательное поле!</span>)
-    }
-  })  
-  if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) { 
-    errors.email = 'Недействительный email'
-  }
-  return errors
-}
+// Hooks
+import { useClickByHotKey } from './hooks'
+
 
 let FeedbackCreateForm = props => {
   const { handleSubmit, pristine, submitting, handleFeedbackCreate } = props
 
-  const createBtn = useRef()
-  useEffect(() => {     
-    let listenerSaveKeydown = document.addEventListener('keydown', function(event) {
-      if (event.key == 'Escape') {
-        createBtn.current.click() 
-      }     
-    })
-    return () => { 
-      removeEventListener('keydown', listenerSaveKeydown) 
-    }
-  }, [])
+  const createBtn = useClickByHotKey('keydown', 'Escape')
   
   function submit(values) {     
     handleFeedbackCreate(values)
@@ -83,7 +60,7 @@ let FeedbackCreateForm = props => {
 
 FeedbackCreateForm = reduxForm({
   form: 'createFeedback',
-  validate
+  validate: validate('feedback')
 })(FeedbackCreateForm)
 
 
