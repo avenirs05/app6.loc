@@ -36,7 +36,7 @@ import TableCss from './css/Table.module.css'
 import RealtiesCss from './css/Realties.module.css'
 
 // Hooks
-import { useJustCreated } from './hooks'
+import { useWatchActions } from './hooks'
 
 
 function RealtiesPage({
@@ -48,14 +48,14 @@ function RealtiesPage({
   getRealtiesSearched,
   handleRealtyDelete,
   setJustCreatedResourceFalse: noCreated,
-  setJustUpdatedResourceFalse,
-  setJustDeletedResourceFalse,
-  setAlertCreateVisibilityFalse: noAlert,
-  setAlertUpdateVisibilityFalse,
-  setAlertDeleteVisibilityFalse,
+  setJustUpdatedResourceFalse: noUpdated,
+  setJustDeletedResourceFalse: noDeleted,
+  setAlertCreateVisibilityFalse: noCreateAlert,
+  setAlertUpdateVisibilityFalse: noUpdateAlert,
+  setAlertDeleteVisibilityFalse: noDeleteAlert,
   isJustCreatedResource: isCreated,
-  isJustUpdatedResource,
-  isJustDeletedResource,
+  isJustUpdatedResource: isUpdated,
+  isJustDeletedResource: isDeleted,
   isAlertCreateVisible,
   isAlertUpdateVisible,
   isAlertDeleteVisible,
@@ -68,37 +68,9 @@ function RealtiesPage({
   const [realtyDeleteId, setRealtyDeleteId] = useState(0)
   const [realtyDeleteName, setRealtyDeleteName] = useState('')
 
-  useJustCreated(getRealties, currentPage, noAlert, noCreated, isCreated)
-
-  // useEffect(() => {
-  //   if (isJustCreatedResource) {
-  //     getRealties(currentPage)
-  //     window.setTimeout(() => {
-  //       setAlertCreateVisibilityFalse()
-  //     }, 2000)
-  //     setJustCreatedResourceFalse()
-  //   }
-  // }, [isJustCreatedResource])
-
-  useEffect(() => {
-    if (isJustUpdatedResource) {
-      getRealties(currentPage)
-      window.setTimeout(() => {
-        setAlertUpdateVisibilityFalse()
-      }, 2000)
-      setJustUpdatedResourceFalse()
-    }
-  }, [isJustUpdatedResource])
-
-  useEffect(() => {
-    if (isJustDeletedResource) {
-      getRealties(currentPage)
-      window.setTimeout(() => {
-        setAlertDeleteVisibilityFalse()
-      }, 2000)
-      setJustDeletedResourceFalse()
-    }
-  }, [isJustDeletedResource])
+  useWatchActions(getRealties, currentPage, noCreateAlert, noCreated, isCreated)
+  useWatchActions(getRealties, currentPage, noUpdateAlert, noUpdated, isUpdated)
+  useWatchActions(getRealties, currentPage, noDeleteAlert, noDeleted, isDeleted)
 
   function onGetResource(e, currentPageNumber) {
     getRealties(currentPageNumber)
@@ -152,14 +124,17 @@ function RealtiesPage({
     getRealtiesSearched(e)
   }  
 
-  let items = []
-  for (let number = 1; number <= totalPages; number++) {
-    items.push(
-      <Pagination.Item
-        onClick={(e) => { onGetResource(e, number) }} key={number} active={number === currentPage}>
-        {number}
-      </Pagination.Item>
-    )
+  const getPaginationItems = (currentPage, totalPages) => {
+    let items = []
+    for (let number = 1; number <= totalPages; number++) {
+      items.push(
+        <Pagination.Item
+          onClick={(e) => { onGetResource(e, number) }} key={number} active={number === currentPage}>
+          {number}
+        </Pagination.Item>
+      )
+    }
+    return items
   }
 
   return (
@@ -207,19 +182,15 @@ function RealtiesPage({
           {realties.items.map(showRealtiesItems(currentPage, perPage))}
         </tbody>
       </Table>
-      <Pagination>{items}</Pagination>
+      <Pagination>{getPaginationItems(currentPage, totalPages)}</Pagination>
 
       <Modal size="lg" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Вы хотите удалить объект {realtyDeleteName}?</Modal.Title>
         </Modal.Header>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Закрыть
-        </Button>
-          <Button variant="danger" onClick={(e) => onDeleteResource(e, realtyDeleteId)}>
-            Удалить навсегда
-        </Button>
+          <Button variant="secondary" onClick={handleClose}>Закрыть</Button>
+          <Button variant="danger" onClick={(e) => onDeleteResource(e, realtyDeleteId)}>Удалить навсегда</Button>
         </Modal.Footer>
       </Modal>
     </>

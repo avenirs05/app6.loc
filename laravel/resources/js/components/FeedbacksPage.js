@@ -35,27 +35,30 @@ import {
 import TableCss from './css/Table.module.css'
 import FeedbacksCss from './css/Feedbacks.module.css'
 
+// Hooks
+import { useWatchActions } from './hooks'
+
 
 function FeedbacksPage({ 
   feedbacks,
   totalPages,
   currentPage,
   perPage,
-  handleGetFeedbacks,
-  handleGetFeedbacksSearched,
+  getFeedbacks,
+  getFeedbacksSearched,
   handleFeedbackDelete,
-  isJustCreatedResource,
-  isJustUpdatedResource,
-  isJustDeletedResource,
+  setJustCreatedResourceFalse: noCreated,
+  setJustUpdatedResourceFalse: noUpdated,
+  setJustDeletedResourceFalse: noDeleted,
+  setAlertCreateVisibilityFalse: noCreateAlert,
+  setAlertUpdateVisibilityFalse: noUpdateAlert,
+  setAlertDeleteVisibilityFalse: noDeleteAlert,
+  isJustCreatedResource: isCreated,
+  isJustUpdatedResource: isUpdated,
+  isJustDeletedResource: isDeleted,
   isAlertCreateVisible,
   isAlertUpdateVisible,
   isAlertDeleteVisible, 
-  setJustCreatedResourceFalse,
-  setJustUpdatedResourceFalse,
-  setJustDeletedResourceFalse,
-  setAlertCreateVisibilityFalse,
-  setAlertUpdateVisibilityFalse,
-  setAlertDeleteVisibilityFalse,
 }) {
 
   const [show, setShow] = useState(false)
@@ -66,41 +69,15 @@ function FeedbacksPage({
   const [feedbackDeleteName, setFeedbackDeleteName] = useState('')
 
   useEffect(() => {
-    handleGetFeedbacks(currentPage)
+    getFeedbacks(currentPage)
   }, [])  
 
-  useEffect(() => {
-    if (isJustCreatedResource) {
-      handleGetFeedbacks(currentPage)
-      window.setTimeout(() => {
-        setAlertCreateVisibilityFalse()
-      }, 2000)
-      setJustCreatedResourceFalse()
-    }
-  }, [isJustCreatedResource])                  
-
-  useEffect(() => {
-    if (isJustUpdatedResource) {
-      handleGetFeedbacks(currentPage)
-      window.setTimeout(() => {
-        setAlertUpdateVisibilityFalse()
-      }, 2000)
-      setJustUpdatedResourceFalse()
-    }
-  }, [isJustUpdatedResource])
-
-  useEffect(() => {
-    if (isJustDeletedResource) {
-      handleGetFeedbacks(currentPage)
-      window.setTimeout(() => {
-        setAlertDeleteVisibilityFalse()
-      }, 2000)
-      setJustDeletedResourceFalse()
-    }
-  }, [isJustDeletedResource])
+  useWatchActions(getFeedbacks, currentPage, noCreateAlert, noCreated, isCreated)             
+  useWatchActions(getFeedbacks, currentPage, noUpdateAlert, noUpdated, isUpdated)             
+  useWatchActions(getFeedbacks, currentPage, noDeleteAlert, noDeleted, isDeleted)             
 
   function onGetResource(e, currentPageNumber) {
-    handleGetFeedbacks(currentPageNumber)
+    getFeedbacks(currentPageNumber)
   }
 
   function onDeleteResource(e, id) {    
@@ -146,17 +123,20 @@ function FeedbacksPage({
   }
 
   function onGetFeedbacksSearched(e) {
-    handleGetFeedbacksSearched(e)
+    getFeedbacksSearched(e)
   }  
 
-  let items = []
-  for (let number = 1; number <= totalPages; number++) {
-    items.push(
-      <Pagination.Item
-        onClick={(e) => { onGetResource(e, number) }} key={number} active={number === currentPage}>
-        {number}
-      </Pagination.Item>
-    )
+  const getPaginationItems = (currentPage, totalPages) => {
+    let items = []
+    for (let number = 1; number <= totalPages; number++) {
+      items.push(
+        <Pagination.Item
+          onClick={(e) => { onGetResource(e, number) }} key={number} active={number === currentPage}>
+          {number}
+        </Pagination.Item>
+      )
+    }
+    return items
   }
 
   return (
@@ -202,7 +182,7 @@ function FeedbacksPage({
           {feedbacks.items.map(showFeedbacksItems(currentPage, perPage))}
         </tbody>
       </Table>
-      <Pagination>{items}</Pagination>
+      <Pagination>{getPaginationItems(currentPage, totalPages)}</Pagination>
 
       <Modal size="lg" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -234,10 +214,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleGetFeedbacks(currentPageNumber) {
+    getFeedbacks(currentPageNumber) {
       dispatch(getFeedbacksAsync(currentPageNumber))
     },
-    handleGetFeedbacksSearched(e) {   
+    getFeedbacksSearched(e) {   
       dispatch(getFeedbacksSearchedAsync(e.target.value))
     },
     handleFeedbackDelete(id) {      
