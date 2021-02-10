@@ -18,12 +18,12 @@ import { setFirstLoadingTrueAC, setFirstLoadingFalseAC } from '../actions/ac/fla
 
 // Components
 import RealtiesPage from './RealtiesPage'
-import FeedbacksPage from './FeedbacksPage'
+import RealtyCreatePage from './RealtyCreatePage'
 import RealtyShowPage from './RealtyShowPage'
+import RealtyEditPage from './RealtyEditPage'
+import FeedbacksPage from './FeedbacksPage'
 import FeedbackCreatePage from './FeedbackCreatePage'
 import FeedbackShowPage from './FeedbackShowPage'
-import RealtyCreatePage from './RealtyCreatePage'
-import RealtyEditPage from './RealtyEditPage'
 import FeedbackEditPage from './FeedbackEditPage'
 import NavbarContainer from './NavbarContainer'
 import Test from './Test'

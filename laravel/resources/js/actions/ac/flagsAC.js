@@ -1,12 +1,12 @@
 import { SET_FIRST_LOADING_TRUE } from '../consts'
 import { SET_FIRST_LOADING_FALSE } from '../consts'
 
-import { SET_JUST_CREATED_REALTY_TRUE } from '../consts'
-import { SET_JUST_CREATED_REALTY_FALSE } from '../consts'
-import { SET_JUST_UPDATED_REALTY_TRUE } from '../consts'
-import { SET_JUST_UPDATED_REALTY_FALSE } from '../consts'
-import { SET_JUST_DELETED_REALTY_TRUE } from '../consts'
-import { SET_JUST_DELETED_REALTY_FALSE } from '../consts'
+import { SET_JUST_CREATED_RESOURCE_TRUE } from '../consts'
+import { SET_JUST_CREATED_RESOURCE_FALSE } from '../consts'
+import { SET_JUST_UPDATED_RESOURCE_TRUE } from '../consts'
+import { SET_JUST_UPDATED_RESOURCE_FALSE } from '../consts'
+import { SET_JUST_DELETED_RESOURCE_TRUE } from '../consts'
+import { SET_JUST_DELETED_RESOURCE_FALSE } from '../consts'
 
 import { SET_JUST_CREATED_FEEDBACK_TRUE } from '../consts'
 import { SET_JUST_CREATED_FEEDBACK_FALSE } from '../consts'
@@ -26,12 +26,12 @@ import { SET_ALERT_DELETE_VISIBILITY_FALSE } from '../consts'
 export const setFirstLoadingTrueAC = () => ({ type: SET_FIRST_LOADING_TRUE })
 export const setFirstLoadingFalseAC = () => ({ type: SET_FIRST_LOADING_FALSE })
 
-export const setJustCreatedRealtyTrueAC = () => ({ type: SET_JUST_CREATED_REALTY_TRUE })
-export const setJustCreatedRealtyFalseAC = () => ({ type: SET_JUST_CREATED_REALTY_FALSE })
-export const setJustUpdatedRealtyTrueAC = () => ({ type: SET_JUST_UPDATED_REALTY_TRUE })
-export const setJustUpdatedRealtyFalseAC = () => ({ type: SET_JUST_UPDATED_REALTY_FALSE })
-export const setJustDeletedRealtyTrueAC = () => ({ type: SET_JUST_DELETED_REALTY_TRUE })
-export const setJustDeletedRealtyFalseAC = () => ({ type: SET_JUST_DELETED_REALTY_FALSE })
+export const setJustCreatedResourceTrueAC = () => ({ type: SET_JUST_CREATED_RESOURCE_TRUE })
+export const setJustCreatedResourceFalseAC = () => ({ type: SET_JUST_CREATED_RESOURCE_FALSE })
+export const setJustUpdatedResourceTrueAC = () => ({ type: SET_JUST_UPDATED_RESOURCE_TRUE })
+export const setJustUpdatedResourceFalseAC = () => ({ type: SET_JUST_UPDATED_RESOURCE_FALSE })
+export const setJustDeletedResourceTrueAC = () => ({ type: SET_JUST_DELETED_RESOURCE_TRUE })
+export const setJustDeletedResourceFalseAC = () => ({ type: SET_JUST_DELETED_RESOURCE_FALSE })
 
 export const setJustCreatedFeedbackTrueAC = () => ({ type: SET_JUST_CREATED_FEEDBACK_TRUE })
 export const setJustCreatedFeedbackFalseAC = () => ({ type: SET_JUST_CREATED_FEEDBACK_FALSE })

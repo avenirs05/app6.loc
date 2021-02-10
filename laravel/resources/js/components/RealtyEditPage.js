@@ -25,7 +25,7 @@ class RealtyEditPage extends Component {
 
   render() {     
     return ( 
-      this.props.isJustUpdatedRealty ? 
+      this.props.isJustUpdatedResource ? 
       <Redirect to="/realties" /> :
       <>
         <NavLink to="/realties">
@@ -41,7 +41,7 @@ class RealtyEditPage extends Component {
 function mapStateToProps(state) {
   return {
     realtyEdit: state.realtyEdit,
-    isJustUpdatedRealty: state.isJustUpdatedRealty,
+    isJustUpdatedResource: state.isJustUpdatedResource,
   }
 }
 

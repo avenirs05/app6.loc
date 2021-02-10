@@ -189,7 +189,7 @@ let RealtyEditForm = props => {
                   )
                 }
               }) :         
-              <Image width="150" height="100" rounded src='/images/no-photo.jpg' />
+            <Image width="150" height="100" rounded src='/images/no-photo.jpg' />
           }
         </div> 
         <Field component={FileInput} 

@@ -18,7 +18,7 @@ class RealtyCreatePage extends Component {
  
   render() {     
     return ( 
-      this.props.isJustCreatedRealty ? 
+      this.props.isJustCreatedResource ? 
       <Redirect to="/realties" /> :
       <>
         <NavLink to="/realties">
@@ -33,7 +33,7 @@ class RealtyCreatePage extends Component {
 
 function mapStateToProps(state) {
   return {
-    isJustCreatedRealty: state.isJustCreatedRealty
+    isJustCreatedResource: state.isJustCreatedResource
   }
 }
 
