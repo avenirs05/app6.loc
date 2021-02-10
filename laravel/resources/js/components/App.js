@@ -14,13 +14,11 @@ import ListGroup from 'react-bootstrap/ListGroup'
 // Actions
 import { getRealtiesAsync } from '../actions/getRealtiesAsync'
 import { getFeedbacksAsync } from '../actions/getFeedbacksAsync'
-import { getImagesAsync } from '../actions/getImagesAsync'
 import { setFirstLoadingTrueAC, setFirstLoadingFalseAC } from '../actions/ac/flagsAC'
 
 // Components
 import RealtiesPage from './RealtiesPage'
 import FeedbacksPage from './FeedbacksPage'
-import ImagesPage from './ImagesPage'
 import RealtyShowPage from './RealtyShowPage'
 import FeedbackCreatePage from './FeedbackCreatePage'
 import FeedbackShowPage from './FeedbackShowPage'
@@ -38,7 +36,6 @@ import ListGroupCss from './css/ListGroup.module.css';
 class App extends Component {
   constructor(props) {
     super(props)
-    this.imagesMenuItem = React.createRef()
     this.feedbacksMenuItem = React.createRef()
     this.realtiesMenuItem = React.createRef()
   }
@@ -82,14 +79,6 @@ class App extends Component {
                   onMouseOver={this.makeCursorNotPointerIfActive.bind(this, this.feedbacksMenuItem)}>
                     Отзывы
                 </NavLink>
-                <NavLink to="/images"
-                  className={NavLinkCss.main}
-                  activeClassName={NavLinkCss.active}
-                  onClick={this.props.getImages}
-                  ref={this.imagesMenuItem}
-                  onMouseOver={this.makeCursorNotPointerIfActive.bind(this, this.imagesMenuItem)}>
-                    Изображения
-                </NavLink>
               </ListGroup>
             </Col>
             <Col>
@@ -103,7 +92,6 @@ class App extends Component {
                 <Route children={<FeedbackCreatePage />} exact path="/feedbacks/create" />
                 <Route children={<FeedbackShowPage />} exact path="/feedbacks/:id" />
                 <Route children={<FeedbackEditPage />} exact path="/feedbacks/:id/edit" />
-                <Route children={<ImagesPage />} exact path="/images" />
                 <Route children={<Test />} exact path="/test" />
               </Switch>
             </Col>
@@ -126,9 +114,6 @@ const mapDispatchToProps = dispatch => ({
   },
   getFeedbacks() {
     dispatch(getFeedbacksAsync())
-  },
-  getImages() {
-    dispatch(getImagesAsync())
   },
   setFirstLoadingFalse() {
     dispatch(setFirstLoadingFalseAC())
