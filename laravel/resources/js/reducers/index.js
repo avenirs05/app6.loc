@@ -20,10 +20,7 @@ import { isFirstLoading,
          isAlertDeleteVisible,    
          isJustCreatedResource,    
          isJustUpdatedResource,
-         isJustDeletedResource,
-         isJustCreatedFeedback,
-         isJustUpdatedFeedback,         
-         isJustDeletedFeedback } from './flags'
+         isJustDeletedResource } from './flags'
 
 
 export default combineReducers({ 
@@ -40,9 +37,6 @@ export default combineReducers({
   isJustCreatedResource,
   isJustUpdatedResource,
   isJustDeletedResource,
-  isJustCreatedFeedback,
-  isJustUpdatedFeedback, 
-  isJustDeletedFeedback, 
   isAlertCreateVisible,
   isAlertUpdateVisible,
   isAlertDeleteVisible, 

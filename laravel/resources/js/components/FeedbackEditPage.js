@@ -25,7 +25,7 @@ class FeedbackEditPage extends Component {
 
   render() {     
     return ( 
-      this.props.isJustUpdatedFeedback ? 
+      this.props.isJustUpdatedResource ? 
       <Redirect to="/feedbacks" /> :
       <>
         <NavLink to="/feedbacks">
@@ -41,7 +41,7 @@ class FeedbackEditPage extends Component {
 function mapStateToProps(state) {
   return {
     feedbackEdit: state.feedbackEdit,
-    isJustUpdatedFeedback: state.isJustUpdatedFeedback,
+    isJustUpdatedResource: state.isJustUpdatedResource,
   }
 }
 

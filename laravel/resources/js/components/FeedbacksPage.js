@@ -23,9 +23,9 @@ import { getFeedbacksAsync } from '../actions/getFeedbacksAsync'
 import { getFeedbacksSearchedAsync } from '../actions/getFeedbacksSearchedAsync'
 import { feedbackDeleteAsync } from '../actions/feedbackDeleteAsync'
 import { 
-  setJustCreatedFeedbackFalseAC, 
-  setJustUpdatedFeedbackFalseAC, 
-  setJustDeletedFeedbackFalseAC, 
+  setJustCreatedResourceFalseAC,
+  setJustUpdatedResourceFalseAC,
+  setJustDeletedResourceFalseAC,
   setAlertCreateVisibilityFalseAC, 
   setAlertUpdateVisibilityFalseAC,
   setAlertDeleteVisibilityFalseAC 
@@ -37,26 +37,26 @@ import FeedbacksCss from './css/Feedbacks.module.css'
 
 
 function FeedbacksPage({ 
-                    feedbacks,
-                    totalPages,
-                    currentPage,
-                    perPage,
-                    handleGetFeedbacks,
-                    handleGetFeedbacksSearched,
-                    handleFeedbackDelete,
-                    isJustCreatedFeedback,
-                    isJustUpdatedFeedback,
-                    isJustDeletedFeedback,
-                    setJustCreatedFeedbackFalse,
-                    setJustUpdatedFeedbackFalse,
-                    setJustDeletedFeedbackFalse,
-                    setAlertCreateVisibilityFalse,
-                    setAlertUpdateVisibilityFalse,
-                    setAlertDeleteVisibilityFalse,
-                    isAlertCreateVisible,
-                    isAlertUpdateVisible,
-                    isAlertDeleteVisible, 
-                  }) {
+  feedbacks,
+  totalPages,
+  currentPage,
+  perPage,
+  handleGetFeedbacks,
+  handleGetFeedbacksSearched,
+  handleFeedbackDelete,
+  isJustCreatedResource,
+  isJustUpdatedResource,
+  isJustDeletedResource,
+  isAlertCreateVisible,
+  isAlertUpdateVisible,
+  isAlertDeleteVisible, 
+  setJustCreatedResourceFalse,
+  setJustUpdatedResourceFalse,
+  setJustDeletedResourceFalse,
+  setAlertCreateVisibilityFalse,
+  setAlertUpdateVisibilityFalse,
+  setAlertDeleteVisibilityFalse,
+}) {
 
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -70,34 +70,34 @@ function FeedbacksPage({
   }, [])  
 
   useEffect(() => {
-    if (isJustCreatedFeedback) {
+    if (isJustCreatedResource) {
       handleGetFeedbacks(currentPage)
       window.setTimeout(() => {
         setAlertCreateVisibilityFalse()
       }, 2000)
-      setJustCreatedFeedbackFalse()
+      setJustCreatedResourceFalse()
     }
-  }, [isJustCreatedFeedback])                  
+  }, [isJustCreatedResource])                  
 
   useEffect(() => {
-    if (isJustUpdatedFeedback) {
+    if (isJustUpdatedResource) {
       handleGetFeedbacks(currentPage)
       window.setTimeout(() => {
         setAlertUpdateVisibilityFalse()
       }, 2000)
-      setJustUpdatedFeedbackFalse()
+      setJustUpdatedResourceFalse()
     }
-  }, [isJustUpdatedFeedback])
+  }, [isJustUpdatedResource])
 
   useEffect(() => {
-    if (isJustDeletedFeedback) {
+    if (isJustDeletedResource) {
       handleGetFeedbacks(currentPage)
       window.setTimeout(() => {
         setAlertDeleteVisibilityFalse()
       }, 2000)
-      setJustDeletedFeedbackFalse()
+      setJustDeletedResourceFalse()
     }
-  }, [isJustDeletedFeedback])
+  }, [isJustDeletedResource])
 
   function onGetResource(e, currentPageNumber) {
     handleGetFeedbacks(currentPageNumber)
@@ -223,9 +223,9 @@ function mapStateToProps(state) {
     totalPages: state.feedbacks.totalPages,
     currentPage: state.feedbacks.currentPage,
     perPage: state.feedbacks.perPage,
-    isJustCreatedFeedback: state.isJustCreatedFeedback,
-    isJustUpdatedFeedback: state.isJustUpdatedFeedback,
-    isJustDeletedFeedback: state.isJustDeletedFeedback,
+    isJustCreatedResource: state.isJustCreatedResource,
+    isJustUpdatedResource: state.isJustUpdatedResource,
+    isJustDeletedResource: state.isJustDeletedResource,
     isAlertCreateVisible: state.isAlertCreateVisible,
     isAlertUpdateVisible: state.isAlertUpdateVisible,
     isAlertDeleteVisible: state.isAlertDeleteVisible,
@@ -243,14 +243,14 @@ function mapDispatchToProps(dispatch) {
     handleFeedbackDelete(id) {      
       dispatch(feedbackDeleteAsync(id))
     },
-    setJustCreatedFeedbackFalse() {
-      dispatch(setJustCreatedFeedbackFalseAC())
+    setJustCreatedResourceFalse() {
+      dispatch(setJustCreatedResourceFalseAC())
     },
-    setJustUpdatedFeedbackFalse() {
-      dispatch(setJustUpdatedFeedbackFalseAC())
+    setJustUpdatedResourceFalse() {
+      dispatch(setJustUpdatedResourceFalseAC())
     },
-    setJustDeletedFeedbackFalse() {
-      dispatch(setJustDeletedFeedbackFalseAC())
+    setJustDeletedResourceFalse() {
+      dispatch(setJustDeletedResourceFalseAC())
     },
     setAlertCreateVisibilityFalse() {
       dispatch(setAlertCreateVisibilityFalseAC())

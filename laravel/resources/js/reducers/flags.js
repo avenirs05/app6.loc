@@ -15,14 +15,6 @@ import { SET_JUST_UPDATED_RESOURCE_FALSE } from '../actions/consts'
 import { SET_JUST_DELETED_RESOURCE_TRUE } from '../actions/consts';
 import { SET_JUST_DELETED_RESOURCE_FALSE } from '../actions/consts';
 
-import { SET_JUST_CREATED_FEEDBACK_TRUE } from '../actions/consts'
-import { SET_JUST_CREATED_FEEDBACK_FALSE } from '../actions/consts'
-import { SET_JUST_UPDATED_FEEDBACK_TRUE } from '../actions/consts'
-import { SET_JUST_UPDATED_FEEDBACK_FALSE } from '../actions/consts'
-import { SET_JUST_DELETED_FEEDBACK_TRUE } from '../actions/consts';
-import { SET_JUST_DELETED_FEEDBACK_FALSE } from '../actions/consts';
-
-
 export function isFirstLoading(state = true, action) {
   if (action.type === SET_FIRST_LOADING_TRUE) return true
   if (action.type === SET_FIRST_LOADING_FALSE) return false 
@@ -45,16 +37,9 @@ export function isAlertDeleteVisible(state = false, action) {
   return state
 }
 
-
 export function isJustCreatedResource(state = false, action) {
   if (action.type === SET_JUST_CREATED_RESOURCE_TRUE) return true
   if (action.type === SET_JUST_CREATED_RESOURCE_FALSE) return false 
-  return state
-}
-
-export function isJustCreatedFeedback(state = false, action) {
-  if (action.type === SET_JUST_CREATED_FEEDBACK_TRUE) return true
-  if (action.type === SET_JUST_CREATED_FEEDBACK_FALSE) return false 
   return state
 }
 
@@ -64,21 +49,11 @@ export function isJustUpdatedResource(state = false, action) {
   return state
 }
 
-export function isJustUpdatedFeedback(state = false, action) {
-  if (action.type === SET_JUST_UPDATED_FEEDBACK_TRUE) return true
-  if (action.type === SET_JUST_UPDATED_FEEDBACK_FALSE) return false 
-  return state
-}
-
 export function isJustDeletedResource(state = false, action) {
   if (action.type === SET_JUST_DELETED_RESOURCE_TRUE) return true
   if (action.type === SET_JUST_DELETED_RESOURCE_FALSE) return false 
   return state
 }
 
-export function isJustDeletedFeedback(state = false, action) {
-  if (action.type === SET_JUST_DELETED_FEEDBACK_TRUE) return true
-  if (action.type === SET_JUST_DELETED_FEEDBACK_FALSE) return false 
-  return state
-}
+
 

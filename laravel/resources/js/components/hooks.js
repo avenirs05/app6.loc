@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react'
 import { useRefEffect } from 'react-use-ref-effect';
 
 export const useClickByHotKey = (eventName, eventKey) => 
@@ -12,3 +13,15 @@ export const useClickByHotKey = (eventName, eventKey) =>
       removeEventListener(eventName, listener) 
     }    
   }, [])
+
+
+export const useJustCreated = (getResource, pageNum, noAlert, noCreated, isCreated) =>   
+  useEffect(() => {
+    if (isCreated) {
+      getResource(pageNum)
+      window.setTimeout(() => {
+        noAlert()
+      }, 2000)
+      noCreated()
+    }
+  }, [isCreated])

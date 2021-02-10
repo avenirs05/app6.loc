@@ -18,7 +18,7 @@ class FeedbackCreatePage extends Component {
  
   render() {     
     return ( 
-      this.props.isJustCreatedFeedback ? 
+      this.props.isJustCreatedResource ? 
       <Redirect to="/feedbacks" /> :
       <>
         <NavLink to="/feedbacks">
@@ -33,7 +33,7 @@ class FeedbackCreatePage extends Component {
 
 function mapStateToProps(state) {
   return {
-    isJustCreatedFeedback: state.isJustCreatedFeedback
+    isJustCreatedResource: state.isJustCreatedResource
   }
 }
 

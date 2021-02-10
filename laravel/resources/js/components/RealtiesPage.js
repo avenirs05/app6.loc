@@ -35,24 +35,27 @@ import {
 import TableCss from './css/Table.module.css'
 import RealtiesCss from './css/Realties.module.css'
 
+// Hooks
+import { useJustCreated } from './hooks'
+
 
 function RealtiesPage({
   realties,
   totalPages,
   currentPage,
   perPage,
-  handleGetRealties,
-  handleGetRealtiesSearched,
+  getRealties,
+  getRealtiesSearched,
   handleRealtyDelete,
-  isJustCreatedResource,
-  isJustUpdatedResource,
-  isJustDeletedResource,
-  setJustCreatedResourceFalse,
+  setJustCreatedResourceFalse: noCreated,
   setJustUpdatedResourceFalse,
   setJustDeletedResourceFalse,
-  setAlertCreateVisibilityFalse,
+  setAlertCreateVisibilityFalse: noAlert,
   setAlertUpdateVisibilityFalse,
   setAlertDeleteVisibilityFalse,
+  isJustCreatedResource: isCreated,
+  isJustUpdatedResource,
+  isJustDeletedResource,
   isAlertCreateVisible,
   isAlertUpdateVisible,
   isAlertDeleteVisible,
@@ -65,19 +68,21 @@ function RealtiesPage({
   const [realtyDeleteId, setRealtyDeleteId] = useState(0)
   const [realtyDeleteName, setRealtyDeleteName] = useState('')
 
-  useEffect(() => {
-    if (isJustCreatedResource) {
-      handleGetRealties(currentPage)
-      window.setTimeout(() => {
-        setAlertCreateVisibilityFalse()
-      }, 2000)
-      setJustCreatedResourceFalse()
-    }
-  }, [isJustCreatedResource])
+  useJustCreated(getRealties, currentPage, noAlert, noCreated, isCreated)
+
+  // useEffect(() => {
+  //   if (isJustCreatedResource) {
+  //     getRealties(currentPage)
+  //     window.setTimeout(() => {
+  //       setAlertCreateVisibilityFalse()
+  //     }, 2000)
+  //     setJustCreatedResourceFalse()
+  //   }
+  // }, [isJustCreatedResource])
 
   useEffect(() => {
     if (isJustUpdatedResource) {
-      handleGetRealties(currentPage)
+      getRealties(currentPage)
       window.setTimeout(() => {
         setAlertUpdateVisibilityFalse()
       }, 2000)
@@ -87,7 +92,7 @@ function RealtiesPage({
 
   useEffect(() => {
     if (isJustDeletedResource) {
-      handleGetRealties(currentPage)
+      getRealties(currentPage)
       window.setTimeout(() => {
         setAlertDeleteVisibilityFalse()
       }, 2000)
@@ -96,7 +101,7 @@ function RealtiesPage({
   }, [isJustDeletedResource])
 
   function onGetResource(e, currentPageNumber) {
-    handleGetRealties(currentPageNumber)
+    getRealties(currentPageNumber)
   }
 
   function onDeleteResource(e, id) {
@@ -144,7 +149,7 @@ function RealtiesPage({
   }
 
   function onGetRealtiesSearched(e) {
-    handleGetRealtiesSearched(e)
+    getRealtiesSearched(e)
   }  
 
   let items = []
@@ -238,10 +243,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleGetRealties(currentPageNumber) {
+    getRealties(currentPageNumber) {
       dispatch(getRealtiesAsync(currentPageNumber))
     },
-    handleGetRealtiesSearched(e) {   
+    getRealtiesSearched(e) {   
       dispatch(getRealtiesSearchedAsync(e.target.value))
     },
     handleRealtyDelete(id) {
