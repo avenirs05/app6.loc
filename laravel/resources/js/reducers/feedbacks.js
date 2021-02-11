@@ -1,15 +1,22 @@
-import { feedbacks as feedbacksInit } from './initialState';
-import { GET_FEEDBACKS } from '../actions/consts';
+import { GET_FEEDBACKS } from '../actions/consts'
+
+const feedbacksInit = {
+  items: [],
+  totalPages: 0,
+  totalItems: 0,
+  currentPage: 1,
+  perPage: 50 
+}
 
 export default function feedbacks(state = feedbacksInit, action) {
   switch (action.type) {
     case GET_FEEDBACKS:      
       return {
-        items: action.items,
-        totalPages: action.totalPages,
-        totalItems: action.totalItems,
-        currentPage: action.currentPage,
-        perPage: action.perPage,
+        items: action.payload.items,
+        totalPages: action.payload.totalPages,
+        totalItems: action.payload.totalItems,
+        currentPage: action.payload.currentPage,
+        perPage: action.payload.perPage,
       }
       
     default:
