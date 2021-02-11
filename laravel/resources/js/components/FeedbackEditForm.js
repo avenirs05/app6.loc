@@ -35,7 +35,7 @@ let FeedbackEditForm = props => {
       <div><Field name={f.author.name} label={f.author.label} component={renderTextField} /></div>
       <div><Field name={f.realty_name.name} label={f.realty_name.label} component={renderTextField} disabled/></div> 
       <div><Field name={f.realty_id.name} label={f.realty_id.label} component={renderTextField} /></div>
-      <div><Field name={f.date.name} label={f.date.label} component={renderTextField} /></div>
+      <div><Field name={f.date.name} label={f.date.label} type="date" component={renderTextField} /></div>
       <div>
         <Field name={f.text.name} 
                label={f.text.label} 

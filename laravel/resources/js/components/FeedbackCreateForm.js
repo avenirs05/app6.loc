@@ -15,6 +15,7 @@ import FormCss from './css/Form.module.css'
 // Helpers
 import { renderTextField, renderTextArea } from './formHelpers'
 import { feedbackFields as f, muiFormLabelClass } from '../consts'
+import { getFieldsForCreateFormAsDefault as getInitFields } from '../script'
 import { validate } from './helpers' 
 
 // Hooks
@@ -67,12 +68,7 @@ FeedbackCreateForm = reduxForm({
 function mapStateToProps(state) {  
   return {
     formDataImages: state.formDataImages,
-    initialValues: {
-      [f.author.name]: f.author.default,
-      [f.realty_id.name]: f.realty_id.default,
-      [f.date.name]: f.date.default,
-      [f.text.name]: f.text.default,
-    },
+    initialValues: getInitFields(f, 'inCreateFormAsDefault'),
     enableReinitialize: true,
   }
 }

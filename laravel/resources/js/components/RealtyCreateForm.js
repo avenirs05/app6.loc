@@ -21,6 +21,7 @@ import FormCss from './css/Form.module.css'
 import { renderTextField, renderSelectField } from './formHelpers'
 import { realtyFields as f, muiFormLabelClass } from '../consts'
 import { validate } from './helpers' 
+import { getFieldsForCreateFormAsDefault as getInitFields } from '../script'
 
 // Hooks
 import { useClickByHotKey } from './hooks'
@@ -161,7 +162,6 @@ let RealtyCreateForm = props => {
   )
 }
 
-
 RealtyCreateForm = reduxForm({
   form: 'createRealty',
   validate: validate('realty') 
@@ -171,57 +171,11 @@ RealtyCreateForm = reduxForm({
 function mapStateToProps(state) {  
   return {
     formDataImages: state.formDataImages,
-    initialValues: {
-      [f.name.name]: f.name.default,
-      [f.visibility.name]: f.visibility.default,
-      [f.subname_ru.name]: f.subname_ru.default,
-      [f.subname_en.name]: f.subname_en.default,
-      [f.type_ru.name]: f.type_ru.default,
-      [f.type_en.name]: f.type_en.default,
-      [f.country_ru.name]: f.country_ru.default,
-      [f.country_en.name]: f.country_en.default,
-      [f.area_ru.name]: f.area_ru.default,
-      [f.area_en.name]: f.area_en.default,
-      [f.city_ru.name]: f.city_ru.default,
-      [f.city_en.name]: f.city_en.default,
-      [f.view_ru.name]: f.view_ru.default,
-      [f.view_en.name]: f.view_en.default,
-      [f.transfer_payment_ru.name]: f.transfer_payment_ru.default,
-      [f.transfer_payment_en.name]: f.transfer_payment_en.default,
-      [f.internet_payment_ru.name]: f.internet_payment_ru.default,
-      [f.internet_payment_en.name]: f.internet_payment_en.default,
-      [f.parking_payment_ru.name]: f.parking_payment_ru.default,
-      [f.parking_payment_en.name]: f.parking_payment_en.default,
-      [f.description_ru.name]: f.description_ru.default,   
-      [f.description_en.name]: f.description_en.default,   
-      [f.map_html.name]: f.map_html.default,
-      [f.square.name]: f.square.default,
-      [f.bedrooms.name]: f.bedrooms.default,
-      [f.capacity.name]: f.capacity.default,
-      [f.price.name]: f.price.default,
-      [f.price_line_through.name]: f.price_line_through.default,
-      [f.price_jan.name]: f.price_jan.default,
-      [f.price_feb.name]: f.price_feb.default,
-      [f.price_mar.name]: f.price_mar.default,
-      [f.price_apr.name]: f.price_apr.default,
-      [f.price_may.name]: f.price_may.default,
-      [f.price_jun.name]: f.price_jun.default,
-      [f.price_jul.name]: f.price_jul.default,
-      [f.price_aug.name]: f.price_aug.default,
-      [f.price_sep.name]: f.price_sep.default,
-      [f.price_oct.name]: f.price_oct.default,
-      [f.price_nov.name]: f.price_nov.default,
-      [f.price_dec.name]: f.price_dec.default,
-      [f.price_oct_apr.name]: f.price_oct_apr.default,
-      [f.booking_mark.name]: f.booking_mark.default,
-      [f.dist_sea.name]: f.dist_sea.default,
-      [f.dist_tivat.name]: f.dist_tivat.default,
-      [f.dist_podg.name]: f.dist_podg.default,
-      [f.discount.name]: f.discount.default,
-    },
+    initialValues: getInitFields(f, 'inCreateFormAsDefault'),
     enableReinitialize: true,
   }
 }
+
 
 function mapDispatchToProps(dispatch) {
   return {

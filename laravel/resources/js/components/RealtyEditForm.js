@@ -220,8 +220,8 @@ RealtyEditForm = reduxForm({
 function mapStateToProps(state) {  
   return {
     initialValues: state.realtyEdit,
-    enableReinitialize: true,
     realtyEdit: state.realtyEdit,  
+    enableReinitialize: true,
   }
 }
 

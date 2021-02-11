@@ -107,3 +107,16 @@ export const reduceObjByArray = (array, obj) => {
   return result
 }
 
+
+export const getFieldsForCreateFormAsDefault = (fields, flag) => {
+  let result = {}
+  
+  for (let field in fields) {
+    if (fields[field][flag]) {
+      result[fields[field].name] = fields[field].default 
+    }    
+  }
+
+  return result
+}
+
