@@ -1,11 +1,9 @@
-import { REALTY_SHOW } from '../actions/consts';
+import { REALTY_SHOW } from '../actions/consts'
 
 export default function realtyShow(state = {}, action) {
   switch (action.type) {
     case REALTY_SHOW:  
-      const realtyFields = {...action}
-      delete realtyFields.type        
-      return realtyFields  
+      return action.payload
       
     default:
       return state  
