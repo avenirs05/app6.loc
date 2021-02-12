@@ -46,7 +46,7 @@ function FeedbacksPage({
   perPage,
   getFeedbacks,
   getFeedbacksSearched,
-  handleFeedbackDelete,
+  feedbackDelete,
   setJustCreatedResourceFalse: noCreated,
   setJustUpdatedResourceFalse: noUpdated,
   setJustDeletedResourceFalse: noDeleted,
@@ -82,7 +82,7 @@ function FeedbacksPage({
 
   function onDeleteResource(e, id) {    
     handleClose()
-    handleFeedbackDelete(id)   
+    feedbackDelete(id)   
   }
 
   function setCandidateToDelete(e, id, author) {
@@ -220,7 +220,7 @@ function mapDispatchToProps(dispatch) {
     getFeedbacksSearched(e) {   
       dispatch(getFeedbacksSearchedAsync(e.target.value))
     },
-    handleFeedbackDelete(id) {      
+    feedbackDelete(id) {      
       dispatch(feedbackDeleteAsync(id))
     },
     setJustCreatedResourceFalse() {

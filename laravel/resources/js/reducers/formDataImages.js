@@ -4,8 +4,8 @@ import { CLEAN_FORM_DATA_IMAGES } from '../actions/consts';
 
 export default function formDataImages(state = new FormData(), action) {
   switch (action.type) {
-    case CREATE_FORM_DATA_IMAGES:    
-       
+    case CREATE_FORM_DATA_IMAGES: 
+      
       let formData = state
       let images = action.payload   
 

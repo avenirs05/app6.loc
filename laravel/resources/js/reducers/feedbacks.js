@@ -8,6 +8,7 @@ const feedbacksInit = {
   perPage: 50 
 }
 
+
 export default function feedbacks(state = feedbacksInit, action) {
   switch (action.type) {
     case GET_FEEDBACKS:      

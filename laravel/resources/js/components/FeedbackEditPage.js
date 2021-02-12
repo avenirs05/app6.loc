@@ -20,7 +20,7 @@ class FeedbackEditPage extends Component {
   }
   
   componentDidMount() {   
-    this.props.handleFeedbackEdit(this.props.match.params.id)            
+    this.props.feedbackEdit(this.props.match.params.id)            
   }
 
   render() {     
@@ -47,7 +47,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleFeedbackEdit(id) {
+    feedbackEdit(id) {
       dispatch(feedbackEditAsync(id))
     },
   }

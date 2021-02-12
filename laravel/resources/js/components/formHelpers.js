@@ -1,6 +1,4 @@
 import React from 'react';
-import { realtyFields } from '../consts'
-import { getModelFieldsList } from '../script'
 
 // Material UI
 import TextField from '@material-ui/core/TextField'

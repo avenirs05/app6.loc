@@ -23,12 +23,12 @@ import { useClickByHotKey } from './hooks'
 
 
 let FeedbackCreateForm = props => {
-  const { handleSubmit, pristine, submitting, handleFeedbackCreate } = props
+  const { handleSubmit, pristine, submitting, feedbackCreate } = props
 
   const createBtn = useClickByHotKey('keydown', 'Escape')
   
   function submit(values) {     
-    handleFeedbackCreate(values)
+    feedbackCreate(values)
   }
 
   return (
@@ -75,7 +75,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleFeedbackCreate(values) {     
+    feedbackCreate(values) {     
       dispatch(feedbackCreateAsync(values))
     },
   }

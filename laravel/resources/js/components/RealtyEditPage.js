@@ -20,7 +20,7 @@ class RealtyEditPage extends Component {
   }
   
   componentDidMount() {   
-    this.props.handleRealtyEdit(this.props.match.params.id)        
+    this.props.realtyEdit(this.props.match.params.id)        
   }
 
   render() {     
@@ -47,7 +47,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleRealtyEdit(id) {
+    realtyEdit(id) {
       dispatch(realtyEditAsync(id))
     },
   }

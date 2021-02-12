@@ -28,11 +28,11 @@ import { useClickByHotKey } from './hooks'
 
 
 let RealtyCreateForm = props => {
-  const { handleSubmit, pristine, submitting, classes, handleRealtyCreate, formDataImages } = props
+  const { handleSubmit, pristine, submitting, classes, realtyCreate, formDataImages } = props
   const createBtn = useClickByHotKey('keydown', 'Escape')
 
   function submit(values) {     
-    handleRealtyCreate(values, formDataImages)
+    realtyCreate(values, formDataImages)
   }
 
   return (
@@ -179,7 +179,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleRealtyCreate(values, formDataImages) {
+    realtyCreate(values, formDataImages) {
       dispatch(realtyCreateAsync(values, formDataImages))
     },
   }

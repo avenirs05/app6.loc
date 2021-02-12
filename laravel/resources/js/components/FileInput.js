@@ -5,14 +5,17 @@ import { connect } from 'react-redux'
 // Actions
 import { realtyMainImageLoadAsync } from '../actions/realtyMainImageLoadAsync'
 import { realtyThumbnailsLoadAsync } from '../actions/realtyThumbnailsLoadAsync'
+
+// AC
 import { createFormDataImagesAC } from '../actions/ac/createFormDataImagesAC'
+
 
 function FileInput ({
   saveBtnRef,
   realtyEdit,
-  handleCreateFormDataImages,
-  handleRealtyMainImageLoad,
-  handleRealtyThumbnailsLoad,  
+  createFormDataImages,
+  realtyMainImageLoad,
+  realtyThumbnailsLoad,  
   multiple,
   imgType,
   input: {
@@ -27,7 +30,7 @@ function FileInput ({
 
   const adaptFileEventToValue = (imgType, realtyId, saveBtnRef) => e => {    
     if (imgType === 'main_image_create' || imgType === 'thumbnails_create') {   
-      handleCreateFormDataImages(e.target.files, imgType)      
+      createFormDataImages(e.target.files, imgType)      
     }    
     
     if (imgType === 'main_image_change') {  
@@ -35,7 +38,7 @@ function FileInput ({
       formData.set('main_image', e.target.files[0])
       formData.set('imgType', imgType)
       formData.set('realtyId', realtyId)
-      handleRealtyMainImageLoad(formData)
+      realtyMainImageLoad(formData)
       saveBtnRef.removeAttribute("disabled");
     }        
 
@@ -47,7 +50,7 @@ function FileInput ({
       }
       formData.set('imgType', imgType)
       formData.set('realtyId', realtyId)
-      handleRealtyThumbnailsLoad(formData)
+      realtyThumbnailsLoad(formData)
       saveBtnRef.removeAttribute("disabled");
     }  
   }
@@ -70,13 +73,13 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {    
-    handleRealtyMainImageLoad(formData) {
+    realtyMainImageLoad(formData) {
       dispatch(realtyMainImageLoadAsync(formData))
     },
-    handleRealtyThumbnailsLoad(formData) {
+    realtyThumbnailsLoad(formData) {
       dispatch(realtyThumbnailsLoadAsync(formData))
     },
-    handleCreateFormDataImages(payload, imgType) {     
+    createFormDataImages(payload, imgType) {     
       dispatch(createFormDataImagesAC(payload, imgType))      
     },
   }

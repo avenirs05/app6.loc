@@ -22,12 +22,12 @@ import { useClickByHotKey } from './hooks'
       
 
 let FeedbackEditForm = props => {
-  const { handleSubmit, pristine, submitting, handleFeedbackUpdate } = props
+  const { handleSubmit, pristine, submitting, feedbackUpdate } = props
   
   const updateBtn = useClickByHotKey('keydown', 'Escape')
  
   const submit = values => {
-    handleFeedbackUpdate(values)    
+    feedbackUpdate(values)    
   }
 
   return (    
@@ -68,7 +68,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleFeedbackUpdate(values) {    
+    feedbackUpdate(values) {    
       dispatch(feedbackUpdateAsync(values))      
     },
   }

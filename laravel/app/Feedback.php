@@ -9,7 +9,8 @@ class Feedback extends Model
 {
     protected $table = 'feedbacks';	
     protected $guarded = [];
-    public $timestamps = false;
+    protected $hidden = ['created_at', 'updated_at'];
+
     
     public function realty() 
 	{

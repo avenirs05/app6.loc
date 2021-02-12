@@ -19,7 +19,7 @@ class RealtyShowPage extends Component {
   }
 
   componentDidMount() {
-    this.props.handleRealtyShow(this.props.match.params.id)
+    this.props.realtyShow(this.props.match.params.id)
   }
 
   render() {
@@ -93,7 +93,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleRealtyShow(id) {
+    realtyShow(id) {
       dispatch(realtyShowAsync(id))
     },
   }

@@ -23,7 +23,7 @@ class FeedbackResource extends Controller
     public function search(Request $request, Feedback $feedback)
     {
         return Feedback::whereHas('realty', $filter = function($query) use ($request) {
-            $query->where('name', 'like', "{$request->input}%");
+            $query->where('name', 'like', "%{$request->input}%");
         })
         ->with(['realty' => $filter])
         ->paginate(1000);

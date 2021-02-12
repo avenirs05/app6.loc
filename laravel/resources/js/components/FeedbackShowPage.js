@@ -1,5 +1,5 @@
 // React, Redux, Router 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { NavLink, withRouter } from "react-router-dom"
@@ -13,9 +13,10 @@ import { feedbackShowAsync } from '../actions/feedbackShowAsync'
 // Helpers
 import { feedbackFields as f } from '../consts'
 
+
 const FeedbackShowPage = props => {
   useEffect(() => {
-    props.handleFeedbackShow(props.match.params.id)
+    props.feedbackShow(props.match.params.id)
   }, [])  
 
   return (      
@@ -44,7 +45,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleFeedbackShow(id) {     
+    feedbackShow(id) {     
       dispatch(feedbackShowAsync(id))
     },
   }
