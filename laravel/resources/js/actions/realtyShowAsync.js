@@ -1,15 +1,19 @@
+import { compose } from 'redux'
 import { realtyShowAC } from './ac/realtyShowAC'
-import { reduceObjByArray } from '../script'
+import { reduceObjByArray, getPropListFromObjByFlag } from '../script'
 import { realtyFields } from '../consts'
-import { getModelFieldsList } from '../script'
 
 
 export const realtyShowAsync = id => async dispatch => {
   try {
     const response = await axios.get(route('realties.show', id))
-    const realtyModelFieldsList = getModelFieldsList(realtyFields)
-    const responseData = reduceObjByArray(realtyModelFieldsList, response.data)   
-    return dispatch(realtyShowAC(responseData))  
+    const propList = getPropListFromObjByFlag(realtyFields, 'inShowAction')    
+    
+    return compose(
+      dispatch,
+      realtyShowAC,  
+      reduceObjByArray,    
+    ) (propList, response.data)
   }
   catch (error) {
     console.log(error)

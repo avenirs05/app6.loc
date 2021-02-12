@@ -84,17 +84,15 @@ export const getModelFieldsList = obj => {
 
   for (let field in obj) {
     if (obj[field]['model']) {
-      result.push(obj[field]) 
+      result.push(obj[field].name) 
     }
-  }
-  
-  result = result.map(item => item.name)
+  }  
 
   return result
 }
 
 
-// Return object with props only of array has it prop 
+// Return object with props only if array has it prop 
 export const reduceObjByArray = (array, obj) => { 
   let result = {}
 
@@ -117,6 +115,19 @@ export const getFieldsForCreateFormAsDefault = (fields, flag) => {
     }    
   }
 
+  return result
+}
+
+
+export const getPropListFromObjByFlag = (obj, flag) => {
+  let result = []
+
+  for (let field in obj) {
+    if (obj[field][flag]) {
+      result.push(obj[field].name) 
+    }
+  }
+  
   return result
 }
 

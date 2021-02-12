@@ -4,6 +4,7 @@ export const realtyFields = {
     label: 'id',
     model: true,
     inCreateFormAsDefault: false,
+    inShowAction: true,
     default: null
   },
   name: {
@@ -11,6 +12,7 @@ export const realtyFields = {
     label: 'Название объекта',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: ''
   },
   visibility: {
@@ -22,6 +24,7 @@ export const realtyFields = {
       hidden: 'скрыто'
     },
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'опубликовано'
   },
   subname_ru: {
@@ -29,6 +32,7 @@ export const realtyFields = {
     label: 'Мини-описание',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'subname_ru',
   },
   subname_en: {
@@ -36,6 +40,7 @@ export const realtyFields = {
     label: 'Мини-описание — English',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'subname_en'
   },
   type_ru: {
@@ -47,6 +52,7 @@ export const realtyFields = {
       villa: 'вилла'
     },
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'апартамент'
   },
   type_en: {
@@ -58,6 +64,7 @@ export const realtyFields = {
       villa: 'villa'
     },
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'apartment'
   },
   country_ru: {
@@ -65,6 +72,7 @@ export const realtyFields = {
     label: 'Страна',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'Черногория'
   },
   country_en: {
@@ -72,6 +80,7 @@ export const realtyFields = {
     label: 'Страна — English',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'Montenegro'
   },
   area_ru: {
@@ -79,6 +88,7 @@ export const realtyFields = {
     label: 'Район',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'Будванская ривьера'
   },
   area_en: {
@@ -86,6 +96,7 @@ export const realtyFields = {
     label: 'Район — English',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'Budva Riviera'
   },
   city_ru: {
@@ -93,6 +104,7 @@ export const realtyFields = {
     label: 'Город',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'Будва'
   },
   city_en: {
@@ -100,6 +112,7 @@ export const realtyFields = {
     label: 'Город — English',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'Budva'
   },
   view_ru: {
@@ -107,6 +120,7 @@ export const realtyFields = {
     label: 'Вид',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'на море'
   },
   view_en: {
@@ -114,6 +128,7 @@ export const realtyFields = {
     label: 'Вид — English',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'sea'
   },
   transfer_payment_ru: {
@@ -121,6 +136,7 @@ export const realtyFields = {
     label: 'Трансфер',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'бесплатный'
   },
   transfer_payment_en: {
@@ -128,6 +144,7 @@ export const realtyFields = {
     label: 'Трансфер — English',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'free'
   },
   internet_payment_ru: {
@@ -135,6 +152,7 @@ export const realtyFields = {
     label: 'Интернет',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'бесплатный'
   },
   internet_payment_en: {
@@ -142,6 +160,7 @@ export const realtyFields = {
     label: 'Интернет — English',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'free'
   },
   parking_payment_ru: {
@@ -149,6 +168,7 @@ export const realtyFields = {
     label: 'Паркинг',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'бесплатный'
   },
   parking_payment_en: {
@@ -156,6 +176,7 @@ export const realtyFields = {
     label: 'Паркинг — English',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'free'
   },
   description_ru: {
@@ -163,6 +184,7 @@ export const realtyFields = {
     label: 'Описание подробное',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'description_ru'
   },
   description_en: {
@@ -170,6 +192,7 @@ export const realtyFields = {
     label: 'Описание подробное — English',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 'description_en'
   },
   map_html: {
@@ -177,12 +200,15 @@ export const realtyFields = {
     label: 'Карта (html-код)',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2951.3632492036777!2d18.867321315101165!3d42.292113947382965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDLCsDE3JzMxLjYiTiAxOMKwNTInMTAuMiJF!5e0!3m2!1sru!2sru!4v1507902217396" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>'
   },
   square: {
     name: 'square',
     label: 'Площадь (метров)',
     model: true,
+    inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 10
   },
   bedrooms: {
@@ -190,6 +216,7 @@ export const realtyFields = {
     label: 'Спален (количество)',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 11
   },
   capacity: {
@@ -197,6 +224,7 @@ export const realtyFields = {
     label: 'Вместимость (человек)',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 12
   },
   price: {
@@ -204,6 +232,7 @@ export const realtyFields = {
     label: 'Цена (€)',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 13
   },
   price_line_through: {
@@ -211,6 +240,7 @@ export const realtyFields = {
     label: 'Цена перечеркнутая (€)',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 14
   },
   price_jan: {
@@ -218,139 +248,159 @@ export const realtyFields = {
     label: 'Цена — Январь (€)',
     model: true,
     inCreateFormAsDefault: true,
+    inShowAction: true,
     default: 15
   },
   price_feb: {
     name: 'price_feb', 
     label: 'Цена — Февраль (€)', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 16
   },
   price_mar: {    
     name: 'price_mar', 
     label: 'Цена — Март(€)', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 17
   },
   price_apr: { 
     name: 'price_apr', 
     label: 'Цена — Апрель (€)', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 18 
   },
   price_may: { 
     name: 'price_may', 
     label: 'Цена — Май (€)', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 19 
   },
   price_jun: { 
     name: 'price_jun', 
     label: 'Цена — Июнь (€)', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 20 
   },
   price_jul: { 
     name: 'price_jul', 
     label: 'Цена — Июль (€)', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 21 
   },
   price_aug: { 
     name: 'price_aug', 
     label: 'Цена — Август (€)', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 22 
   },
   price_sep: { 
     name: 'price_sep', 
     label: 'Цена — Сентябрь (€)', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 23 
   },
   price_oct: { 
     name: 'price_oct', 
     label: 'Цена — Октябрь (€)', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 24 
   },
   price_nov: { 
     name: 'price_nov', 
     label: 'Цена — Ноябрь (€)', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 25 
   },
   price_dec: { 
     name: 'price_dec', 
     label: 'Цена — Декабрь (€)', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 26 
   },
   price_oct_apr: { 
     name: 'price_oct_apr', 
     label: 'Цена — Октябрь-Апрель (€)', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 27 
   },
   booking_mark: { 
     name: 'booking_mark', 
     label: 'Букинг (оценка)', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 7.1 
   },
   dist_sea: { 
     name: 'dist_sea', 
     label: 'Расстояние до моря (км)', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 28 
   },
   dist_tivat: { 
     name: 'dist_tivat', 
     label: 'Расстояние до аэропорта Тиват (км)', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 29 
   },
   dist_podg: { 
     name: 'dist_podg', 
     label: 'Расстояние до аэропорта Подгорица (км)', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 30 
   },
   discount: { 
     name: 'discount', 
     label: 'Скидка (%)', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 1 
   },
   images: { 
     name: 'images', 
     label: '', 
     model: true, 
-    inCreateFormAsDefault: false, 
+    inCreateFormAsDefault: false,
+    inShowAction: true, 
     default: null 
   },
   thumbnails: { 
     name: 'thumbnails', 
     label: 'Изображения галереи', 
     model: false, 
-    inCreateFormAsDefault: false, 
+    inCreateFormAsDefault: false,
+    inShowAction: false, 
     default: null 
   },
   main_image: { 
@@ -358,6 +408,7 @@ export const realtyFields = {
     label: 'Главное изображение', 
     model: false, 
     inCreateFormAsDefault: false, 
+    inShowAction: false, 
     default: null 
   },
 }
@@ -367,49 +418,56 @@ export const feedbackFields = {
     name: 'id', 
     label: 'Id', 
     model: true, 
-    inCreateFormAsDefault: false, 
+    inCreateFormAsDefault: false,
+    inShowAction: true, 
     default: null 
   },
   author: { 
     name: 'author', 
     label: 'Автор', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 'Инкогнито' 
   },
   date: { 
     name: 'date', 
     label: 'Дата', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: '2000-01-01' 
   },
   text: { 
     name: 'text', 
     label: 'Текст', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 'Текст по умолчанию' 
   },
   realty: { 
     name: 'realty', 
     label: 'Объект', 
     model: true, 
-    inCreateFormAsDefault: false, 
+    inCreateFormAsDefault: false,
+    inShowAction: true, 
     default: 'Объект' 
   },
   realty_id: { 
     name: 'realty_id', 
     label: 'Id объекта', 
     model: true, 
-    inCreateFormAsDefault: true, 
+    inCreateFormAsDefault: true,
+    inShowAction: true, 
     default: 1 
   },
   realty_name: { 
     name: 'realty_name', 
     label: 'Объект', 
     model: false, 
-    inCreateFormAsDefault: false, 
+    inCreateFormAsDefault: false,
+    inShowAction: false, 
     default: 'realty_name' 
   },
 }

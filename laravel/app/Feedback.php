@@ -9,6 +9,7 @@ class Feedback extends Model
 {
     protected $table = 'feedbacks';	
     protected $guarded = [];
+    public $timestamps = false;
     
     public function realty() 
 	{
