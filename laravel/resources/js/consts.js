@@ -88,6 +88,13 @@ export const feedbackFields = {
   realty_name: { name: 'realty_name', label: 'Объект', inCreateFormAsDefault: false, default: 'realty_name' },
 }
 
+export const contentFields = {
+  id: { name: 'id', label: 'Id', inCreateFormAsDefault: false, default: null },
+  phone_main: { name: 'phone_main', label: 'Телефон основной', default: '+7 928 270 70 70' },
+  header_main_ru: { name: 'header_main_ru', label: 'Заголовок основной', default: 'Заголовок основной' },
+  header_main_en: { name: 'header_main_ru', label: 'Заголовок основной — English', default: 'Заголовок основной — English' },
+}
+
 export const muiFormLabelClass = "MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
 
 

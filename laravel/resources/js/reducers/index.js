@@ -10,6 +10,7 @@ import feedbacks from './feedbacks'
 import feedbackShow from './feedbackShow'
 import feedbackEdit from './feedbackEdit'
 import formDataImages from './formDataImages'
+import content from './content'
 
 // Redux Form Reducer
 import { reducer as formReducer } from 'redux-form'
@@ -34,6 +35,7 @@ export default combineReducers({
   feedbackEdit,
   formDataImages, 
   form: formReducer,
+  content,
   isFirstLoading,
   isJustCreatedResource,
   isJustUpdatedResource,
@@ -41,4 +43,5 @@ export default combineReducers({
   isAlertCreateVisible,
   isAlertUpdateVisible,
   isAlertDeleteVisible, 
+
 })

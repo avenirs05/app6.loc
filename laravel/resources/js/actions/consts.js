@@ -33,5 +33,7 @@ export const CLEAN_FORM_DATA_IMAGES = 'CLEAN_FORM_DATA_IMAGES'
 
 export const GET_LANGUAGES = 'GET_LANGUAGES'
 
+export const GET_CONTENT = 'GET_CONTENT'
+
 
 
