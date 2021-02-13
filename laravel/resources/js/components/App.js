@@ -25,6 +25,7 @@ import FeedbacksPage from './FeedbacksPage'
 import FeedbackCreatePage from './FeedbackCreatePage'
 import FeedbackShowPage from './FeedbackShowPage'
 import FeedbackEditPage from './FeedbackEditPage'
+import ContentEditPage from './ContentEditPage'
 import NavbarContainer from './NavbarContainer'
 import Test from './Test'
 
@@ -36,8 +37,9 @@ import ListGroupCss from './css/ListGroup.module.css';
 class App extends Component {
   constructor(props) {
     super(props)
-    this.feedbacksMenuItem = React.createRef()
     this.realtiesMenuItem = React.createRef()
+    this.feedbacksMenuItem = React.createRef()
+    this.contentMenuItem = React.createRef()
   }
 
   componentDidMount() {
@@ -79,6 +81,14 @@ class App extends Component {
                   onMouseOver={this.makeCursorNotPointerIfActive.bind(this, this.feedbacksMenuItem)}>
                     Отзывы
                 </NavLink>
+                <NavLink to="/content"
+                  className={NavLinkCss.main}
+                  activeClassName={NavLinkCss.active}
+                  onClick={this.props.getConents}
+                  ref={this.contentMenuItem}
+                  onMouseOver={this.makeCursorNotPointerIfActive.bind(this, this.contentMenuItem)}>
+                    Контент
+                </NavLink>
               </ListGroup>
             </Col>
             <Col>
@@ -92,6 +102,7 @@ class App extends Component {
                 <Route children={<FeedbackCreatePage />} exact path="/feedbacks/create" />
                 <Route children={<FeedbackShowPage />} exact path="/feedbacks/:id" />
                 <Route children={<FeedbackEditPage />} exact path="/feedbacks/:id/edit" />
+                <Route children={<ContentEditPage />} exact path="/content" />
                 <Route children={<Test />} exact path="/test" />
               </Switch>
             </Col>
