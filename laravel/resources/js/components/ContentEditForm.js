@@ -23,7 +23,6 @@ import { useClickByHotKey } from './hooks'
 
 let ContentEditForm = props => {
   const { handleSubmit, pristine, submitting, feedbackUpdate } = props
-  //let x = null;
   
   const updateBtn = useClickByHotKey('keydown', 'Escape')
  
@@ -32,16 +31,15 @@ let ContentEditForm = props => {
   }
 
   useEffect(() => {
-    //props.initialize(props.initialValues)
-    //typeof state.content.content.phone_main !== undefined ? :,
-    //console.log(store.getState())
   }, [])
 
   return (    
     <form className={FormCss.form} onSubmit={handleSubmit(submit)} >
       <div><Field name={f.phone_main.name} label={f.phone_main.label} component={renderTextField} /></div>
       <div><Field name={f.header_main_ru.name} label={f.header_main_ru.label} component={renderTextField} /></div> 
-      {/* <div><Field name={f.header_main_en.name} label={f.header_main_en.label} component={renderTextField} /></div> */}
+      <div><Field name={f.header_main_en.name} label={f.header_main_en.label} component={renderTextField} /></div>
+      <div><Field name={f.faq_areas_ru_title.name} label={f.faq_areas_ru_title.label} component={renderTextField} /></div>
+      <div><Field name={f.faq_areas_en_title.name} label={f.faq_areas_en_title.label} component={renderTextField} /></div>
       {/* <div><Field name={f.date.name} label={f.date.label} type="date" component={renderTextField} /></div>
       <div>
         <Field name={f.text.name} 
@@ -71,6 +69,9 @@ function mapStateToProps(state) {
     initialValues: {
       phone_main: state.content.content.phone_main,
       header_main_ru: state.content.content.header_main !== undefined ? state.content.content.header_main.ru : '',
+      header_main_en: state.content.content.header_main !== undefined ? state.content.content.header_main.en : '',
+      faq_areas_ru_title: state.content.content.faq !== undefined ? state.content.content.faq.areas.ru.title : '',
+      faq_areas_en_title: state.content.content.faq !== undefined ? state.content.content.faq.areas.en.title : '',
     },
     enableReinitialize: true,
   }

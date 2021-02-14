@@ -92,7 +92,9 @@ export const contentFields = {
   id: { name: 'id', label: 'Id', inCreateFormAsDefault: false, default: null },
   phone_main: { name: 'phone_main', label: 'Телефон основной', default: '+7 928 270 70 70' },
   header_main_ru: { name: 'header_main_ru', label: 'Заголовок основной', default: 'Заголовок основной' },
-  header_main_en: { name: 'header_main_ru', label: 'Заголовок основной — English', default: 'Заголовок основной — English' },
+  header_main_en: { name: 'header_main_en', label: 'Заголовок основной — English', default: 'Заголовок основной — English' },
+  faq_areas_ru_title: { name: 'faq_areas_ru_title', label: 'FAQ - Районы в Черногории - Заголовок', default: 'FAQ - Районы в Черногории - Заголовок' },
+  faq_areas_en_title: { name: 'faq_areas_en_title', label: 'FAQ - Районы в Черногории - Заголовок', default: 'FAQ - Районы в Черногории - Заголовок — English' },
 }
 
 export const muiFormLabelClass = "MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
