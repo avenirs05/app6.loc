@@ -58,8 +58,9 @@ let RealtyEditForm = props => {
     thumbnailDelete(thumbnail)      
   }
 
-  return (
+  return (     
     <form className={FormCss.form} onSubmit={handleSubmit(submit)} encType="multipart/form-data">
+      <h3 className="mt-3 mb-4">{typeof realtyEdit.name !== undefined ? realtyEdit.name: ''}</h3>
       <div><Field name={f.name.name} label={f.name.label} component={renderTextField} /></div>
       <div>
         <Field name={f.visibility.name} label={f.visibility.label} classes={classes} component={renderSelectField}>          
@@ -101,13 +102,13 @@ let RealtyEditForm = props => {
       <div><Field name={f.internet_payment_en.name} label={f.internet_payment_en.label} component={renderTextField} /></div>
       <div><Field name={f.parking_payment_ru.name} label={f.parking_payment_ru.label} component={renderTextField} /></div>
       <div><Field name={f.parking_payment_en.name} label={f.parking_payment_en.label} component={renderTextField} /></div>
-      <div>
+      <div className="mb-4">
         <label className={muiFormLabelClass} data-shrink="true">
           {f.description_ru.label}
         </label>
         <Field name={f.description_ru.name} component={ReactMDE} placeholder={f.description_ru.label} />
       </div>
-      <div>
+      <div className="mb-4">
         <label className={muiFormLabelClass} data-shrink="true">
           {f.description_en.label}
         </label>
@@ -202,7 +203,7 @@ let RealtyEditForm = props => {
         <Button ref={updateBtn} 
                 variant="primary" 
                 type="submit" 
-                disabled={pristine || submitting}>
+                disabled={pristine || submitting} >
           Сохранить
         </Button>
       </div>

@@ -48,16 +48,6 @@ class FeedbackResource extends Controller
         return $feedback->id;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return Feedback::with(['realty'])->where('id', $id)->first();
-    }
 
     /**
      * Show the form for editing the specified resource.

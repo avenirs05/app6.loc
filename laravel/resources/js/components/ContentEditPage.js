@@ -7,9 +7,6 @@ import { withRouter } from "react-router-dom"
 // Components
 import ContentEditForm from './ContentEditForm';
 
-// React Bootstrap
-import Button from 'react-bootstrap/Button'
-
 // Actions
 import { getContentAsync } from '../actions/getContentAsync'
 

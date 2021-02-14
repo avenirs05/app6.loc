@@ -15,7 +15,6 @@ import FormControl from 'react-bootstrap/FormControl'
 
 // Material UI
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
-import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 
 // Actions
@@ -106,11 +105,6 @@ function FeedbacksPage({
             </NavLink>
           </td>
           <td className={TableCss.td_icon}>
-            <NavLink to={`/feedbacks/${feedback.id}`}>
-              <VisibilityOutlinedIcon color="primary" className={TableCss.icon}></VisibilityOutlinedIcon>
-            </NavLink>
-          </td>
-          <td className={TableCss.td_icon}>
             <DeleteOutlineOutlinedIcon
               onClick={(e) => setCandidateToDelete(e, feedback.id, feedback.author)}
               color="primary"
@@ -174,7 +168,6 @@ function FeedbacksPage({
             <th>Автор</th>
             <th>Объект</th>
             <th className="td_icon"><EditOutlinedIcon color="primary"></EditOutlinedIcon></th>
-            <th className="td_icon"><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></th>
             <th className="td_icon"><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></th>
           </tr>
         </thead>

@@ -1,15 +1,10 @@
 import { GET_CONTENT } from '../actions/consts'
 
-const contentInit = {
-  content: {},
-}
 
-export default function realties(state = contentInit, action) {
+export default function content(state = {}, action) {
   switch (action.type) {
     case GET_CONTENT:      
-      return {
-        content: action.payload.content,
-      }
+      return action.payload      
       
     default:
       return state  

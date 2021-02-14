@@ -45,16 +45,6 @@ class RealtyResource extends Controller
         return $realty->id;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Realty  $realty
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Realty $realty)
-    {
-       return $realty;
-    }
 
     /**
      * Show the form for editing the specified resource.

@@ -3,11 +3,9 @@ import { combineReducers } from 'redux'
 
 // Regular Reducers
 import realties from './realties'
-import realtyShow from './realtyShow'
 import realtyEdit from './realtyEdit'
 import realtyDelete from './realtyDelete'
 import feedbacks from './feedbacks'
-import feedbackShow from './feedbackShow'
 import feedbackEdit from './feedbackEdit'
 import formDataImages from './formDataImages'
 import content from './content'
@@ -27,11 +25,9 @@ import { isFirstLoading,
 
 export default combineReducers({ 
   realties,    
-  realtyShow,
   realtyEdit,
   realtyDelete,
   feedbacks,
-  feedbackShow,
   feedbackEdit,
   formDataImages, 
   form: formReducer,
@@ -43,5 +39,4 @@ export default combineReducers({
   isAlertCreateVisible,
   isAlertUpdateVisible,
   isAlertDeleteVisible, 
-
 })

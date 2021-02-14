@@ -19,11 +19,9 @@ import { setFirstLoadingTrueAC, setFirstLoadingFalseAC } from '../actions/ac/fla
 // Components
 import RealtiesPage from './RealtiesPage'
 import RealtyCreatePage from './RealtyCreatePage'
-import RealtyShowPage from './RealtyShowPage'
 import RealtyEditPage from './RealtyEditPage'
 import FeedbacksPage from './FeedbacksPage'
 import FeedbackCreatePage from './FeedbackCreatePage'
-import FeedbackShowPage from './FeedbackShowPage'
 import FeedbackEditPage from './FeedbackEditPage'
 import ContentEditPage from './ContentEditPage'
 import NavbarContainer from './NavbarContainer'
@@ -96,11 +94,9 @@ class App extends Component {
                 <Route children={<RealtiesPage />} exact path="/" />
                 <Route children={<RealtiesPage />} exact path="/realties" />
                 <Route children={<RealtyCreatePage />} exact path="/realties/create" />
-                <Route children={<RealtyShowPage />} exact path="/realties/:id" />
                 <Route children={<RealtyEditPage />} exact path="/realties/:id/edit" />
                 <Route children={<FeedbacksPage />} exact path="/feedbacks" />
                 <Route children={<FeedbackCreatePage />} exact path="/feedbacks/create" />
-                <Route children={<FeedbackShowPage />} exact path="/feedbacks/:id" />
                 <Route children={<FeedbackEditPage />} exact path="/feedbacks/:id/edit" />
                 <Route children={<ContentEditPage />} exact path="/content" />
                 <Route children={<Test />} exact path="/test" />

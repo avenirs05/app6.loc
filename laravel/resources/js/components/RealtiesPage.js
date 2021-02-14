@@ -15,7 +15,6 @@ import FormControl from 'react-bootstrap/FormControl'
 
 // Material UI
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
-import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 
 // Actions
@@ -46,7 +45,7 @@ function RealtiesPage({
   perPage,
   getRealties,
   getRealtiesSearched,
-  handleRealtyDelete,
+  realtyDelete,
   setJustCreatedResourceFalse: noCreated,
   setJustUpdatedResourceFalse: noUpdated,
   setJustDeletedResourceFalse: noDeleted,
@@ -78,7 +77,7 @@ function RealtiesPage({
 
   function onDeleteResource(e, id) {
     handleClose()
-    handleRealtyDelete(id)
+    realtyDelete(id)
   }
 
   function setCandidateToDelete(e, id, name) {
@@ -101,11 +100,6 @@ function RealtiesPage({
           <td className={TableCss.td_icon}>
             <NavLink to={`/realties/${realty.id}/edit`}>
               <EditOutlinedIcon color="primary" className={TableCss.icon}></EditOutlinedIcon>
-            </NavLink>
-          </td>
-          <td className={TableCss.td_icon}>
-            <NavLink to={`/realties/${realty.id}`}>
-              <VisibilityOutlinedIcon color="primary" className={TableCss.icon}></VisibilityOutlinedIcon>
             </NavLink>
           </td>
           <td className={TableCss.td_icon}>
@@ -174,7 +168,6 @@ function RealtiesPage({
             <th>Видимость</th>
             <th>Id</th>
             <th className="td_icon"><EditOutlinedIcon color="primary"></EditOutlinedIcon></th>
-            <th className="td_icon"><VisibilityOutlinedIcon color="primary"></VisibilityOutlinedIcon></th>
             <th className="td_icon"><DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon></th>
           </tr>
         </thead>
@@ -220,7 +213,7 @@ function mapDispatchToProps(dispatch) {
     getRealtiesSearched(e) {   
       dispatch(getRealtiesSearchedAsync(e.target.value))
     },
-    handleRealtyDelete(id) {
+    realtyDelete(id) {
       dispatch(realtyDeleteAsync(id))
     },
     setJustCreatedResourceFalse() {

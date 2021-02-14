@@ -31,7 +31,6 @@ class RealtyEditPage extends Component {
         <NavLink to="/realties">
           <Button size="sm" variant="outline-secondary" className="mt-3 mb-3">Назад</Button>
         </NavLink> 
-        <h3 className="mt-3 mb-4">{this.props.realtyEdit.name}</h3> 
         <RealtyEditForm />
       </>
     )  
@@ -40,7 +39,6 @@ class RealtyEditPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    realtyEdit: state.realtyEdit,
     isJustUpdatedResource: state.isJustUpdatedResource,
   }
 }
