@@ -36,7 +36,8 @@ let ContentEditForm = props => {
   }, [])
 
   const textAreaStyle = { height: '10em' }
-  const faqStyle = { height: '50em' }
+  const faqAreasStyle = { height: '50em' }
+  const faqContactsStyle = { height: '20em' }
 
   return (    
     <form className={FormCss.form} onSubmit={handleSubmit(submit)} >
@@ -127,7 +128,7 @@ let ContentEditForm = props => {
           {f.faq_quest_answ_ru.label}
         </label>
         <Field name={f.faq_quest_answ_ru.name} 
-               textAreaStyle={faqStyle} 
+               textAreaStyle={faqAreasStyle} 
                component={ReactMDE} 
                placeholder={f.faq_quest_answ_ru.label} />
       </div>
@@ -136,7 +137,7 @@ let ContentEditForm = props => {
           {f.faq_quest_answ_en.label}
         </label>
         <Field name={f.faq_quest_answ_en.name} 
-               textAreaStyle={faqStyle} 
+               textAreaStyle={faqAreasStyle} 
                component={ReactMDE} 
                placeholder={f.faq_quest_answ_en.label} />
       </div>
@@ -147,9 +148,17 @@ let ContentEditForm = props => {
           {f.contact_page_ru.label}
         </label>
         <Field name={f.contact_page_ru.name} 
-               textAreaStyle={textAreaStyle} 
+               textAreaStyle={faqContactsStyle} 
+               component={ReactMDE} />
+      </div>
+      <div className="mb-4">
+        <label className={muiFormLabelClass} data-shrink="true">
+          {f.contact_page_en.label}
+        </label>
+        <Field name={f.contact_page_en.name} 
+               textAreaStyle={faqContactsStyle} 
                component={ReactMDE} 
-               placeholder={f.contact_page_ru.label} />
+               placeholder={f.contact_page_en.label} />
       </div>
 
       <div>
@@ -213,6 +222,7 @@ function mapStateToProps(state) {
       
       // Contact Page
       [f.contact_page_ru.name]: state.content.contact_page !== undefined ? state.content.contact_page.ru : '', 
+      [f.contact_page_en.name]: state.content.contact_page !== undefined ? state.content.contact_page.en : '', 
     },
     enableReinitialize: true,    
   }

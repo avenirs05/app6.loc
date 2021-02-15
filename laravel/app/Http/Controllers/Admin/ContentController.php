@@ -18,7 +18,7 @@ class ContentController extends Controller
     {
         Content::truncate();
 
-        Content::create(
+        $res = Content::create(
 			[
                 'phone_main' => $request->phone_main, 
                 'header_main' => [
@@ -68,15 +68,17 @@ class ContentController extends Controller
                         ],
                     ],
                     "quest_answ" => [
-                        "ru" => $request->quest_answ_ru,                       
-                        "en" => $request->quest_answ_en
+                        "ru" => $request->faq_quest_answ_ru,                       
+                        "en" => $request->faq_quest_answ_en
                     ],
                 ],
-                'contact_page' => [
+                "contact_page" => [
                     "ru" => $request->contact_page_ru,
                     "en" => $request->contact_page_en,
                 ]
 			]
-		);
+        );
+        
+        return $res;
     }
 }

@@ -28,8 +28,6 @@
     @endisset
   </div>  
   <div class="w-100 mt-3">
-    @markdown
-      {{ $realty->{"description_". app()->getLocale()} }}
-    @endmarkdown
+    @markdown {{ $realty->{"description_". app()->getLocale()} }} @endmarkdown
   </div> 
 </div> 

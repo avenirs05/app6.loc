@@ -28,7 +28,7 @@
   </div>
 
   {{-- Areas --}}
-  <div class="container">
+  <div class="container mb-4">
     <h2 class="text-center mt-5 mb-5">
       {{ $content->faq['title'][app()->getLocale()] }}
     </h2>
@@ -58,11 +58,8 @@
   <div class="container">    
     <div class="row mb-4">
       <div class="col">
-        {!! $content->faq['quest_answ'][app()->getLocale()] !!}
+        @markdown {!! $content->faq['quest_answ'][app()->getLocale()] !!} @endmarkdown
       </div>
     </div>
   </div>
-  {{-- <div>
-    <img src={{ asset('storage/uploads/79/06.jpeg.jpg') }} alt="">
-  </div> --}}
 @endsection

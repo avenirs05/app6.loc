@@ -5,7 +5,7 @@
 	<div class="container">    
     <div class="row mb-4">
       <div class="col">
-				{!! $content->contact_page[app()->getLocale()] !!}
+        @markdown {{ $content->contact_page[app()->getLocale()] }} @endmarkdown 
       </div>
     </div>
   </div>  

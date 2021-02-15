@@ -3,7 +3,7 @@
     <img src={{ asset("images/$image") }} class="card-img-top" alt="">
     <div class="card-body">
       <h5 class="card-title">{{ $title }}</h5>
-      {!! $text !!}
+        @markdown {{ $text }} @endmarkdown
     </div>
   </div>
 </div>
