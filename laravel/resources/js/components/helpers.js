@@ -16,6 +16,8 @@ export const validate = resource => values => {
     fontFamily: 'Roboto, Helvetica, Arial, sans-serif'
   }
 
+
+
   switch (resource) {      
     case 'realty':     
       Object.keys(values).forEach(field => {
@@ -32,6 +34,14 @@ export const validate = resource => values => {
       return errors
 
     case 'feedback':  
+      Object.keys(values).forEach(field => {
+        if (!values[field]) {
+          errors[field] = eval(<span style={errorStyle}>Обязательное поле!</span>)
+        }
+      }) 
+      return errors
+
+    case 'content':  
       Object.keys(values).forEach(field => {
         if (!values[field]) {
           errors[field] = eval(<span style={errorStyle}>Обязательное поле!</span>)

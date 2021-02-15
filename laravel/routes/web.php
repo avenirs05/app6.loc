@@ -55,6 +55,7 @@ Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function()
 
 	// Content
 	Route::get('/content', 'ContentController@index')->name('content.get');
+	Route::patch('/content-update', 'ContentController@update')->name('content.update');
 
 	// Resource
 	Route::resources([

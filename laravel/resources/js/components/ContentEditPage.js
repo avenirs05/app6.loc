@@ -32,7 +32,7 @@ class ContentEditPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    isJustUpdatedResource: state.isJustUpdatedResource,
+    //isJustUpdatedResource: state.isJustUpdatedResource,
   }
 }
 

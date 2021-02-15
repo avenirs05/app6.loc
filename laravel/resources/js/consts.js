@@ -89,29 +89,49 @@ export const feedbackFields = {
 }
 
 export const contentFields = {
+  // Id
   id: { name: 'id', label: 'Id', inCreateFormAsDefault: false, default: null },
+  
+  // Phone
   phone_main: { name: 'phone_main', label: 'Телефон основной', default: '+7 928 270 70 70' },
+  
+  // Header Main
   header_main_ru: { name: 'header_main_ru', label: 'Заголовок основной', default: 'Заголовок основной' },
   header_main_en: { name: 'header_main_en', label: 'Заголовок основной — English', default: 'Заголовок основной — English' },
+  
+  // FAQ - Title
   faq_areas_ru_title: { name: 'faq_areas_ru_title', label: 'FAQ - Районы в Черногории - Заголовок', default: 'FAQ - Районы в Черногории - Заголовок' },
   faq_areas_en_title: { name: 'faq_areas_en_title', label: 'FAQ - Районы в Черногории - Заголовок — English', default: 'FAQ - Районы в Черногории - Заголовок — English' },
+  
+  // FAQ - Areas - Titles
+  faq_title_ru: { name: 'faq_title_ru', label: 'FAQ - Заголовок', default: 'FAQ - Заголовок' },
+  faq_title_en: { name: 'faq_title_en', label: 'FAQ - Заголовок — English', default: 'FAQ - Заголовок' },
+
+  // FAQ - Areas Bar Riviera
   faq_areas_ru_bar_riviera_title: { name: 'faq_areas_ru_bar_riviera_title', label: 'FAQ - Районы в Черногории - Заголовок — Барская ривьера', default: 'Барская ривьера' },
   faq_areas_en_bar_riviera_title: { name: 'faq_areas_en_bar_riviera_title', label: 'FAQ - Районы в Черногории - Заголовок — Барская ривьера — English', default: 'Барская ривьера' },
-  faq_areas_ru_budva_riviera_title: { name: 'faq_areas_ru_budva_riviera_title', label: 'FAQ - Районы в Черногории - Заголовок — Будванская ривьера', default: 'Будванская ривьера' },
-  faq_areas_en_budva_riviera_title: { name: 'faq_areas_en_budva_riviera_title', label: 'FAQ - Районы в Черногории - Заголовок — Будванская ривьера — English', default: 'Будванская ривьера' },
-  faq_areas_ru_boka_kotorska_bay_title: { name: 'faq_areas_ru_boka_kotorska_bay_title', label: 'FAQ - Районы в Черногории - Заголовок — Бока-Которский залив', default: 'Бока-Которский залив' },
-  faq_areas_en_boka_kotorska_bay_title: { name: 'faq_areas_en_boka_kotorska_bay_title', label: 'FAQ - Районы в Черногории - Заголовок — Бока-Которский залив — English', default: 'Бока-Которский залив' },
   faq_areas_ru_bar_riviera_text: { name: 'faq_areas_ru_bar_riviera_text', label: 'FAQ - Районы в Черногории - Текст — Барская ривьера', default: 'Барская ривьера - Текст' },
   faq_areas_en_bar_riviera_text: { name: 'faq_areas_en_bar_riviera_text', label: 'FAQ - Районы в Черногории - Текст — Барская ривьера — English', default: 'Барская ривьера - Текст — English' },
+  
+  // FAQ - Areas Budva Riviera
+  faq_areas_ru_budva_riviera_title: { name: 'faq_areas_ru_budva_riviera_title', label: 'FAQ - Районы в Черногории - Заголовок — Будванская ривьера', default: 'Будванская ривьера' },
+  faq_areas_en_budva_riviera_title: { name: 'faq_areas_en_budva_riviera_title', label: 'FAQ - Районы в Черногории - Заголовок — Будванская ривьера — English', default: 'Будванская ривьера' },
   faq_areas_ru_budva_riviera_text: { name: 'faq_areas_ru_budva_riviera_text', label: 'FAQ - Районы в Черногории - Текст — Будванская ривьера', default: 'Будванская ривьера - Текст' },
   faq_areas_en_budva_riviera_text: { name: 'faq_areas_en_budva_riviera_text', label: 'FAQ - Районы в Черногории - Текст — Будванская ривьера — English', default: 'Будванская ривьера - Текст — English' },
+  
+  // FAQ - Areas Boka Kotorska Bay
+  faq_areas_ru_boka_kotorska_bay_title: { name: 'faq_areas_ru_boka_kotorska_bay_title', label: 'FAQ - Районы в Черногории - Заголовок — Бока-Которский залив', default: 'Бока-Которский залив' },
+  faq_areas_en_boka_kotorska_bay_title: { name: 'faq_areas_en_boka_kotorska_bay_title', label: 'FAQ - Районы в Черногории - Заголовок — Бока-Которский залив — English', default: 'Бока-Которский залив' },
   faq_areas_ru_boka_kotorska_bay_text: { name: 'faq_areas_ru_boka_kotorska_bay_text', label: 'FAQ - Районы в Черногории - Текст — Бока-Которский залив', default: 'Бока-Которский залив - Текст' },
   faq_areas_en_boka_kotorska_bay_text: { name: 'faq_areas_en_boka_kotorska_bay_text', label: 'FAQ - Районы в Черногории - Текст — Бока-Которский залив — English', default: 'Бока-Которский залив - Текст — English' },
-  contact_page_ru: { name: 'contact_page_ru', label: 'Страница "Контакты"', default: 'Страница "Контакты"' },
-  contact_page_en: { name: 'contact_page_en', label: 'Страница "Контакты — English"', default: 'Страница "Контакты" — English' },
+  
+  // FAQ - Questions and Answers
   faq_quest_answ_ru: { name: 'faq_quest_answ_ru', label: 'FAQ - Вопросы и ответы', default: 'FAQ - Вопросы и ответы' },
   faq_quest_answ_en: { name: 'faq_quest_answ_en', label: 'FAQ - Вопросы и ответы — English', default: 'FAQ - Вопросы и ответы — English' },
 
+  // Contact Page
+  contact_page_ru: { name: 'contact_page_ru', label: 'Страница "Контакты"', default: 'Страница "Контакты"' },
+  contact_page_en: { name: 'contact_page_en', label: 'Страница "Контакты — English"', default: 'Страница "Контакты" — English' },
 }
 
 export const muiFormLabelClass = "MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"

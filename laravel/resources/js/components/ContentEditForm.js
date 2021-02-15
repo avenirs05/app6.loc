@@ -12,11 +12,11 @@ import Button from 'react-bootstrap/Button'
 import FormCss from './css/Form.module.css'
 
 // Actions
-//import { feedbackUpdateAsync } from '../actions/feedbackUpdateAsync'
+import { contentUpdateAsync } from '../actions/contentUpdateAsync'
 
 // Helpers
 import { contentFields as f, muiFormLabelClass } from '../consts'
-import { renderTextField, renderTextArea } from './formHelpers'
+import { renderTextField } from './formHelpers'
 import { validate } from './helpers' 
 
 // Hooks
@@ -24,12 +24,12 @@ import { useClickByHotKey } from './hooks'
       
 
 let ContentEditForm = props => {
-  const { handleSubmit, pristine, submitting, feedbackUpdate } = props
+  const { handleSubmit, pristine, submitting, contentUpdate } = props
   
   const updateBtn = useClickByHotKey('keydown', 'Escape')
  
   const submit = values => {
-    feedbackUpdate(values)    
+    contentUpdate(values)    
   }
 
   useEffect(() => {
@@ -47,17 +47,17 @@ let ContentEditForm = props => {
       <div><Field name={f.header_main_ru.name} label={f.header_main_ru.label} component={renderTextField} /></div> 
       <div><Field name={f.header_main_en.name} label={f.header_main_en.label} component={renderTextField} /></div>
       
-      {/* Areas - Titles */}
+      {/* FAQ - Title */}
+      <div><Field name={f.faq_title_ru.name} label={f.faq_title_ru.label} component={renderTextField} /></div> 
+      <div><Field name={f.faq_title_en.name} label={f.faq_title_en.label} component={renderTextField} /></div>
+
+      {/* FAQ - Areas - Titles */}
       <div><Field name={f.faq_areas_ru_title.name} label={f.faq_areas_ru_title.label} component={renderTextField} /></div>
       <div><Field name={f.faq_areas_en_title.name} label={f.faq_areas_en_title.label} component={renderTextField} /></div>
+      
+      {/* FAQ - Areas Bar Riviera */}
       <div><Field name={f.faq_areas_ru_bar_riviera_title.name} label={f.faq_areas_ru_bar_riviera_title.label} component={renderTextField} /></div>
       <div><Field name={f.faq_areas_en_bar_riviera_title.name} label={f.faq_areas_en_bar_riviera_title.label} component={renderTextField} /></div>
-      <div><Field name={f.faq_areas_ru_budva_riviera_title.name} label={f.faq_areas_ru_budva_riviera_title.label} component={renderTextField} /></div>
-      <div><Field name={f.faq_areas_en_budva_riviera_title.name} label={f.faq_areas_en_budva_riviera_title.label} component={renderTextField} /></div>
-      <div><Field name={f.faq_areas_ru_boka_kotorska_bay_title.name} label={f.faq_areas_ru_boka_kotorska_bay_title.label} component={renderTextField} /></div>
-      <div><Field name={f.faq_areas_en_boka_kotorska_bay_title.name} label={f.faq_areas_en_boka_kotorska_bay_title.label} component={renderTextField} /></div>
-      
-      {/* Areas Bar Riviera Text */}
       <div className="mb-4">
         <label className={muiFormLabelClass} data-shrink="true">
           {f.faq_areas_ru_bar_riviera_text.label}
@@ -77,7 +77,9 @@ let ContentEditForm = props => {
                placeholder={f.faq_areas_en_bar_riviera_text.label} />
       </div>
       
-      {/* Areas Budva Riviera Text */}
+      {/* FAQ - Areas Budva Riviera */}
+      <div><Field name={f.faq_areas_ru_budva_riviera_title.name} label={f.faq_areas_ru_budva_riviera_title.label} component={renderTextField} /></div>
+      <div><Field name={f.faq_areas_en_budva_riviera_title.name} label={f.faq_areas_en_budva_riviera_title.label} component={renderTextField} /></div>
       <div className="mb-4">
         <label className={muiFormLabelClass} data-shrink="true">
           {f.faq_areas_ru_budva_riviera_text.label}
@@ -97,7 +99,9 @@ let ContentEditForm = props => {
                placeholder={f.faq_areas_en_budva_riviera_text.label} />
       </div>
 
-      {/* Areas Boka Kotorska Bay Text */}
+      {/* FAQ - Areas Boka Kotorska Bay */}
+      <div><Field name={f.faq_areas_ru_boka_kotorska_bay_title.name} label={f.faq_areas_ru_boka_kotorska_bay_title.label} component={renderTextField} /></div>
+      <div><Field name={f.faq_areas_en_boka_kotorska_bay_title.name} label={f.faq_areas_en_boka_kotorska_bay_title.label} component={renderTextField} /></div>
       <div className="mb-4">
         <label className={muiFormLabelClass} data-shrink="true">
           {f.faq_areas_ru_boka_kotorska_bay_text.label}
@@ -117,18 +121,7 @@ let ContentEditForm = props => {
                placeholder={f.faq_areas_en_boka_kotorska_bay_text.label} />
       </div>
 
-      {/* Contact Page */}
-      <div className="mb-4">
-        <label className={muiFormLabelClass} data-shrink="true">
-          {f.contact_page_ru.label}
-        </label>
-        <Field name={f.contact_page_ru.name} 
-               textAreaStyle={textAreaStyle} 
-               component={ReactMDE} 
-               placeholder={f.contact_page_ru.label} />
-      </div>
-
-      {/* Questions and Answers */}
+      {/* FAQ - Questions and Answers */}
       <div className="mb-4">
         <label className={muiFormLabelClass} data-shrink="true">
           {f.faq_quest_answ_ru.label}
@@ -148,6 +141,17 @@ let ContentEditForm = props => {
                placeholder={f.faq_quest_answ_en.label} />
       </div>
 
+      {/* Contact Page */}
+      <div className="mb-4">
+        <label className={muiFormLabelClass} data-shrink="true">
+          {f.contact_page_ru.label}
+        </label>
+        <Field name={f.contact_page_ru.name} 
+               textAreaStyle={textAreaStyle} 
+               component={ReactMDE} 
+               placeholder={f.contact_page_ru.label} />
+      </div>
+
       <div>
         <Button ref={updateBtn} 
                 variant="primary" 
@@ -163,33 +167,52 @@ let ContentEditForm = props => {
 
 ContentEditForm = reduxForm({
   form: 'ContentEditForm',
-  validate: validate('feedback')
+  validate: validate('content')
 })(ContentEditForm)
 
 
 function mapStateToProps(state) {  
   return {    
     initialValues: {
-      phone_main: state.content.phone_main,
-      header_main_ru: state.content.header_main !== undefined ? state.content.header_main.ru : '',
-      header_main_en: state.content.header_main !== undefined ? state.content.header_main.en : '',
-      faq_areas_ru_title: state.content.faq !== undefined ? state.content.faq.areas.ru.title : '',
-      faq_areas_en_title: state.content.faq !== undefined ? state.content.faq.areas.en.title : '',
-      faq_areas_ru_bar_riviera_title: state.content.faq !== undefined ? state.content.faq.areas.ru.bar_riviera.title : '',
-      faq_areas_en_bar_riviera_title: state.content.faq !== undefined ? state.content.faq.areas.en.bar_riviera.title : '',      
-      faq_areas_ru_budva_riviera_title: state.content.faq !== undefined ? state.content.faq.areas.ru.budva_riviera.title : '',
-      faq_areas_en_budva_riviera_title: state.content.faq !== undefined ? state.content.faq.areas.en.budva_riviera.title : '',      
-      faq_areas_ru_boka_kotorska_bay_title: state.content.faq !== undefined ? state.content.faq.areas.ru.boka_kotorska_bay.title : '',
-      faq_areas_en_boka_kotorska_bay_title: state.content.faq !== undefined ? state.content.faq.areas.en.boka_kotorska_bay.title : '',      
-      faq_areas_ru_bar_riviera_text: state.content.faq !== undefined ? state.content.faq.areas.ru.bar_riviera.text : '',
-      faq_areas_en_bar_riviera_text: state.content.faq !== undefined ? state.content.faq.areas.en.bar_riviera.text : '',
-      faq_areas_ru_budva_riviera_text: state.content.faq !== undefined ? state.content.faq.areas.ru.budva_riviera.text : '',
-      faq_areas_en_budva_riviera_text: state.content.faq !== undefined ? state.content.faq.areas.en.budva_riviera.text : '',
-      faq_areas_ru_boka_kotorska_bay_text: state.content.faq !== undefined ? state.content.faq.areas.ru.boka_kotorska_bay.text : '',
-      faq_areas_en_boka_kotorska_bay_text: state.content.faq !== undefined ? state.content.faq.areas.en.boka_kotorska_bay.text : '', 
-      contact_page_ru: state.content.contact_page !== undefined ? state.content.contact_page.ru : '', 
-      faq_quest_answ_ru: state.content.faq !== undefined ? state.content.faq.quest_answ.ru : '',
-      faq_quest_answ_en: state.content.faq !== undefined ? state.content.faq.quest_answ.en : '',
+      // Phone
+      [f.phone_main.name]: state.content.phone_main,
+      
+      // Header Main
+      [f.header_main_ru.name]: state.content.header_main !== undefined ? state.content.header_main.ru : '',
+      [f.header_main_en.name]: state.content.header_main !== undefined ? state.content.header_main.en : '',
+
+      // FAQ - Title
+      [f.faq_title_ru.name]: state.content.faq !== undefined ? state.content.faq.title.ru : '',
+      [f.faq_title_en.name]: state.content.faq !== undefined ? state.content.faq.title.en : '',
+      
+      // FAQ - Areas - Titles
+      [f.faq_areas_ru_title.name]: state.content.faq !== undefined ? state.content.faq.areas.ru.title : '',
+      [f.faq_areas_en_title.name]: state.content.faq !== undefined ? state.content.faq.areas.en.title : '',           
+      
+      // FAQ - Areas Bar Riviera
+      [f.faq_areas_ru_bar_riviera_title.name]: state.content.faq !== undefined ? state.content.faq.areas.ru.bar_riviera.title : '',
+      [f.faq_areas_en_bar_riviera_title.name]: state.content.faq !== undefined ? state.content.faq.areas.en.bar_riviera.title : '',
+      [f.faq_areas_ru_bar_riviera_text.name]: state.content.faq !== undefined ? state.content.faq.areas.ru.bar_riviera.text : '',
+      [f.faq_areas_en_bar_riviera_text.name]: state.content.faq !== undefined ? state.content.faq.areas.en.bar_riviera.text : '',
+      
+      // FAQ - Areas Budva Riviera
+      [f.faq_areas_ru_budva_riviera_title.name]: state.content.faq !== undefined ? state.content.faq.areas.ru.budva_riviera.title : '',
+      [f.faq_areas_en_budva_riviera_title.name]: state.content.faq !== undefined ? state.content.faq.areas.en.budva_riviera.title : '',      
+      [f.faq_areas_ru_budva_riviera_text.name]: state.content.faq !== undefined ? state.content.faq.areas.ru.budva_riviera.text : '',
+      [f.faq_areas_en_budva_riviera_text.name]: state.content.faq !== undefined ? state.content.faq.areas.en.budva_riviera.text : '',
+      
+      // FAQ - Areas Boka Kotorska Bay
+      [f.faq_areas_ru_boka_kotorska_bay_title.name]: state.content.faq !== undefined ? state.content.faq.areas.ru.boka_kotorska_bay.title : '',
+      [f.faq_areas_en_boka_kotorska_bay_title.name]: state.content.faq !== undefined ? state.content.faq.areas.en.boka_kotorska_bay.title : '',  
+      [f.faq_areas_ru_boka_kotorska_bay_text.name]: state.content.faq !== undefined ? state.content.faq.areas.ru.boka_kotorska_bay.text : '',
+      [f.faq_areas_en_boka_kotorska_bay_text.name]: state.content.faq !== undefined ? state.content.faq.areas.en.boka_kotorska_bay.text : '', 
+      
+      // FAQ - Questions and Answers
+      [f.faq_quest_answ_ru.name]: state.content.faq !== undefined ? state.content.faq.quest_answ.ru : '',
+      [f.faq_quest_answ_en.name]: state.content.faq !== undefined ? state.content.faq.quest_answ.en : '',
+      
+      // Contact Page
+      [f.contact_page_ru.name]: state.content.contact_page !== undefined ? state.content.contact_page.ru : '', 
     },
     enableReinitialize: true,    
   }
@@ -197,8 +220,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    feedbackUpdate(values) {   
-      //dispatch(feedbackUpdateAsync(values))      
+    contentUpdate(values) {        
+      dispatch(contentUpdateAsync(values))      
     },
   }
 }
