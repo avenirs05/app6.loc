@@ -52,11 +52,11 @@ let ContentEditForm = props => {
     contentUpdate(values)    
   }
 
-
   const textAreaStyle = { height: '10em' }
   const faqAreasStyle = { height: '50em' }
   const faqContactsStyle = { height: '20em' }
 
+  
   return (    
     <form className={FormCss.form} onSubmit={handleSubmit(submit)} >
       {/* Phone */}
