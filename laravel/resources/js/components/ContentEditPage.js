@@ -31,9 +31,7 @@ class ContentEditPage extends Component {
 }  
 
 function mapStateToProps(state) {
-  return {
-    //isJustUpdatedResource: state.isJustUpdatedResource,
-  }
+  return {}
 }
 
 function mapDispatchToProps(dispatch) {

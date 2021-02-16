@@ -1,5 +1,5 @@
 // Libs
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
@@ -7,12 +7,16 @@ import ReactMDE from 'redux-forms-markdown-editor'
 
 // React Bootstrap
 import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
 
 // Css Modules
 import FormCss from './css/Form.module.css'
 
 // Actions
 import { contentUpdateAsync } from '../actions/contentUpdateAsync'
+
+// AC
+import { setJustUpdatedResourceFalseAC } from '../actions/ac/flagsAC'
 
 // Helpers
 import { contentFields as f, muiFormLabelClass } from '../consts'
@@ -24,16 +28,30 @@ import { useClickByHotKey } from './hooks'
       
 
 let ContentEditForm = props => {
-  const { handleSubmit, pristine, submitting, contentUpdate } = props
+  const { handleSubmit, 
+          pristine, 
+          submitting, 
+          contentUpdate, 
+          isJustUpdatedResource, 
+          setJustUpdatedResourceFalse } = props
   
   const updateBtn = useClickByHotKey('keydown', 'Escape')
  
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
+  function mayBeShow() {
+    if (isJustUpdatedResource) {
+      handleShow() 
+      setJustUpdatedResourceFalse()
+    }     
+  }
+  
   const submit = values => {
     contentUpdate(values)    
   }
 
-  useEffect(() => {
-  }, [])
 
   const textAreaStyle = { height: '10em' }
   const faqAreasStyle = { height: '50em' }
@@ -163,12 +181,26 @@ let ContentEditForm = props => {
 
       <div>
         <Button ref={updateBtn} 
+                onClick={mayBeShow}
                 variant="primary" 
                 type="submit" 
                 disabled={pristine || submitting}>
           Сохранить
         </Button>
       </div>
+
+      <Modal variant="success" size="lg" show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <span style={{ color: '#1d643b' }}>
+              Контент успешно изменен!
+            </span>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>Закрыть</Button>
+        </Modal.Footer>
+      </Modal>
     </form>
   )
 }
@@ -225,6 +257,7 @@ function mapStateToProps(state) {
       [f.contact_page_en.name]: state.content.contact_page !== undefined ? state.content.contact_page.en : '', 
     },
     enableReinitialize: true,    
+    isJustUpdatedResource: state.isJustUpdatedResource
   }
 }
 
@@ -233,6 +266,9 @@ function mapDispatchToProps(dispatch) {
     contentUpdate(values) {        
       dispatch(contentUpdateAsync(values))      
     },
+    setJustUpdatedResourceFalse() {
+      dispatch(setJustUpdatedResourceFalseAC())
+    }
   }
 }
 

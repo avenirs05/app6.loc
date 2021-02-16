@@ -1,13 +1,13 @@
-//import { setJustUpdatedResourceTrueAC } from './ac/flagsAC'
-//import { setAlertUpdateVisibilityTrueAC } from './ac/flagsAC'
+import { setJustUpdatedResourceTrueAC } from './ac/flagsAC'
 
 
 export const contentUpdateAsync = values => async dispatch => {
   try {   
-    const response = await axios.patch(route('content.update'), values)        
-    console.log(response.data)  
-    //await dispatch(setJustUpdatedResourceTrueAC())
-    //await dispatch(setAlertUpdateVisibilityTrueAC())
+    const response = await axios.patch(route('content.update'), values)  
+
+    if (response.data === 'success') {
+      dispatch(setJustUpdatedResourceTrueAC())
+    }      
   }
   catch (error) {
     console.log(error)

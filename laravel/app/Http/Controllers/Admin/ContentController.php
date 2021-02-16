@@ -79,6 +79,6 @@ class ContentController extends Controller
 			]
         );
         
-        return $res;
+        return 'success';
     }
 }
