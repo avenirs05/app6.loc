@@ -5,7 +5,7 @@ const realtiesInit = {
   totalPages: 0,
   totalItems: 0,
   currentPage: 1,
-  perPage: 20 
+  perPage: 50 
 }
 
 export default function realties(state = realtiesInit, action) {

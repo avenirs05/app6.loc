@@ -17,7 +17,7 @@ class FeedbackResource extends Controller
      */
     public function index()
     {
-        return Feedback::with('realty')->paginate(60);
+        return Feedback::with('realty')->paginate(200);
     }
 
     public function search(Request $request, Feedback $feedback)

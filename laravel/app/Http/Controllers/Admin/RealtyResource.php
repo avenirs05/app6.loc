@@ -17,7 +17,7 @@ class RealtyResource extends Controller
      */
     public function index()
     {
-        return Realty::paginate(5);
+        return Realty::paginate(100);
     }
 
 
