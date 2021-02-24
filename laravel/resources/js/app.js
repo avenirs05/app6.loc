@@ -27,4 +27,4 @@ else if (location.pathname !== '/login')  {
     scripts.openLightGalleryIfClickMainImg()
     
   })()
-} 
+}
