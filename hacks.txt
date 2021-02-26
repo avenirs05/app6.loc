@@ -1,2 +1,8 @@
 Проблемы с сидированием
+----------------------------------------------------------------------------------
 https://stackoverflow.com/questions/26143315/laravel-5-artisan-seed-reflectionexception-class-songstableseeder-does-not-e
+
+
+Добавление нового пользователя на vpv
+----------------------------------------------------------------------------------
+https://www.digitalocean.com/community/tutorials/how-to-create-a-new-sudo-enabled-user-on-ubuntu-18-04-quickstart-ru
