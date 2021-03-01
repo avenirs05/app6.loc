@@ -6,3 +6,21 @@ https://stackoverflow.com/questions/26143315/laravel-5-artisan-seed-reflectionex
 Добавление нового пользователя на vpv
 ----------------------------------------------------------------------------------
 https://www.digitalocean.com/community/tutorials/how-to-create-a-new-sudo-enabled-user-on-ubuntu-18-04-quickstart-ru
+
+
+Миграция и сидирование
+----------------------------------------------------------------------------------
+php artisan migrate:fresh --seed
+
+
+Установка симлинка 
+----------------------------------------------------------------------------------
+php artisan storage:link
+
+
+Add SSL certificate
+----------------------------------------------------------------------------------
+sudo docker run -it --rm --name certbot \
+            -v "/etc/letsencrypt:/etc/letsencrypt" \
+            -v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
+            -p 80:80  certbot/certbot certonly
