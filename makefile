@@ -58,3 +58,5 @@ connect_server: #Connect to container_server container
 
 rm: #remove all containers
 	docker rm $(docker ps -aq)	
+
+
