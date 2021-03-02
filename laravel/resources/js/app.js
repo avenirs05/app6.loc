@@ -1,7 +1,6 @@
 window._ = require('lodash')
 window.axios = require('axios')
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
-import 'flag-icon-css/css/flag-icon.css'
 
 if (location.pathname === '/admin' && location.pathname !== '/login') {
   require('./admin-index')  
