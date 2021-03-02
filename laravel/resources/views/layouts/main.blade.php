@@ -96,7 +96,7 @@
               data-toggle="dropdown" 
               aria-haspopup="true" 
               aria-expanded="false">
-              &nbsp;    
+              &nbsp;               
                 <span class="flag-icon flag-icon-{{ app()->getLocale() === 'en' ? 'gb' : strtolower(app()->getLocale()) }}"></span>
               &nbsp;
       </button>          
