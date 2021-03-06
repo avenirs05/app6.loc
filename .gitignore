@@ -19,3 +19,4 @@ vendor/
 settings.txt
 texts.txt
 database/
+docker-compose.yml

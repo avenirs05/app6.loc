@@ -37,7 +37,7 @@ RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 
 # Copy existing application directory contents
-COPY . /var/www
+#COPY . /var/www
 
 RUN (crontab -l ; echo "* * * * * /usr/bin/php /var/www/artisan schedule:run >>/dev/null 2>&1") | crontab
 
