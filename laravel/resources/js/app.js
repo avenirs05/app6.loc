@@ -28,5 +28,3 @@ else if (location.pathname !== '/login')  {
     
   })()
 }
-
-console.log('test');
