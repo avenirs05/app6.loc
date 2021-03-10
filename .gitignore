@@ -16,8 +16,9 @@
 .env
 node_modules/
 vendor/
-settings.txt
+/draft/settings.txt
 texts.txt
 database/
 docker-compose.yml
-/old-images/
+/draft/old-images/
+/content/
