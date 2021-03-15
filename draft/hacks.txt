@@ -3,7 +3,7 @@
 https://stackoverflow.com/questions/26143315/laravel-5-artisan-seed-reflectionexception-class-songstableseeder-does-not-e
 
 
-Добавление нового пользователя на vpv
+Добавление нового пользователя на vps
 ----------------------------------------------------------------------------------
 https://www.digitalocean.com/community/tutorials/how-to-create-a-new-sudo-enabled-user-on-ubuntu-18-04-quickstart-ru
 
@@ -24,3 +24,7 @@ sudo docker run -it --rm --name certbot \
             -v "/etc/letsencrypt:/etc/letsencrypt" \
             -v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
             -p 80:80  certbot/certbot certonly
+
+ssh
+----------------------------------------------------------------------------------
+ssh balbos@109.196.164.189
