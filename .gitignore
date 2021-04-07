@@ -22,3 +22,6 @@ database/
 docker-compose.yml
 /draft/old-images/
 /content/
+/docker/nginx/prod.conf
+/docker/nginx/prod-ssl.conf
+
