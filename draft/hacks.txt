@@ -28,3 +28,8 @@ sudo docker run -it --rm --name certbot \
 ssh
 ----------------------------------------------------------------------------------
 ssh balbos@109.196.164.189
+
+Auction - Deworker
+----------------------------------------------------------------------------------
+sudo chown -R jack:www-data ~/main/projects/auction3
+sudo chmod -R 755 ~/main/projects/auction3
