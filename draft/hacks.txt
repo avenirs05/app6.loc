@@ -33,3 +33,45 @@ Auction - Deworker
 ----------------------------------------------------------------------------------
 sudo chown -R jack:www-data ~/main/projects/auction3
 sudo chmod -R 755 ~/main/projects/auction3
+
+Know fingerprint
+----------------------------------------------------------------------------------
+ssh-keygen -H  -F 194.32.248.99
+
+Deploy
+----------------------------------------------------------------------------------
+    настройка сервера
+    --------
+        купить домен
+        купить vps (минимум 1 ГБ оперативки)
+        прописать данные vps в settings/servers, settings/domains, acc (лист servers)
+        A-записи сделать на vps
+        создать нового пользователя (строка 6)
+        настроить ssh-доступ по ключу
+        установить docker
+        установить docker-compose
+        сделать так, чтобы docker-compose запускался без sudo
+        установить mc
+        установить make
+make build
+make up
+make stop (нужно отключить 80-й порт, если надо получить ssl-сертификат)
+
+add SSL certificate - выполнить строку 21 в этом файле. (на вопрос ответить пунктом 1)
+создать папку проекта в домашней директории пользователя (далее здесь - someProject)
+git clone . в папке проекта
+
+someProject/.env.example - переименовать (убрать .example)
+    someProject/.env - вписать нужные переменные окружения (DB_PASSWORD должен совпадать с someProject/laravel/.env)
+docker-compose.example.yml - переименовать (убрать .example)
+    someProject/docker-compose.yml - сервис webserver/volumes: рас(за)комментировать нужное
+someProject/laravel.env.example - переименовать (убрать .example)
+    someProject/laravel.env.example - вписать нужные переменные окружения:
+        DB_PASSWORD должен совпадать с someProject/.env
+        DB_DATABASE должен совпадать с someProject/.env
+        APP_KEY - не забыть
+        DB_HOST - должно совпадать с сервисом базы данных в docker-compose
+someProject/docker/nginx/prod.example.conf - переименовать (убрать .example)
+    someProject/docker/nginx/prod.conf - изменить server_name, error_log, access_log
+someProject/docker/nginx/prod-ssl.example.conf - переименовать (убрать .example)
+    someProject/docker/nginx/prod-ssl.conf - изменить server_name, error_log, access_log
