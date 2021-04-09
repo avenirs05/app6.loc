@@ -1,4 +1,4 @@
-// React, Redux, Router 
+// React, Redux, Router
 import React, { useEffect, useState } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
@@ -21,13 +21,13 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 import { getFeedbacksAsync } from '../actions/getFeedbacksAsync'
 import { getFeedbacksSearchedAsync } from '../actions/getFeedbacksSearchedAsync'
 import { feedbackDeleteAsync } from '../actions/feedbackDeleteAsync'
-import { 
+import {
   setJustCreatedResourceFalseAC,
   setJustUpdatedResourceFalseAC,
   setJustDeletedResourceFalseAC,
-  setAlertCreateVisibilityFalseAC, 
+  setAlertCreateVisibilityFalseAC,
   setAlertUpdateVisibilityFalseAC,
-  setAlertDeleteVisibilityFalseAC 
+  setAlertDeleteVisibilityFalseAC
 } from '../actions/ac/flagsAC'
 
 // Css Modules
@@ -38,7 +38,7 @@ import FeedbacksCss from './css/Feedbacks.module.css'
 import { useWatchActions } from './hooks'
 
 
-function FeedbacksPage({ 
+function FeedbacksPage({
   feedbacks,
   totalPages,
   currentPage,
@@ -57,7 +57,7 @@ function FeedbacksPage({
   isJustDeletedResource: isDeleted,
   isAlertCreateVisible,
   isAlertUpdateVisible,
-  isAlertDeleteVisible, 
+  isAlertDeleteVisible,
 }) {
 
   const [show, setShow] = useState(false)
@@ -69,30 +69,30 @@ function FeedbacksPage({
 
   useEffect(() => {
     getFeedbacks(currentPage)
-  }, [])  
+  }, [])
 
-  useWatchActions(getFeedbacks, currentPage, noCreateAlert, noCreated, isCreated)             
-  useWatchActions(getFeedbacks, currentPage, noUpdateAlert, noUpdated, isUpdated)             
-  useWatchActions(getFeedbacks, currentPage, noDeleteAlert, noDeleted, isDeleted)             
+  useWatchActions(getFeedbacks, currentPage, noCreateAlert, noCreated, isCreated)
+  useWatchActions(getFeedbacks, currentPage, noUpdateAlert, noUpdated, isUpdated)
+  useWatchActions(getFeedbacks, currentPage, noDeleteAlert, noDeleted, isDeleted)
 
   function onGetResource(e, currentPageNumber) {
     getFeedbacks(currentPageNumber)
   }
 
-  function onDeleteResource(e, id) {    
+  function onDeleteResource(e, id) {
     handleClose()
-    feedbackDelete(id)   
+    feedbackDelete(id)
   }
 
   function setCandidateToDelete(e, id, author) {
-    handleShow() 
+    handleShow()
     setFeedbackDeleteId(() => id)
     setFeedbackDeleteName(() => author)
   }
 
   function showFeedbacksItems(currentPage, perPage) {
     return function(feedback, index) {
-      let rowTableNumber = (currentPage * perPage) - perPage + 1 + index      
+      let rowTableNumber = (currentPage * perPage) - perPage + 1 + index
       return (
         <tr key={index}>
           <td className={TableCss.td}>{rowTableNumber}</td>
@@ -118,7 +118,7 @@ function FeedbacksPage({
 
   function onGetFeedbacksSearched(e) {
     getFeedbacksSearched(e)
-  }  
+  }
 
   const getPaginationItems = (currentPage, totalPages) => {
     let items = []
@@ -210,10 +210,10 @@ function mapDispatchToProps(dispatch) {
     getFeedbacks(currentPageNumber) {
       dispatch(getFeedbacksAsync(currentPageNumber))
     },
-    getFeedbacksSearched(e) {   
+    getFeedbacksSearched(e) {
       dispatch(getFeedbacksSearchedAsync(e.target.value))
     },
-    feedbackDelete(id) {      
+    feedbackDelete(id) {
       dispatch(feedbackDeleteAsync(id))
     },
     setJustCreatedResourceFalse() {

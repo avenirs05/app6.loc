@@ -16,7 +16,7 @@ class CreateFeedbacksTable extends Migration
         Schema::create('feedbacks', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('realty_id')->unsigned()->index();
+            $table->integer('realty_id')->unsigned();
             $table->foreign('realty_id')->references('id')->on('realties')->onDelete('cascade')->onUpdate('cascade');
 
             $table->string('author');
